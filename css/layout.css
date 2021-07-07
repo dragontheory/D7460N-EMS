@@ -3,7 +3,7 @@
 	/* PAGE */
 	--page-display: grid;
 	--page-columns: repeat(7, 1fr);
-	--page-rows: repeat(3, auto 1fr auto);
+	--page-rows: auto 1fr auto;
 	--page-gap: 20px 20px;
 	--page-height: 100vh;
 	--page-width: 100vw;
@@ -34,7 +34,7 @@
 *:after,
 *,
 ::after,
-::before {box-sizing: var(--box-sizing);}
+::before {box-sizing: border-box;}
 html,
 body {
 	margin: var(--page-margin);
