@@ -1,0 +1,241 @@
+/* https://dev.to/jaredcwhite/custom-elements-everywhere-for-page-layout-parts-i-and-ii-438p */
+:root {
+	/* PAGE */
+	--page-display: grid;
+	--page-columns: repeat(7, 1fr);
+	--page-rows: repeat(3, auto 1fr auto);
+	--page-gap: 20px 20px;
+	--page-height: 100vh;
+	--page-width: 100vw;
+	--page-margin: 0;
+	--page-padding: 0;
+	--page-container-padding: 20px;
+	--page-overflow: hidden;
+	--page-font-family: Calibri, "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+	--page-color: #8e9196;
+	--page-color-notes: #3b3e43;
+	--page-color-hover: #d7dae0;
+	--page-background-color: #1a1e23;
+
+	/* PANEL */
+	--panel-display: grid;
+	--panel-rows: repeat(3, auto 1fr auto);
+	--panel-gap: 0 0;
+	--panel-padding: 1em;
+	--panel-content-overflow: auto;
+	--panel-border-radius: 5px;
+	--panel-background-color: rgba(255, 255, 255, 0.03);
+
+	/* UTILITY */
+	--display-none: none;
+	--box-sizing: border-box;
+  }
+*:before,
+*:after,
+*,
+::after,
+::before {box-sizing: var(--box-sizing);}
+html,
+body {
+	margin: var(--page-margin);
+	padding: var(--page-padding);
+	font-family: var(--page-font-family);
+	color: var(--page-color);
+	background-color: var(--page-background-color);
+}
+/* Seven middle columns */
+page-container {
+	display: grid;
+	grid-template-columns: var(--page-columns);
+	grid-template-rows: var(--page-rows);
+	gap: var(--page-gap);
+	padding: var(--page-container-padding);
+	height: var(--page-height);
+}
+/* All direct children of page-container */
+page-container > * {
+	display: grid;
+	border-radius: 0.3em;
+	background-color: var(--panel-background-color);
+}
+/*
+HEADER/FOOTER
+First and last page-container child elements are reserved for header and footer.
+They wrap and are not named and not counted when counting columns.
+Span the first and the last child elements across all seven columns starting at the first column to the last column
+*/
+/* Header and footer layout */
+page-container > :first-child,
+page-container > :last-child {
+	display: grid;
+	grid-column: 1 / -1;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+	/* Header left */
+	page-container > :first-child > :first-child {
+		padding: 1em;
+		justify-self: left;
+		align-self: center;
+	}
+		/* Header left logo */
+		page-container > :first-child img {
+			position: absolute; /* ignore padding */
+			top: 25px;
+		}
+	/* Header center banner */
+	page-container > :first-child > :nth-child(2) {
+		padding: var(--panel-padding);
+		justify-self: center;
+		align-content: start;
+	}
+	/* Header right Username */
+	page-container > :first-child > :last-child {
+		padding: var(--panel-padding);
+		justify-self: right;
+		align-self: center;
+	}
+	/* Footer left */
+	page-container > :last-child > :first-child {
+		padding: var(--panel-padding);
+		justify-self: left;
+		align-self: center;
+	}
+	/* Footer center banner */
+	page-container > :last-child > :nth-child(2) {
+		padding: var(--panel-padding);
+		justify-self: center;
+		align-self: center;
+	}
+	/* Footer right */
+	page-container > :last-child > :last-child {
+		padding: var(--panel-padding);
+		justify-self: right;
+		align-self: center;
+	}
+	/* Middle columns layout */
+	page-container > :not(:first-child):not(:last-child) {
+		grid-template-rows: auto 1fr auto;
+	}
+		/* Middle columns footers layout */
+		page-container > :not(:first-child):not(:last-child) > :first-child,
+		page-container > :not(:first-child):not(:last-child) > :last-child {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+			/* Middle columns footers left */
+			page-container > :not(:first-child):not(:last-child) > :first-child > :first-child,
+			page-container > :not(:first-child):not(:last-child) > :last-child > :first-child {
+				padding: var(--panel-padding);
+				justify-self: left;
+				align-self: center;
+			}
+			/* Middle columns footers right */
+			page-container > :not(:first-child):not(:last-child) > :first-child > :last-child,
+			page-container > :not(:first-child):not(:last-child) > :last-child > :last-child {
+				padding: var(--panel-padding);
+				justify-self: right;
+				align-self: center;
+			}
+			/* Middle columns footers center */
+			page-container > :not(:first-child):not(:last-child) > :first-child > :nth-child(2),
+			page-container > :not(:first-child):not(:last-child) > :last-child > :nth-child(2) {
+				padding: var(--panel-padding);
+				justify-self: center;
+				align-self: center;
+			}
+	/* Middle columns content center */
+	page-container > :not(:first-child):not(:last-child) > :nth-child(2) {
+		padding: var(--panel-padding);
+	}
+
+
+
+
+	/* Middle columns footers layout */
+	page-container > :not(:first-child):not(:last-child) > :last-child {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+/*.page-container div:nth-last-child(2) {display: none;}*/
+
+a {
+	color: var(--page-color);
+	text-decoration: none;
+	transition: all 250ms;
+}
+a:hover {
+	color: var(--page-color-hover);
+}
+
+/*
+	LAYOUT CONTROLS
+*/
+/* Hide radios */
+#layoutToggle01,
+#layoutToggle02,
+#layoutToggle03,
+#layoutToggle04,
+#layoutToggle05 {display: none;}
+
+label[for*='layoutToggle'] {
+  position: absolute;
+  top: 30px;
+  cursor: pointer;
+  transition: color 250ms;
+  color: var(--page-color);
+  padding: 5px 10px;
+}
+
+input#layoutToggle01:checked + label,
+input#layoutToggle02:checked + label,
+input#layoutToggle03:checked + label,
+input#layoutToggle04:checked + label,
+input#layoutToggle05:checked + label {color: var(--page-color-hover);}
+
+label[for*='layoutToggle']:checked {color: var(--page-color-hover);}
+label[for*='layoutToggle']:hover {color: var(--page-color-hover);}
+
+input#layoutToggle01 + label,
+input#layoutToggle02 + label,
+input#layoutToggle03 + label,
+input#layoutToggle04 + label {
+  border-right: solid 1px var(--page-color-notes);
+  padding-right: 10px;
+}
+
+input#layoutToggle01 + label {right: 178px;}
+input#layoutToggle02 + label {right: 142px;}
+input#layoutToggle03 + label {right: 106px;}
+input#layoutToggle04 + label {right: 66px;}
+input#layoutToggle05 + label {right: 30px;}
+
+/*
+    LAYOUT 01
+*/
+input#layoutToggle01:checked ~ page-container {
+	grid-template-columns: repeat(4, 1fr);
+}
+input#layoutToggle01:checked ~ page-container > :nth-child(n+2):nth-child(-n+4) {display: none;}
+
+/*
+    LAYOUT 02
+*/
+input#layoutToggle02:checked ~ page-container {
+	grid-template-columns: 250px 1fr;
+}
+input#layoutToggle02:checked ~ page-container > :nth-child(n+2):nth-child(-n+6) {display: none;}
+/*
+    LAYOUT 03
+*/
+input#layoutToggle03:checked ~ page-container {
+	grid-template-columns: 250px 1fr 250px;
+}
+input#layoutToggle03:checked ~ page-container > :nth-child(n+2):nth-child(-n+5) {display: none;}
+/*
+    LAYOUT 04
+*/
+input#layoutToggle04:checked ~ page-container {
+	grid-template-columns: 250px 1fr 250px 250px;
+}
+input#layoutToggle04:checked ~ page-container > :nth-child(n+2):nth-child(-n+4) {display: none;}
