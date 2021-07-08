@@ -2,7 +2,7 @@
 :root {
 	/* PAGE */
 	--page-display: grid;
-	--page-columns: repeat(7, 1fr);
+	--page-columns: repeat(8, 1fr);
 	--page-rows: auto 1fr auto;
 	--page-gap: 20px 20px;
 	--page-height: 100vh;
@@ -19,12 +19,16 @@
 
 	/* PANEL */
 	--panel-display: grid;
-	--panel-rows: repeat(3, auto 1fr auto);
+	--panel-rows: auto 1fr auto;
 	--panel-gap: 0 0;
 	--panel-padding: 1em;
 	--panel-content-overflow: auto;
 	--panel-border-radius: 5px;
 	--panel-background-color: rgba(255, 255, 255, 0.03);
+
+	/* TAB */
+	--panel-display: grid;
+	--tab-background-color: rgba(255, 255, 255, 0.03);
 
 	/* UTILITY */
 	--display-none: none;
@@ -42,6 +46,9 @@ body {
 	font-family: var(--page-font-family);
 	color: var(--page-color);
 	background-color: var(--page-background-color);
+	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+	font-smooth: auto;
 }
 /* Seven middle columns */
 page-container {
@@ -64,94 +71,95 @@ First and last page-container child elements are reserved for header and footer.
 They wrap and are not named and not counted when counting columns.
 Span the first and the last child elements across all seven columns starting at the first column to the last column
 */
-/* Header and footer layout */
+/* HEADER and FOOTER layout */
 page-container > :first-child,
 page-container > :last-child {
 	display: grid;
 	grid-column: 1 / -1;
 	grid-template-columns: 1fr 1fr 1fr;
 }
-	/* Header left */
+	/* HEADER left */
 	page-container > :first-child > :first-child {
 		padding: 1em;
 		justify-self: left;
 		align-self: center;
 	}
-		/* Header left logo */
+		/* HEADER left logo */
 		page-container > :first-child img {
 			position: absolute; /* ignore padding */
-			top: 25px;
+			top: 8px;
+			left: 20px;
 		}
-	/* Header center banner */
+	/* HEADER center banner */
 	page-container > :first-child > :nth-child(2) {
 		padding: var(--panel-padding);
 		justify-self: center;
 		align-content: start;
 	}
-	/* Header right Username */
+	/* HEADER right Username */
 	page-container > :first-child > :last-child {
 		padding: var(--panel-padding);
 		justify-self: right;
 		align-self: center;
 	}
-	/* Footer left */
+	/* FOOTER left */
 	page-container > :last-child > :first-child {
 		padding: var(--panel-padding);
 		justify-self: left;
 		align-self: center;
 	}
-	/* Footer center banner */
+	/* FOOTER center banner */
 	page-container > :last-child > :nth-child(2) {
 		padding: var(--panel-padding);
 		justify-self: center;
 		align-self: center;
 	}
-	/* Footer right */
+	/* FOOTER right */
 	page-container > :last-child > :last-child {
 		padding: var(--panel-padding);
 		justify-self: right;
 		align-self: center;
 	}
-	/* Middle columns layout */
+	/* Middle columns and their vertical layout */
 	page-container > :not(:first-child):not(:last-child) {
 		grid-template-rows: auto 1fr auto;
+		position: relative;
 	}
-		/* Middle columns footers layout */
+		/* Middle columns FOOTERS layout */
 		page-container > :not(:first-child):not(:last-child) > :first-child,
 		page-container > :not(:first-child):not(:last-child) > :last-child {
 			display: grid;
 			grid-template-columns: 1fr 1fr 1fr;
 		}
-			/* Middle columns footers left */
+			/* Middle columns FOOTERS left */
 			page-container > :not(:first-child):not(:last-child) > :first-child > :first-child,
 			page-container > :not(:first-child):not(:last-child) > :last-child > :first-child {
 				padding: var(--panel-padding);
 				justify-self: left;
 				align-self: center;
 			}
-			/* Middle columns footers right */
+			/* Middle columns FOOTERS right */
 			page-container > :not(:first-child):not(:last-child) > :first-child > :last-child,
 			page-container > :not(:first-child):not(:last-child) > :last-child > :last-child {
 				padding: var(--panel-padding);
 				justify-self: right;
 				align-self: center;
 			}
-			/* Middle columns footers center */
+			/* Middle columns FOOTERS center */
 			page-container > :not(:first-child):not(:last-child) > :first-child > :nth-child(2),
 			page-container > :not(:first-child):not(:last-child) > :last-child > :nth-child(2) {
 				padding: var(--panel-padding);
 				justify-self: center;
 				align-self: center;
 			}
-	/* Middle columns content center */
+	/* Middle columns CONTENT */
 	page-container > :not(:first-child):not(:last-child) > :nth-child(2) {
-		padding: var(--panel-padding);
+		display: grid;
+		grid-template-columns: 1fr;
+		justify-content: start;
+		align-content: start;
 	}
-
-
-
-
-	/* Middle columns footers layout */
+	/* Middle columns FOOTERS layout */
 	page-container > :not(:first-child):not(:last-child) > :last-child {
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
@@ -214,28 +222,28 @@ input#layoutToggle05 + label {right: 30px;}
     LAYOUT 01
 */
 input#layoutToggle01:checked ~ page-container {
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: 1fr 1fr 1fr 1fr; /* HOME | HOME | HOME | HOME */
 }
-input#layoutToggle01:checked ~ page-container > :nth-child(n+2):nth-child(-n+4) {display: none;}
+input#layoutToggle01:checked ~ page-container > :nth-child(n+2):nth-child(-n+5) {display: none;}
 
 /*
     LAYOUT 02
 */
 input#layoutToggle02:checked ~ page-container {
-	grid-template-columns: 250px 1fr;
+	grid-template-columns: 250px 1fr; /* NAV | RESULTS */
 }
-input#layoutToggle02:checked ~ page-container > :nth-child(n+2):nth-child(-n+6) {display: none;}
+input#layoutToggle02:checked ~ page-container > :nth-child(n+4):nth-child(-n+9) {display: none;}
 /*
     LAYOUT 03
 */
 input#layoutToggle03:checked ~ page-container {
-	grid-template-columns: 250px 1fr 250px;
+	grid-template-columns: 250px 1fr 350px; /* NAV | RESULTS | PROFILE */
 }
-input#layoutToggle03:checked ~ page-container > :nth-child(n+2):nth-child(-n+5) {display: none;}
+input#layoutToggle03:checked ~ page-container > :nth-child(n+5):nth-child(-n+9) {display: none;}
 /*
     LAYOUT 04
 */
 input#layoutToggle04:checked ~ page-container {
-	grid-template-columns: 250px 1fr 250px 250px;
+	grid-template-columns: 250px 1fr 350px 250px; /* NAV | RESULTS | PROFILE | DETAILS */
 }
-input#layoutToggle04:checked ~ page-container > :nth-child(n+2):nth-child(-n+4) {display: none;}
+input#layoutToggle04:checked ~ page-container > :nth-child(n+6):nth-child(-n+9) {display: none;}
