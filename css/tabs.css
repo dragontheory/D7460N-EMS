@@ -6,13 +6,8 @@ tab-container {
 /*
 TAB CONTROLS
 Hide radios */
-tab-container #tabToggle01,
-tab-container #tabToggle02,
-tab-container #tabToggle03,
-tab-container #tabToggle04 {display: none;}
-
-tab-container input[id*='tabToggle']:checked + label {color: var(--page-color-hover);}
-tab-container label[for*='tabToggle']:hover {color: var(--page-color-hover);}
+tab-container input[id*='TabToggle']:checked + label {color: var(--page-color-hover);}
+tab-container label[for*='TabToggle']:hover {color: var(--page-color-hover);}
 
 tab-container label {
 	cursor: pointer;
@@ -32,19 +27,19 @@ tab-container tab-content {
 tab-container tab-content p {
 	padding: 0 1em;
 }
-
-
-tab-container #tabToggle01,
-tab-container #tabToggle02,
-tab-container #tabToggle03,
-tab-container #tabToggle04 {display: none;}
+tab-container input[type='radio'] {display: none;}
 tab-container {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: auto 1fr;
 }
 tab-container label {justify-self: center;}
-tab-container input#tabToggle01:checked ~ tab-content:not(:nth-of-type(1)),
-tab-container input#tabToggle02:checked ~ tab-content:not(:nth-of-type(2)),
-tab-container input#tabToggle03:checked ~ tab-content:not(:nth-of-type(3)),
-tab-container input#tabToggle04:checked ~ tab-content:not(:nth-of-type(4)) {display: none;}
+tab-container input#profileTabToggle01:checked ~ tab-content:not(:nth-of-type(1)),
+tab-container input#profileTabToggle02:checked ~ tab-content:not(:nth-of-type(2)),
+tab-container input#profileTabToggle03:checked ~ tab-content:not(:nth-of-type(3)),
+tab-container input#profileTabToggle04:checked ~ tab-content:not(:nth-of-type(4)) {display: none;}
+
+tab-container input#detailsTabToggle01:checked ~ tab-content:not(:nth-of-type(1)),
+tab-container input#detailsTabToggle02:checked ~ tab-content:not(:nth-of-type(2)),
+tab-container input#detailsTabToggle03:checked ~ tab-content:not(:nth-of-type(3)),
+tab-container input#detailsTabToggle04:checked ~ tab-content:not(:nth-of-type(4)) {display: none;}
