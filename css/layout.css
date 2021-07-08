@@ -17,7 +17,7 @@
 	--page-color-hover: #d7dae0;
 	--page-background-color: #1a1e23;
 
-	/* PANEL */
+	/* PANEL COMPONENT */
 	--panel-display: grid;
 	--panel-rows: auto 1fr auto;
 	--panel-gap: 0 0;
@@ -26,14 +26,14 @@
 	--panel-border-radius: 5px;
 	--panel-background-color: rgba(255, 255, 255, 0.03);
 
-	/* TAB */
-	--panel-display: grid;
+	/* TAB COMPONENT */
+	--tab-display: grid;
 	--tab-background-color: rgba(255, 255, 255, 0.03);
 
 	/* UTILITY */
 	--display-none: none;
 	--box-sizing: border-box;
-  }
+}
 *:before,
 *:after,
 *,
@@ -156,8 +156,6 @@ page-container > :last-child {
 	page-container > :not(:first-child):not(:last-child) > :nth-child(2) {
 		display: grid;
 		grid-template-columns: 1fr;
-		justify-content: start;
-		align-content: start;
 	}
 	/* Middle columns FOOTERS layout */
 	page-container > :not(:first-child):not(:last-child) > :last-child {
