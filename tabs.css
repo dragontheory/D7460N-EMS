@@ -1,0 +1,51 @@
+tab-container {
+	display: var(--tab-display);
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+/*
+TAB CONTROLS
+Hide radios */
+tab-container #tabToggle01,
+tab-container #tabToggle02,
+tab-container #tabToggle03,
+tab-container #tabToggle04 {display: none;}
+
+tab-container input[id*='tabToggle']:checked + label {color: var(--page-color-hover);}
+tab-container label[for*='tabToggle']:hover {color: var(--page-color-hover);}
+
+tab-container label {
+	cursor: pointer;
+	transition: color 250ms;
+	color: var(--page-color);
+	padding: 5px 1em;
+	border-right: solid 1px var(--page-color-notes);
+}
+tab-container label:last-of-type {border: none; }
+
+tab-container tab-content {
+	display: var(--tab-display);
+	border: solid 1px yellow;
+	grid-template-rows: auto 1fr;
+	grid-column: 1 / -1;
+	align-content: start;
+}
+tab-container tab-content p {
+	padding: 0 1em;
+}
+
+
+tab-container #tabToggle01,
+tab-container #tabToggle02,
+tab-container #tabToggle03,
+tab-container #tabToggle04 {display: none;}
+tab-container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: auto 1fr;
+}
+tab-container label {justify-self: center;}
+tab-container tab-content {grid-column: 1 / -1;}
+tab-container input#tabToggle01:checked ~ tab-content:not(:nth-of-type(1)),
+tab-container input#tabToggle02:checked ~ tab-content:not(:nth-of-type(2)),
+tab-container input#tabToggle03:checked ~ tab-content:not(:nth-of-type(3)),
+tab-container input#tabToggle04:checked ~ tab-content:not(:nth-of-type(4)) {display: none;}
