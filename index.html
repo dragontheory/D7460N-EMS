@@ -10,6 +10,7 @@
 	<link rel="icon" href="images/logos/logo_380x380_.svg" type="image/svg+xml">
 	<link rel="manifest" href="manifest.webmanifest" />
 	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="css/tabs.css" />
 </head>
 
 <body>
@@ -20,117 +21,150 @@
 	<input type="radio" id="layoutToggle04" name="layouts" value="4" /><label for="layoutToggle04">04</label>
 	<input type="radio" id="layoutToggle05" name="layouts" value="5" /><label for="layoutToggle05">05</label>
 	<page-container>
-		<div>
-			<span><img src="images/logos/logo_380x380_.svg" height="40px;" alt="D7460N" title="D7460N"></span>
+		<page-header>
+			<span><img src="images/logos/logo_380x380_.svg" height="85px;" alt="D7460N" title="D7460N" /></span>
 			<span>::</span>
 			<user-name></user-name>
-		</div>
-		<div>
-			<div>
+		</page-header>
+		<page-panel>
+			<panel-header>
+				<span>NAV</span>
+				<span>::</span>
+				<span>::</span>
+			</panel-header>
+			<panel-content>
+				<span>::</span>
+			</panel-content>
+			<panel-footer>
 				<span>::</span>
 				<span>::</span>
 				<span>::</span>
-			</div>
-			<div>
-				<span>::</span>
-			</div>
-			<div>
-				<span>::</span>
-				<span>::</span>
-				<span>::</span>
-			</div>
-		</div>
-		<div>
-			<div>
+			</panel-footer>
+		</page-panel>
+		<page-panel>
+			<panel-header>
+				<span>RESULTS</span>
 				<span>::</span>
 				<span>::</span>
+			</panel-header>
+			<panel-content>
 				<span>::</span>
-			</div>
-			<div>
-				<span>::</span>
-			</div>
-			<div>
+			</panel-content>
+			<panel-footer>
 				<span>::</span>
 				<span>::</span>
 				<span>::</span>
-			</div>
-		</div>
-		<div>
-			<div>
+			</panel-footer>
+		</page-panel>
+		<page-panel>
+			<panel-header>
+				<span>PROFILE</span>
+				<span>::</span>
+				<span>::</span>
+			</panel-header>
+			<panel-content>
+				<tab-container>
+					<!-- TAB CONTROLS -->
+					<input type="radio" id="tabToggle01" name="tabs" value="1" checked /><label for="tabToggle01" checked="checked">TAB 01</label>
+					<input type="radio" id="tabToggle02" name="tabs" value="2" /><label for="tabToggle02">TAB 02</label>
+					<input type="radio" id="tabToggle03" name="tabs" value="3" /><label for="tabToggle03">TAB 03</label>
+					<input type="radio" id="tabToggle04" name="tabs" value="4" /><label for="tabToggle04">TAB 04</label>
+					<tab-content>
+						<p>TAB 01 content</p>
+					</tab-content>
+					<tab-content>
+						<p>TAB 02 content</p>
+					</tab-content>
+					<tab-content>
+						<p>TAB 03 content</p>
+					</tab-content>
+					<tab-content>
+						<p>TAB 04 content</p>
+					</tab-content>
+				</tab-container>
+			</panel-content>
+			<panel-footer>
 				<span>::</span>
 				<span>::</span>
 				<span>::</span>
-			</div>
-			<div>
-				<span>::</span>
-			</div>
-			<div>
-				<span>::</span>
-				<span>::</span>
-				<span>::</span>
-			</div>
-		</div>
-		<div>
-			<div>
+			</panel-footer>
+		</page-panel>
+		<page-panel>
+			<panel-header>
+				<span>DETAILS</span>
 				<span>::</span>
 				<span>::</span>
+			</panel-header>
+			<panel-content>
 				<span>::</span>
-			</div>
-			<div>
-				<span>::</span>
-			</div>
-			<div>
+			</panel-content>
+			<panel-footer>
 				<span>::</span>
 				<span>::</span>
 				<span>::</span>
-			</div>
-		</div>
-		<div>
-			<div>
+			</panel-footer>
+		</page-panel>
+		<page-panel>
+			<panel-header>
+				<span>HOME 01</span>
+				<span>::</span>
+				<span>::</span>
+			</panel-header>
+			<panel-content>
+				<span>::</span>
+			</panel-content>
+			<panel-footer>
 				<span>::</span>
 				<span>::</span>
 				<span>::</span>
-			</div>
-			<div>
-				<span>::</span>
-			</div>
-			<div>
-				<span>::</span>
-				<span>::</span>
-				<span>::</span>
-			</div>
-		</div>
-		<div>
-			<div>
+			</panel-footer>
+		</page-panel>
+		<page-panel>
+			<panel-header>
+				<span>HOME 02</span>
 				<span>::</span>
 				<span>::</span>
+			</panel-header>
+			<panel-content>
 				<span>::</span>
-			</div>
-			<div>
-				<span>::</span>
-			</div>
-			<div>
+			</panel-content>
+			<panel-footer>
 				<span>::</span>
 				<span>::</span>
 				<span>::</span>
-			</div>
-		</div>
-		<div>
-			<div>
+			</panel-footer>
+		</page-panel>
+		<page-panel>
+			<panel-header>
+				<span>HOME 03</span>
+				<span>::</span>
+				<span>::</span>
+			</panel-header>
+			<panel-content>
+				<span>::</span>
+			</panel-content>
+			<panel-footer>
 				<span>::</span>
 				<span>::</span>
 				<span>::</span>
-			</div>
-			<div>
+			</panel-footer>
+		</page-panel>
+		<page-panel>
+			<panel-header>
+				<span>HOME 04</span>
 				<span>::</span>
-			</div>
-			<div>
+				<span>::</span>
+			</panel-header>
+			<panel-content>
+				<span>::</span>
+			</panel-content>
+			<panel-footer>
 				<span>::</span>
 				<span>::</span>
 				<span>::</span>
-			</div>
-		</div>
-		<div>
+			</panel-footer>
+		</page-panel>
+		<page-footer>
 			<div>
 				<span>Powered by ::</span>
 			</div>
@@ -140,7 +174,7 @@
 			<div>
 				<span>Version :: 0.0000001</span>
 			</div>
-		</div>
+		</page-footer>
 	</page-container>
 </body>
 
