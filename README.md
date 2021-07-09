@@ -1,4 +1,4 @@
-<h1 align="center"><img src="images/logos/logo_380x380_.svg" /></h1>
+<h1 align="center" height="400"><img src="images/logos/logo_380x380_.svg" /></h1>
 
 ## Your Data Your Way
 
