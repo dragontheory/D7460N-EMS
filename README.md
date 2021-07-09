@@ -1,4 +1,4 @@
-<h1 align="center" height="400"><img src="images/logos/logo_380x380_.svg" /></h1>
+<h1 align="center" width="200"><img src="images/logos/logo_380x380_.svg" /></h1>
 
 ## Your Data Your Way
 
@@ -12,7 +12,7 @@ PWA - Progressive Web Application
 
 BYOD - Bring Your Own Data
 
-Progressive Enhancement (Rule of Least Power)
+Progressive Enhancement (Principle of Least Power)
 
 <https://blog.jim-nielsen.com/2020/cheating-entropy-with-native-web-tech>
 
