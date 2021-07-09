@@ -1,0 +1,41 @@
+accordion-container {
+	display: var(--accordion-display);
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+/*
+ACCORDION CONTROLS
+Hide radios */
+accordion-container input[id*='accordionToggle']:checked + label {color: var(--page-color-hover);}
+accordion-container label[for*='accordionToggle']:hover {color: var(--page-color-hover);}
+
+accordion-container label {
+	cursor: pointer;
+	transition: color 250ms;
+	color: var(--page-color);
+	padding: 5px 1em;
+	border-right: solid 1px var(--page-color-notes);
+}
+accordion-container label:last-of-type {border: none; }
+
+accordion-container accordion-content {
+	display: var(--accordion-display);
+	border: solid 1px yellow;
+	grid-column: 1 / -1;
+	align-content: start;
+}
+accordion-container accordion-content p {
+	padding: 0 1em;
+}
+accordion-container input[type='radio'] {display: none;}
+accordion-container {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(5, 1fr);
+}
+accordion-container label {justify-self: center;}
+accordion-container input#accordionToggle01:checked ~ accordion-content:not(:nth-of-type(1)),
+accordion-container input#accordionToggle02:checked ~ accordion-content:not(:nth-of-type(2)),
+accordion-container input#accordionToggle03:checked ~ accordion-content:not(:nth-of-type(3)),
+accordion-container input#accordionToggle04:checked ~ accordion-content:not(:nth-of-type(4)),
+accordion-container input#accordionToggle05:checked ~ accordion-content:not(:nth-of-type(5)) {display: none;}
