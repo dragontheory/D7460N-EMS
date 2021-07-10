@@ -1,0 +1,11 @@
+table-container,
+table-header,
+table-content,
+table-footer {display: var(--table-display);}
+
+ol {
+    margin: 0;
+    padding: 0;
+}
+li {list-style: none;}
+
