@@ -7,15 +7,15 @@ tab-container {
 TAB CONTROLS
 Hide radios */
 tab-container > input {display: none;}
-tab-container > input:checked + label {color: var(--page-color-hover);}
-tab-container > label:hover {color: var(--page-color-hover);}
+tab-container > input:checked + label {color: var(--page-text-color-hover);}
+tab-container > label:hover {color: var(--page-text-color-hover);}
 
 tab-container > label {
 	cursor: pointer;
 	transition: color 250ms;
-	color: var(--page-color);
+	color: var(--page-text-color);
 	padding: 5px 1em;
-	border-right: solid 1px var(--page-color-notes);
+	border-right: solid 1px var(--page-text-color-notes);
 	justify-self: center;
 }
 tab-container > label:last-of-type {border: none; }

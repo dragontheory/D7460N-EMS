@@ -12,10 +12,6 @@
 	--page-container-padding: 20px;
 	--page-overflow: hidden;
 	--page-font-family: Calibri, "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
-	--page-color: #8e9196;
-	--page-color-notes: #3b3e43;
-	--page-color-hover: #d7dae0;
-	--page-background-color: #1a1e23;
 
 	/* PANEL COMPONENT */
 	--panel-display: grid;
@@ -24,7 +20,7 @@
 	--panel-padding: 1em;
 	--panel-content-overflow: auto;
 	--panel-border-radius: 5px;
-	--panel-background-color: rgba(255, 255, 255, 0.03);
+
 
 	/* TAB COMPONENT */
 	--tab-display: grid;
@@ -40,6 +36,7 @@
 	/* UTILITY */
 	--display-none: none;
 	--box-sizing: border-box;
+	--transition: background-color 250ms, color 250ms, fill 250ms;
 }
 *:before,
 *:after,
@@ -51,8 +48,6 @@ body {
 	margin: var(--page-margin);
 	padding: var(--page-padding);
 	font-family: var(--page-font-family);
-	color: var(--page-color);
-	background-color: var(--page-background-color);
 	-webkit-font-smoothing: antialiased;
   	-moz-osx-font-smoothing: grayscale;
 	font-smooth: auto;
@@ -67,11 +62,10 @@ page-container {
 	padding: var(--page-container-padding);
 	height: var(--page-height);
 }
-/* All direct children of page-container */
+/* All immediate children of page-container */
 page-container > * {
 	display: grid;
 	border-radius: 0.3em;
-	background-color: var(--panel-background-color);
 }
 /*
 HEADER/FOOTER
@@ -87,43 +81,59 @@ page-container page-footer {
 	grid-template-columns: 1fr 1fr 1fr;
 }
 	/* HEADER left */
-	page-container page-header > :first-child {
-		padding: 1em;
+	page-container page-header page-header-left {
+		display: grid;
 		justify-self: left;
 		align-self: center;
 	}
 		/* HEADER left logo */
-		page-container page-header img {
+		page-container page-header page-header-left svg {
 			position: absolute; /* ignore padding */
 			top: 2px;
 			left: 20px;
+			height: 85px;
+	    }
+		/* HEADER Left Logo Text */
+		page-container page-header page-header-left logo-text {
+			display: grid;
+			margin-left: 80px;
+			transform: scale(1, 0.7);
 		}
+		/* HEADER Left Logo Text 2 */
+		page-container page-header page-header-left logo-text-2 {
+			display: grid;
+			left: 196px;
+			top: 16px;
+			transform: scale(.50, 0.3);
+			position: absolute;
+		}
+
 	/* HEADER center banner */
-	page-container page-header > :not(:first-child):not(:last-child) {
+	page-container page-header page-header-center {
 		padding: var(--panel-padding);
 		justify-self: center;
 		align-content: start;
 	}
 	/* HEADER right Username */
-	page-container page-header > :last-child {
+	page-container page-header page-header-right {
 		padding: var(--panel-padding);
 		justify-self: right;
 		align-self: center;
 	}
 	/* FOOTER left */
-	page-container page-footer > :first-child {
+	page-container page-footer page-footer-left  {
 		padding: var(--panel-padding);
 		justify-self: left;
 		align-self: center;
 	}
 	/* FOOTER center banner */
-	page-container page-footer > :not(:first-child):not(:last-child) {
+	page-container page-footer page-footer-center {
 		padding: var(--panel-padding);
 		justify-self: center;
 		align-self: center;
 	}
 	/* FOOTER right */
-	page-container page-footer > :last-child {
+	page-container page-footer page-footer-right {
 		padding: var(--panel-padding);
 		justify-self: right;
 		align-self: center;
@@ -169,27 +179,20 @@ page-container page-footer {
 
 /*.page-container div:nth-last-child(2) {display: none;}*/
 
-a {
-	color: var(--page-color);
-	text-decoration: none;
-	transition: all 250ms;
-}
-a:hover {
-	color: var(--page-color-hover);
-}
+a {transition: var(--transition);}
+a:hover {color: var(--page-text-color-hover);}
 
 /*
 	LAYOUT CONTROLS
 */
-/* Hide radios */
-body > input[type='radio'] {display: none;}
+/* Hide radios and checkboxes */
+body > input {display: none;}
 
 body > label {
   position: absolute;
   top: 30px;
   cursor: pointer;
-  transition: color 250ms;
-  color: var(--page-color);
+  transition: var(--transition);
   padding: 5px 10px;
 }
 
@@ -197,18 +200,10 @@ input#layoutToggle01:checked + label,
 input#layoutToggle02:checked + label,
 input#layoutToggle03:checked + label,
 input#layoutToggle04:checked + label,
-input#layoutToggle05:checked + label {color: var(--page-color-hover);}
+input#layoutToggle05:checked + label {color: var(--page-text-color-hover);}
 
-label[for*='layoutToggle']:checked {color: var(--page-color-hover);}
-label[for*='layoutToggle']:hover {color: var(--page-color-hover);}
-
-input#layoutToggle01 + label,
-input#layoutToggle02 + label,
-input#layoutToggle03 + label,
-input#layoutToggle04 + label {
-  border-right: solid 1px var(--page-color-notes);
-  padding-right: 10px;
-}
+label[for*='layoutToggle']:checked {color: var(--page--text-color-hover);}
+label[for*='layoutToggle']:hover {color: var(--page-text-color-hover);}
 
 input#layoutToggle01 + label {right: 178px;}
 input#layoutToggle02 + label {right: 142px;}

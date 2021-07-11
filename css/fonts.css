@@ -1,0 +1,28 @@
+/* DEFINITIONS */
+@font-face {
+	font-family: Agency;
+	src: url('fonts/Agency.eot');
+	src: url('fonts/Agency.eot?') format('☺'),
+		 url('fonts/Agency.woff') format('woff'),
+		 url('fonts/Agency.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: AgencyGothicCT-Bold;
+	src: url('fonts/AgencyGothicCT-Bold.eot');
+	src: url('fonts/AgencyGothicCT-Bold.eot?') format('☺'),
+		 url('fonts/AgencyGothicCT-Bold.woff') format('woff'),
+		 url('fonts/AgencyGothicCT-Bold.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: Calibri;
+	src: url('fonts/Calibri.eot');
+	src: url('fonts/Calibri.eot?') format('☺'),
+		 url('fonts/Calibri.woff') format('woff'),
+		 url('fonts/Calibri.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
