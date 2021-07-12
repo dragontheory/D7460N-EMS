@@ -1,12 +1,22 @@
 :root {
 	/* PAGE */
+	--blue: #528bff;
+	--blue-2: #42a5f5;
+	--blue-green: #0c7d9d;
+	--blue-green-dark: #175d73;
+	--orange: #e44d26;
+	--orange-2: #d19a66;
+	--yellow: #ffdd7c;
+	--comment-color: #636d83;
+	--normal-text-color: #abb2bf;
+
 
 	/* LIGHT THEME DEFINITIONS */
 	--light-theme-page-background-color: #8E9196; /*#D7dAE0;*/
 	--light-theme-page-text-color: #1A1E23;
 	--light-theme-logo-color: #1e1c29;
 	--light-theme-logo-color-hover: #D7dAE0;
-	--light-theme-panel-background-color: rgba(255, 255, 255, 0.03);;
+	--light-theme-panel-background-color: rgba(255, 255, 255, 0.03);
 
 	/* DARK THEME DEFINITIONS */
 	--dark-theme-page-background-color: #1A1E23;
@@ -15,7 +25,7 @@
 	--dark-theme-page-text-color-notes: #3b3e43;
 	--dark-theme-logo-color: #8E9196;
 	--dark-theme-logo-color-hover: #D7dAE0;
-	--dark-theme-panel-background-color: rgba(255, 255, 255, 0.03); ;
+	--dark-theme-panel-background-color: rgba(255, 255, 255, 0.03);
 
 	/* DEFAULT THEME [ DARK ]*/
 	--page-background-color: var(--dark-theme-page-background-color);
@@ -39,6 +49,10 @@
   }
   input#themeToggle + label {right: 238px;}
 
+html,
+body {
+	background-color: var(--page-background-color);
+}
   body > label {
 	  border-right: solid 1px var(--page-text-color-notes);
 	  color: var(--page-text-color)

@@ -103,7 +103,7 @@ page-container page-footer {
 		page-container page-header page-header-left logo-text-2 {
 			display: grid;
 			left: 196px;
-			top: 16px;
+			top: 14px;
 			transform: scale(.50, 0.3);
 			position: absolute;
 		}
@@ -150,22 +150,22 @@ page-container page-footer {
 			grid-template-columns: 1fr 1fr 1fr;
 		}
 			/* Middle columns HEADERS and FOOTERS left */
-			page-container page-panel panel-header > :first-child,
-			page-container page-panel panel-footer > :first-child {
+			page-container page-panel panel-header panel-header-left,
+			page-container page-panel panel-footer panel-footer-left {
 				padding: var(--panel-padding);
 				justify-self: left;
 				align-self: center;
 			}
 			/* Middle columns HEADERS and FOOTERS right */
-			page-container page-panel panel-header > :last-child,
-			page-container page-panel panel-footer > :last-child {
+			page-container page-panel panel-header panel-header-right,
+			page-container page-panel panel-footer panel-footer-right {
 				padding: var(--panel-padding);
 				justify-self: right;
 				align-self: center;
 			}
 			/* Middle columns HEADERS and FOOTERS center */
-			page-container page-panel panel-header > :not(:first-child):not(:last-child),
-			page-container page-panel panel-footer > :not(:first-child):not(:last-child) {
+			page-container page-panel panel-header panel-header-center,
+			page-container page-panel panel-footer panel-footer-center {
 				padding: var(--panel-padding);
 				justify-self: center;
 				align-self: center;

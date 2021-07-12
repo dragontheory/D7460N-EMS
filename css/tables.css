@@ -1,11 +1,87 @@
-table-container,
-table-header,
-table-content,
-table-footer {display: var(--table-display);}
-
-ol {
-    margin: 0;
-    padding: 0;
+ol.collection {
+    margin: 0px;
+    padding: 0px;
 }
+
 li {list-style: none;}
 
+/* 2 Column Card Layout */
+@media screen and (max-width: 736px) {
+    .collection-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+    }
+
+    .item {
+        border: 1px solid gray;
+        border-radius: 2px;
+        padding: 10px;
+    }
+
+    /* Don't display the first item, since it is used to display the header for tabular layouts*/
+    .collection-container>li:first-child {display: none;}
+    .attribute::before {content: attr(data-name);}
+
+    /* Attribute name for first column, and attribute value for second column. */
+    .attribute {
+        display: grid;
+        grid-template-columns: minmax(9em, 30%) 1fr;
+    }
+}
+
+/* 1 Column Card Layout */
+@media screen and (max-width:580px) {
+    .collection-container {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Tabular Layout */
+@media screen and (min-width: 737px) {
+    /* The maximum column width, that can wrap */
+    .item-container {
+        display: grid;
+        grid-template-columns: 2em 2em 10fr 2fr 2fr 2fr 2fr 5em 5em;
+    }
+
+    .attribute-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(var(--column-width-min), 1fr));
+    }
+
+    /* Definition of wrapping column width for attribute groups. */
+    .part-information {--column-width-min: 10em;}
+    .part-id {--column-width-min: 10em;}
+    .vendor-information {--column-width-min: 8em;}
+    .quantity {--column-width-min: 5em;}
+    .cost {--column-width-min: 5em;}
+    .duty {--column-width-min: 5em;}
+    .freight {--column-width-min: 5em;}
+    .collection {border-top: 1px solid gray;}
+
+    /* In order to maximize row lines, only display one line for a cell */
+    .attribute {
+        border-right: 1px solid gray;
+        border-bottom: 1px solid gray;
+        padding: 2px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .collection-container>.item-container:first-child {background-color: blanchedalmond;}
+
+    .item-container:hover {background-color: rgb(200, 227, 252);}
+
+    /* Center header labels */
+    .collection-container>.item-container:first-child .attribute {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-overflow: initial;
+        overflow: auto;
+        white-space: normal;
+    }
+}
