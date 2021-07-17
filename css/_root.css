@@ -1,0 +1,59 @@
+/* https://dev.to/jaredcwhite/custom-elements-everywhere-for-page-layout-parts-i-and-ii-438p */
+:root {
+/*------------------------------------*\
+				LAYOUT
+\*------------------------------------*/
+/*
+	PAGE
+*/	--page-display:			grid;
+	--page-clmns: 			repeat(8, 1fr);
+	--page-rows: 			auto 1fr auto;
+	--page-gap: 			20px 20px;
+	--page-hght: 			100vh;
+	--page-width: 			100vw;
+	--page-margin: 			0;
+	--page-pddng: 			0;
+	--page-container-pddng:	20px;
+	--page-ovrflw: 			hidden;
+	--page-fnt-fmly: 		Calibri, "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+/*
+	PANEL COMPONENT
+*/	--pnl-dsply:			var(--page-display);
+	--pnl-rows:				auto 1fr auto;
+	--pnl-gap:				0 0;
+	--pnl-pddng: 			1em;
+	--pnl-cntnt-ovrflw:		auto;
+	--pnl-border-radius:	5px;
+
+/*
+	TABS COMPONENT
+*/	--tab-dsply: 			var(--page-display);
+	--tab-bg-clr:			var(--pnl-bg-clr);
+
+/*
+	TABLE COMPONENT
+*/	--table-display:			var(--page-display);
+
+/*
+	ACCORDION COMPONENT
+*/	--acrdn-dsply:			var(--page-display);
+	--acrdn-bg-clr: 		var(--pnl-bg-clr);
+
+/*
+	UTILITY
+*/	--dsply-none:			none;
+	--box-sizing: 			border-box;
+	--transition:			all 250ms, color 250ms, fill 250ms;
+
+
+/*------------------------------------*\
+				THEMES
+\*------------------------------------*/
+/*
+	DARK [ default ]
+*/	--page-txt-clr:			#8e9196;
+	--page-txt-clr-notes:	#3b3e43;
+	--page-txt-clr-hvr: 	#d7dae0;
+	--page-bg-clr: 			#1a1e23;
+	--pnl-bg-clr: 			rgba(255, 255, 255, 0.03);
+}

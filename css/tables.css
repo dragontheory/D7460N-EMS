@@ -1,87 +1,39 @@
-ol.collection {
-    margin: 0px;
-    padding: 0px;
+table-container {
+	display: var(--tab-dsply);
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: auto 1fr;
+	overflow-y: auto;
+}
+/*
+TAB CONTROLS
+Hide radios */
+table-container > input {display: none;}
+table-container > input:checked + label {color: var(--page-txt-clr-hvr);}
+table-container > label:hover {color: var(--page-txt-clr-hvr);}
+
+table-container > label {
+	cursor: pointer;
+	transition: color 250ms;
+	color: var(--page-txt-clr);
+	padding: 5px 1em;
+	border-right: solid 1px var(--page-txt-clr-notes);
+	justify-self: center;
+}
+table-container > label:last-of-type {border: none; }
+
+table-container table-content {
+	display: var(--tab-dsply);
+	border: solid 1px red;
+	grid-column: 1 / -1;
+	align-content: start;
 }
 
-li {list-style: none;}
+table-container > input#tableToggle01:checked ~ table-content:not(:nth-of-type(1)),
+table-container > input#tableToggle02:checked ~ table-content:not(:nth-of-type(2)),
+table-container > input#tableToggle03:checked ~ table-content:not(:nth-of-type(3)),
+table-container > input#tableToggle04:checked ~ table-content:not(:nth-of-type(4)) {display: none;}
 
-/* 2 Column Card Layout */
-@media screen and (max-width: 736px) {
-    .collection-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 20px;
-    }
-
-    .item {
-        border: 1px solid gray;
-        border-radius: 2px;
-        padding: 10px;
-    }
-
-    /* Don't display the first item, since it is used to display the header for tabular layouts*/
-    .collection-container>li:first-child {display: none;}
-    .attribute::before {content: attr(data-name);}
-
-    /* Attribute name for first column, and attribute value for second column. */
-    .attribute {
-        display: grid;
-        grid-template-columns: minmax(9em, 30%) 1fr;
-    }
-}
-
-/* 1 Column Card Layout */
-@media screen and (max-width:580px) {
-    .collection-container {
-        display: grid;
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Tabular Layout */
-@media screen and (min-width: 737px) {
-    /* The maximum column width, that can wrap */
-    .item-container {
-        display: grid;
-        grid-template-columns: 2em 2em 10fr 2fr 2fr 2fr 2fr 5em 5em;
-    }
-
-    .attribute-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(var(--column-width-min), 1fr));
-    }
-
-    /* Definition of wrapping column width for attribute groups. */
-    .part-information {--column-width-min: 10em;}
-    .part-id {--column-width-min: 10em;}
-    .vendor-information {--column-width-min: 8em;}
-    .quantity {--column-width-min: 5em;}
-    .cost {--column-width-min: 5em;}
-    .duty {--column-width-min: 5em;}
-    .freight {--column-width-min: 5em;}
-    .collection {border-top: 1px solid gray;}
-
-    /* In order to maximize row lines, only display one line for a cell */
-    .attribute {
-        border-right: 1px solid gray;
-        border-bottom: 1px solid gray;
-        padding: 2px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-
-    .collection-container>.item-container:first-child {background-color: blanchedalmond;}
-
-    .item-container:hover {background-color: rgb(200, 227, 252);}
-
-    /* Center header labels */
-    .collection-container>.item-container:first-child .attribute {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-overflow: initial;
-        overflow: auto;
-        white-space: normal;
-    }
-}
+table-container > input#tableToggle01:checked ~ table-content:not(:nth-of-type(1)),
+table-container > input#tableToggle02:checked ~ table-content:not(:nth-of-type(2)),
+table-container > input#tableToggle03:checked ~ table-content:not(:nth-of-type(3)),
+table-container > input#tableToggle04:checked ~ table-content:not(:nth-of-type(4)) {display: none;}

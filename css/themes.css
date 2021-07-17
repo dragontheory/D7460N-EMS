@@ -85,13 +85,3 @@ page-container page-header page-header-left page-logo {
 page-container page-header page-header-left page-logo:hover {
 	color: var(--page-logo-color-hover);
 }
-page-container page-header page-header-left logo-text {
-	font-family: AgencyGothicCT-Bold, Tahoma, serif;
-	font-size: 3em;
-	letter-spacing: .01em;
-}
-page-container page-header page-header-left logo-text-2 {
-	font-family: Agency, Tahoma, serif;
-	font-size: 3em;
-	letter-spacing: .01em;
-}

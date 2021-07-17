@@ -52,7 +52,12 @@ body {
   	-moz-osx-font-smoothing: grayscale;
 	font-smooth: auto;
 }
-p {padding: 0 1em;}
+
+content-section {
+	overflow-y: auto;
+	background-color: rgba(0,0,0,0.1);
+}
+
 /* Seven middle columns */
 page-container {
 	display: grid;
@@ -93,20 +98,6 @@ page-container page-footer {
 			left: 20px;
 			height: 85px;
 	    }
-		/* HEADER Left Logo Text */
-		page-container page-header page-header-left logo-text {
-			display: grid;
-			margin-left: 80px;
-			transform: scale(1, 0.7);
-		}
-		/* HEADER Left Logo Text 2 */
-		page-container page-header page-header-left logo-text-2 {
-			display: grid;
-			left: 196px;
-			top: 14px;
-			transform: scale(.50, 0.3);
-			position: absolute;
-		}
 
 	/* HEADER center banner */
 	page-container page-header page-header-center {
@@ -142,6 +133,7 @@ page-container page-footer {
 	page-container page-panel {
 		grid-template-rows: auto 1fr auto;
 		position: relative;
+		overflow: hidden;
 	}
 		/* Middle columns HEADERS and FOOTERS */
 		page-container page-panel panel-header,
@@ -174,6 +166,7 @@ page-container page-footer {
 	page-container page-panel panel-content {
 		display: grid;
 		grid-template-columns: 1fr;
+		overflow: hidden;
 	}
 
 
