@@ -14,6 +14,9 @@
 	<link rel="stylesheet" href="css/themes.css" />
 	<link rel="stylesheet" href="css/fonts.css" />
 	<link rel="stylesheet" href="css/tables.css" />
+	<link rel="stylesheet" href="css/scrollbars.css" />
+	<link rel="stylesheet" href="css/typography.css" />
+
 </head>
 
 <body>
@@ -33,6 +36,9 @@
 					</svg>
 					<logo-text>D7460N</logo-text>
 					<logo-text-2>CMS</logo-text-2>
+					<logo-text-3>Fast | Easy | Secure</logo-text-3>
+					<logo-text-4>Your data your way</logo-text-4>
+					<!-- <logo-text-5>your way</logo-text-5> -->
 				</page-logo>
 			</page-header-left>
 			<page-header-center>::</page-header-center>
@@ -60,116 +66,173 @@
 				<panel-header-right>::</panel-header-right>
 			</panel-header>
 			<panel-content>
-				<table-container>
-					<table-header></table-header>
-					<table-content>
-						<section>
-							<ol class="collection collection-container">
-							  <!-- The first list item is the header of the table -->
-							  <li class="item item-container">
-								<div class="attribute"></div>
-								<div class="attribute" data-name="#">#</div>
-								<!-- Enclose semantically similar attributes as a div hierarchy -->
-								<div class="attribute-container part-information">
-								  <div class="attribute-container part-id">
-									<div class="attribute" data-name="Part Number">Part Number</div>
-									<div class="attribute" data-name="Part Description">Part Description</div>
-								  </div>
-								  <div class="attribute-container vendor-information">
-									<div class="attribute">Vendor Number</div>
-									<div class="attribute">Vendor Name</div>
-								  </div>
-								</div>
-								<div class="attribute-container quantity">
-								  <div class="attribute">Order Qty</div>
-								  <div class="attribute">Receive Qty</div>
-								</div>
-								<div class="attribute-container cost">
-								  <div class="attribute">Cost</div>
-								  <div class="attribute">Extended Cost</div>
-								</div>
-								<div class="attribute-container duty">
-								  <div class="attribute">Duty %</div>
-								  <div class="attribute">Duty</div>
-								</div>
-								<div class="attribute-container freight">
-								  <div class="attribute">Freight %</div>
-								  <div class="attribute">Freight</div>
-								</div>
-								<div class="attribute">UOM</div>
-								<div class="attribute">Vendor Part Number</div>
-							  </li>
-							  <!-- The rest of the items in the list are the actual data -->
-							  <li class="item item-container">
-								<div class="attribute" data-name="Select"><input type="checkbox" name="" id=""></div>
-								<div class="attribute" data-name="#">1</div>
-								<div class="attribute-container part-information">
-								  <div class="attribute-container part-id">
-									<div class="attribute" data-name="Part Number">100-10001</div>
-									<div class="attribute" data-name="Part Description">Description of part</div>
-								  </div>
-								  <div class="attribute-container vendor-information">
-									<div class="attribute" data-name="Vendor Number">001</div>
-									<div class="attribute" data-name="Vendor Name">Vendor Name A</div>
-								  </div>
-								</div>
-								<div class="attribute-container quantity">
-								  <div class="attribute" data-name="Order Qty">10</div>
-								  <div class="attribute" data-name="Receive Qty">20</div>
-								</div>
-								<div class="attribute-container cost">
-								  <div class="attribute" data-name="Cost">$5.00</div>
-								  <div class="attribute" data-name="Extended Cost">$2.00</div>
-								</div>
-								<div class="attribute-container duty">
-								  <div class="attribute" data-name="Duty %">3.0%</div>
-								  <div class="attribute" data-name="Duty">$0.15</div>
-								</div>
-								<div class="attribute-container freight">
-								  <div class="attribute" data-name="Freight %">3.0%</div>
-								  <div class="attribute" data-name="Freight">$0.15</div>
-								</div>
-								<div class="attribute" data-name="UOM">EA</div>
-								<div class="attribute" data-name="Vendor Part Number">100001</div>
-							  </li>
-							  <li class="item item-container">
-								<div class="attribute" data-name="Select"><input type="checkbox" name="" id=""></div>
-								<div class="attribute" data-name="#">2</div>
-								<div class="attribute-container part-information">
-								  <div class="attribute-container part-id">
-									<div class="attribute" data-name="Part Number">100-10002</div>
-									<div class="attribute" data-name="Part Description">A long description of part. This description may overflow.
+				<h2>CUSTOM CASCADES</h2>
+				<content-section>
+					<p>By defining a cascade of custom properties,<br>
+					you can determine which <em>intent</em> should take priority --<br>
+					without worrying about the specificity<br>
+					of how that value is defined.<br>
+					in this case, my cascade includes:</p>
+					<ul>
+					<li><code>--btn-bg--state</code></li>
+					<li><code>--btn-bg</code></li>
+					<li><code>--btn-bg--type</code></li>
+					<li><code>--btn-bg--default</code></li>
+					</ul>
+					<p>Our default button is falling all the way back<br>
+					to the <code>--btn-bg--default</code> defined on <code>html</code>.</p>
+					<p><button type="button">default</button></p>
+					<p>Adding the <code>disabled</code> attribute<br>
+					always overrides any other button colors --<br>
+					no matter where they are defined.</p>
+					<p><button type="button" disabled>disabled</button></p>
+					<p>We can create button types using <code>--btn-bg--type</code>,<br>
+					and it will override the defaults,<br>
+					but not the state:</p>
+					<p><button type="button" class="warn">warn</button><br>
+					<button type="button" class="go">go</button><br>
+					<button type="button" class="warn" disabled>warn disabled</button><br>
+					<button type="button" class="go" disabled>go disabled</button></p>
+					<h2>Context &amp; Specificity</h2>
+					<p>We can also set these values contextually,<br>
+					rather than directly styling the button.<br>
+					Values can come from anywhere,<br>
+					and true specificity only resolves conflicts<br>
+					between the same custom property.</p>
+					<form>
+					<p>In this case I set all form-buttons to use<br>
+					<code>deeppink</code> as the default, rather than <code>blue</code>.<br>
+					we can make contextual changes at a higher level<br>
+					of the cascade, if we want --<br>
+					like &quot;disabling&quot; the entire form.</p>
+					<p><button type="button">default</button></p>
+					<p>If we need to change a button based on user-input,<br>
+					or otherwise set it via html,<br>
+					we can do that too.<br>
+					I'm doing that with <code>--btn-bg</code><br>
+					which comes second in the cascade.</p>
+					<p><button type="button" style="--btn-bg: rebeccapurple;">override</button></p>
+					<p>and we avoid the usual danger from inline styles high specificity.<br>
+					Because <code>state</code> is first in the cascade,<br>
+					it will always override the higher-specificity inline style:</p>
+					<p><button type="button" style="--btn-bg: rebeccapurple;" disabled>override disabled</button></p>
+					</form>
+				</content-section>
+			
+				<h2>RESPONSIVE TABLE (sorta)</h2>
+
+				<content-section>
+					<table-container>
+						<table-header></table-header>
+						<table-content>
+							<section>
+								<ol class="collection collection-container">
+								<!-- The first list item is the header of the table -->
+								<li class="item item-container">
+									<div class="attribute"></div>
+									<div class="attribute" data-name="#">#</div>
+									<!-- Enclose semantically similar attributes as a div hierarchy -->
+									<div class="attribute-container part-information">
+									<div class="attribute-container part-id">
+										<div class="attribute" data-name="Part Number">Part Number</div>
+										<div class="attribute" data-name="Part Description">Part Description</div>
 									</div>
-								  </div>
-								  <div class="attribute-container vendor-information">
-									<div class="attribute" data-name="Vendor Number">002</div>
-									<div class="attribute" data-name="Vendor Name">Vendor Name B</div>
-								  </div>
-								</div>
-								<div class="attribute-container quantity">
-								  <div class="attribute" data-name="Order Qty">10</div>
-								  <div class="attribute" data-name="Receive Qty">20</div>
-								</div>
-								<div class="attribute-container cost">
-								  <div class="attribute" data-name="Cost">$5.00</div>
-								  <div class="attribute" data-name="Extended Cost">$2.00</div>
-								</div>
-								<div class="attribute-container duty">
-								  <div class="attribute" data-name="Duty %">3.0%</div>
-								  <div class="attribute" data-name="Duty">$0.15</div>
-								</div>
-								<div class="attribute-container freight">
-								  <div class="attribute" data-name="Freight %">3.0%</div>
-								  <div class="attribute" data-name="Freight">$0.15</div>
-								</div>
-								<div class="attribute" data-name="UOM">EA</div>
-								<div class="attribute" data-name="Vendor Part Number">E4-64B</div>
-							  </li>
-							</ol>
-						  </section>
-					</table-content>
-					<table-footer></table-footer>
-				</table-container>
+									<div class="attribute-container vendor-information">
+										<div class="attribute">Vendor Number</div>
+										<div class="attribute">Vendor Name</div>
+									</div>
+									</div>
+									<div class="attribute-container quantity">
+									<div class="attribute">Order Qty</div>
+									<div class="attribute">Receive Qty</div>
+									</div>
+									<div class="attribute-container cost">
+									<div class="attribute">Cost</div>
+									<div class="attribute">Extended Cost</div>
+									</div>
+									<div class="attribute-container duty">
+									<div class="attribute">Duty %</div>
+									<div class="attribute">Duty</div>
+									</div>
+									<div class="attribute-container freight">
+									<div class="attribute">Freight %</div>
+									<div class="attribute">Freight</div>
+									</div>
+									<div class="attribute">UOM</div>
+									<div class="attribute">Vendor Part Number</div>
+								</li>
+								<!-- The rest of the items in the list are the actual data -->
+								<li class="item item-container">
+									<div class="attribute" data-name="Select"><input type="checkbox" name="" id=""></div>
+									<div class="attribute" data-name="#">1</div>
+									<div class="attribute-container part-information">
+									<div class="attribute-container part-id">
+										<div class="attribute" data-name="Part Number">100-10001</div>
+										<div class="attribute" data-name="Part Description">Description of part</div>
+									</div>
+									<div class="attribute-container vendor-information">
+										<div class="attribute" data-name="Vendor Number">001</div>
+										<div class="attribute" data-name="Vendor Name">Vendor Name A</div>
+									</div>
+									</div>
+									<div class="attribute-container quantity">
+									<div class="attribute" data-name="Order Qty">10</div>
+									<div class="attribute" data-name="Receive Qty">20</div>
+									</div>
+									<div class="attribute-container cost">
+									<div class="attribute" data-name="Cost">$5.00</div>
+									<div class="attribute" data-name="Extended Cost">$2.00</div>
+									</div>
+									<div class="attribute-container duty">
+									<div class="attribute" data-name="Duty %">3.0%</div>
+									<div class="attribute" data-name="Duty">$0.15</div>
+									</div>
+									<div class="attribute-container freight">
+									<div class="attribute" data-name="Freight %">3.0%</div>
+									<div class="attribute" data-name="Freight">$0.15</div>
+									</div>
+									<div class="attribute" data-name="UOM">EA</div>
+									<div class="attribute" data-name="Vendor Part Number">100001</div>
+								</li>
+								<li class="item item-container">
+									<div class="attribute" data-name="Select"><input type="checkbox" name="" id=""></div>
+									<div class="attribute" data-name="#">2</div>
+									<div class="attribute-container part-information">
+									<div class="attribute-container part-id">
+										<div class="attribute" data-name="Part Number">100-10002</div>
+										<div class="attribute" data-name="Part Description">A long description of part. This description may overflow.
+										</div>
+									</div>
+									<div class="attribute-container vendor-information">
+										<div class="attribute" data-name="Vendor Number">002</div>
+										<div class="attribute" data-name="Vendor Name">Vendor Name B</div>
+									</div>
+									</div>
+									<div class="attribute-container quantity">
+									<div class="attribute" data-name="Order Qty">10</div>
+									<div class="attribute" data-name="Receive Qty">20</div>
+									</div>
+									<div class="attribute-container cost">
+									<div class="attribute" data-name="Cost">$5.00</div>
+									<div class="attribute" data-name="Extended Cost">$2.00</div>
+									</div>
+									<div class="attribute-container duty">
+									<div class="attribute" data-name="Duty %">3.0%</div>
+									<div class="attribute" data-name="Duty">$0.15</div>
+									</div>
+									<div class="attribute-container freight">
+									<div class="attribute" data-name="Freight %">3.0%</div>
+									<div class="attribute" data-name="Freight">$0.15</div>
+									</div>
+									<div class="attribute" data-name="UOM">EA</div>
+									<div class="attribute" data-name="Vendor Part Number">E4-64B</div>
+								</li>
+								</ol>
+							</section>
+						</table-content>
+						<table-footer></table-footer>
+					</table-container>
+				</content-section>
 			</panel-content>
 			<panel-footer>
 				<panel-footer-left>::</panel-footer-left>
