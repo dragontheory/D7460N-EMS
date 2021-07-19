@@ -1,0 +1,63 @@
+
+/*------------------------------------*\
+				LAYOUT 01
+\*------------------------------------*/
+@media (max-width: 30em) {
+	input#layoutToggle01:checked ~ page-container {grid-template-columns: 1fr;}
+	input#layoutToggle01:checked ~ page-container page-panel {overflow-y: visible;}
+	input#layoutToggle01:checked ~ page-container > page-panel:nth-child(6) {
+        grid-row: auto;
+        margin-top: 3rem;
+    }
+	input#layoutToggle01 + label,
+	input#layoutToggle02 + label,
+	input#layoutToggle03 + label,
+	input#layoutToggle04 + label,
+    input#themeToggle + label,
+	input#layoutToggle05 + label {top: 90px;}
+}
+
+
+/*------------------------------------*\
+				LAYOUT 02
+\*------------------------------------*/
+@media (max-width: 30em) {
+	input#layoutToggle02:checked ~ page-container {grid-template-columns: 1fr;}
+    input#layoutToggle02:checked ~ page-container page-panel {overflow-y: visible;}
+    input#layoutToggle02:checked ~ page-container > page-panel:nth-child(2) {
+        margin-top: 3rem;
+    }
+}
+
+/*------------------------------------*\
+				LAYOUT 03
+\*------------------------------------*/
+@media (max-width: 30em) {
+	input#layoutToggle03:checked ~ page-container {grid-template-columns: 1fr;}
+    input#layoutToggle03:checked ~ page-container page-panel {overflow-y: visible;}
+    input#layoutToggle03:checked ~ page-container > page-panel:nth-child(2) {
+        margin-top: 3rem;
+    }
+}
+
+/*------------------------------------*\
+				LAYOUT 04
+\*------------------------------------*/
+@media (max-width: 30em) {
+	input#layoutToggle04:checked ~ page-container {grid-template-columns: 1fr;}
+    input#layoutToggle04:checked ~ page-container page-panel {overflow-y: visible;}
+    input#layoutToggle04:checked ~ page-container > page-panel:nth-child(2) {
+        margin-top: 3rem;
+    }
+}
+
+/*------------------------------------*\
+				LAYOUT 05
+\*------------------------------------*/
+@media (max-width: 30em) {
+	input#layoutToggle05:checked ~ page-container {grid-template-columns: 1fr;}
+    input#layoutToggle05:checked ~ page-container page-panel {overflow-y: visible;}
+    input#layoutToggle05:checked ~ page-container > page-panel:nth-child(10) {
+        margin-top: 3rem;
+    }
+}
