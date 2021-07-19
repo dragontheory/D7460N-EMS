@@ -21,8 +21,14 @@
   }
   
   /* scrollbar Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {background: rgba(62, 144, 252, 1.0);}
+  ::-webkit-scrollbar-thumb:hover {background: #00527a /*rgba(62, 144, 252, 1.0)*/;}
   
   @media only screen and (max-width: 800px) {
     main {width: 80% !important;}
   }
+
+
+
+/* For Firefox */
+content-section { scrollbar-color: #00527a transparent;
+  scrollbar-width: thin;}

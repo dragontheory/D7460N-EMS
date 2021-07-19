@@ -109,3 +109,13 @@ h5	{
     font-weight: 100;
 	padding: 0 1rem;
 }
+panel-header h2 {
+    margin: 0;
+    padding-left: 0;
+    color: var(--page-highlight-color);
+}
+hightlight-h1 {
+    font-family: Agency FB Regular;
+    font-size: 2rem;
+    color: var(--page-highlight-color);
+}

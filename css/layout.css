@@ -168,6 +168,12 @@ page-container page-footer {
 		grid-template-columns: 1fr;
 		overflow: hidden;
 	}
+	/* Middle columns CONTENT SPLIT */
+	page-container page-panel panel-content-split {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		overflow: hidden;
+	}
 
 
 /*.page-container div:nth-last-child(2) {display: none;}*/
@@ -204,32 +210,37 @@ input#layoutToggle03 + label {right: 106px;}
 input#layoutToggle04 + label {right: 66px;}
 input#layoutToggle05 + label {right: 30px;}
 
-/*
-    LAYOUT 01
-*/
+/* LAYOUT 01 */
 input#layoutToggle01:checked ~ page-container {
-	grid-template-columns: 1fr 1fr 1fr 1fr; /* HOME | HOME | HOME | HOME */
+	grid-template-columns: 250px 1fr 1fr 1fr; /* HOME | HOME | HOME | HOME */
+	grid-template-rows: auto auto 1fr auto;
 }
 input#layoutToggle01:checked ~ page-container > :nth-child(n+2):nth-child(-n+5) {display: none;}
+input#layoutToggle01:checked ~ page-container > page-panel:nth-child(6)
+{grid-row: 2/4;}
+input#layoutToggle01:checked ~ page-container > page-panel:nth-child(8)
+{display: none;}
 
-/*
-    LAYOUT 02
-*/
+/* LAYOUT 02 */
 input#layoutToggle02:checked ~ page-container {
 	grid-template-columns: 250px 1fr; /* NAV | RESULTS */
 }
-input#layoutToggle02:checked ~ page-container > :nth-child(n+4):nth-child(-n+9) {display: none;}
-/*
-    LAYOUT 03
-*/
+input#layoutToggle02:checked ~ page-container > :nth-child(n+4):nth-child(-n+13) {display: none;}
+
+/* LAYOUT 03 */
 input#layoutToggle03:checked ~ page-container {
 	grid-template-columns: 250px 1.5fr 1fr; /* NAV | RESULTS | PROFILE */
 }
-input#layoutToggle03:checked ~ page-container > :nth-child(n+5):nth-child(-n+9) {display: none;}
-/*
-    LAYOUT 04
-*/
+input#layoutToggle03:checked ~ page-container > :nth-child(n+5):nth-child(-n+13) {display: none;}
+
+/* LAYOUT 04 */
 input#layoutToggle04:checked ~ page-container {
 	grid-template-columns: 250px 1.5fr 1fr 350px; /* NAV | RESULTS | PROFILE | DETAILS */
 }
-input#layoutToggle04:checked ~ page-container > :nth-child(n+6):nth-child(-n+9) {display: none;}
+input#layoutToggle04:checked ~ page-container > :nth-child(n+6):nth-child(-n+13) {display: none;}
+
+/* LAYOUT 05 */
+input#layoutToggle05:checked ~ page-container {
+	grid-template-columns: 1fr 1fr 1fr 1fr; /* HOME | HOME | HOME | HOME */
+}
+input#layoutToggle05:checked ~ page-container > :nth-child(n+2):nth-child(-n+9) {display: none;}
