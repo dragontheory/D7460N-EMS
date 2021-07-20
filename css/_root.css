@@ -28,7 +28,7 @@
 /*
 	TABS COMPONENT
 */	--tab-dsply: 			var(--page-display);
-	--tab-bg-clr:			var(--pnl-bg-clr);
+	--tab-bg-color:			var(--pnl-bg-color);
 
 /*
 	TABLE COMPONENT
@@ -37,7 +37,7 @@
 /*
 	ACCORDION COMPONENT
 */	--acrdn-dsply:			var(--page-display);
-	--acrdn-bg-clr: 		var(--pnl-bg-clr);
+	--acrdn-bg-color: 		var(--pnl-bg-color);
 
 /*
 	UTILITY
@@ -51,9 +51,9 @@
 \*------------------------------------*/
 /*
 	DARK [ default ]
-*/	--page-txt-clr:			#8e9196;
-	--page-txt-clr-notes:	#3b3e43;
-	--page-txt-clr-hvr: 	#d7dae0;
-	--page-bg-clr: 			#1a1e23;
-	--pnl-bg-clr: 			rgba(255, 255, 255, 0.03);
+*/	--page-txt-color:			#8e9196;
+	--page-txt-color-notes:	#3b3e43;
+	--page-txt-color-hover: 	#d7dae0;
+	--page-bg-color: 			#1a1e23;
+	--pnl-bg-color: 			rgba(255, 255, 255, 0.03);
 }

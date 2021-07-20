@@ -136,7 +136,7 @@ page-container page-ftr {
 /*.page-container div:nth-last-child(2) {display: none;}*/
 
 a {transition: var(--transition);}
-a:hover {color: var(--page-txt-clr-hvr);}
+a:hover {color: var(--page-txt-color-hover);}
 
 /*
 	LAYOUT CONTROLS
@@ -156,10 +156,10 @@ input#layoutTgl01:checked + label,
 input#layoutTgl02:checked + label,
 input#layoutTgl03:checked + label,
 input#layoutTgl04:checked + label,
-input#layoutTgl05:checked + label {color: var(--page-txt-clr-hvr);}
+input#layoutTgl05:checked + label {color: var(--page-txt-color-hover);}
 
-label[for*='layoutTgl']:checked {color: var(--page--txt-clr-hvr);}
-label[for*='layoutTgl']:hover {color: var(--page-txt-clr-hvr);}
+label[for*='layoutTgl']:checked {color: var(--page--txt-color-hover);}
+label[for*='layoutTgl']:hover {color: var(--page-txt-color-hover);}
 
 input#layoutTgl01 + label {right: 178px;}
 input#layoutTgl02 + label {right: 142px;}

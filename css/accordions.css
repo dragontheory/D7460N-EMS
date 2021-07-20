@@ -6,21 +6,21 @@ acrdn-cntnr {
 /*
 ACCORDION CONTROLS
 Hide radios */
-acrdn-cntnr input[id*='acrdnTgle']:checked + label {color: var(--page-txt-clr-hvr);}
-acrdn-cntnr label[for*='acrdnTgle']:hover {color: var(--page-txt-clr-hvr);}
+acrdn-cntnr input[id*='acrdnTgle']:checked + label {color: var(--page-txt-color-hover);}
+acrdn-cntnr label[for*='acrdnTgle']:hover {color: var(--page-txt-color-hover);}
 
 acrdn-cntnr label {
 	cursor: pointer;
 	transition: color 250ms;
-	color: var(--page-txt-clr);
+	color: var(--page-txt-color);
 	padding: 5px 1em;
-	border-right: solid 1px var(--page-txt-clr-notes);
+	border-right: solid 1px var(--page-txt-color-notes);
 }
 acrdn-cntnr label:last-of-type {border: none; }
 
 acrdn-cntnr acrdn-cntnt {
 	display: var(--acrdn-dsply);
-	border: solid 1px yellow;
+	/* border: solid 1px yellow; */
 	grid-column: 1 / -1;
 	align-content: start;
 }

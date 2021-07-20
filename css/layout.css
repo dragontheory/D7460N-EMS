@@ -167,6 +167,7 @@ page-container page-footer {
 		display: grid;
 		grid-template-columns: 1fr;
 		overflow: hidden;
+		align-content: start;
 	}
 	/* Middle columns CONTENT SPLIT */
 	page-container page-panel panel-content-split {

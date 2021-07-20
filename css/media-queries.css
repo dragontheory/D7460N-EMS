@@ -13,8 +13,8 @@
 	input#layoutToggle02 + label,
 	input#layoutToggle03 + label,
 	input#layoutToggle04 + label,
-    input#themeToggle + label,
-	input#layoutToggle05 + label {top: 90px;}
+    input#layoutToggle05 + label,
+    input#themeToggle + label {top: 90px;}
 }
 
 

@@ -1,39 +1,49 @@
 table-container {
-	display: var(--tab-dsply);
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	display: var(--tab-display);
+	grid-column: auto;
 	grid-template-rows: auto 1fr;
-	overflow-y: auto;
 }
 /*
 TAB CONTROLS
 Hide radios */
 table-container > input {display: none;}
-table-container > input:checked + label {color: var(--page-txt-clr-hvr);}
-table-container > label:hover {color: var(--page-txt-clr-hvr);}
+table-container > input:checked + label {color: var(--page-text-color-hover);}
+table-container > label:hover {color: var(--page-text-color-hover);}
 
 table-container > label {
 	cursor: pointer;
 	transition: color 250ms;
-	color: var(--page-txt-clr);
+	color: var(--page-text-color);
 	padding: 5px 1em;
-	border-right: solid 1px var(--page-txt-clr-notes);
+	border-right: solid 1px var(--page-text-color-notes);
 	justify-self: center;
 }
+
 table-container > label:last-of-type {border: none; }
 
+table-container > input#tablePagination01:checked ~ table-content:not(:nth-of-type(1)),
+table-container > input#tablePagination02:checked ~ table-content:not(:nth-of-type(2)),
+table-container > input#tablePagination03:checked ~ table-content:not(:nth-of-type(3)),
+table-container > input#tablePagination04:checked ~ table-content:not(:nth-of-type(4)),
+table-container > input#tablePagination05:checked ~ table-content:not(:nth-of-type(5)) {display: none;}
+
 table-container table-content {
-	display: var(--tab-dsply);
+	display: var(--tab-display);
 	border: solid 1px red;
 	grid-column: 1 / -1;
 	align-content: start;
+	overflow-y: auto;
 }
 
-table-container > input#tableToggle01:checked ~ table-content:not(:nth-of-type(1)),
-table-container > input#tableToggle02:checked ~ table-content:not(:nth-of-type(2)),
-table-container > input#tableToggle03:checked ~ table-content:not(:nth-of-type(3)),
-table-container > input#tableToggle04:checked ~ table-content:not(:nth-of-type(4)) {display: none;}
+table-content ol {
+	list-style-type: none;
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: repeat(auto-fill, auto);
+}
 
-table-container > input#tableToggle01:checked ~ table-content:not(:nth-of-type(1)),
-table-container > input#tableToggle02:checked ~ table-content:not(:nth-of-type(2)),
-table-container > input#tableToggle03:checked ~ table-content:not(:nth-of-type(3)),
-table-container > input#tableToggle04:checked ~ table-content:not(:nth-of-type(4)) {display: none;}
+table-content ol > li {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, auto);
+	grid-template-rows: auto;
+}
