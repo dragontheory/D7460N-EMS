@@ -2,6 +2,7 @@ tab-container {
 	display: var(--tab-display);
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-template-rows: auto 1fr;
+	overflow-y: hidden;
 }
 /*
 TAB CONTROLS
