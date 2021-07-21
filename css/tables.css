@@ -42,7 +42,7 @@ table-content ol {
 
 table-content ol > li {
 	display: grid;
-	grid-template-columns: auto 1fr 1fr 1fr 1fr;
+	grid-template-columns: auto 1fr 1fr 1fr 1fr 1fr;
 	grid-template-rows: 1fr;
 	/* border: solid 1px yellow; */
 	border-radius: 0.3rem;
