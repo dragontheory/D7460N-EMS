@@ -98,6 +98,16 @@ page-container page-header page-header-left logo-text-4 {
     letter-spacing: .02rem;
     text-transform: uppercase;
 } */
+a {
+    color: var(--page-text-color-links);
+    text-decoration: none;
+    box-shadow: 0 1px 0 0 transparent;
+    transition: all 250ms;
+}
+a:hover {
+    color: var(--page-text-color-links-hover);
+    box-shadow: 0 1px 0 0 var(--page-text-color-links-hover);
+}
 p	{padding: 0 1rem;}
 h1,
 h2,

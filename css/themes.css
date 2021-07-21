@@ -9,6 +9,7 @@
 	--yellow: #ffdd7c;
 	--comment-color: #636d83;
 	--normal-text-color: #abb2bf;
+	--page-link: rgb(0,161,255,0.2);/* #00a1ff */
 
 
 	/* LIGHT THEME DEFINITIONS */
@@ -23,6 +24,8 @@
 	--dark-theme-page-text-color: #8E9196;
 	--dark-theme-page-text-color-hover: #D7DAE0;
 	--dark-theme-page-text-color-notes: #3B3E43;
+	--dark-theme-page-text-color-links: rgb(0,161,255,0.7);/* #00a1ff */
+	--dark-theme-page-text-color-links-hover: rgb(0,161,255,1.0);/* #00a1ff */
 	--dark-theme-logo-color: #8E9196;
 	--dark-theme-logo-color-hover: #D7DAE0;
 	--dark-theme-panel-background-color: rgba(255, 255, 255, 0.03);
@@ -33,6 +36,8 @@
 	--page-text-color: var(--dark-theme-page-text-color);
 	--page-text-color-hover: var(--dark-theme-page-text-color-hover);
 	--page-text-color-notes: var(--dark-theme-page-text-color-notes);
+	--page-text-color-links: var(--dark-theme-page-text-color-links);
+	--page-text-color-links-hover: var(--dark-theme-page-text-color-links-hover);
 	--page-logo-color: var(--dark-theme-logo-color);
 	--page-logo-color-hover: var(--dark-theme-logo-color-hover);
 	--page-highlight-color: var(--dark-theme-highlight-color);
