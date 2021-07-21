@@ -55,7 +55,7 @@ body {
 
 content-section {
 	overflow-y: auto;
-	background-color: rgba(0,0,0,0.1);
+	/* background-color: rgba(0,0,0,0.1); */
 }
 
 /* Seven middle columns */
@@ -70,7 +70,7 @@ page-container {
 /* All immediate children of page-container */
 page-container > * {
 	display: grid;
-	border-radius: 0.3em;
+	border-radius: 0.3rem;
 }
 /*
 HEADER/FOOTER
