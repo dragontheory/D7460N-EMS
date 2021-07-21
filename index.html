@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="css/scrollbars.css" />
 	<link rel="stylesheet" href="css/typography.css" />
 	<link rel="stylesheet" href="css/circles.css" />
+	<link rel="stylesheet" href="css/carousel.css" />
 	<link rel="stylesheet" href="css/media-queries.css" />
 
 </head>
@@ -552,7 +553,218 @@
 					<label for="profileTabToggle04">TAB 04</label>
 					<tab-content>
 						<p>TAB 01 content</p>
-						<h2>CUSTOM CASCADES</h2>
+						<h3>Pure CSS carousels</h3>
+						<div class="carousel-container">
+						<h2>fade in/out</h2>
+						<ul class="carousel my-carousel">
+							<input class="carousel__activator" type="radio" id="A" name="activator" checked="checked"/>
+							<input class="carousel__activator" type="radio" id="B" name="activator"/>
+							<input class="carousel__activator" type="radio" id="C" name="activator"/>
+							<input class="carousel__activator" type="radio" id="D" name="activator"/>
+							<input class="carousel__activator" type="radio" id="E" name="activator"/>
+							<div class="carousel__controls">
+							<label class="carousel__control carousel__control--backward" for="E"></label>
+							<label class="carousel__control carousel__control--forward" for="B"></label>
+							</div>
+							<div class="carousel__controls">
+							<label class="carousel__control carousel__control--backward" for="A"></label>
+							<label class="carousel__control carousel__control--forward" for="C"></label>
+							</div>
+							<div class="carousel__controls">
+							<label class="carousel__control carousel__control--backward" for="B"></label>
+							<label class="carousel__control carousel__control--forward" for="D"></label>
+							</div>
+							<div class="carousel__controls">
+							<label class="carousel__control carousel__control--backward" for="C"></label>
+							<label class="carousel__control carousel__control--forward" for="E"></label>
+							</div>
+							<div class="carousel__controls">
+							<label class="carousel__control carousel__control--backward" for="D"></label>
+							<label class="carousel__control carousel__control--forward" for="A"></label>
+							</div>
+							<li class="carousel__slide">
+							<h1>A</h1>
+							</li>
+							<li class="carousel__slide">
+							<h1>B</h1>
+							</li>
+							<li class="carousel__slide">
+							<h1>C</h1>
+							</li>
+							<li class="carousel__slide">
+							<h1>D</h1>
+							</li>
+							<li class="carousel__slide">
+							<h1>E</h1>
+							</li>
+							<div class="carousel__indicators">
+							<label class="carousel__indicator" for="A"></label>
+							<label class="carousel__indicator" for="B"></label>
+							<label class="carousel__indicator" for="C"></label>
+							<label class="carousel__indicator" for="D"></label>
+							<label class="carousel__indicator" for="E"></label>
+							</div>
+						</ul>
+						</div>
+						<div class="carousel-container">
+						<h2>slider</h2>
+						<div class="carousel my-carousel carousel--translate">
+							<input class="carousel__activator" type="radio" name="carousel" id="F" checked="checked"/>
+							<input class="carousel__activator" type="radio" name="carousel" id="G"/>
+							<input class="carousel__activator" type="radio" name="carousel" id="H"/>
+							<input class="carousel__activator" type="radio" name="carousel" id="I"/>
+							<input class="carousel__activator" type="radio" name="carousel" id="J"/>
+							<div class="carousel__controls">
+							<label class="carousel__control carousel__control--backward" for="J"></label>
+							<label class="carousel__control carousel__control--forward" for="G"></label>
+							</div>
+							<div class="carousel__controls">
+							<label class="carousel__control carousel__control--backward" for="F"></label>
+							<label class="carousel__control carousel__control--forward" for="H"></label>
+							</div>
+							<div class="carousel__controls">
+							<label class="carousel__control carousel__control--backward" for="G"></label>
+							<label class="carousel__control carousel__control--forward" for="I"></label>
+							</div>
+							<div class="carousel__controls">
+							<label class="carousel__control carousel__control--backward" for="H"></label>
+							<label class="carousel__control carousel__control--forward" for="J"></label>
+							</div>
+							<div class="carousel__controls">
+							<label class="carousel__control carousel__control--backward" for="I"></label>
+							<label class="carousel__control carousel__control--forward" for="F"></label>
+							</div>
+							<div class="carousel__track">
+							<li class="carousel__slide">
+								<h1>F</h1>
+							</li>
+							<li class="carousel__slide">
+								<h1>G</h1>
+							</li>
+							<li class="carousel__slide">
+								<h1>H</h1>
+							</li>
+							<li class="carousel__slide">
+								<h1>I</h1>
+							</li>
+							<li class="carousel__slide">
+								<h1>J</h1>
+							</li>
+							</div>
+							<div class="carousel__indicators">
+							<label class="carousel__indicator" for="F"></label>
+							<label class="carousel__indicator" for="G"></label>
+							<label class="carousel__indicator" for="H"></label>
+							<label class="carousel__indicator" for="I"></label>
+							<label class="carousel__indicator" for="J"></label>
+							</div>
+						</div>
+						</div>
+						<div class="carousel-container">
+						<h2>thumbnail indicators</h2>
+						<ul class="carousel my-carousel carousel--thumb">
+							<input class="carousel__activator" type="radio" id="K" name="thumb" checked="checked"/>
+							<input class="carousel__activator" type="radio" id="L" name="thumb"/>
+							<input class="carousel__activator" type="radio" id="M" name="thumb"/>
+							<input class="carousel__activator" type="radio" id="N" name="thumb"/>
+							<input class="carousel__activator" type="radio" id="O" name="thumb"/>
+							<div class="carousel__controls">
+							<label class="carousel__control carousel__control--backward" for="O"></label>
+							<label class="carousel__control carousel__control--forward" for="L"></label>
+							</div>
+							<div class="carousel__controls">
+							<label class="carousel__control carousel__control--backward" for="K"></label>
+							<label class="carousel__control carousel__control--forward" for="M"></label>
+							</div>
+							<div class="carousel__controls">
+							<label class="carousel__control carousel__control--backward" for="L"></label>
+							<label class="carousel__control carousel__control--forward" for="N"></label>
+							</div>
+							<div class="carousel__controls">
+							<label class="carousel__control carousel__control--backward" for="M"></label>
+							<label class="carousel__control carousel__control--forward" for="O"></label>
+							</div>
+							<div class="carousel__controls">
+							<label class="carousel__control carousel__control--backward" for="N"></label>
+							<label class="carousel__control carousel__control--forward" for="K"></label>
+							</div>
+							<li class="carousel__slide">
+							<h1>K</h1>
+							</li>
+							<li class="carousel__slide">
+							<h1>L</h1>
+							</li>
+							<li class="carousel__slide">
+							<h1>M</h1>
+							</li>
+							<li class="carousel__slide">
+							<h1>N</h1>
+							</li>
+							<li class="carousel__slide">
+							<h1>O</h1>
+							</li>
+							<div class="carousel__indicators">
+							<label class="carousel__indicator" for="K"></label>
+							<label class="carousel__indicator" for="L"></label>
+							<label class="carousel__indicator" for="M"></label>
+							<label class="carousel__indicator" for="N"></label>
+							<label class="carousel__indicator" for="O"></label>
+							</div>
+						</ul>
+						</div>
+						<div class="carousel-container">
+						<h2>scale</h2>
+						<ul class="carousel my-carousel carousel--scale">
+							<input class="carousel__activator" type="radio" id="P" name="scale" checked="checked"/>
+							<input class="carousel__activator" type="radio" id="Q" name="scale"/>
+							<input class="carousel__activator" type="radio" id="R" name="scale"/>
+							<input class="carousel__activator" type="radio" id="S" name="scale"/>
+							<input class="carousel__activator" type="radio" id="T" name="scale"/>
+							<div class="carousel__controls">
+							<label class="carousel__control carousel__control--backward" for="T"></label>
+							<label class="carousel__control carousel__control--forward" for="Q"></label>
+							</div>
+							<div class="carousel__controls">
+							<label class="carousel__control carousel__control--backward" for="P"></label>
+							<label class="carousel__control carousel__control--forward" for="R"></label>
+							</div>
+							<div class="carousel__controls">
+							<label class="carousel__control carousel__control--backward" for="Q"></label>
+							<label class="carousel__control carousel__control--forward" for="S"></label>
+							</div>
+							<div class="carousel__controls">
+							<label class="carousel__control carousel__control--backward" for="R"></label>
+							<label class="carousel__control carousel__control--forward" for="T"></label>
+							</div>
+							<div class="carousel__controls">
+							<label class="carousel__control carousel__control--backward" for="S"></label>
+							<label class="carousel__control carousel__control--forward" for="P"></label>
+							</div>
+							<li class="carousel__slide">
+							<h1>P</h1>
+							</li>
+							<li class="carousel__slide">
+							<h1>Q</h1>
+							</li>
+							<li class="carousel__slide">
+							<h1>R</h1>
+							</li>
+							<li class="carousel__slide">
+							<h1>S</h1>
+							</li>
+							<li class="carousel__slide">
+							<h1>T</h1>
+							</li>
+							<div class="carousel__indicators">
+							<label class="carousel__indicator" for="P"></label>
+							<label class="carousel__indicator" for="Q"></label>
+							<label class="carousel__indicator" for="R"></label>
+							<label class="carousel__indicator" for="S"></label>
+							<label class="carousel__indicator" for="T"></label>
+							</div>
+						</ul>
+						</div>
+						<!-- <h2>CUSTOM CASCADES</h2>
 						<content-section>
 							<p>By defining a cascade of custom properties,<br>
 							you can determine which <em>intent</em> should take priority --<br>
@@ -603,7 +815,7 @@
 							it will always override the higher-specificity inline style:</p>
 							<p><button type="button" style="--btn-bg: rebeccapurple;" disabled>override disabled</button></p>
 							</form>
-						</content-section>
+						</content-section> -->
 					</tab-content>
 					<tab-content>
 						<p>TAB 02 content</p>
