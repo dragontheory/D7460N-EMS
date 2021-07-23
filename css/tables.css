@@ -1,5 +1,5 @@
 /*
-TAB CONTROLS
+TABLE CONTROLS
 Hide radios */
 table-container > input {display: none;}
 table-container > input:checked + label {color: var(--page-text-color-hover);}
@@ -42,7 +42,7 @@ table-content ol {
 
 table-content ol > li {
 	display: grid;
-	grid-template-columns: auto 1fr 1fr 1fr 1fr 1fr;
+	grid-template-columns: auto 150px 1fr 1fr 1fr 1fr;
 	grid-template-rows: 1fr;
 	/* border: solid 1px yellow; */
 	border-radius: 0.3rem;

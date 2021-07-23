@@ -1,41 +1,44 @@
-acrdn-cntnr {
-	display: var(--acrdn-dsply);
-	grid-template-columns: 1fr;
-	grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-}
+/* https://codepen.io/raubaca/pen/PZzpVe */
+/* https://codepen.io/dragontheory/pen/GRmOMbY */
 /*
 ACCORDION CONTROLS
 Hide radios */
-acrdn-cntnr input[id*='acrdnTgle']:checked + label {color: var(--page-txt-color-hover);}
-acrdn-cntnr label[for*='acrdnTgle']:hover {color: var(--page-txt-color-hover);}
+accordion-container > input {display: none;}
+accordion-container > input:checked + label {color: var(--page-text-color-hover);}
+accordion-container > label:hover {color: var(--page-text-color-hover);}
 
-acrdn-cntnr label {
-	cursor: pointer;
-	transition: color 250ms;
-	color: var(--page-txt-color);
-	padding: 5px 1em;
-	border-right: solid 1px var(--page-txt-color-notes);
-}
-acrdn-cntnr label:last-of-type {border: none; }
-
-acrdn-cntnr acrdn-cntnt {
-	display: var(--acrdn-dsply);
-	/* border: solid 1px yellow; */
-	grid-column: 1 / -1;
+accordion-container {
+	display: var(--page-display);
+	grid-template-columns: 1fr;
+	grid-template-rows: auto auto auto auto auto auto auto auto;
+	overflow-y: hidden;
 	align-content: start;
 }
-acrdn-cntnr acrdn-cntnt p {
-	padding: 0 1em;
-}
-acrdn-cntnr input[type='radio'] {display: none;}
-acrdn-cntnr {
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: repeat(5, 1fr);
-}
-acrdn-cntnr label {justify-self: center;}
-acrdn-cntnr input#acrdnTgle01:checked ~ acrdn-cntnt:not(:nth-of-type(1)),
-acrdn-cntnr input#acrdnTgle02:checked ~ acrdn-cntnt:not(:nth-of-type(2)),
-acrdn-cntnr input#acrdnTgle03:checked ~ acrdn-cntnt:not(:nth-of-type(3)),
-acrdn-cntnr input#acrdnTgle04:checked ~ acrdn-cntnt:not(:nth-of-type(4)),
-acrdn-cntnr input#acrdnTgle05:checked ~ acrdn-cntnt:not(:nth-of-type(5)) {display: none;}
+	accordion-container > label {
+		display: var(--page-display);
+		cursor: pointer;
+		color: var(--page-text-color);
+		padding: 1rem;
+		align-content: center;
+		justify-content: start;
+		transition: var(--transition);
+	}
+
+	accordion-container > label:hover {
+		background-color: rgba(255,255,255,0.1);
+		color: var(--page-text-color-hover);
+	}
+
+	accordion-container accordion-content {
+		display: var(--page-display);
+		height: 0;
+		box-shadow: inset 0 0 1px 1px cyan;
+		align-content: start;
+		overflow-y: auto;
+		transition: var(--transition);
+	}
+
+	accordion-container > input#accordionToggle01:checked ~ accordion-content:nth-of-type(1),
+	accordion-container > input#accordionToggle02:checked ~ accordion-content:nth-of-type(2),
+	accordion-container > input#accordionToggle03:checked ~ accordion-content:nth-of-type(3),
+	accordion-container > input#accordionToggle04:checked ~ accordion-content:nth-of-type(4) {height: auto;}

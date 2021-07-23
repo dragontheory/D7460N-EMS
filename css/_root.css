@@ -43,7 +43,7 @@
 	UTILITY
 */	--dsply-none:			none;
 	--box-sizing: 			border-box;
-	--transition:			all 250ms, color 250ms, fill 250ms;
+	--transition:			all 250ms;
 
 
 /*------------------------------------*\
