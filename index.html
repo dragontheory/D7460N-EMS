@@ -17,7 +17,8 @@
 	<link rel="stylesheet" href="css/scrollbars.css" />
 	<link rel="stylesheet" href="css/typography.css" />
 	<link rel="stylesheet" href="css/circles.css" />
-	<link rel="stylesheet" href="css/carousel.css" />
+	<link rel="stylesheet" href="css/carousels.css" />
+	<link rel="stylesheet" href="css/accordions.css" />
 	<link rel="stylesheet" href="css/media-queries.css" />
 
 </head>
@@ -75,7 +76,7 @@
 				<panel-header-right>::</panel-header-right>
 			</panel-header> -->
 			<panel-content>
-				<h2 style="margin-top: 0; color: var(--page-highlight-color)">RESPONSIVE TABLE</h2>
+				<h2 style="margin-top: 0; color: var(--page-highlight-color)">Super Hero Heroes/Villains &#160;&#160;<small>[ <small>Marvel</small> ]</small> </h2>
 				<content-section>
 					<table-container>
 						<!-- TAB CONTROLS -->
@@ -552,60 +553,7 @@
 					<input type="radio" id="profileTabToggle04" name="profile-tabs" value="4" />
 					<label for="profileTabToggle04">TAB 04</label>
 					<tab-content>
-						<p>TAB 01 content</p>
 						<h3>Pure CSS carousels</h3>
-						<div class="carousel-container">
-							<h2>fade in/out</h2>
-							<ul class="carousel my-carousel">
-								<input class="carousel__activator" type="radio" id="A" name="activator" checked="checked"/>
-								<input class="carousel__activator" type="radio" id="B" name="activator"/>
-								<input class="carousel__activator" type="radio" id="C" name="activator"/>
-								<input class="carousel__activator" type="radio" id="D" name="activator"/>
-								<input class="carousel__activator" type="radio" id="E" name="activator"/>
-								<div class="carousel__controls">
-									<label class="carousel__control carousel__control--backward" for="E"></label>
-									<label class="carousel__control carousel__control--forward" for="B"></label>
-								</div>
-								<div class="carousel__controls">
-									<label class="carousel__control carousel__control--backward" for="A"></label>
-									<label class="carousel__control carousel__control--forward" for="C"></label>
-								</div>
-								<div class="carousel__controls">
-									<label class="carousel__control carousel__control--backward" for="B"></label>
-									<label class="carousel__control carousel__control--forward" for="D"></label>
-								</div>
-								<div class="carousel__controls">
-									<label class="carousel__control carousel__control--backward" for="C"></label>
-									<label class="carousel__control carousel__control--forward" for="E"></label>
-								</div>
-								<div class="carousel__controls">
-									<label class="carousel__control carousel__control--backward" for="D"></label>
-									<label class="carousel__control carousel__control--forward" for="A"></label>
-								</div>
-								<li class="carousel__slide">
-									<h1>A</h1>
-								</li>
-								<li class="carousel__slide">
-									<h1>B</h1>
-								</li>
-								<li class="carousel__slide">
-									<h1>C</h1>
-								</li>
-								<li class="carousel__slide">
-									<h1>D</h1>
-								</li>
-								<li class="carousel__slide">
-									<h1>E</h1>
-								</li>
-								<div class="carousel__indicators">
-									<label class="carousel__indicator" for="A"></label>
-									<label class="carousel__indicator" for="B"></label>
-									<label class="carousel__indicator" for="C"></label>
-									<label class="carousel__indicator" for="D"></label>
-									<label class="carousel__indicator" for="E"></label>
-								</div>
-							</ul>
-						</div>
 						<div class="carousel-container">
 							<h2>slider</h2>
 							<div class="carousel my-carousel carousel--translate">
@@ -660,61 +608,38 @@
 								</div>
 							</div>
 						</div>
-						<!-- <h2>CUSTOM CASCADES</h2>
-						<content-section>
-							<p>By defining a cascade of custom properties,<br>
-							you can determine which <em>intent</em> should take priority --<br>
-							without worrying about the specificity<br>
-							of how that value is defined.<br>
-							in this case, my cascade includes:</p>
-							<ul>
-							<li><code>--btn-bg--state</code></li>
-							<li><code>--btn-bg</code></li>
-							<li><code>--btn-bg--type</code></li>
-							<li><code>--btn-bg--default</code></li>
-							</ul>
-							<p>Our default button is falling all the way back<br>
-							to the <code>--btn-bg--default</code> defined on <code>html</code>.</p>
-							<p><button type="button">default</button></p>
-							<p>Adding the <code>disabled</code> attribute<br>
-							always overrides any other button colors --<br>
-							no matter where they are defined.</p>
-							<p><button type="button" disabled>disabled</button></p>
-							<p>We can create button types using <code>--btn-bg--type</code>,<br>
-							and it will override the defaults,<br>
-							but not the state:</p>
-							<p><button type="button" class="warn">warn</button><br>
-							<button type="button" class="go">go</button><br>
-							<button type="button" class="warn" disabled>warn disabled</button><br>
-							<button type="button" class="go" disabled>go disabled</button></p>
-							<h2>Context &amp; Specificity</h2>
-							<p>We can also set these values contextually,<br>
-							rather than directly styling the button.<br>
-							Values can come from anywhere,<br>
-							and true specificity only resolves conflicts<br>
-							between the same custom property.</p>
-							<form>
-							<p>In this case I set all form-buttons to use<br>
-							<code>deeppink</code> as the default, rather than <code>blue</code>.<br>
-							we can make contextual changes at a higher level<br>
-							of the cascade, if we want --<br>
-							like &quot;disabling&quot; the entire form.</p>
-							<p><button type="button">default</button></p>
-							<p>If we need to change a button based on user-input,<br>
-							or otherwise set it via html,<br>
-							we can do that too.<br>
-							I'm doing that with <code>--btn-bg</code><br>
-							which comes second in the cascade.</p>
-							<p><button type="button" style="--btn-bg: rebeccapurple;">override</button></p>
-							<p>and we avoid the usual danger from inline styles high specificity.<br>
-							Because <code>state</code> is first in the cascade,<br>
-							it will always override the higher-specificity inline style:</p>
-							<p><button type="button" style="--btn-bg: rebeccapurple;" disabled>override disabled</button></p>
-							</form>
-						</content-section> -->
 					</tab-content>
 					<tab-content>
-						<p>TAB 02 content</p>
+						<accordion-container>
+							<!-- ACCORDION CONTROLS -->
+							<input type="checkbox" id="accordionToggle01" name="details-accordion" value="1" checked />
+							<input type="checkbox" id="accordionToggle02" name="details-accordion" value="2" />
+							<input type="checkbox" id="accordionToggle03" name="details-accordion" value="3" />
+							<input type="checkbox" id="accordionToggle04" name="details-accordion" value="4" />
+
+							<label for="accordionToggle01" checked="checked">Accordion 01</label>
+							<accordion-content>
+								<p>Accordion 01 content</p>
+							</accordion-content>
+							<label for="accordionToggle02">Accordion 02</label>
+							<accordion-content>
+								<p>Accordion 02 content</p>
+								<p>Accordion 02 content</p>
+							</accordion-content>
+							<label for="accordionToggle03">Accordion 03</label>
+							<accordion-content>
+								<p>Accordion 03 content</p>
+								<p>Accordion 03 content</p>
+								<p>Accordion 03 content</p>
+							</accordion-content>
+							<label for="accordionToggle04">Accordion 04</label>
+							<accordion-content>
+								<p>Accordion 04 content</p>
+								<p>Accordion 04 content</p>
+								<p>Accordion 04 content</p>
+								<p>Accordion 04 content</p>
+							</accordion-content>
+						</accordion-container>
 					</tab-content>
 					<tab-content>
 						<p>TAB 03 content</p>
