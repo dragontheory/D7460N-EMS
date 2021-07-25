@@ -170,7 +170,7 @@ input#layoutTgl05 + label {right: 30px;}
     LAYOUT 01
 */
 input#layoutTgl01:checked ~ page-container {
-	grid-template-columns: 1fr 1fr 1fr 1fr; /* HOME | HOME | HOME | HOME */
+	grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); /* HOME | HOME | HOME | HOME */
 }
 input#layoutTgl01:checked ~ page-container > :nth-child(n+2):nth-child(-n+5) {display: none;}
 /*
