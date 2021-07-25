@@ -1,42 +1,29 @@
 /* https://dev.to/jaredcwhite/custom-elements-everywhere-for-page-layout-parts-i-and-ii-438p */
 :root {
-	/* PAGE */
-	--page-display: grid;
-	--page-columns: repeat(8, 1fr);
-	--page-rows: auto 1fr auto;
-	--page-gap: 20px 20px;
-	--page-height: 100vh;
-	--page-width: 100vw;
-	--page-margin: 0;
-	--page-padding: 0;
-	--page-container-padding: 20px;
-	--page-overflow: hidden;
-	--page-font-family: Calibri, "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+/*------------------------------------*\
+			DEFINITIONS
+\*------------------------------------*/
+	--display: 						grid;
+	--columns: 						repeat(8, 1fr);
+	--rows: 						auto 1fr auto;
+	--gap: 							20px 20px;
+	--height: 						100vh;
+	--width: 						100vw;
+	--margin: 						0;
+	--padding: 						0;
+	--container-padding: 			20px;
+	--overflow: 					hidden;
+	--font-family: 					Calibri, "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
 
-	/* PANEL COMPONENT */
-	--panel-display: grid;
-	--panel-rows: auto 1fr auto;
-	--panel-gap: 0 0;
-	--panel-padding: 1em;
-	--panel-content-overflow: auto;
-	--panel-border-radius: 5px;
+/*	PANEL
+*/	--panel-padding: 				1em;
+	--panel-content-overflow: 		auto;
 
-
-	/* TAB COMPONENT */
-	--tab-display: grid;
-	--tab-background-color: rgba(255, 255, 255, 0.03);
-
-	/* ACCORDION COMPONENT */
-	--accordion-display: grid;
-	--accordion-background-color: rgba(255, 255, 255, 0.03);
-
-	/* TABLE COMPONENT */
-	--table-display: grid;
-
-	/* UTILITY */
-	--display-none: none;
-	--box-sizing: border-box;
-	--transition: background-color 250ms, color 250ms, fill 250ms;
+/*	UTILITY
+*/	--display-none: 				none;
+	--box-sizing: 					border-box;
+	--transition: 					all 250ms;
+	--border-radius:				5px;
 }
 *:before,
 *:after,
@@ -45,32 +32,32 @@
 ::before {box-sizing: border-box;}
 html,
 body {
-	margin: var(--page-margin);
-	padding: var(--page-padding);
-	font-family: var(--page-font-family);
-	-webkit-font-smoothing: antialiased;
-  	-moz-osx-font-smoothing: grayscale;
-	font-smooth: auto;
+	margin: 						var(--margin);
+	padding: 						var(--padding);
+	font-family: 					var(--font-family);
+	-webkit-font-smoothing: 		antialiased;
+  	-moz-osx-font-smoothing: 		grayscale;
+	font-smooth: 					auto;
 }
 
 content-section {
-	overflow-y: auto;
-	/* background-color: rgba(0,0,0,0.1); */
+	overflow-y: 					auto;
+	/* background-color: 			rgba(0,0,0,0.1); */
 }
 
 /* Seven middle columns */
 page-container {
 	display: grid;
-	grid-template-columns: var(--page-columns);
-	grid-template-rows: var(--page-rows);
-	gap: var(--page-gap);
-	padding: var(--page-container-padding);
-	height: var(--page-height);
+	grid-template-columns: 			var(--columns);
+	grid-template-rows: 			var(--rows);
+	gap: 							var(--gap);
+	padding: 						var(--container-padding);
+	height: 						var(--height);
 }
 /* All immediate children of page-container */
 page-container > * {
-	display: grid;
-	border-radius: 0.3rem;
+	display: 						grid;
+	border-radius: 					0.3rem;
 }
 /*
 HEADER/FOOTER
@@ -81,106 +68,106 @@ Span the first and the last child elements across all seven columns starting at 
 /* HEADER and FOOTER layout */
 page-container page-header,
 page-container page-footer {
-	display: grid;
-	grid-column: 1 / -1;
-	grid-template-columns: 1fr 1fr 1fr;
+	display: 						grid;
+	grid-column: 					1 / -1;
+	grid-template-columns: 			1fr 1fr 1fr;
 }
 	/* HEADER left */
 	page-container page-header page-header-left {
-		display: grid;
-		justify-self: left;
-		align-self: center;
+		display: 					grid;
+		justify-self: 				left;
+		align-self: 				center;
 	}
 		/* HEADER left logo */
 		page-container page-header page-header-left svg {
-			position: absolute; /* ignore padding */
-			top: 2px;
-			left: 20px;
-			height: 85px;
+			position: 				absolute; /* ignore padding */
+			top: 					2px;
+			left: 					20px;
+			height: 				85px;
 	    }
 
 	/* HEADER center banner */
 	page-container page-header page-header-center {
-		padding: var(--panel-padding);
-		justify-self: center;
-		align-content: start;
+		padding: 					var(--panel-padding);
+		justify-self: 				center;
+		align-content: 				start;
 	}
 	/* HEADER right Username */
 	page-container page-header page-header-right {
-		padding: var(--panel-padding);
-		justify-self: right;
-		align-self: center;
+		padding: 					var(--panel-padding);
+		justify-self: 				right;
+		align-self: 				center;
 	}
 	/* FOOTER left */
 	page-container page-footer page-footer-left  {
-		padding: var(--panel-padding);
-		justify-self: left;
-		align-self: center;
+		padding: 					var(--panel-padding);
+		justify-self: 				left;
+		align-self: 				center;
 	}
 	/* FOOTER center banner */
 	page-container page-footer page-footer-center {
-		padding: var(--panel-padding);
-		justify-self: center;
-		align-self: center;
+		padding: 					var(--panel-padding);
+		justify-self: 				center;
+		align-self: 				center;
 	}
 	/* FOOTER right */
 	page-container page-footer page-footer-right {
-		padding: var(--panel-padding);
-		justify-self: right;
-		align-self: center;
+		padding: 					var(--panel-padding);
+		justify-self: 				right;
+		align-self: 				center;
 	}
 	/* Middle columns and their vertical layout */
 	page-container page-panel {
-		grid-template-rows: auto 1fr auto;
-		position: relative;
-		overflow-y: hidden;
+		grid-template-rows: 		auto 1fr auto;
+		position: 					relative;
+		overflow-y: 				hidden;
 	}
 		/* Middle columns HEADERS and FOOTERS */
 		page-container page-panel panel-header,
 		page-container page-panel panel-footer {
-			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
+			display: 				grid;
+			grid-template-columns:	1fr 1fr 1fr;
 		}
 			/* Middle columns HEADERS and FOOTERS left */
 			page-container page-panel panel-header panel-header-left,
 			page-container page-panel panel-footer panel-footer-left {
-				padding: var(--panel-padding);
-				justify-self: left;
-				align-self: center;
+				padding: 			var(--panel-padding);
+				justify-self: 		left;
+				align-self: 		center;
 			}
 			/* Middle columns HEADERS and FOOTERS right */
 			page-container page-panel panel-header panel-header-right,
 			page-container page-panel panel-footer panel-footer-right {
-				padding: var(--panel-padding);
-				justify-self: right;
-				align-self: center;
+				padding: 			var(--panel-padding);
+				justify-self: 		right;
+				align-self: 		center;
 			}
 			/* Middle columns HEADERS and FOOTERS center */
 			page-container page-panel panel-header panel-header-center,
 			page-container page-panel panel-footer panel-footer-center {
-				padding: var(--panel-padding);
-				justify-self: center;
-				align-self: center;
+				padding: 			var(--panel-padding);
+				justify-self: 		center;
+				align-self: 		center;
 			}
 	/* Middle columns CONTENT */
 	page-container page-panel panel-content {
-		display: grid;
-		grid-template-columns: 1fr;
-		overflow: hidden;
-		align-content: start;
+		display: 					grid;
+		grid-template-columns: 		1fr;
+		overflow: 					hidden;
+		align-content: 				start;
 	}
 	/* Middle columns CONTENT SPLIT */
 	page-container page-panel panel-content-split {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		overflow: hidden;
+		display: 					grid;
+		grid-template-columns: 		1fr 1fr;
+		overflow: 					hidden;
 	}
 
 
 /*.page-container div:nth-last-child(2) {display: none;}*/
 
 a {transition: var(--transition);}
-a:hover {color: var(--page-text-color-hover);}
+a:hover {color: var(--txt-color-hover);}
 
 /*
 	LAYOUT CONTROLS
@@ -189,21 +176,21 @@ a:hover {color: var(--page-text-color-hover);}
 body > input {display: none;}
 
 body > label {
-  position: absolute;
-  top: 30px;
-  cursor: pointer;
-  transition: var(--transition);
-  padding: 5px 10px;
+  position: 						absolute;
+  top: 								30px;
+  cursor: 							pointer;
+  transition: 						var(--transition);
+  padding: 							5px 10px;
 }
 
 input#layoutToggle01:checked + label,
 input#layoutToggle02:checked + label,
 input#layoutToggle03:checked + label,
 input#layoutToggle04:checked + label,
-input#layoutToggle05:checked + label {color: var(--page-text-color-hover);}
+input#layoutToggle05:checked + label {color: var(--txt-color-hover);}
 
-label[for*='layoutToggle']:checked {color: var(--page--text-color-hover);}
-label[for*='layoutToggle']:hover {color: var(--page-text-color-hover);}
+label[for*='layoutToggle']:checked {color: var(--txt-color-hover);}
+label[for*='layoutToggle']:hover {color: var(--txt-color-hover);}
 
 input#layoutToggle01 + label {right: 178px;}
 input#layoutToggle02 + label {right: 142px;}
@@ -215,8 +202,8 @@ input#layoutToggle05 + label {right: 30px;}
 				LAYOUT 01
 \*------------------------------------*/
 input#layoutToggle01:checked ~ page-container {
-	grid-template-columns: 250px 1fr 1fr 1fr; /* HOME | HOME | HOME | HOME */
-	grid-template-rows: auto auto 1fr auto;
+	grid-template-columns: 			250px 1fr 1fr 1fr; /* HOME | HOME | HOME | HOME */
+	grid-template-rows: 			auto auto 1fr auto;
 }
 input#layoutToggle01:checked ~ page-container > :nth-child(n+2):nth-child(-n+5) {display: none;}
 input#layoutToggle01:checked ~ page-container > page-panel:nth-child(6)
@@ -229,7 +216,7 @@ input#layoutToggle01:checked ~ page-container > page-panel:nth-child(8)
 				LAYOUT 02
 \*------------------------------------*/
 input#layoutToggle02:checked ~ page-container {
-	grid-template-columns: 250px 1fr; /* NAV | RESULTS */
+	grid-template-columns: 			250px 1fr; /* NAV | RESULTS */
 }
 input#layoutToggle02:checked ~ page-container > :nth-child(n+4):nth-child(-n+13) {display: none;}
 
@@ -238,7 +225,7 @@ input#layoutToggle02:checked ~ page-container > :nth-child(n+4):nth-child(-n+13)
 				LAYOUT 03
 \*------------------------------------*/
 input#layoutToggle03:checked ~ page-container {
-	grid-template-columns: 250px 1.5fr 1fr; /* NAV | RESULTS | PROFILE */
+	grid-template-columns: 			250px 1.5fr 1fr; /* NAV | RESULTS | PROFILE */
 }
 input#layoutToggle03:checked ~ page-container > :nth-child(n+5):nth-child(-n+13) {display: none;}
 
@@ -247,7 +234,7 @@ input#layoutToggle03:checked ~ page-container > :nth-child(n+5):nth-child(-n+13)
 				LAYOUT 04
 \*------------------------------------*/
 input#layoutToggle04:checked ~ page-container {
-	grid-template-columns: 250px 1.5fr 1fr 350px; /* NAV | RESULTS | PROFILE | DETAILS */
+	grid-template-columns: 			250px 1.5fr 1fr 350px; /* NAV | RESULTS | PROFILE | DETAILS */
 }
 input#layoutToggle04:checked ~ page-container > :nth-child(n+6):nth-child(-n+13) {display: none;}
 
@@ -256,7 +243,7 @@ input#layoutToggle04:checked ~ page-container > :nth-child(n+6):nth-child(-n+13)
 				LAYOUT 05
 \*------------------------------------*/
 input#layoutToggle05:checked ~ page-container {
-	grid-template-columns: 1fr 1fr 1fr 1fr; /* HOME | HOME | HOME | HOME */
+	grid-template-columns: 			1fr 1fr 1fr 1fr; /* HOME | HOME | HOME | HOME */
 }
 input#layoutToggle05:checked ~ page-container > :nth-child(n+2):nth-child(-n+9) {display: none;}
 

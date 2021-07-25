@@ -1,9 +1,9 @@
 *:before, *:after, *, ::after, ::before {box-sizing: var(--box-sizing);}
 html,
 body {
-	margin: var(--page-margin);
-	padding: var(--page-pddng);
-	font-family: var(--page-fnt-fmly);
+	margin: var(--margin);
+	padding: var(--padding);
+	font-family: var(--font-family);
 	-webkit-font-smoothing: antialiased;
   	-moz-osx-font-smoothing: grayscale;
 	font-smooth: auto;
@@ -12,11 +12,11 @@ p {padding: 0 1em;}
 /* Seven middle columns */
 page-container {
 	display: grid;
-	grid-template-columns: var(--page-clmns);
-	grid-template-rows: var(--page-rows);
-	gap: var(--page-gap);
-	padding: var(--page-container-pddng);
-	height: var(--page-hght);
+	grid-template-columns: var(--columns);
+	grid-template-rows: var(--rows);
+	gap: var(--gap);
+	padding: var(--container-padding);
+	height: var(--height);
 }
 /* All immediate children of page-container */
 page-container > * {
@@ -49,13 +49,13 @@ page-container page-ftr {
 			left: 20px;
 			height: 85px;
 	    }
-		/* HEADER Left Logo Text */
+		/* HEADER Left Logo Txt */
 		page-container page-hdr page-hdr-left logo-txt {
 			display: grid;
 			margin-left: 80px;
 			transform: scale(1, 0.7);
 		}
-		/* HEADER Left Logo Text 2 */
+		/* HEADER Left Logo Txt 2 */
 		page-container page-hdr page-hdr-left logo-txt-2 {
 			display: grid;
 			left: 196px;
@@ -66,68 +66,68 @@ page-container page-ftr {
 
 	/* HEADER center banner */
 	page-container page-hdr page-hdr-cntr {
-		padding: var(--pnl-pddng);
+		padding: var(--padding);
 		justify-self: center;
 		align-content: start;
 	}
 	/* HEADER right Username */
 	page-container page-hdr page-hdr-right {
-		padding: var(--pnl-pddng);
+		padding: var(--padding);
 		justify-self: right;
 		align-self: center;
 	}
 	/* FOOTER left */
 	page-container page-ftr page-ftr-left  {
-		padding: var(--pnl-pddng);
+		padding: var(--padding);
 		justify-self: left;
 		align-self: center;
 	}
 	/* FOOTER center banner */
 	page-container page-ftr page-ftr-cntr {
-		padding: var(--pnl-pddng);
+		padding: var(--padding);
 		justify-self: center;
 		align-self: center;
 	}
 	/* FOOTER right */
 	page-container page-ftr page-ftr-right {
-		padding: var(--pnl-pddng);
+		padding: var(--padding);
 		justify-self: right;
 		align-self: center;
 	}
 	/* Middle columns and their vertical layout */
-	page-container page-pnl {
+	page-container page-panel {
 		grid-template-rows: auto 1fr auto;
 		position: relative;
 	}
 		/* Middle columns HEADERS and FOOTERS */
-		page-container page-pnl pnl-hdr,
-		page-container page-pnl pnl-ftr {
-			display: grid;
+		page-container page-panel panel-hdr,
+		page-container page-panel panel-ftr {
+			display: var(--display);
 			grid-template-columns: 1fr 1fr 1fr;
 		}
 			/* Middle columns HEADERS and FOOTERS left */
-			page-container page-pnl pnl-hdr pnl-hdr-left,
-			page-container page-pnl pnl-ftr pnl-ftr-left {
-				padding: var(--pnl-pddng);
+			page-container page-panel panel-hdr panel-hdr-left,
+			page-container page-panel panel-ftr panel-ftr-left {
+				padding: var(--padding);
 				justify-self: left;
 				align-self: center;
 			}
 			/* Middle columns HEADERS and FOOTERS right */
-			page-container page-pnl pnl-hdr pnl-hdr-right,
-			page-container page-pnl pnl-ftr pnl-ftr-right {
-				padding: var(--pnl-pddng);
+			page-container page-panel panel-hdr panel-hdr-right,
+			page-container page-panel panel-ftr panel-ftr-right {
+				padding: var(--padding);
 				justify-self: right;
 				align-self: center;
 			}
 			/* Middle columns HEADERS and FOOTERS center */
-			page-container page-pnl pnl-hdr pnl-hdr-cntr,
-			page-container page-pnl pnl-ftr pnl-ftr-cntr {
-				padding: var(--pnl-pddng);
+			page-container page-panel panel-hdr panel-hdr-cntr,
+			page-container page-panel panel-ftr panel-ftr-cntr {
+				padding: var(--padding);
 				justify-self: center;
 				align-self: center;
 			}
 	/* Middle columns CONTENT */
-	page-container page-pnl pnl-cntnt {
+	page-container page-panel panel-content {
 		display: grid;
 		grid-template-columns: 1fr;
 	}
@@ -136,7 +136,7 @@ page-container page-ftr {
 /*.page-container div:nth-last-child(2) {display: none;}*/
 
 a {transition: var(--transition);}
-a:hover {color: var(--page-txt-color-hover);}
+a:hover {color: var(--txt-color-hover);}
 
 /*
 	LAYOUT CONTROLS
@@ -156,17 +156,16 @@ input#layoutTgl01:checked + label,
 input#layoutTgl02:checked + label,
 input#layoutTgl03:checked + label,
 input#layoutTgl04:checked + label,
-input#layoutTgl05:checked + label {color: var(--page-txt-color-hover);}
+input#layoutTgl05:checked + label {color: var(--txt-color-hover);}
 
-label[for*='layoutTgl']:checked {color: var(--page--txt-color-hover);}
-label[for*='layoutTgl']:hover {color: var(--page-txt-color-hover);}
+label[for*='layoutTgl']:checked {color: var(--txt-color-hover);}
+label[for*='layoutTgl']:hover {color: var(--txt-color-hover);}
 
 input#layoutTgl01 + label {right: 178px;}
 input#layoutTgl02 + label {right: 142px;}
 input#layoutTgl03 + label {right: 106px;}
 input#layoutTgl04 + label {right: 66px;}
 input#layoutTgl05 + label {right: 30px;}
-
 /*
     LAYOUT 01
 */
@@ -174,7 +173,6 @@ input#layoutTgl01:checked ~ page-container {
 	grid-template-columns: 1fr 1fr 1fr 1fr; /* HOME | HOME | HOME | HOME */
 }
 input#layoutTgl01:checked ~ page-container > :nth-child(n+2):nth-child(-n+5) {display: none;}
-
 /*
     LAYOUT 02
 */
