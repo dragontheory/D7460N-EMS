@@ -4,8 +4,8 @@
 ACCORDION CONTROLS
 Hide radios */
 accordion-container > input {display: 		none;}
-accordion-container > input:checked + label {color: var(--text-color-hover);}
-accordion-container > label:hover {color: 	var(--text-color-hover);}
+accordion-container > input:checked + label {color: var(--page-text-color-hover);}
+accordion-container > label:hover {color: 	var(--page-text-color-hover);}
 
 accordion-container {
 	display: 								var(--display);

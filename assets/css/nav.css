@@ -4,8 +4,8 @@
 NAV CONTROLS
 Hide radios */
 nav-container > input {display: 			none;}
-nav-container > input:checked + label {color: var(--text-color-hover);}
-nav-container > label:hover {color: 		var(--text-color-hover);}
+nav-container > input:checked + label {color: var(--page-text-color-hover);}
+nav-container > label:hover {color: 		var(--pagetext-color-hover);}
 
 nav-container {
 	display: 								var(--display);
