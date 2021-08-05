@@ -1,0 +1,41 @@
+tab-container {
+	display: var(--tab-display);
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: auto 1fr;
+	overflow-y: hidden;
+}
+/*
+TAB CONTROLS
+Hide radios */
+tab-container > input {display: none;}
+tab-container > input:checked + label {color: var(--page-text-color-hover);}
+tab-container > label:hover {color: var(--page-text-color-hover);}
+
+tab-container > label {
+	cursor: pointer;
+	transition: color 250ms;
+	color: var(--page-text-color);
+	padding: 5px 1em;
+	border-right: solid 1px var(--page-text-color-notes);
+	justify-self: center;
+}
+tab-container > label:last-of-type {border: none; }
+
+tab-container tab-content {
+	display: var(--tab-display);
+	/* border: solid 1px yellow; */
+	grid-column: 1 / -1;
+	align-content: start;
+	overflow-y: auto;
+}
+
+tab-container > input#profileTabToggle01:checked ~ tab-content:not(:nth-of-type(1)),
+tab-container > input#profileTabToggle02:checked ~ tab-content:not(:nth-of-type(2)),
+tab-container > input#profileTabToggle03:checked ~ tab-content:not(:nth-of-type(3)),
+tab-container > input#profileTabToggle04:checked ~ tab-content:not(:nth-of-type(4)) {display: none;}
+
+tab-container > input#detailsTabToggle01:checked ~ tab-content:not(:nth-of-type(1)),
+tab-container > input#detailsTabToggle02:checked ~ tab-content:not(:nth-of-type(2)),
+tab-container > input#detailsTabToggle03:checked ~ tab-content:not(:nth-of-type(3)),
+tab-container > input#detailsTabToggle04:checked ~ tab-content:not(:nth-of-type(4)) {display: none;}
+

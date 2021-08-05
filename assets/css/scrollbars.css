@@ -1,0 +1,34 @@
+/* https://codeconvey.com/custom-scrollbar-css-for-all-browsers/ */
+
+/* scrollbar width */
+::-webkit-scrollbar {width: 0.5rem;}
+  
+  /* scrollbar Track */
+  ::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.1);  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to rgba(0,0,0,0.1), rgba(0,0,0,0.1), rgba(0,0,0,0.1));  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.1)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      border-radius: 0.1rem;
+  }
+  
+  /* scrollbar Handle */
+  ::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.1);  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.1));  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.1)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      border-radius: 0.1rem;
+      transition: all 250ms;
+  }
+  
+  /* scrollbar Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {background: #00527a /*rgba(62, 144, 252, 1.0)*/;}
+  
+  @media only screen and (max-width: 800px) {
+    main {width: 80% !important;}
+  }
+
+
+
+/* For Firefox */
+content-section { scrollbar-color: #00527a transparent;
+  scrollbar-width: thin;}
