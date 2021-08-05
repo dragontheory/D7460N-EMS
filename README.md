@@ -1,4 +1,4 @@
-<h1 align="center" width="200"><img src="images/logos/logo_380x380_.svg" /></h1>
+<h1 align="center" width="200"><img src="assets/images/logos/logo_380x380_.svg" /></h1>
 
 # **D7460N CMS** - your data your way
 
