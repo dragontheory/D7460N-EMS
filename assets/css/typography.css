@@ -104,10 +104,10 @@ a {
     box-shadow: 0 1px 0 0 transparent;
     transition: all 250ms;
 }
-a:hover {
+/* a:hover {
     color: var(--page-text-color-links-hover);
     box-shadow: 0 1px 0 0 var(--page-text-color-links-hover);
-}
+} */
 p	{padding: 0 1rem;}
 h1,
 h2,

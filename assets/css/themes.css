@@ -57,9 +57,10 @@
 	--page-logo-color: var(--light-theme-logo-color);
 	--page-logo-color-hover: var(--light-theme-logo-color-hover);
   }
-  input#themeToggle + label {display: grid;
+  input#themeToggle + label {
+	display: grid;
 	position: absolute;
-	top: 35px;
+	top: 37px;
 	right: 238px;
 	width: 40px;
 	height: 19px;

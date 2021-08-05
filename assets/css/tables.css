@@ -16,7 +16,7 @@ table-container > label {
 	padding: 5px 1em;
 	border-right: solid 1px var(--page-text-color-notes);
 	position: absolute;
-    top: 10px;
+    top: 12px;
 	font-family: Agency FB, Agency FB Regular;
 	letter-spacing: 2px;
 }
