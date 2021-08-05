@@ -51,7 +51,7 @@ table-content ol > li {
 	transition: all 250ms;
 }
 table-content ol > li:hover {
-background-color: rgb(0,161,255,0.2);/* #00a1ff */
+background-color: var(--page-background-color-hover);/* #00a1ff */
 }
 table-cell {
 	display: grid;

@@ -20,7 +20,7 @@
 
 	/* DARK THEME DEFINITIONS */
 	--dark-theme-page-background-color: #1A1E23;
-	--dark-theme-page-background-color-hover: rgba(255,255,255,0.05);
+	--dark-theme-page-background-color-hover: rgb(0,161,255,0.2);
 	--dark-theme-page-background-image: url('/assets/images/3px-tile.png');
 	--dark-theme-page-text-color: #8E9196;
 	--dark-theme-page-text-color-hover: #D7DAE0;
