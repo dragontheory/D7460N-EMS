@@ -114,7 +114,7 @@ h2,
 h3,
 h4,
 h5	{
-	font-family: Agency FB Regular;
+	font-family: Agency FB, Agency FB Regular;
 	text-transform: uppercase;
     font-weight: 100;
 	padding: 0 1rem;
