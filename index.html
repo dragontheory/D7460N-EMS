@@ -21,13 +21,12 @@
 	<link rel="stylesheet" href="assets/css/accordions.css" />
 	<link rel="stylesheet" href="assets/css/nav.css" />
 	<link rel="stylesheet" href="assets/css/media-queries.css" />
-
 </head>
 
 <body>
 	<!-- LAYOUT CONTROLS -->
 	<input type="checkbox" id="themeToggle" name="themes" value="dark" />
-	<label for="themeToggle">Theme</label>
+	<label for="themeToggle"></label>
 	<input type="radio" id="layoutToggle01" name="layouts" value="1" checked />
 	<label for="layoutToggle01" checked="checked">01</label>
 	<input type="radio" id="layoutToggle02" name="layouts" value="2" />
@@ -57,7 +56,7 @@
 		</page-header>
 		<page-panel>
 			<panel-header>
-				<panel-header-left>NAV</panel-header-left>
+				<panel-header-left>NAV/FILTER</panel-header-left>
 				<panel-header-center>::</panel-header-center>
 				<panel-header-right>::</panel-header\-right>
 			</panel-header>
@@ -100,13 +99,20 @@
 			</panel-footer>
 		</page-panel>
 		<page-panel style="background-color: transparent;">
-			<!-- <panel-header>
-				<panel-header-left>RESULTS</panel-header-left>
-				<panel-header-center>::</panel-header-center>
-				<panel-header-right>::</panel-header-right>
-			</panel-header> -->
+			<panel-header>
+				<panel-header-left style="padding: 0; align-self: start;">
+					<h2 style="margin-top: 0; color: var(--page-highlight-color)">Super Heroes/Villains &#160;&#160;<small>[ <small>Marvel</small> ]</small> </h2>
+				</panel-header-left>
+				<panel-header-center style="padding: 0;">::</panel-header-center>
+				<panel-header-right 
+					style="background-color: var(--panel-background-color); 
+							align-self: start;
+							justify-self: auto;
+							padding: .5rem;">
+					[ search box ]
+				</panel-header-right>
+			</panel-header>
 			<panel-content>
-				<h2 style="margin-top: 0; color: var(--highlight-color)">Super Heroes/Villains &#160;&#160;<small>[ <small>Marvel</small> ]</small> </h2>
 				<content-section>
 					<table-container>
 						<!-- TAB CONTROLS -->
@@ -121,13 +127,19 @@
 						<input type="radio" id="tablePagination05" name="table-pagination" value="5" />
 						<label for="tablePagination05">05</label>
 						<table-content>
-							<p>Total: [ 35 ] Page: [ 01 | 05 ]</p>
+							<p>Total: [ 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color);">35</span> 
+								] Page: [ 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color);">01</span> 
+								/ 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color);">05</span> ]
+							</p>
 							<ol>
 								<li>
 									<table-cell>
 										<input type="checkbox" id="tableHeader01" name="table-header" value="1" />
 									</table-cell>
-									<table-cell>Record number</table-cell>
+									<table-cell>Record #</table-cell>
 									<table-cell>Name</table-cell>
 									<table-cell>Alias</table-cell>
 									<table-cell>Affiliation</table-cell>
@@ -209,13 +221,17 @@
 							</ol>
 						</table-content>
 						<table-content>
-							<p>Total: [ 35 ] Page: [ 02 | 05 ]</p>
+							<p>Total: [ 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color);">35</span> ] Page: [ 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color);">02</span> / 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color);">05</span> ]
+							</p>
 							<ol>
 								<li>
 									<table-cell>
 										<input type="checkbox" id="tableHeader02" name="table-header" value="2" />
 									</table-cell>
-									<table-cell>Record number</table-cell>
+									<table-cell>Record #</table-cell>
 									<table-cell>Name</table-cell>
 									<table-cell>Alias</table-cell>
 									<table-cell>Affiliation</table-cell>
@@ -296,13 +312,16 @@
 							</ol>
 						</table-content>
 						<table-content>
-							<p>Total: [ 35 ] Page: [ 03 | 05 ]</p>
+							<p>Total: [ 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color);">35</span> ] Page: [ 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color);">03</span> / 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color);">05</span> ]</p>
 							<ol>
 								<li>
 									<table-cell>
 										<input type="checkbox" id="tableHeader03" name="table-header" value="3" />
 									</table-cell>
-									<table-cell>Record number</table-cell>
+									<table-cell>Record #</table-cell>
 									<table-cell>Name</table-cell>
 									<table-cell>Alias</table-cell>
 									<table-cell>Affiliation</table-cell>
@@ -383,13 +402,16 @@
 							</ol>
 						</table-content>
 						<table-content>
-							<p>Total: [ 35 ] Page: [ 04 | 05 ]</p>
+							<p>Total: [ 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color);">35</span> ] Page: [ 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color);">04</span> / 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color);">05</span> ]</p>
 							<ol>
 								<li>
 									<table-cell>
 										<input type="checkbox" id="tableHeader04" name="table-header" value="4" />
 									</table-cell>
-									<table-cell>Record number</table-cell>
+									<table-cell>Record #</table-cell>
 									<table-cell>Name</table-cell>
 									<table-cell>Alias</table-cell>
 									<table-cell>Affiliation</table-cell>
@@ -470,13 +492,16 @@
 							</ol>
 						</table-content>
 						<table-content>
-							<p>Total: [ 35 ] Page: [ 05 | 05 ]</p>
+							<p>Total: [ 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color);">35</span> ] Page: [ 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color);">05</span> / 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color);">05</span> ]</p>
 							<ol>
 								<li>
 									<table-cell>
 										<input type="checkbox" id="tableHeader05" name="table-header" value="5" />
 									</table-cell>
-									<table-cell>Record number</table-cell>
+									<table-cell>Record #</table-cell>
 									<table-cell>Name</table-cell>
 									<table-cell>Alias</table-cell>
 									<table-cell>Affiliation</table-cell>
@@ -864,7 +889,7 @@
 				<span>Powered by :: D7460N CMS</span>
 			</page-footer-left>
 			<page-footer-center>::</page-footer-center>
-			<page-footer-right>Version :: 0.0000001</page-footer-right>
+			<page-footer-right>Version :: <span style="font-family: var(--agency); letter-spacing: var(--letter-spacing);">0.0000001</span></page-footer-right>
 		</page-footer>
 	</page-container>
 </body>
