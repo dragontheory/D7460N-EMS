@@ -104,28 +104,27 @@ a {
     box-shadow: 0 1px 0 0 transparent;
     transition: all 250ms;
 }
-/* a:hover {
+a:hover {
     color: var(--page-text-color-links-hover);
     box-shadow: 0 1px 0 0 var(--page-text-color-links-hover);
-} */
+}
 p	{padding: 0 1rem;}
 h1,
 h2,
 h3,
 h4,
 h5	{
-	font-family: Agency FB, Agency FB Regular;
+	font-family: Agency FB Regular;
 	text-transform: uppercase;
     font-weight: 100;
 	padding: 0 1rem;
-    color: var(--page-highlight-color);
 }
 panel-header h2 {
     margin: 0;
     padding-left: 0;
     color: var(--page-highlight-color);
 }
-highlight-h1 {
+hightlight-h1 {
     font-family: Agency FB Regular;
     font-size: 2rem;
     color: var(--page-highlight-color);

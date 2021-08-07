@@ -181,8 +181,6 @@ body > label {
   cursor: 							pointer;
   transition: 						var(--transition);
   padding: 							5px 10px;
-  font-family:						Agency FB, Agency FB Regular;
-  letter-spacing: 					2px;
 }
 
 input#layoutToggle01:checked + label,
