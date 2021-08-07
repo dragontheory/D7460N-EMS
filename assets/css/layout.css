@@ -182,7 +182,7 @@ body > label {
   transition: var(--transition);
   padding: 5px 10px;
   font-family: var(--agency);
-  letter-spacing: 2px;
+  letter-spacing: var(--agency-letter-spacing);
 }
 
 input#layoutToggle01:checked + label,
