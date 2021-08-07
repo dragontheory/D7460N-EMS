@@ -37,7 +37,7 @@ panel-content-right .percent circle-number {
     justify-content:                    center;
     align-items:                        center;
     border-radius:                      50%;
-    color:                              var(--highlight-color);
+    color:                              var(--page-highlight-color);
 }
 panel-content-right .percent circle-text {
     position:                           absolute;

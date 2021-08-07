@@ -1,3 +1,7 @@
+:root {
+    --agency: Agency, Agency FB, Agency FB Regular, Tahoma, serif;
+    --letter-spacing: .05rem;
+}
 /* Logo Text 'D7460N' */
 /* page-container page-header page-header-left logo-text {
     display: grid;
@@ -17,6 +21,7 @@ page-container page-header page-header-left logo-text {
     font-size: 3rem;
     letter-spacing: 0.01rem;
     transform: scale(1, 0.7);
+    color: var(--page-highlight-color);
 }
 /* Logo Text 2 'CMS' */
 /* page-container page-header page-header-left logo-text-2 {
@@ -36,7 +41,7 @@ page-container page-header page-header-left logo-text-2 {
     top: 15px;
     transform: scale(0.5, 0.3);
     position: absolute;
-    font-family: "Agency FB", Tahoma, serif;
+    font-family: var(--agency);
     font-size: 2.7rem;
     letter-spacing: 0.01rem;
 }
@@ -58,7 +63,7 @@ page-container page-header page-header-left logo-text-3 {
     top: 2.2rem;
     transform: scale(0.51, 0.3);
     position: absolute;
-    font-family: "Agency FB", Tahoma, serif;
+    font-family: var(--agency);
     font-size: 2rem;
     letter-spacing: 0.02rem;
     text-transform: uppercase;
@@ -81,7 +86,7 @@ page-container page-header page-header-left logo-text-4 {
     top: 2.05rem;
     transform: scale(1, 1);
     position: absolute;
-    font-family: "Agency FB", Tahoma, serif;
+    font-family: var(--agency);
     font-size: 0.8rem;
     letter-spacing: 0.04rem;
     font-variant: small-caps;
@@ -104,28 +109,29 @@ a {
     box-shadow: 0 1px 0 0 transparent;
     transition: all 250ms;
 }
-a:hover {
+/* a:hover {
     color: var(--page-text-color-links-hover);
     box-shadow: 0 1px 0 0 var(--page-text-color-links-hover);
-}
+} */
 p	{padding: 0 1rem;}
 h1,
 h2,
 h3,
 h4,
 h5	{
-	font-family: Agency FB Regular;
+	font-family: var(--agency);
 	text-transform: uppercase;
     font-weight: 100;
 	padding: 0 1rem;
+    color: var(--page-highlight-color);
 }
 panel-header h2 {
     margin: 0;
     padding-left: 0;
     color: var(--page-highlight-color);
 }
-hightlight-h1 {
-    font-family: Agency FB Regular;
+highlight-h1 {
+    font-family: var(--agency);
     font-size: 2rem;
     color: var(--page-highlight-color);
 }

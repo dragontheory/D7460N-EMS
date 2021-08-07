@@ -1,3 +1,7 @@
+table-container {
+	display: grid;
+    position: relative;
+}
 /*
 TABLE CONTROLS
 Hide radios */
@@ -11,8 +15,17 @@ table-container > label {
 	color: var(--page-text-color);
 	padding: 5px 1em;
 	border-right: solid 1px var(--page-text-color-notes);
-	justify-self: center;
+	position: absolute;
+    top: 12px;
+	font-family: var(--agency);
+	letter-spacing: 2px;
 }
+table-container > label:nth-of-type(1) {right: 200px;}
+table-container > label:nth-of-type(2) {right: 150px;}
+table-container > label:nth-of-type(3) {right: 100px;}
+table-container > label:nth-of-type(4) {right: 50px;}
+table-container > label:nth-of-type(5) {right: 0;}
+
 
 table-container > label:last-of-type {border: none; }
 
@@ -37,12 +50,12 @@ table-content ol {
 	grid-template-rows: auto;
 	padding: 0;
 	margin: 0;
-	gap: 5px 0;
+	gap: .5rem 0;
 }
 
 table-content ol > li {
 	display: grid;
-	grid-template-columns: auto 150px 1fr 1fr 1fr 1fr;
+	grid-template-columns: auto 100px 1fr 1fr .5fr .5fr;
 	grid-template-rows: 1fr;
 	/* border: solid 1px yellow; */
 	border-radius: 0.3rem;
@@ -57,5 +70,5 @@ table-cell {
 	display: grid;
 	justify-content: start;
 	align-content: start;
-	padding: 20px;
+	padding: 1rem;
 }

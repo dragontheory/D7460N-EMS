@@ -126,7 +126,7 @@ page-container page-footer {
 		page-container page-panel panel-header,
 		page-container page-panel panel-footer {
 			display: 				grid;
-			grid-template-columns:	1fr 1fr 1fr;
+			grid-template-columns:	1fr auto 1fr;
 		}
 			/* Middle columns HEADERS and FOOTERS left */
 			page-container page-panel panel-header panel-header-left,
@@ -176,11 +176,13 @@ a:hover {color: var(--page-text-color-hover);}
 body > input {display: none;}
 
 body > label {
-  position: 						absolute;
-  top: 								30px;
-  cursor: 							pointer;
-  transition: 						var(--transition);
-  padding: 							5px 10px;
+  position: absolute;
+  top: 30px;
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 5px 10px;
+  font-family: var(--agency);
+  letter-spacing: 2px;
 }
 
 input#layoutToggle01:checked + label,
