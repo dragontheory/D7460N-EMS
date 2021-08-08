@@ -1,6 +1,6 @@
 :root {
     --agency: Agency, Agency FB, Agency FB Regular, Tahoma, serif;
-    --agency-letter-spacing: .05rem;
+    --agency-letter-spacing: .1rem;
 }
 /* Logo Text 'D7460N' */
 /* page-container page-header page-header-left logo-text {
@@ -124,6 +124,7 @@ h5	{
     font-weight: 100;
 	padding: 0 1rem;
     color: var(--page-highlight-color);
+    letter-spacing: var(--agency-letter-spacing);
 }
 panel-header h2 {
     margin: 0;

@@ -1,0 +1,23 @@
+/*  FULLSCREEN
+*/
+.fullscreen {
+    overflow: hidden;
+    z-index: 10060;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+.fullscreen > .table {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0 10px;
+}
+.fullscreen > .section-header {padding: 0 10px;}
+.fullscreen .modal {z-index: 10060;}
+.fullscreen .modal-backdrop {z-index: 10059;}
+.fullscreen .close-profile-and-details {display: none;}
