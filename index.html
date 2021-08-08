@@ -106,24 +106,26 @@
 					<h2 style="margin-top: 0; color: var(--page-highlight-color)">Supers <small style="color: rgba(255,255,255,0.5);">[ Heroes <small>and</small> Villains ]</small></h2>
 				</panel-header-left>
 				<panel-header-center style="padding: 0;">::</panel-header-center>
-				<panel-header-right style="background-color: var(--panel-background-color); 
-							align-self: start;
+				<panel-header-right style="align-self: start;
 							justify-self: end;
-							padding: .5rem;">
+							padding: 0;">
 					<label>
 						<input
-							autocomplete="on"
+						placeholder="Search"
+						maxlength="30"	
+						autocomplete="on"
 							autocorrect="off"
 							list="browsers"
 							spellcheck="false"
 							type="search" />
 					</label>
 					<datalist id="browsers">
-						<option value="Edge">
-						<option value="Firefox">
-						<option value="Chrome">
-						<option value="Opera">
-						<option value="Safari">
+						<option value="Search">Search</option>
+						<option value="Edge">Edge</option>
+						<option value="Firefox">Firefox</option>
+						<option value="Chrome">Chrome</option>
+						<option value="Opera">Opera</option>
+						<option value="Safari">Safari</option>
 					  </datalist>
 				</panel-header-right>
 			</panel-header>
