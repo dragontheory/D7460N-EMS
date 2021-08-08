@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="author" content="D7460N">
-	<title>D7460N</title>
+	<title>D7460N CMS</title>
 	<link rel="icon" href="assets/images/logos/logo_380x380_.svg" type="image/svg+xml">
 	<link rel="manifest" href="manifest.webmanifest" />
 	<link rel="stylesheet" href="assets/css/layout.css" />
@@ -20,6 +20,7 @@
 	<link rel="stylesheet" href="assets/css/carousels.css" />
 	<link rel="stylesheet" href="assets/css/accordions.css" />
 	<link rel="stylesheet" href="assets/css/nav.css" />
+	<link rel="stylesheet" href="assets/css/data-lists.css" />
 	<link rel="stylesheet" href="assets/css/media-queries.css" />
 </head>
 
@@ -89,7 +90,7 @@
 						<a href="#"><span>NAV 04 item</span><span>[ 076 ]</span></a>
 						<a href="#"><span>NAV 04 item</span><span>[ 069 ]</span></a>
 						<a href="#"><span>NAV 04 item</span><span>[ 007 ]</span></a>
-						<a href="#"><span>NAV 04 item</span><span>[ 0123 ]</span></a>
+						<a href="#"><span>NAV 04 item</span><span>[ 123 ]</span></a>
 					</nav-content>
 				</nav-container>
 			</panel-content>
@@ -102,15 +103,28 @@
 		<page-panel style="background-color: transparent;">
 			<panel-header>
 				<panel-header-left style="padding: 0; align-self: start;">
-					<h2 style="margin-top: 0; color: var(--page-highlight-color)">Super Heroes/Villains &#160;&#160;<small>[ <small>Marvel</small> ]</small> </h2>
+					<h2 style="margin-top: 0; color: var(--page-highlight-color)">Supers <small style="color: rgba(255,255,255,0.5);">[ Heroes <small>and</small> Villains ]</small></h2>
 				</panel-header-left>
 				<panel-header-center style="padding: 0;">::</panel-header-center>
-				<panel-header-right 
-					style="background-color: var(--panel-background-color); 
+				<panel-header-right style="background-color: var(--panel-background-color); 
 							align-self: start;
-							justify-self: auto;
+							justify-self: end;
 							padding: .5rem;">
-					[ search box ]
+					<label>
+						<input
+							autocomplete="on"
+							autocorrect="off"
+							list="browsers"
+							spellcheck="false"
+							type="search" />
+					</label>
+					<datalist id="browsers">
+						<option value="Edge">
+						<option value="Firefox">
+						<option value="Chrome">
+						<option value="Opera">
+						<option value="Safari">
+					  </datalist>
 				</panel-header-right>
 			</panel-header>
 			<panel-content>
@@ -223,9 +237,9 @@
 						</table-content>
 						<table-content>
 							<p>Total: [ 
-								<span style="font-family: var(--agency); color: var(--page-highlight-color);">35</span> ] Page: [ 
-								<span style="font-family: var(--agency); color: var(--page-highlight-color);">02</span> / 
-								<span style="font-family: var(--agency); color: var(--page-highlight-color);">05</span> ]
+								<span style="font-family: var(--agency); color: var(--page-highlight-color); letter-spacing: var(--agency-letter-spacing);">35</span> ] Page: [ 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color); letter-spacing: var(--agency-letter-spacing);">02</span> / 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color); letter-spacing: var(--agency-letter-spacing);">05</span> ]
 							</p>
 							<ol>
 								<li>
@@ -314,9 +328,9 @@
 						</table-content>
 						<table-content>
 							<p>Total: [ 
-								<span style="font-family: var(--agency); color: var(--page-highlight-color);">35</span> ] Page: [ 
-								<span style="font-family: var(--agency); color: var(--page-highlight-color);">03</span> / 
-								<span style="font-family: var(--agency); color: var(--page-highlight-color);">05</span> ]</p>
+								<span style="font-family: var(--agency); color: var(--page-highlight-color); letter-spacing: var(--agency-letter-spacing);">35</span> ] Page: [ 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color); letter-spacing: var(--agency-letter-spacing);">03</span> / 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color); letter-spacing: var(--agency-letter-spacing);">05</span> ]</p>
 							<ol>
 								<li>
 									<table-cell>
@@ -404,9 +418,9 @@
 						</table-content>
 						<table-content>
 							<p>Total: [ 
-								<span style="font-family: var(--agency); color: var(--page-highlight-color);">35</span> ] Page: [ 
-								<span style="font-family: var(--agency); color: var(--page-highlight-color);">04</span> / 
-								<span style="font-family: var(--agency); color: var(--page-highlight-color);">05</span> ]</p>
+								<span style="font-family: var(--agency); color: var(--page-highlight-color); letter-spacing: var(--agency-letter-spacing);">35</span> ] Page: [ 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color); letter-spacing: var(--agency-letter-spacing);">04</span> / 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color); letter-spacing: var(--agency-letter-spacing);">05</span> ]</p>
 							<ol>
 								<li>
 									<table-cell>
@@ -494,9 +508,9 @@
 						</table-content>
 						<table-content>
 							<p>Total: [ 
-								<span style="font-family: var(--agency); color: var(--page-highlight-color);">35</span> ] Page: [ 
-								<span style="font-family: var(--agency); color: var(--page-highlight-color);">05</span> / 
-								<span style="font-family: var(--agency); color: var(--page-highlight-color);">05</span> ]</p>
+								<span style="font-family: var(--agency); color: var(--page-highlight-color); letter-spacing: var(--agency-letter-spacing);">35</span> ] Page: [ 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color); letter-spacing: var(--agency-letter-spacing);">05</span> / 
+								<span style="font-family: var(--agency); color: var(--page-highlight-color); letter-spacing: var(--agency-letter-spacing);">05</span> ]</p>
 							<ol>
 								<li>
 									<table-cell>
@@ -893,6 +907,8 @@
 			<page-footer-right>Version :: <span style="font-family: var(--agency); letter-spacing: var(--agency-letter-spacing);">0.0000001</span></page-footer-right>
 		</page-footer>
 	</page-container>
+	<script src="https://kit.fontawesome.com/85eb7e639c.js" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/split-grid/dist/split-grid.js"></script>
 </body>
 
 </html>
