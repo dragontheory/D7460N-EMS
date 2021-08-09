@@ -34,6 +34,7 @@
 }
 [type="search"]:focus-visible {
     outline: -webkit-focus-ring-color auto 0;
+    outline: -moz-focus-ring-color auto 0;
 }
 option {
     padding: 5px;
