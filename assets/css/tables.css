@@ -59,12 +59,12 @@ table-content ol > li {
 	grid-template-rows: 1fr;
 	/* border: solid 1px yellow; */
 	border-radius: 0.3rem;
-	background-color: var(--panel-background-color);
+	background-color: var(--panel-bg-color);
 	align-content: center;
 	transition: all 250ms;
 }
 table-content ol > li:hover {
-background-color: var(--page-background-color-hover);/* #00a1ff */
+background-color: var(--page-bg-color-hover);/* #00a1ff */
 }
 table-cell {
 	display: grid;

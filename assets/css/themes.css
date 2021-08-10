@@ -12,30 +12,30 @@
 	--page-link: rgb(0,161,255,0.2); /* #00a1ff */
 
 	/* LIGHT THEME DEFINITIONS */
-	--light-theme-page-background-color: #8E9196; /*#D7dAE0;*/
+	--light-theme-page-bg-color: #DDDDDD; /*#8E9196 #D7dAE0;*/
 	--light-theme-page-text-color: #1A1E23;
 	--light-theme-logo-color: #1e1c29;
 	--light-theme-logo-color-hover: #D7dAE0;
-	--light-theme-panel-background-color: rgba(255, 255, 255, 0.03);
+	--light-theme-panel-bg-color: rgba(255,255,255,0.3);
 
 	/* DARK THEME DEFINITIONS */
-	/* --dark-theme-page-background-image: url('/assets/images/3px-tile.png'); */
-	--dark-theme-page-background-color: #1A1E23;
-	--dark-theme-page-background-color-hover: rgb(0,161,255,0.2);
+	/* --dark-theme-page-bg-image: url('/assets/images/3px-tile.png'); */
+	--dark-theme-page-bg-color: rgba(37,40,48,1.0);/*#1A1E23;*/
+	--dark-theme-page-bg-color-hover: rgba(102,175,233,0.1);
 	--dark-theme-page-text-color: #8E9196;
 	--dark-theme-page-text-color-hover: #D7DAE0;
 	--dark-theme-page-text-color-notes: #3B3E43;
-	--dark-theme-page-text-color-links: rgb(0,161,255,0.7); /* #00a1ff */
+	--dark-theme-page-text-color-links: rgba(102,175,233,1.0); /* #00a1ff */
 	--dark-theme-page-text-color-links-hover: rgb(0,161,255,1.0); /* #00a1ff */
 	--dark-theme-logo-color: #FFFFFF; /* #8E9196 */
 	--dark-theme-logo-color-hover: #D7DAE0;
-	--dark-theme-panel-background-color: rgba(255, 255, 255, 0.03);
+	--dark-theme-panel-bg-color: rgba(255, 255, 255, 0.03);
 	--dark-theme-highlight-color: #D7DAE0;
 
 	/* DEFAULT THEME [ DARK ]*/
-	--page-background-color: var(--dark-theme-page-background-color);
-	--page-background-color-hover: var(--dark-theme-page-background-color-hover);
-	--page-background-image: var(--dark-theme-page-background-image);
+	--page-bg-color: var(--dark-theme-page-bg-color);
+	--page-bg-color-hover: var(--dark-theme-page-bg-color-hover);
+	--page-bg-image: var(--dark-theme-page-bg-image);
 	--page-text-color: var(--dark-theme-page-text-color);
 	--page-text-color-hover: var(--dark-theme-page-text-color-hover);
 	--page-text-color-notes: var(--dark-theme-page-text-color-notes);
@@ -46,16 +46,17 @@
 	--page-highlight-color: var(--dark-theme-highlight-color);
 
 	/* PANELS */
-	--panel-background-color: var(--dark-theme-panel-background-color);
+	--panel-bg-color: var(--dark-theme-panel-bg-color);
   }
 
   /* THEME TOGGLE CONTROLS */
   #themeToggle:checked ~ page-container {
 	/* LIGHT THEME */
-	--page-background-color: var(--light-theme-page-background-color);
+	--page-bg-color: var(--light-theme-page-bg-color);
 	--page-text-color: var(--light-theme-page-text-color);
 	--page-logo-color: var(--light-theme-logo-color);
 	--page-logo-color-hover: var(--light-theme-logo-color-hover);
+	--panel-bg-color: var(--light-theme-panel-bg-color);
   }
   input#themeToggle + label {
 	display: grid;
@@ -64,7 +65,7 @@
 	right: 238px;
 	width: 40px;
 	height: 19px;
-	background-color: var(--page-background-color);
+	background-color: var(--page-bg-color);
 	border-radius: 3px;
 	cursor: pointer;
 	transition: 250ms;
@@ -74,7 +75,7 @@
 		content: "";
 		width: 13px;
 		height: 13px;
-		background-color: var(--page-background-color-hover);
+		background-color: var(--page-bg-color-hover);
 		position: absolute;
 		border-radius: 3px;
 		left: 5px;
@@ -85,14 +86,14 @@
 		left: calc(100% - 5px);
   		transform: translateX(-100%);
 	}
-	input:checked#themeToggle + label {background-color: var(--page-background-color);}
+	input:checked#themeToggle + label {background-color: var(--page-bg-color);}
 	input:checked#themeToggle + label:active:after {width: 13px;}
 
 
 html,
 body {
-	background-color: var(--page-background-color);
-	background-image: var(--page-background-image);
+	background-color: var(--page-bg-color);
+	background-image: var(--page-bg-image);
 }
   body > label {
 	  border-right: solid 1px var(--page-text-color-notes);
@@ -102,12 +103,12 @@ body {
   body label[for*='themeToggle'] {border-right: none;}
 
   page-container {
-	background-color: var(--page-background-color);
+	background-color: var(--page-bg-color);
 	color: var(--page-text-color);
 	transition: var(--transition);
   }
   /* All immediate children of page-container */
-  page-container > * {background-color: var(--panel-background-color);}
+  page-container > * {background-color: var(--panel-bg-color);}
   /* @media (prefers-color-scheme: dark) {
 	path {fill: #8E9196;}
 	} */

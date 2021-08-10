@@ -14,7 +14,7 @@
     display: none !important;
 }
 [type="search"] {
-    background-color: var(--panel-background-color);
+    background-color: var(--panel-bg-color);
     color: var(--page-highlight-color);
     padding: 10px 15px;
     border: none;
