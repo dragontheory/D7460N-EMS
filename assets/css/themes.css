@@ -20,7 +20,7 @@
 
 	/* DARK THEME DEFINITIONS */
 	/* --dark-theme-page-bg-image: url('/assets/images/3px-tile.png'); */
-	--dark-theme-page-bg-color: rgba(37,40,48,1.0);/*#1A1E23;*/
+	--dark-theme-page-bg-color: radial-gradient(rgb(51, 51, 51), rgb(11, 17, 20));/*rgba(37,40,48,1.0); #1A1E23;*/
 	--dark-theme-page-bg-color-hover: rgba(102,175,233,0.1);
 	--dark-theme-page-text-color: #8E9196;
 	--dark-theme-page-text-color-hover: #D7DAE0;
@@ -30,7 +30,8 @@
 	--dark-theme-logo-color: #FFFFFF; /* #8E9196 */
 	--dark-theme-logo-color-hover: #D7DAE0;
 	--dark-theme-panel-bg-color: rgba(255, 255, 255, 0.03);
-	--dark-theme-highlight-color: #D7DAE0;
+	--dark-theme-emphasis-color: #D7DAE0;
+	--dark-theme-de-emphasis-color: #rgba(255,255,255,0.5);
 
 	/* DEFAULT THEME [ DARK ]*/
 	--page-bg-color: var(--dark-theme-page-bg-color);
@@ -43,7 +44,8 @@
 	--page-text-color-links-hover: var(--dark-theme-page-text-color-links-hover);
 	--page-logo-color: var(--dark-theme-logo-color);
 	--page-logo-color-hover: var(--dark-theme-logo-color-hover);
-	--page-highlight-color: var(--dark-theme-highlight-color);
+	--page-emphasis-color: var(--dark-theme-emphasis-color);
+	--page-de-emphasis-color: var(--dark-theme-de-emphasis-color);
 
 	/* PANELS */
 	--panel-bg-color: var(--dark-theme-panel-bg-color);
@@ -65,11 +67,11 @@
 	right: 238px;
 	width: 40px;
 	height: 19px;
-	background-color: var(--page-bg-color);
+	background-color: rgba(0,0,0,0.1);
 	border-radius: 3px;
 	cursor: pointer;
 	transition: 250ms;
-	box-shadow: inset 1px -1px 0 0 rgba(255, 255, 255, 0.1);
+	box-shadow: inset 1px -1px 0 0 rgba(255,255,255,0.1);
 	}
 	input#themeToggle + label::after {
 		content: "";
@@ -113,7 +115,7 @@ body {
 	path {fill: #8E9196;}
 	} */
 svg {
-	fill: var(--page-highlight-color);
+	fill: var(--page-emphasis-color);
 	transition: var(--transition);
 }
 svg:hover {
@@ -126,4 +128,10 @@ page-container page-header page-header-left page-logo {
 }
 page-container page-header page-header-left page-logo:hover {
 	color: var(--page-logo-color-hover);
+}
+page-container {
+	background-color: #063d4c;
+    -webkit-box-shadow: inset 0px 0px 150px 0px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: inset 0px 0px 150px 0px rgba(0, 0, 0, 0.8);
+    box-shadow: inset 0px 0px 150px 0px rgba(0, 0, 0, 0.8)
 }

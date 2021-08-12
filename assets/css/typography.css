@@ -1,6 +1,6 @@
 :root {
-    --agency: Agency, Agency FB, Agency FB Regular, Tahoma, serif;
-    --agency-letter-spacing: .1rem;
+    --font01: Agency, Agency FB, Agency FB Regular, Tahoma, serif;
+    --font01-letter-spacing: .1rem;
 }
 /* Logo Text 'D7460N' */
 /* page-container page-header page-header-left logo-text {
@@ -21,7 +21,7 @@ page-container page-header page-header-left logo-text {
     font-size: 3rem;
     letter-spacing: 0.01rem;
     transform: scale(1, 0.7);
-    color: var(--page-highlight-color);
+    color: var(--page-emphasis-color);
 }
 /* Logo Text 2 'CMS' */
 /* page-container page-header page-header-left logo-text-2 {
@@ -41,7 +41,7 @@ page-container page-header page-header-left logo-text-2 {
     top: 15px;
     transform: scale(0.5, 0.3);
     position: absolute;
-    font-family: var(--agency);
+    font-family: var(--font01);
     font-size: 2.7rem;
     letter-spacing: 0.01rem;
 }
@@ -63,7 +63,7 @@ page-container page-header page-header-left logo-text-3 {
     top: 2.2rem;
     transform: scale(0.51, 0.3);
     position: absolute;
-    font-family: var(--agency);
+    font-family: var(--font01);
     font-size: 2rem;
     letter-spacing: 0.02rem;
     text-transform: uppercase;
@@ -86,7 +86,7 @@ page-container page-header page-header-left logo-text-4 {
     top: 2.05rem;
     transform: scale(1, 1);
     position: absolute;
-    font-family: var(--agency);
+    font-family: var(--font01);
     font-size: 0.8rem;
     letter-spacing: 0.04rem;
     font-variant: small-caps;
@@ -119,20 +119,20 @@ h2,
 h3,
 h4,
 h5	{
-	font-family: var(--agency);
+	font-family: var(--font01);
 	text-transform: uppercase;
     font-weight: 100;
 	padding: 0 1rem;
-    color: var(--page-highlight-color);
-    letter-spacing: var(--agency-letter-spacing);
+    color: var(--page-emphasis-color);
+    letter-spacing: var(--font01-letter-spacing);
 }
 panel-header h2 {
     margin: 0;
     padding-left: 0;
-    color: var(--page-highlight-color);
+    color: var(--page-emphasis-color);
 }
 highlight-h1 {
-    font-family: var(--agency);
+    font-family: var(--font01);
     font-size: 2rem;
-    color: var(--page-highlight-color);
+    color: var(--page-emphasis-color);
 }

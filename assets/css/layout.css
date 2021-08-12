@@ -3,27 +3,27 @@
 /*------------------------------------*\
 			DEFINITIONS
 \*------------------------------------*/
-	--display: 						grid;
-	--columns: 						repeat(8, 1fr);
-	--rows: 						auto 1fr auto;
-	--gap: 							20px 20px;
-	--height: 						100vh;
-	--width: 						100vw;
-	--margin: 						0;
-	--padding: 						0;
-	--container-padding: 			20px;
-	--overflow: 					hidden;
-	--font-family: 					Calibri, "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+	--display: grid;
+	--columns: repeat(8, 1fr);
+	--rows: auto 1fr auto;
+	--gap: 20px 20px;
+	--height: 100vh;
+	--width: 100vw;
+	--margin: 0;
+	--padding: 0;
+	--container-padding: 20px;
+	--overflow: hidden;
+	--font-family: Calibri, "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
 
 /*	PANEL
-*/	--panel-padding: 				1em;
-	--panel-content-overflow: 		auto;
+*/	--panel-padding: 1em;
+	--panel-content-overflow: auto;
 
 /*	UTILITY
-*/	--display-none: 				none;
-	--box-sizing: 					border-box;
-	--transition: 					all 250ms;
-	--border-radius:				5px;
+*/	--display-none: none;
+	--box-sizing: border-box;
+	--transition: all 250ms;
+	--border-radius: 5px;
 }
 *:before,
 *:after,
@@ -32,32 +32,32 @@
 ::before {box-sizing: border-box;}
 html,
 body {
-	margin: 						var(--margin);
-	padding: 						var(--padding);
-	font-family: 					var(--font-family);
-	-webkit-font-smoothing: 		antialiased;
-  	-moz-osx-font-smoothing: 		grayscale;
-	font-smooth: 					auto;
+	margin: var(--margin);
+	padding: var(--padding);
+	font-family: var(--font-family);
+	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+	font-smooth: auto;
 }
 
 content-section {
-	overflow-y: 					auto;
+	overflow-y: auto;
 	/* background-color: 			rgba(0,0,0,0.1); */
 }
 
 /* Seven middle columns */
 page-container {
 	display: grid;
-	grid-template-columns: 			var(--columns);
-	grid-template-rows: 			var(--rows);
-	gap: 							var(--gap);
-	padding: 						var(--container-padding);
-	height: 						var(--height);
+	grid-template-columns: var(--columns);
+	grid-template-rows: var(--rows);
+	gap: var(--gap);
+	padding: var(--container-padding);
+	height: var(--height);
 }
 /* All immediate children of page-container */
 page-container > * {
-	display: 						grid;
-	border-radius: 					0.3rem;
+	display: grid;
+	border-radius: 0.3rem;
 }
 /*
 HEADER/FOOTER
@@ -68,99 +68,99 @@ Span the first and the last child elements across all seven columns starting at 
 /* HEADER and FOOTER layout */
 page-container page-header,
 page-container page-footer {
-	display: 						grid;
-	grid-column: 					1 / -1;
-	grid-template-columns: 			1fr 1fr 1fr;
+	display: grid;
+	grid-column: 1 / -1;
+	grid-template-columns: 1fr 1fr 1fr;
 }
 	/* HEADER left */
 	page-container page-header page-header-left {
-		display: 					grid;
-		justify-self: 				left;
-		align-self: 				center;
+		display: grid;
+		justify-self: left;
+		align-self: center;
 	}
 		/* HEADER left logo */
 		page-container page-header page-header-left svg {
-			position: 				absolute; /* ignore padding */
-			top: 					2px;
-			left: 					20px;
-			height: 				85px;
+			position: absolute; /* ignore padding */
+			top: 2px;
+			left: 20px;
+			height: 85px;
 	    }
 
 	/* HEADER center banner */
 	page-container page-header page-header-center {
-		padding: 					var(--panel-padding);
-		justify-self: 				center;
-		align-content: 				start;
+		padding: var(--panel-padding);
+		justify-self: center;
+		align-content: start;
 	}
 	/* HEADER right Username */
 	page-container page-header page-header-right {
-		padding: 					var(--panel-padding);
-		justify-self: 				right;
-		align-self: 				center;
+		padding: var(--panel-padding);
+		justify-self: right;
+		align-self: center;
 	}
 	/* FOOTER left */
 	page-container page-footer page-footer-left  {
-		padding: 					var(--panel-padding);
-		justify-self: 				left;
-		align-self: 				center;
+		padding: var(--panel-padding);
+		justify-self: left;
+		align-self: center;
 	}
 	/* FOOTER center banner */
 	page-container page-footer page-footer-center {
-		padding: 					var(--panel-padding);
-		justify-self: 				center;
-		align-self: 				center;
+		padding: var(--panel-padding);
+		justify-self: center;
+		align-self: center;
 	}
 	/* FOOTER right */
 	page-container page-footer page-footer-right {
-		padding: 					var(--panel-padding);
-		justify-self: 				right;
-		align-self: 				center;
+		padding: var(--panel-padding);
+		justify-self: right;
+		align-self: center;
 	}
 	/* Middle columns and their vertical layout */
 	page-container page-panel {
-		grid-template-rows: 		auto 1fr auto;
-		position: 					relative;
-		overflow-y: 				hidden;
+		grid-template-rows: auto 1fr auto;
+		position: relative;
+		overflow-y: hidden;
 	}
 		/* Middle columns HEADERS and FOOTERS */
 		page-container page-panel panel-header,
 		page-container page-panel panel-footer {
-			display: 				grid;
-			grid-template-columns:	1fr auto 1fr;
+			display: grid;
+			grid-template-columns: 1fr auto 1fr;
 		}
 			/* Middle columns HEADERS and FOOTERS left */
 			page-container page-panel panel-header panel-header-left,
 			page-container page-panel panel-footer panel-footer-left {
-				padding: 			var(--panel-padding);
-				justify-self: 		left;
-				align-self: 		center;
+				padding: var(--panel-padding);
+				justify-self: left;
+				align-self: center;
 			}
 			/* Middle columns HEADERS and FOOTERS right */
 			page-container page-panel panel-header panel-header-right,
 			page-container page-panel panel-footer panel-footer-right {
-				padding: 			var(--panel-padding);
-				justify-self: 		right;
-				align-self: 		center;
+				padding: var(--panel-padding);
+				justify-self: right;
+				align-self: center;
 			}
 			/* Middle columns HEADERS and FOOTERS center */
 			page-container page-panel panel-header panel-header-center,
 			page-container page-panel panel-footer panel-footer-center {
-				padding: 			var(--panel-padding);
-				justify-self: 		center;
-				align-self: 		center;
+				padding: var(--panel-padding);
+				justify-self: center;
+				align-self: center;
 			}
 	/* Middle columns CONTENT */
 	page-container page-panel panel-content {
-		display: 					grid;
-		grid-template-columns: 		1fr;
-		overflow: 					hidden;
-		align-content: 				start;
+		display: grid;
+		grid-template-columns: 1fr;
+		overflow: hidden;
+		align-content: start;
 	}
 	/* Middle columns CONTENT SPLIT */
 	page-container page-panel panel-content-split {
-		display: 					grid;
-		grid-template-columns: 		1fr 1fr;
-		overflow: 					hidden;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		overflow: hidden;
 	}
 
 
@@ -181,8 +181,8 @@ body > label {
   cursor: pointer;
   transition: var(--transition);
   padding: 5px 10px;
-  font-family: var(--agency);
-  letter-spacing: var(--agency-letter-spacing);
+  font-family: var(--font01);
+  letter-spacing: var(--font01-letter-spacing);
 }
 
 input#layoutToggle01:checked + label,
@@ -226,10 +226,14 @@ input#layoutToggle02:checked ~ page-container > :nth-child(n+4):nth-child(-n+13)
 /*------------------------------------*\
 				LAYOUT 03
 \*------------------------------------*/
-input#layoutToggle03:checked ~ page-container {
-	grid-template-columns: 250px 1fr .5fr; /* NAV | RESULTS | PROFILE */
-}
-input#layoutToggle03:checked ~ page-container > :nth-child(n+5):nth-child(-n+13) {display: none;}
+/* EQCSS */
+@element 'html body tab-content' and ('h2') {
+	input#layoutToggle03:checked ~ page-container {
+		grid-template-columns: 250px 1fr .5fr; /* NAV | RESULTS | PROFILE */
+	}
+	input#layoutToggle03:checked ~ page-container > :nth-child(n+5):nth-child(-n+13) {display: none;}
+	
+  }
 
 
 /*------------------------------------*\
@@ -250,3 +254,6 @@ input#layoutToggle05:checked ~ page-container {
 input#layoutToggle05:checked ~ page-container > :nth-child(n+2):nth-child(-n+9) {display: none;}
 
 
+/*------------------------------------*\
+				EQCSS
+\*------------------------------------*/
