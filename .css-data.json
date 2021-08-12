@@ -1,0 +1,9 @@
+{
+    "version": 1.1,
+    "properties": [],
+    "atDirectives": [
+        { "name": "@element", "description": "EQCSS element query" }
+    ],
+    "pseudoClasses": [],
+    "pseudoElements": []
+  }
