@@ -208,10 +208,10 @@ input#layoutToggle01:checked ~ page-container {
 	grid-template-rows: auto auto 1fr auto;
 }
 input#layoutToggle01:checked ~ page-container > :nth-child(n+2):nth-child(-n+5) {display: none;}
-input#layoutToggle01:checked ~ page-container > page-panel:nth-child(6)
-{grid-row: 2/4;}
-input#layoutToggle01:checked ~ page-container > page-panel:nth-child(8)
-{display: none;}
+input#layoutToggle01:checked ~ page-container > page-panel:nth-child(6) {
+	grid-row: 2/4;
+}
+input#layoutToggle01:checked ~ page-container > page-panel:nth-child(8) {display: none;}
 
 
 /*------------------------------------*\

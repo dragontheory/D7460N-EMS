@@ -110,7 +110,9 @@ body {
 	transition: var(--transition);
   }
   /* All immediate children of page-container */
-  page-container > * {background-color: var(--panel-bg-color);}
+  page-container > * {
+	  background-color: var(--panel-bg-color);
+	}
   /* @media (prefers-color-scheme: dark) {
 	path {fill: #8E9196;}
 	} */
