@@ -10,51 +10,59 @@ https://codepen.io/dragontheory/pen/gOWEKgr?editors=1100
     to, 20%, 40%, 60%, 80% {opacity: 1;}
     from, 10%, 30%, 50%, 70%, 90% {opacity: 0;}
   }
-  page-panel:nth-of-type(1) {
+  page-header {
     -webkit-animation: entrance 400ms 0ms linear backwards 1;
     animation: entrance 400ms 0ms linear backwards 1;
   }
-  page-panel:nth-of-type(2) {
+  page-footer {
+    -webkit-animation: entrance 400ms 200ms linear backwards 1;
+    animation: entrance 400ms 200ms linear backwards 1;
+  }
+  page-panel:nth-of-type(1) {
     -webkit-animation: entrance 400ms 400ms linear backwards 1;
     animation: entrance 400ms 400ms linear backwards 1;
+  }
+  page-panel:nth-of-type(2) {
+    -webkit-animation: entrance 400ms 600ms linear backwards 1;
+    animation: entrance 400ms 600ms linear backwards 1;
   }
   page-panel:nth-of-type(3) {
     -webkit-animation: entrance 400ms 200ms linear backwards 1;
     animation: entrance 400ms 200ms linear backwards 1;
   }
   page-panel:nth-of-type(4) {
-    -webkit-animation: entrance 400ms 400ms linear backwards 1;
-    animation: entrance 400ms 400ms linear backwards 1;
+    -webkit-animation: entrance 400ms 200ms linear backwards 1;
+    animation: entrance 400ms 200ms linear backwards 1;
   }
   page-panel:nth-of-type(5) {
-    -webkit-animation: entrance 400ms 800ms linear backwards 1;
-    animation: entrance 400ms 800ms linear backwards 1;
-  }
-  page-panel:nth-of-type(6) {
-    -webkit-animation: entrance 400ms 1000ms linear backwards 1;
-    animation: entrance 400ms 1000ms linear backwards 1;
-  }
-  page-panel:nth-of-type(7) {
     -webkit-animation: entrance 400ms 1200ms linear backwards 1;
     animation: entrance 400ms 1200ms linear backwards 1;
   }
-  page-panel:nth-of-type(8) {
+  page-panel:nth-of-type(6) {
     -webkit-animation: entrance 400ms 1400ms linear backwards 1;
     animation: entrance 400ms 1400ms linear backwards 1;
   }
+  page-panel:nth-of-type(7) {
+    -webkit-animation: entrance 400ms 1600ms linear backwards 1;
+    animation: entrance 400ms 1600ms linear backwards 1;
+  }
+  page-panel:nth-of-type(8) {
+    -webkit-animation: entrance 400ms 1800ms linear backwards 1;
+    animation: entrance 400ms 1800ms linear backwards 1;
+  }
   page-panel:nth-of-type(9) {
+    -webkit-animation: entrance 400ms 200ms linear backwards 1;
+    animation: entrance 400ms 20ms linear backwards 1;
+  }
+  page-panel:nth-of-type(10) {
+    -webkit-animation: entrance 400ms 400ms linear backwards 1;
+    animation: entrance 400ms 400ms linear backwards 1;
+  }
+  page-panel:nth-of-type(11) {
     -webkit-animation: entrance 400ms 600ms linear backwards 1;
     animation: entrance 400ms 600ms linear backwards 1;
   }
-  page-panel:nth-of-type(10) {
-    -webkit-animation: entrance 400ms 1000ms linear backwards 1;
-    animation: entrance 400ms 1000ms linear backwards 1;
-  }
-  page-panel:nth-of-type(11) {
-    -webkit-animation: entrance 400ms 1400ms linear backwards 1;
-    animation: entrance 400ms 1400ms linear backwards 1;
-  }
   page-panel:nth-of-type(12) {
-    -webkit-animation: entrance 400ms 1800ms linear backwards 1;
-    animation: entrance 400ms 1800ms linear backwards 1;
+    -webkit-animation: entrance 400ms 800ms linear backwards 1;
+    animation: entrance 400ms 800ms linear backwards 1;
   }
