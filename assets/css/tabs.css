@@ -15,7 +15,7 @@ tab-container > label {
 	cursor: pointer;
 	transition: color 250ms;
 	color: var(--page-text-color);
-	padding: 5px 1em;
+	padding: 5px 10px;
 	border-right: solid 1px var(--page-text-color-notes);
 	justify-self: center;
 }
