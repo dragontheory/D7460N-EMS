@@ -30,8 +30,8 @@
 	--dark-theme-logo-color: #FFFFFF; /* #8E9196 */
 	--dark-theme-logo-color-hover: #D7DAE0;
 	--dark-theme-panel-bg-color: rgba(255, 255, 255, 0.03);
-	--dark-theme-emphasis-color: #D7DAE0;
-	--dark-theme-de-emphasis-color: #rgba(255,255,255,0.5);
+	--dark-theme-high-light-color: #D7DAE0;
+	--dark-theme-low-light-color: #rgba(255,255,255,0.5);
 
 	/* DEFAULT THEME [ DARK ]*/
 	--page-bg-color: var(--dark-theme-page-bg-color);
@@ -44,8 +44,8 @@
 	--page-text-color-links-hover: var(--dark-theme-page-text-color-links-hover);
 	--page-logo-color: var(--dark-theme-logo-color);
 	--page-logo-color-hover: var(--dark-theme-logo-color-hover);
-	--page-emphasis-color: var(--dark-theme-emphasis-color);
-	--page-de-emphasis-color: var(--dark-theme-de-emphasis-color);
+	--page-high-light-color: var(--dark-theme-high-light-color);
+	--page-low-light-color: var(--dark-theme-low-light-color);
 
 	/* PANELS */
 	--panel-bg-color: var(--dark-theme-panel-bg-color);
@@ -117,7 +117,7 @@ body {
 	path {fill: #8E9196;}
 	} */
 svg {
-	fill: var(--page-emphasis-color);
+	fill: var(--page-high-light-color);
 	transition: var(--transition);
 }
 svg:hover {

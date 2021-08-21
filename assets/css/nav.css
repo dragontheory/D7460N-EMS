@@ -29,7 +29,7 @@ nav-container > label {
 		letter-spacing: var(--font01-letter-spacing);
 	}
 	nav-container > label > small > span {
-		color: var(--page-emphasis-color);
+		color: var(--page-high-light-color);
 	}
 	nav-container > label:hover {
 		background-color: var(--page-bg-color-hover);
@@ -69,7 +69,7 @@ nav-container > label {
 		color: rgba(255,255,255,0.5);
 	}
 	nav-content > label > small > span {
-		color: var(--page-emphasis-color);
+		color: var(--page-high-light-color);
 	}
 	nav-content > label:hover {
 		background-color: var(--page-bg-color-hover);
