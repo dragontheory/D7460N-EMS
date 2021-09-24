@@ -1,0 +1,61 @@
+.scroll-progress-to-top-container {
+/*   height: 200vh;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: row;
+  margin: 0 auto;
+  justify-content: center; */
+  position: absolute;
+  opacity: 1.0;
+  transition: opacity 1000ms;
+  bottom: 0;
+  right: 0;
+}
+
+.scroll-progress-to-top-container:before {
+  content: "";
+  position: relative;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 125vmax;
+  height: 125vmax;
+  border-radius: 100%;
+  background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+  transition: all 500ms cubic-bezier(.49,.23,0,.99) ;
+  opacity: 0;
+}
+
+.scroll-progress-to-top-container.completed:before{
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0.5;
+}
+
+.scroll-progress-to-top-container svg {
+  position: sticky;
+  transform: rotate(-90deg);
+}
+
+.scroll-progress-to-top-container svg circle {
+  stroke: rgba(0,0,0,0.1);
+  stroke-width: 5px;
+  stroke-linecap: round;
+  fill: transparent;
+}
+
+.scroll-progress-to-top-container svg .progress-bar {
+  stroke: url(#grad);
+  transition: stroke-dashoffset 0 ease-in-out; 
+  filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.2));
+}
+
+.scroll-progress-to-top-container .pct {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-feature-settings: "tnum"; 
+  font-variant-numeric: tabular-nums;
+  color: cyan;
+}
+.scroll-progress-to-top-container.hide {
+  opacity: 0.0;
+}

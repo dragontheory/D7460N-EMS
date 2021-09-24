@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="assets/css/accordions.css" />
 	<link rel="stylesheet" href="assets/css/nav.css" />
 	<link rel="stylesheet" href="assets/css/data-lists.css" />
+	<link rel="stylesheet" href="assets/css/scrollProgressToTop.css" />
 	<link rel="stylesheet" href="assets/css/media-queries.css" />
 	<link rel="stylesheet" href="assets/css/animations.css" />
 </head>
@@ -731,6 +732,19 @@
 								</div>
 							</div>
 						</div>
+						<div class="scroll-progress-to-top-container hide">
+							<p class="pct">0%</p>
+							<svg class="complete" width="100" height="100" viewport="0 0 50 50" xmlns="https://www.w3.org/2000/svg">
+							  <defs>
+								<linearGradient id="grad">
+								<stop offset="0%" stop-color="#fbc2eb"></stop>
+								<stop offset="100%" stop-color="#a6c1ee"></stop>
+							  </linearGradient>
+							  </defs>
+							  <circle cx="50" cy="50" r="40"></circle>
+							  <circle class="progress-bar" cx="50" cy="50" r="40"></circle>
+							</svg>
+						  </div>
 					</tab-content>
 					<tab-content>
 						<accordion-container>
@@ -965,6 +979,7 @@
 	<!--[if lt IE 9]>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/eqcss/1.9.2/EQCSS-polyfills.min.js"></script>
 	<![endif]-->
+	<script src="assets/js/scrollProgressToTop.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/eqcss/1.9.2/EQCSS.min.js"></script>
 	<script src="assets/js/eqcss.js"></script>
 </body>
