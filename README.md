@@ -1,6 +1,6 @@
 <h1 align="center" width="200"><img src="assets/images/logos/logo_380x380_.svg" /></h1>
 
-# **D7460N Data Management System | DMS**
+# **D7460N DMS | Data Management System**
 
 ## Your data your way. **Fast**&#160;/&#160;**Easy**&#160;/&#160;**Secure**
 
