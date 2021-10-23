@@ -37,7 +37,7 @@ page-container page-header page-header-left logo-text {
 } */
 page-container page-header page-header-left logo-text-2 {
     display: grid;
-    left: 194px;
+    left: 197px;
     top: 16px;
     transform: scale(0.5, 0.3);
     position: absolute;
@@ -59,7 +59,7 @@ page-container page-header page-header-left logo-text-2 {
 } */
 page-container page-header page-header-left logo-text-3 {
     display: grid;
-    left: 9.95rem;
+    left: 10.15rem;
     top: 2.2rem;
     transform: scale(0.51, 0.3);
     position: absolute;
@@ -82,7 +82,7 @@ page-container page-header page-header-left logo-text-3 {
 } */
 page-container page-header page-header-left logo-text-4 {
     display: grid;
-    left: 14.8rem;
+    left: 15rem;
     top: 2rem;
     transform: scale(1, 1);
     position: absolute;
