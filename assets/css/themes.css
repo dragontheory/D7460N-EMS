@@ -105,10 +105,10 @@ body {
   body label[for*='themeToggle'] {border-right: none;}
 
   page-container {
-	background-color: var(--page-bg-color);
-	color: var(--page-text-color);
-	transition: var(--transition);
-  }
+    background-color: var(--page-bg-color);
+    color: var(--page-text-color);
+    transition: var(--transition);
+}
   /* All immediate children of page-container */
   page-container > * {
 	  background-color: var(--panel-bg-color);
@@ -126,7 +126,7 @@ svg:hover {
 	cursor: pointer;
 }
 page-container page-header page-header-left page-logo {
-	transition: var(--transition);
+    transition: var(--transition);
 }
 page-container page-header page-header-left page-logo:hover {
 	color: var(--page-logo-color-hover);
