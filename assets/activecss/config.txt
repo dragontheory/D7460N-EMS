@@ -1,0 +1,3 @@
+tab-content:empty(:not) {
+    body: add-class .open;
+}
