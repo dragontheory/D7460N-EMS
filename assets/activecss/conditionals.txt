@@ -1,0 +1,5 @@
+tab-content:if-empty:not:observe {
+    body { 
+        add-class .open;
+    };
+}
