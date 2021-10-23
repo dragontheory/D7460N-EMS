@@ -1,6 +1,8 @@
 :root {
     --font01: Agency, Agency FB, Agency FB Regular, Tahoma, serif;
     --font01-letter-spacing: .1rem;
+    --font03: Oxanium;
+    --font03-font-size: .9rem;
 }
 /* Logo Text 'D7460N' */
 /* page-container page-header page-header-left logo-text {
@@ -37,8 +39,8 @@ page-container page-header page-header-left logo-text {
 } */
 page-container page-header page-header-left logo-text-2 {
     display: grid;
-    left: 197px;
-    top: 16px;
+    left: 13rem;
+    top: 1.1rem;
     transform: scale(0.5, 0.3);
     position: absolute;
     font-family: var(--font01);
@@ -59,7 +61,7 @@ page-container page-header page-header-left logo-text-2 {
 } */
 page-container page-header page-header-left logo-text-3 {
     display: grid;
-    left: 10.15rem;
+    left: 10.8rem;
     top: 2.2rem;
     transform: scale(0.51, 0.3);
     position: absolute;
@@ -82,8 +84,8 @@ page-container page-header page-header-left logo-text-3 {
 } */
 page-container page-header page-header-left logo-text-4 {
     display: grid;
-    left: 15rem;
-    top: 2rem;
+    left: 15.7rem;
+    top: 2.1rem;
     transform: scale(1, 1);
     position: absolute;
     font-family: var(--font01);

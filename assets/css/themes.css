@@ -22,7 +22,7 @@
 	/* --dark-theme-page-bg-image: url('/assets/images/3px-tile.png'); */
 	--dark-theme-page-bg-color: radial-gradient(rgb(51, 51, 51), rgb(11, 17, 20));/*rgba(37,40,48,1.0); #1A1E23;*/
 	--dark-theme-page-bg-color-hover: rgba(102,175,233,0.1);
-	--dark-theme-page-text-color: #8E9196;
+	--dark-theme-page-text-color: #CCC;
 	--dark-theme-page-text-color-hover: #D7DAE0;
 	--dark-theme-page-text-color-notes: #3B3E43;
 	--dark-theme-page-text-color-links: rgba(102,175,233,1.0); /* #00a1ff */
@@ -96,6 +96,8 @@ html,
 body {
 	background-color: var(--page-bg-color);
 	background-image: var(--page-bg-image);
+	font-family: var(--font03);
+	font-size: var(--font03-font-size);
 }
   body > label {
 	  border-right: solid 1px var(--page-text-color-notes);
