@@ -61,7 +61,7 @@ page-container page-header page-header-left logo-text-2 {
 } */
 page-container page-header page-header-left logo-text-3 {
     display: grid;
-    left: 10.8rem;
+    left: 10.55rem;
     top: 2.2rem;
     transform: scale(0.51, 0.3);
     position: absolute;
@@ -90,7 +90,7 @@ page-container page-header page-header-left logo-text-4 {
     position: absolute;
     font-family: var(--font01);
     font-size: 0.8rem;
-    letter-spacing: 0.04rem;
+    letter-spacing: 0.07rem;
     font-variant: small-caps;
 }
 /* Text 5 'your way' */
