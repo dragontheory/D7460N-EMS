@@ -217,30 +217,19 @@ input#layoutToggle01:checked ~ page-container > page-panel:nth-child(8) {display
 /*------------------------------------*\
 				LAYOUT 02
 \*------------------------------------*/
-input#layoutToggle02:checked ~ page-container {
-	grid-template-columns: 250px 1fr; /* NAV | RESULTS */
-}
+input#layoutToggle02:checked ~ page-container {grid-template-columns: 250px 1fr;} /* NAV | RESULTS */
 input#layoutToggle02:checked ~ page-container > :nth-child(n+4):nth-child(-n+13) {display: none;}
+body.open input#layoutToggle02:checked ~ page-container {grid-template-columns: 250px 1fr .5fr;} /* NAV | RESULTS | PROFILE */
+body.open input#layoutToggle02:checked ~ page-container > :nth-child(4){display: grid;}
 
 
 /*------------------------------------*\
 				LAYOUT 03
 \*------------------------------------*/
-/* EQCSS */
-
 input#layoutToggle03:checked ~ page-container {
 	grid-template-columns: 250px 1fr .5fr; /* NAV | RESULTS | PROFILE */
 }
 input#layoutToggle03:checked ~ page-container > :nth-child(n+5):nth-child(-n+13) {display: none;}
-
-@element "page-panel:nth-of-type(3) panel-content tab-container tab-content:nth-of-type(3) p:empty" {
-	input#layoutToggle03:checked ~ page-container {
-		grid-template-columns: 250px 1fr;
-	}
-	page-panel:nth-of-type(3)  {
-	  display: none;
-	}
-}
 
 
 /*------------------------------------*\
@@ -259,14 +248,3 @@ input#layoutToggle05:checked ~ page-container {
 	grid-template-columns: 1fr 1fr 1fr 1fr; /* HOME | HOME | HOME | HOME */
 }
 input#layoutToggle05:checked ~ page-container > :nth-child(n+2):nth-child(-n+9) {display: none;}
-
-
-/*------------------------------------*\
-				EQCSS
-\*------------------------------------*/
-/* @element page-panel:nth-of-type(3) and (max-width: 400px) {
-    :self {
-      background: rgb(0, 40, 190);
-    }
-  }
- */
