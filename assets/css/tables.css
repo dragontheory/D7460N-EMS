@@ -1,5 +1,8 @@
+:root {
+	--table-display: grid;
+}
 table-container {
-	display: grid;
+	display: var(--table-display);
     position: relative;
 }
 /*
@@ -26,7 +29,6 @@ table-container > label:nth-of-type(3) {right: 80px;}
 table-container > label:nth-of-type(4) {right: 40px;}
 table-container > label:nth-of-type(5) {right: 0;}
 
-
 table-container > label:last-of-type {border: none; }
 
 table-container > input#tablePagination01:checked ~ table-content:not(:nth-of-type(1)),
@@ -35,17 +37,21 @@ table-container > input#tablePagination03:checked ~ table-content:not(:nth-of-ty
 table-container > input#tablePagination04:checked ~ table-content:not(:nth-of-type(4)),
 table-container > input#tablePagination05:checked ~ table-content:not(:nth-of-type(5)) {display: none;}
 
+table-container table-results {
+	overflow-y: auto;
+}
 table-container table-content {
 	display: var(--tab-display);
 	/* border: solid 1px red; */
 	grid-column: 1 / -1;
 	align-content: start;
+	overflow-y: hidden;
 	overflow-y: auto;
 }
 
-table-content ol {
+table-container ol {
 	list-style-type: none;
-	display: grid;
+	display: var(--table-display);
 	grid-template-columns: 1fr;
 	grid-template-rows: auto;
 	padding: 0;
@@ -53,8 +59,8 @@ table-content ol {
 	gap: .5rem 0;
 }
 
-table-content ol > li {
-	display: grid;
+table-container ol > li {
+	display: var(--table-display);
 	grid-template-columns: auto 100px 1fr 1fr .5fr .5fr;
 	grid-template-rows: 1fr;
 	/* border: solid 1px yellow; */
@@ -63,12 +69,15 @@ table-content ol > li {
 	align-content: center;
 	transition: all 250ms;
 }
-table-content ol > li:hover {
+table-container ol > li:hover {
 background-color: var(--page-bg-color-hover);/* #00a1ff */
 }
-table-cell {
-	display: grid;
+table-container table-cell {
+	display: var(--table-display);
 	justify-content: start;
 	align-content: start;
 	padding: 1rem;
+}
+table-results ol li {
+	cursor: pointer;
 }
