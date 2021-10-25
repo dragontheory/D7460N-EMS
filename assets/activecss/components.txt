@@ -1,0 +1,12 @@
+table-results ol li:click {
+    acss-test2 {
+        render: "<p>This content was added via a table row click.</p>
+        <p>The sidebar opened because the .open class was added to the body tag because the  acss-test2 custom element was no longer empty.</p>";
+    }
+}
+acss-test2:if-empty:observe {
+    body { remove-class .open};
+}
+acss-test2:not-if-empty:observe {
+    body{ add-class .open};
+}
