@@ -1,6 +1,6 @@
 tab-content:if-empty:observe {
-    body { remove-class .open; }
+    body {remove-class:.open;}
 }
 tab-content:not-if-empty:observe {
-    body{ add-class .open; }
+    body{add-class:.open;}
 }
