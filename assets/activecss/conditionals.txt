@@ -5,8 +5,8 @@ table-results ol li:click {
     }
 }
 acss-test2:if-empty:observe {
-    body {remove-class:.open};
+    body {remove-class:".open"};
 }
 acss-test2:not-if-empty:observe {
-    body{add-class:.open};
+    body{add-class:".open"};
 }
