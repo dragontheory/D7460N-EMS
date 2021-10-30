@@ -6,11 +6,11 @@ table-results ol li:click {
 }
 acss-test2:if-empty:observe {
     body {
-    	remove-class: .open;
+    	remove-class: .profile;
 	}
 }
 acss-test2:not-if-empty:observe {
     body {
-    	add-class: .open; 
+    	add-class: .profile; 
 	}
 }
