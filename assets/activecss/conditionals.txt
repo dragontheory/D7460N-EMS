@@ -3,12 +3,12 @@ table-results ol li:click {
         render: "<li><table-cell>key</table-cell><table-cell>value</table-cell></li>";
     }
 }
-table-details:if-empty:observe {
+table-details ol:if-empty:observe {
     body {
     	remove-class: .profile;
 	}
 }
-table-details:not-if-empty:observe {
+table-details ol:not-if-empty:observe {
     body {
     	add-class: .profile; 
 	}
