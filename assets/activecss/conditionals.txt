@@ -1,14 +1,14 @@
 table-results ol li:click {
-    acss-test2 {
+    table-details {
         render: "<li><table-cell>key</table-cell><table-cell>value</table-cell></li>";
     }
 }
-acss-test2:if-empty:observe {
+table-details:if-empty:observe {
     body {
     	remove-class: .profile;
 	}
 }
-acss-test2:not-if-empty:observe {
+table-details:not-if-empty:observe {
     body {
     	add-class: .profile; 
 	}
