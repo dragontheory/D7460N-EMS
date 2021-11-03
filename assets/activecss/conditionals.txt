@@ -1,6 +1,7 @@
 table-results ol li:click {
     table-details ol {
         render: "<li><table-cell>key</table-cell><table-cell>value</table-cell></li>";
+	func: myExternalFunction after 100ms;
     }
 }
 table-details ol:if-empty:observe {
