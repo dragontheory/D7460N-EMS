@@ -1,7 +1,7 @@
 table-results ol li:click {
     func: myExternalFunction after 100ms;
     table-results ol li {
-        remove-click: .active-li;
+        remove-class: .active-li;
     }
     add-class: .active-li;
     table-details ol {
