@@ -31,7 +31,7 @@
 	--dark-theme-logo-color-hover: #D7DAE0;
 	--dark-theme-panel-bg-color: rgba(255, 255, 255, 0.03);
 	--dark-theme-high-light-color: #D7DAE0;
-	--dark-theme-low-light-color: #rgba(255,255,255,0.5);
+	--dark-theme-low-light-color: #rgba(255,255,255,0.1);
 
 	/* DEFAULT THEME [ DARK ]*/
 	--page-bg-color: var(--dark-theme-page-bg-color);
@@ -134,8 +134,8 @@ page-container page-header page-header-left page-logo:hover {
 	color: var(--page-logo-color-hover);
 }
 page-container {
-	background-color: #063d4c;
-    -webkit-box-shadow: inset 0px 0px 150px 0px rgba(0, 0, 0, 0.8);
+	background: linear-gradient(#101725, #1f3349);
+    /*-webkit-box-shadow: inset 0px 0px 150px 0px rgba(0, 0, 0, 0.8);
     -moz-box-shadow: inset 0px 0px 150px 0px rgba(0, 0, 0, 0.8);
-    box-shadow: inset 0px 0px 150px 0px rgba(0, 0, 0, 0.8)
+    box-shadow: inset 0px 0px 150px 0px rgba(0, 0, 0, 0.8);*/
 }
