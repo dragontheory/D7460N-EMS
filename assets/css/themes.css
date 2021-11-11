@@ -134,7 +134,7 @@ page-container page-header page-header-left page-logo:hover {
 	color: var(--page-logo-color-hover);
 }
 page-container {
-	background: linear-gradient(#101725, #1f3349);
+	background: linear-gradient(#101925, #1f3949)
     /*-webkit-box-shadow: inset 0px 0px 150px 0px rgba(0, 0, 0, 0.8);
     -moz-box-shadow: inset 0px 0px 150px 0px rgba(0, 0, 0, 0.8);
     box-shadow: inset 0px 0px 150px 0px rgba(0, 0, 0, 0.8);*/
