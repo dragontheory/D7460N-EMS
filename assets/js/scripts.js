@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
     });
 });
 
+/* Output to console */
 function myExternalFunction(o) {
     const li = document.querySelector(".active-li")
 	console.log(li.dataset)
