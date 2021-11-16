@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function(e) {
     ActiveCSS.init({
-        configLocation: 'assets/activecss/config.txt, assets/activecss/conditionals.txt, assets/activecss/components.txt',
+        configLocation: 'assets/activecss/config.acss, assets/activecss/conditionals.acss, assets/activecss/components.acss',
     });
 });
 
