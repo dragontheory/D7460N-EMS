@@ -26,5 +26,5 @@ table-details ol:not-if-empty:observe {
 table-results li:observe {
   var: co++;
   set-property: customIndex "{co}";
-  set-attribute: data-counter "{@@customIndex}";
+  set-attribute: data-count "{@@customIndex}";
 }
