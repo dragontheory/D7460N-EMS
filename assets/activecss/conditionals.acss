@@ -1,20 +1,30 @@
+
+body:init {
+  console-log: "Initializing ACSS
+  var: co 0;
+}
 table-results ol li:click {
-    func: myExternalFunction after 100ms;
-    table-results ol li {
-        remove-class: .active-li;
-    }
-    add-class: .active-li;
-    table-details ol {
-   	render: "<li><table-cell>key</table-cell><table-cell>value</table-cell></li>";
-    }
+  func: myExternalFunction after 100ms;
+  table-results ol li {
+    remove-class: .active-li;
+  }
+  add-class: .active-li;
+  table-details ol {
+    render: "<li><table-cell>key</table-cell><table-cell>value</table-cell></li>";
+  }
 }
 table-details ol:if-empty:observe {
-    body {
-    	remove-class: .profile;
-	}
+  body {
+    remove-class: .profile;
+  }
 }
 table-details ol:not-if-empty:observe {
-    body {
-    	add-class: .profile; 
-	}
+  body {
+    add-class: .profile; 
+  }
+}
+table-results li:observe {
+  var: co++;
+  set-property: customIndex "{co}";
+  set-attribute: data-counter "{@@customIndex}";
 }
