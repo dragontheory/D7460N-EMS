@@ -1,6 +1,6 @@
 
 body:init {
-  console-log: "Initializing ACSS
+  console-log: "Initializing ACSS;
   var: co 0;
 }
 table-results ol li:click {
