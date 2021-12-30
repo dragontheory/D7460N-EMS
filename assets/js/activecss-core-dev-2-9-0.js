@@ -7,7 +7,7 @@
 	By doing a simple concatenate of core files we avoid using changeable imports and bloating the core. It's just a better solution.
 	Plus we can easily dictate what version contains what files and enforce maintenance simplicity by organising directories for that.
 	The compilation time to build the core for each change made is quick enough. Plus the compile tests highlight syntax errors right away.
-	If you find your compile step is taking forever and annoying you, get a faster server. Mine is an �60 Optiplex 780 from 2006 and it's fast enough.
+	If you find your compile step is taking forever and annoying you, get a faster server. Mine is a cheap Optiplex 780 from 2006 and it's fast enough.
 */
 
 (function (global, document) {
@@ -17,6 +17,9 @@
 			'AjaxFormPreview',
 			'AjaxFormSubmit',
 			'AjaxPreGet',
+			'FadeIn',
+			'FadeOut',
+			'FadeTo',
 			'LoadAsAjax',
 			'LoadConfig',
 			'LoadScript',
@@ -36,11 +39,12 @@
 		CONDCOMMAND = /^[\u00BF-\u1FFF\u2C00-\uD7FF\w\-\!]+$/,
 		CONDDEFSELF = [
 			'if-empty',
+			'if-checked',
 			'if-completely-visible',
 			'if-display',
+			'if-empty',
+			'if-empty-trimmed',
 			'if-exists',
-			'if-focus-first',
-			'if-focus-last',
 			'if-form-changed',
 			'if-inner-html',
 			'if-inner-text',
@@ -50,6 +54,7 @@
 			'if-min-height',
 			'if-min-length',
 			'if-min-width',
+			'if-value',
 			'if-visible'
 		],
 		DIGITREGEX = /^\d+$/,
@@ -182,6 +187,8 @@
 		mediaQueriesOrig = [],
 		mimicClones = [],
 		nonPassiveEvents = [],
+		observeEventsQueue = {},
+		observeEventsMid = {},
 		pageList = [],
 		pageWildcards = [],
 		pageWildReg = [],
@@ -615,14 +622,14 @@ _a.CreateElement = o => {
 		// Note: Below, "_acss-host_" is used to specify that the component definitely has a host so it should be scoped when rendering.
 		// Components by default do not necessarily need to be scoped for performance reasons, but in this case we need to easily cover different possibilities
 		// related to needing a host element. This was brought about by the need to nail down the handling for reference to {@host:...} variables.
-		secSel['&'][0] = { file: '', line: '', intID: intIDCounter++, name: 'render', value: '"{|_acss-host_' + component + '}"' };
+		secSel['&'][0] = { file: '', line: '', intID: intIDCounter++, name: 'render', value: '"{|_acss-host_' + component + '}" after stack' };
 
 		// Don't add it if it's already there.
 		if (!addedThisBefore || typeof config[tag].draw[0][0][0] === 'undefined' ||
 				typeof config[tag].draw[0][0][0]['&'] === 'undefined' ||
 				typeof config[tag].draw[0][0][0]['&'][0] === 'undefined' ||
 				config[tag].draw[0][0][0]['&'][0].name != 'render' ||
-				config[tag].draw[0][0][0]['&'][0].value != '"{|_acss-host_' + component + '}"'
+				config[tag].draw[0][0][0]['&'][0].value != '"{|_acss-host_' + component + '}" after stack'
 			) {
 			// Put the draw event render command at the beginning of any draw event that might already be there for this element.
 			config[tag].draw[0][0].unshift(secSel);
@@ -755,9 +762,8 @@ const _focusOn = (o, wot, justObj=false) => {
 			}
 		} else {
 			// This will only ever run once, as moveNum will always be one.
-			let targArr = _splitIframeEls(val, o);
-			if (!targArr) return false;	// invalid target.
-			nodes = targArr[0].querySelectorAll(targArr[1]) || null;
+			nodes = _getSels(o, val);
+			if (!nodes) return false;	// invalid target.
 		}
 	}
 	switch (wot) {
@@ -1114,18 +1120,32 @@ _a.PreventDefault = o => {
 	if (o.e && o.e.preventDefault) o.e.preventDefault();	// Sometimes will get activated on a browser back-arrow, etc., so check first.
 };
 
-_a.Remove = o => {
-	let thisObj = _getSel(o, o.actVal, true);
-	if (thisObj !== false) {
-		// This is self or a host element.
-		ActiveCSS._removeObj(thisObj);
+_a.Print = o => {
+	if (o.actVal == 'window') {
+		window.print();
+	} else if (o.actVal == 'parent') {
+		parent.print();
 	} else {
-		let targArr = _splitIframeEls(o.actVal, o);
-		if (!targArr) return false;	// invalid target.
-		targArr[0].querySelectorAll(targArr[1]).forEach(function (obj) {
-			ActiveCSS._removeObj(obj);
-		});
+		let iframeSel = _getSel(o, o.actVal);
+		// Check that it's an iframe.
+		if (iframeSel) {
+			if (iframeSel.tagName == 'IFRAME') {
+				iframeSel.contentWindow.print();
+			} else {
+				_err('Printing cannot occur because element is not an iframe: ' + o.actVal);
+			}
+		} else {
+			_err('Printing cannot occur if iframe does not exist: ' + o.actVal);
+		}
 	}
+};
+
+_a.Remove = o => {
+	let objs = _getSels(o, o.actVal);
+	if (!objs) return false;	// invalid target.
+	objs.forEach(function (obj) {
+		ActiveCSS._removeObj(obj);
+	});
 };
 
 _a.RemoveAttribute = o => {
@@ -1490,6 +1510,7 @@ _a.SetCookie = o => {
 _a.SetProperty = o => {
 	if (!_isConnected(o.secSelObj)) return false;
 	_a.SetAttribute(o);
+	_handleObserveEvents(null, o.doc);
 };
 
 _a.StopEventPropagation = o => _stopEventPropagation(o);
@@ -1534,9 +1555,11 @@ _a.Style = o => {
 
 _a.TakeClass = o => {
 	if (!_isConnected(o.secSelObj)) return false;
-	// Take class away from any element that has it.
-	let cl = o.actVal.substr(1);
-	_eachRemoveClass(cl, cl, o.doc);
+	// Take class away from any element that has it, with an optional scope parameter.
+	let aVRes = _extractActionPars(o.actVal, [ 'scope' ], o);
+	let theClass = aVRes.action.substr(1);
+
+	_eachRemoveClass(theClass, theClass, o.doc, aVRes.scope);
 	_a.AddClass(o);
 };
 
@@ -1796,6 +1819,8 @@ ActiveCSS.triggerReal = (obj, ev, varScope, compDoc, component) => {
 	}
 };
 
+_c.IfChecked = o => _selCompare(o, 'iC');
+
 _c.IfCompletelyVisible = o => { return ActiveCSS._ifVisible(o, true); };	// Used by extensions.
 
 _c.IfCookieEquals = o =>  {
@@ -1817,11 +1842,13 @@ _c.IfDefined = o => {
 };
 
 _c.IfDisplay = o => {
-	let el = o.doc.querySelector(o.actVal);
+	let el = _getSel(o, o.actVal);
 	return (el && getComputedStyle(el, null).display !== 'none');
 };
 
 _c.IfEmpty = o => { return (_selCompare(o, 'eM')); };
+
+_c.IfEmptyTrimmed = o => { return (_selCompare(o, 'eMT')); };
 
 _c.IfExists = o => {
 	return (_getSel(o, o.actVal)) ? true : false;
@@ -1898,6 +1925,8 @@ _c.IfSelection = o => {
   o.actVal = o.actVal._ACSSRepQuo().trim();
   return (selObj.toString() == o.actVal);
 };
+
+_c.IfValue = o => _selCompare(o, 'iV');
 
 _c.IfVar = o => {
 	// This caters for scoped variable and also window variable comparison. If the variable isn't in the scope, it takes the window variable if it is there.
@@ -2668,7 +2697,42 @@ const _handleFunc = function(o, delayActiveID=null, runButElNotThere=false) {
  	_nextFunc(o);
  };
 
-const _handleObserveEvents = (mutations, dom=document, justCustomSelectors=false) => {
+const _handleObserveEvents = (mutations, dom, justCustomSelectors=false) => {
+	// This can get called a lot of times in the same event stack, and we only need to do once per criteria, so process a queue.
+	if (!dom) dom = document;	// Don't move this into parameter default.
+
+	// This can get called a lot of times, so process a queue and don't queue duplicate calls back into this function.
+	// _handleEvents, which is used in here, can generate more calls back into this function, which is necessary, but not if we already have the same
+	// thing already queued.
+	// The key to this is to remember that we do process this function if dom + justCustomSelectors is a unique entry for this queue.
+	// observeEventsQueue and observeEventsMid are objects so that states can be deleted cleanly when ended with minimal fuss.
+	let ref, skipQueue;
+	if (dom.nodeType == 9) {
+		// This is the document.
+		ref = 'doc' + justCustomSelectors;
+	} else {
+		// This is a document fragment.
+		let domFirstChild = dom.firstChild;
+		if (domFirstChild) {
+			ref = (domFirstChild._acssActiveID) ? dom.firstChild._acssActiveID : _getActiveID(dom.firstChild).substr(3);
+		} else {
+			// It shouldn't really get in here, but if it does due to an empty component, just skip the queueing and run.
+			skipQueue = true;
+		}
+	}
+
+	if (!skipQueue) {
+		if (observeEventsQueue[ref]) return;		// Already queued to the end of the event stack - skip.
+		if (observeEventsMid[ref]) {
+			observeEventsQueue[ref] = true;
+			setTimeout(() => {
+				delete observeEventsQueue[ref];
+				_handleObserveEvents(mutations, dom, justCustomSelectors);
+			}, 0);
+		}
+		observeEventsMid[ref] = true;
+	}
+
 	// Handle cross-element observing for all observe events.
 	let evType = 'observe', i, primSel, compSelCheckPos, testSel, compDetails;
 	if (!selectors[evType]) return;
@@ -2685,14 +2749,21 @@ const _handleObserveEvents = (mutations, dom=document, justCustomSelectors=false
 		} else if (!justCustomSelectors) {
 			let compDetails;
 			let sel = (primSel.substr(0, 1) == '|') ? testSel : primSel;
+
 			dom.querySelectorAll(sel).forEach(obj => {		// jshint ignore:line
 				// There are elements that match. Now we can run _handleEvents on each one to check the conditionals, etc.
 				// We need to know the component details if there are any of this element for running the event so we stay in the context of the element.
-				compDetails = _componentDetails(obj);
-				_handleEvents({ obj, evType, component: compDetails.component, compDoc: compDetails.compDoc, varScope: compDetails.varScope, evScope: compDetails.evScope });
+				if (obj === document.body) {
+					_handleEvents({ obj, evType });
+				} else {
+					compDetails = _componentDetails(obj);
+					_handleEvents({ obj, evType, component: compDetails.component, compDoc: compDetails.compDoc, varScope: compDetails.varScope, evScope: compDetails.evScope });
+				}
 			});
 		}
 	}
+
+	if (!skipQueue) delete observeEventsMid[ref];
 };
 
 const _handleShadowSpecialEvents = shadowDOM => _handleObserveEvents(null, shadowDOM);
@@ -3648,12 +3719,12 @@ const _recursiveScopeCleanUp = nod => {
 	});
 };
 
-const _renderCompDoms = (o, compDoc=o.doc, childTree='') => {
+const _renderCompDoms = (o, compDoc=o.doc, childTree='', numTopNodesInRender=0, numTopElementsInRender=0) => {
 	// Set up any shadow DOM and scoped components so far unrendered and remove these from the pending shadow DOM and scoped array that contains the HTML to draw.
 	// Shadow DOM and scoped content strings are already fully composed with valid Active IDs at this point, they are just not drawn yet.
 	// Search for any data-acss-component tags and handle.
 	compDoc.querySelectorAll('data-acss-component').forEach(function (obj, index) {
-		_renderCompDomsDo(o, obj, childTree);
+		_renderCompDomsDo(o, obj, childTree, numTopNodesInRender, numTopElementsInRender);
 
 		// Quick way to check if components and scoped variables are being cleaned up. Leave this here please.
 		// At any time, only the existing scoped vars and shadows should be shown.
@@ -3677,8 +3748,9 @@ const _renderCompDomsClean = varScope => {
 	}
 };
 
-const _renderCompDomsDo = (o, obj, childTree) => {
-	let shadowParent, strictlyPrivateEvents, privateEvents, parentCompDetails, isShadow, shadRef, varScope, evScope, componentName, template, shadow, shadPar, shadEv, strictVars;
+const _renderCompDomsDo = (o, obj, childTree, numTopNodesInRender, numTopElementsInRender) => {
+	let shadowParent, strictlyPrivateEvents, privateEvents, parentCompDetails, isShadow, shadRef, varScope, evScope, componentName, template, shadow,
+		shadPar, shadEv, strictVars, privVars;
 
 	shadowParent = obj.parentNode;
 	parentCompDetails = _componentDetails(shadowParent);
@@ -3690,13 +3762,44 @@ const _renderCompDomsDo = (o, obj, childTree) => {
 	privateEvents = components[componentName].privEvs;
 	isShadow = components[componentName].shadow;
 	strictVars = components[componentName].strictVars;
+	privVars = components[componentName].privVars;
 
 	// We have a scenario for non-shadow DOM components:
 	// Now that we have the parent node, is it a dedicated parent with no other children? We need to assign a very specific scope for event and variable scoping.
 	// So check if it already has child nodes. If it does, then it cannot act as a host. Components must have dedicated hosts. So we will add one later.
 	// Shadow DOM components already have hosts, so this action of assigning a host if there is not one does not apply to them.
 	let scopeEl;
-	if (!isShadow && shadowParent.childNodes.length > 1) {
+
+	// Handle a spread scope - ie. multiple top-level nodes, that have been requested to be event scoped. We need a surrogate host from which to
+	// run querySelectorAll for the events.
+	// Otherwise, for non-shadow DOM components, the first element will be the host.
+	// This is a change to previous behaviour, where if there was a parent element with only one child, then that would act as the host.
+	// But that doesn't work with something like an li, a td, or sibling elements which can have multiple siblings but still need event isolation.
+	// The host should really be the first child of the component, but event query selections need to include that first child, which is where it starts to
+	// get tricky. I'm not going to enforce a container div like other frameworks, as that is a workaround and won't allow td and lis and siblings as
+	// separate components.
+	// Storing separate scope references in the parent element won't work either, as the DOM can change, and scope references could change with regards
+	// the parent.
+	// A way to do this could be:
+	// 1. Attach the scope to the first child and not the parent. This is a bit challenging in itself.
+	// 2. Don't attach a scope at all if it doesn't need one. Currently scopes are being added for all components and it isn't necessary.
+	// 2. Have "queryselectorall" and "matches" with the same selector for target selection and action command selection.
+	// This is only for everything except event selectors,that already uses matches. It might be ok.
+	// It could be done that way only for those components that need it so as not to affect performance everywhere.
+	// This selection wrapping function could be expand to allow multiple top level nodes in a component, but I don't know how much performance will be
+	// affected. It might possibly be ok, as the main event loop won't need changing.
+	// For now, this is a work in progress and the events section in the components area of the docs now has the note regarding trs and li scoped components.
+	// This would be great to get eventually resolved. Another option is to allow host parents to hold multiple inner scopes, and that possibly may be
+	// simpler to implement, or it may not.
+	if (!isShadow && (
+			privateEvents ||
+			strictlyPrivateEvents ||
+			privVars
+			) &&
+			(numTopNodesInRender > 0 && numTopElementsInRender > 1 ||	// like "<div></div><div></div>"
+			numTopNodesInRender > 1 && numTopElementsInRender > 0)		// like "kjh<div></div>"
+		) {
+		// We need the surrogate host for this, otherwise the events won't be isolated to spreading scope nature of the render.
 		scopeEl = document.createElement('acss-scope');
 		shadowParent.replaceChild(scopeEl, obj);
 		// Switch the parent to the new scoping element.
@@ -3722,7 +3825,7 @@ const _renderCompDomsDo = (o, obj, childTree) => {
 
 	// Set up a private variable scope reference if it is one so we don't have to pass around this figure.
 	// Note that the scope name, the varScope, is not the same as the component name. The varScope is the reference of the unique scope.
-	privVarScopes[varScope] = components[componentName].privVars ? true: false;
+	privVarScopes[varScope] = privVars ? true: false;
 
 	// Set up map per component of higher-level variable scopes to iterate when getting or setting vars. This is for non-"strictlyPrivateVars" components.
 	// It should be only necessary to reference the fact that the current component has a sharing parent.
@@ -3821,6 +3924,7 @@ const _renderCompDomsDo = (o, obj, childTree) => {
 		}
 	} else {
 		shadow = shadowParent;
+		// All components need a scope, regardless of nature.
 		shadow.setAttribute('data-active-scoped', '');
 		shadow._acssScoped = true;
 	}
@@ -3882,7 +3986,7 @@ const _renderCompDomsDo = (o, obj, childTree) => {
 				return;
 			}
 			// Run draw events on all new elements in this shadow. This needs to occur after componentOpen.
-			_handleEvents({ obj: obj, evType: 'draw', eve: o.e, otherObj: o.ajaxObj, varScope: varScopeToPassIn, evScope, compDoc: docToPass, component: componentName, _maEvCo: o._maEvCo });
+			_handleEvents({ obj, evType: 'draw', eve: o.e, otherObj: o.ajaxObj, varScope: varScopeToPassIn, evScope, compDoc: docToPass, component: componentName, _maEvCo: o._maEvCo });
 		});
 
 		if (isShadow) {
@@ -3909,8 +4013,6 @@ const _renderCompDomsDo = (o, obj, childTree) => {
 		// It would be nice if there was a way to get the truly real target on any click, regardless of whether or not it is in a shadow DOM. But thankfully there is
 		// e.composedPath(), otherwise we'd be royally buggered.
 		let thisEv;
-		// Set up a separate change event for triggering an observe event on the native change event.
-		shadow.addEventListener('input', _handleShadowSpecialEvents);
 		if (allEvents.length == 0) {
 			Object.keys(window).forEach(key => {
 			    if (/^on/.test(key)) {
@@ -3924,6 +4026,10 @@ const _renderCompDomsDo = (o, obj, childTree) => {
 				_attachListener(shadow, thisEv, false, true);
 			}
 		}
+		// Set up a separate change event for triggering an observe event on the native input event and for otherwise undetectable property changes.
+		// Apologies in advance if this looks like a hack. If anyone has any better ideas to cover these scenarios, let me know.
+		shadow.addEventListener('input', _handleShadowSpecialEvents);
+		shadow.addEventListener('click', () => { setTimeout(_handleShadowSpecialEvents, 0); });
 	}
 };
 
@@ -3982,6 +4088,11 @@ const _renderIt = (o, content, childTree, selfTree) => {
 	content = _escapeInnerQuotes(content);
 
 	container.innerHTML = content;
+
+	// Get the number of child elements and nodes. Remember that rendering doesn't have to include child elements.
+	// This is used for core scope options later on in _renderCompDomsDo.
+	let numTopElementsInRender = container.childElementCount;
+	let numTopNodesInRender = container.childNodes.length;
 
 	let cid;
 	// Make a list of all immediate children via a reference to their Active IDs. After rendering we then iterate the list and run the draw event.
@@ -4092,7 +4203,7 @@ const _renderIt = (o, content, childTree, selfTree) => {
 		});
 	}
 
-	_renderCompDoms(o, undefined, childTree);
+	_renderCompDoms(o, undefined, childTree, numTopNodesInRender, numTopElementsInRender);
 };
 
 const _renderRefElements = (str, htmlStr, refType) => {
@@ -4970,8 +5081,8 @@ const _replaceConditionalsExpr = (str, varScope=null, o=null) => {
 	// This function replaces ACSS conditionals dynamically (that have no "if-"), gets the return value as a string (ie. "true" or "false" and puts it
 	// into the expression string for later evaluation.
 
-	// Count parentheses. It's not possible to do matching parentheses with regex and account for all the possible combinations of the insides
-	// that are not quoted. It needs to work with css selectors which are not quoted.
+	// Count parentheses. It's not possible to do matching parentheses with regex (unless using XRegExp) and account for all the possible combinations
+	// of the insides that are not quoted. It needs to work with css selectors which are not quoted.
 	// We could split by colon after escaping the colon preceding the pseudo-selectors and even embedded conditionals.
 	// Like @if func(sadasd):func(sdfsdf .sdfsdf[escapedColon]not(sdfsdf)) {
 	// That gives us an AND clause. But doesn't give us a way to have an OR, or a way to have complex () around AND and OR clauses.
@@ -5059,22 +5170,25 @@ const _replaceConditionalsExpr = (str, varScope=null, o=null) => {
 				// Reached the start of the content of the function. Replace the function with data we need to call the conditional when evaluating.
 				item = '\'' + condName + '\', ifObj, \'' + item;
 			}
-
 			// It could contain closing parentheses.
 			// Count the number of closing parentheses.
 			let numClosingBrackets = item.split(')').length - 1;
 			let closingBracketCountDown = numClosingBrackets;
 			if (numClosingBrackets > 0) {
 				let bracketPos = item.indexOf(')');
+				let lastBracketPos = bracketPos;
 				while (bracketPos !== -1 && openInnerBrackets > 0) {
 					openInnerBrackets--;
 					bracketPos = item.indexOf(')', bracketPos + 1);
 					closingBracketCountDown--;
+					if (bracketPos !== -1) {
+						lastBracketPos = bracketPos;
+					}
 				}
 				if (openInnerBrackets <= 0) {
 					funcJustStarted = false;
 					funcInProgress = false;
-					item = item.substr(0, bracketPos) + '\'' + item.substr(bracketPos);
+					item = item.substr(0, lastBracketPos) + '\'' + item.substr(lastBracketPos);
 					// Adjust counters to account for any trailing closing parentheses.
 					let bracketsLeft = numClosingBrackets - closingBracketCountDown;
 					if (bracketsLeft > 0) {
@@ -5276,7 +5390,7 @@ const _addConfig = (str, o) => {
 	// o.inlineActiveID will be populated if embedded and o.file will contain that, otherwise o.inlineActiveID will be empty.
 	// If not embedded, all the CSS can be appended to the same stylesheet as it can't be unloaded once added after ACSS initialisation or load-config.
 	// If CSS needs to be removed, the developer would place it in an embedded CSS or ACSS style tag and not through initial config load or via load-config.
-	cssExtractInit(o.file);
+	_cssExtractInit(o.file);
 
 	// If this is last file, run the config generator.
 	if (!initInlineLoading && concatConfigCo >= concatConfigLen) {
@@ -5413,7 +5527,7 @@ const _attachListener = (obj, ev, reGenEvent=false, isShadow=false) => {
 ActiveCSS._theEventFunction = e => {
 	let ev = e.type;
 	let component = e.target._acssComponent;
-	let compDoc = (e.target instanceof ShadowRoot) ? e.target : null;
+	let compDoc = (e.target instanceof ShadowRoot) ? e.target : undefined;
 	let varScope = e.target._acssVarScope;
 	if (!setupEnded) return;	// Wait for the config to fully load before any events start.
 	let fsDet = _fullscreenDetails();
@@ -5458,7 +5572,7 @@ ActiveCSS._theEventFunction = e => {
 		default:
 			if (ev == 'change') {
 				// Simulate a mutation and go straight to the observe event handler.
-				_handleObserveEvents();
+				_handleObserveEvents(null, compDoc);
 			}
 			_mainEventLoop(ev, e, component, compDoc, varScope);
 	}
@@ -5723,7 +5837,7 @@ const _makeVirtualConfig = (subConfig='', statement='', componentName=null, remo
 		for (i = 0; i < strLength; i++) {
 			strTrimmed = str[i].trim();
 			// This could be a component that has an event, so we force the below to skip recognising this as a component.
-			isComponent = (strTrimmed.substr(0, 11) == '@component ');
+			isComponent = strTrimmed.startsWith('@component ');
 			// First check if this is a part of a comma-delimited list of conditionals, then do other stuff to set up for the switch statement.
 			// It could look like '?cheese, ?trevor' or '?cheese, trevor', and they would all be conditionals, so these next lines cater for a missing ?.
 			let noQuestionMark;
@@ -5802,8 +5916,8 @@ const _makeVirtualConfig = (subConfig='', statement='', componentName=null, remo
 						compName = '';
 					} else {
 						// Check if the at-rule starts with @media or @support.
-						let isMedia = (strTrimmed.substr(0, 7) == '@media ');
-						let isSupport = (strTrimmed.substr(0, 9) == '@support ');
+						let isMedia = strTrimmed.startsWith('@media ');
+						let isSupport = strTrimmed.startsWith('@support ');
 						if (isMedia || isSupport) {
 							if (!removeState) {
 								// This is a media query type of statement. Set it up and call the config routine again so the internal media query name can be attached to the events.
@@ -5817,7 +5931,7 @@ const _makeVirtualConfig = (subConfig='', statement='', componentName=null, remo
 							statement = '';
 						} else {
 							// This looks like a regular CSS at-rule.
-							cssExtractConcat({ file: innerContent[0].file, statement, selector: pConfig[key].name, commands: pConfig[key].value });
+							_cssExtractConcat({ file: innerContent[0].file, statement, selector: pConfig[key].name, commands: pConfig[key].value });
 							continue;
 						}
 					}
@@ -5852,7 +5966,7 @@ const _makeVirtualConfig = (subConfig='', statement='', componentName=null, remo
 								_warn(strTrimmed + ' is not a fully formed selector - it may be missing an event or have incorrect syntax. Or you have too many closing curly brackets.');
 							} else {
 								// This looks like a regular CSS command.
-								cssExtractConcat({ file: innerContent[0].file, statement, selector: pConfig[key].name, commands: pConfig[key].value });
+								_cssExtractConcat({ file: innerContent[0].file, statement, selector: pConfig[key].name, commands: pConfig[key].value });
 							}
 							continue;
 						}
@@ -5875,7 +5989,7 @@ const _makeVirtualConfig = (subConfig='', statement='', componentName=null, remo
 						// Check that the event isn't a regular CSS command.
 						if (ev.match(COLONSELS) && ev !== 'focus') {
 							// This looks like a regular CSS command.
-							cssExtractConcat({ file: innerContent[0].file, statement, selector: pConfig[key].name, commands: pConfig[key].value });
+							_cssExtractConcat({ file: innerContent[0].file, statement, selector: pConfig[key].name, commands: pConfig[key].value });
 							continue;
 						}
 
@@ -6199,11 +6313,10 @@ const _readSiteMap = (o) => {
 	parsedConfig = {};
 
 	// Create any CSS style tags that have been extracted out from the loaded ACSS config. This handles both loaded and embedded config.
-	cssExtractAddTags();
+	_cssExtractAddTags();
 
 	// Set up events. We can only do this after the config is fully loaded, as there could be multiple events of the same type and we need to know if they are
 	// passive or not (if they use prevent-default or not).
-	window.addEventListener('input', _handleObserveEvents);
 	let evSet;
 	for (evSet of preSetupEvents) {
 		_setupEvent(evSet.ev, evSet.sel);
@@ -6214,6 +6327,11 @@ const _readSiteMap = (o) => {
 	}
 	// Clean up. If we run load-config, we'll run this function again and only attempt to add the new events loaded.
 	preSetupEvents = [];
+
+	// Set up a separate change event for triggering an observe event on the native input event and for otherwise undetectable property changes.
+	// Apologies in advance if this looks like a hack. If anyone has any better ideas to cover these scenarios, let me know.
+	window.addEventListener('input', _handleObserveEvents);
+	window.addEventListener('click', () => { setTimeout(_handleObserveEvents, 0); });
 
 	if (!setupEnded) {
 		_startMainListen();
@@ -6533,7 +6651,7 @@ const _wrapUpStart = (o) => {
 	}
 };
 
-const addCSSToBody = (css, tagRef, toBody) => {
+const _addCSSToBody = (css, tagRef, toBody) => {
 	// Adds to a body based on the ref, otherwise adds to the existing style tag.
 	let tagIfThere = document.querySelector('style[data-from-acss="' + tagRef + '"]');		// Note: tagRef is a predictable string - so this is fine.
 	if (tagIfThere) {
@@ -6550,16 +6668,15 @@ const addCSSToBody = (css, tagRef, toBody) => {
 	}
 };
 
-const cssExtractAddTags = fileRef => {
+const _cssExtractAddTags = fileRef => {
 	// fileRef will be populated if embedded or empty if from loaded config.
-	let tagRef = cssExtractGetRef(fileRef);
+	let tagRef = _cssExtractGetRef(fileRef);
 
 	// No need to do anything if there isn't any CSS for extraction from the ACSS config.
-	if (extractedCSS[tagRef] === '') return;
-
-	// Add CSS to the end of the body. If the tag is already there, in the case of "permanent" loaded config, it will add it to the existing tag.
-	addCSSToBody(extractedCSS[tagRef], tagRef);
-
+	if (extractedCSS[tagRef] !== undefined && extractedCSS[tagRef] !== '') {
+		// Add CSS to the end of the body. If the tag is already there, in the case of "permanent" loaded config, it will add it to the existing tag.
+		_addCSSToBody(extractedCSS[tagRef], tagRef);
+	}
 	// Delete the CSS from memory now that it is added to the DOM. There's no reason it needs to stick around and we don't want to add it more than once.
 	// The embedded CSS style tag that has been created here will get cleaned up in _regenConfig if it came from a removed embedded ACSS tag.
 	delete extractedCSS[tagRef];
@@ -6569,14 +6686,16 @@ const cssExtractAddTags = fileRef => {
 	for (i in extractedCSS) {
 		// Put at the bottom of the headers. Extracted CSS tags in an SPA will always be placed into the DOM before the new inner content is drawn
 		// and it keeps the body content cleaner.
-		addCSSToBody(extractedCSS[i], i);
+		if (extractedCSS[i] !== undefined && extractedCSS[i] !== '') {
+			_addCSSToBody(extractedCSS[i], i);
+		}
 		delete extractedCSS[i];
 	}
 };
 
-const cssExtractConcat = cssObj => {
+const _cssExtractConcat = cssObj => {
 	let { file, statement, selector, commands } = cssObj;
-	let tagRef = cssExtractGetRef(file);
+	let tagRef = _cssExtractGetRef(file);
 
 	// If this tag existed but doesn't any more then it shouldn't be re-added - it's a tag that's been removed pending fully clean-up.
 	if (extractedCSS[tagRef] === undefined) return;
@@ -6627,7 +6746,7 @@ const cssExtractConcat = cssObj => {
 	extractedCSS[tagRef] += cssString;
 };
 
-const cssExtractGetRef = (fileRef) => {
+const _cssExtractGetRef = (fileRef) => {
 	// If fileRef is empty, it's definitely come from loaded config and not embedded - it's optional - for speed.
 	// Return the extracted CSS stylesheet reference. This will be placed into the data-css-ref attribute when the stylesheet gets inserted onto the page.
 	// It's done like this and not via any other internal method is so that the CSS can be tweaked using DevTools.
@@ -6645,8 +6764,8 @@ const cssExtractGetRef = (fileRef) => {
 	}
 };
 
-const cssExtractInit = (fileRef) => {
-	let tagRef = cssExtractGetRef(fileRef);
+const _cssExtractInit = (fileRef) => {
+	let tagRef = _cssExtractGetRef(fileRef);
 	if (tagRef != 'permanent' && extractedCSS[tagRef] !== undefined) {
 		_err('Internal reference for CSS extraction (' + tagRef + ') already exists.', null, 'extractedCSS[tagRef]:', extractedCSS[tagRef]);
 	}
@@ -6761,7 +6880,7 @@ const _syncCheckAndSet = (o, syncQueueSet) => {
 	// If there isn't a sync option on the command, skip it.
 	if (!o.actVal.endsWith(' await')) return;
 
-	// Remove the " sync" from action command.
+	// Remove the " await" from action command.
 	o.actVal = o.actVal.slice(0, -6).trim();
 
 	// Only sync this command if it's a valid delayed event, otherwise ignore the sync.
@@ -6800,11 +6919,10 @@ const _syncStore = (o, delayActiveID, syncQueueSet, runButElNotThere) => {
 		let checkObj = o.origLoopObj.resumeProps;
 
 		// Check if we have reached the new action command that we need to resume from. We won't run this one, but we'll start from the action command after this.
-		if (syncQueue[checkObj.ref_subEvCo] && 
+		if (syncQueue[checkObj.ref_subEvCo] &&
 				checkObj.intID == o.intID &&
-				checkObj.secSelObj.isSameNode(o.secSelObj) &&
-				checkObj.loopRef == o.loopRef
-			) {
+				(typeof o.secSel == 'string' && o.secSel.startsWith('~') || checkObj.secSelObj.isSameNode(o.secSelObj)) &&
+				checkObj.loopRef == o.loopRef) {
 
 			// Don't run this command but let it run the next time.
 			_syncEmpty(checkObj.ref_subEvCo);
@@ -7724,6 +7842,8 @@ const _removeVarPlaceholders = obj => {
 			if (varMap[thisVar] === undefined) varMap[thisVar] = [];
 			if (thisNode.nextSibling.data == '/active-var') {
 				// There is no content there. Insert an empty text node now. A variable was probably empty when first drawn.
+				let checkVar = _getScopedVar('scopedProxy.' + thisVar);
+				if (checkVar.val === undefined) _set(scopedProxy, thisVar, '');	// set it if it isn't already - we need this for undefined reactive variables to update.
 				nodesToRemove.push(thisNode.nextSibling);	// Mark for removal.
 				insertedNode = thisNode.parentNode.insertBefore(document.createTextNode(''), thisNode.nextSibling);
 				varMap[thisVar].push(insertedNode);
@@ -8051,7 +8171,7 @@ const _replaceScopedVarsDo = (str, obj=null, func='', o=null, walker=false, shad
 
 	if (str.indexOf('{') !== -1) {
 		str = str.replace(/\{((\{)?(\@)?[\u00BF-\u1FFF\u2C00-\uD7FF\w\$\' \"\-\.\:\[\]]+(\})?)\}/gm, function(_, wot) {
-			if (wot.startsWith('$')) return '{' + wot + '}';
+			if (wot.startsWith('$') || wot.indexOf('.$') !== -1) return '{' + wot + '}';
 			let realWot;
 			if (wot[0] == '{') {		// wot is a string. Double curly in pre-regex string signifies a variable that is bound to be bound.
 				isBound = true;
@@ -8077,10 +8197,8 @@ const _replaceScopedVarsDo = (str, obj=null, func='', o=null, walker=false, shad
 				}
 			} else {
 				let scoped = _getScopedVar(wot, varScope);
-
-				// Return the wot if it's a window variable.
-				if (scoped.winVar === true) return _preReplaceVar(wot, varReplacementRef, func);
 				res = scoped.val;
+
 				// Return an empty string if undefined.
 				res = (res === true) ? 'true' : (res === false) ? 'false' : (res === null) ? 'null' : (typeof res === 'string') ? ((noHTMLEscape || func == 'SetAttribute') ? res : _escapeItem(res, origVar)) : (typeof res === 'number') ? res.toString() : (res && typeof res === 'object') ? '__object' : '';	// remember typeof null is an "object".
 				realWot = scoped.name;
@@ -8120,7 +8238,7 @@ const _replaceScopedVarsExpr = (str, varScope=null) => {
 
 	let res, origWot, firstVar;
 	str = str.replace(/\{([\u00BF-\u1FFF\u2C00-\uD7FFa-z\$]([\u00BF-\u1FFF\u2C00-\uD7FF\w\.\:\'\"\[\]]+)?)\}/gim, function(_, wot) {
-		if (wot.startsWith('$')) return '{' + wot + '}';
+		if (wot.startsWith('$') || wot.indexOf('.$') !== -1) return '{' + wot + '}';
 		origWot = wot;
 		let scoped = _getScopedVar(wot, varScope);
 		// Return the wot if it's a window variable.
@@ -8208,6 +8326,7 @@ const _resolveAjaxVars = o => {
 const _resolveAjaxVarsDecl = (res, compScope) => {
 	// Loop the items in res and assign to variables.
 	let v;
+	_set(scopedProxy, compScope + '.JSON', res);
 	for (v in res) {
 		_set(scopedProxy, compScope + '.' + v, res[v]);
 	}
@@ -9835,6 +9954,24 @@ const _getParVal = (str, typ) => {
 	return '';
 };
 
+const _absLeft = el => {
+	// Position of left edge relative to frame left courtesy of http://www.quirksmode.org/js/findpos.html
+	var x = 0;
+	for (; el; el = el.offsetParent) {
+		x += el.offsetLeft;
+	}
+	return x;
+};
+
+const _absTop = el => {
+	// Position of top edge relative to top of frame courtesy of http://www.quirksmode.org/js/findpos.html
+	var y = 0;
+	for (; el; el = el.offsetParent) {
+		y += el.offsetTop;
+	}
+	return y;
+};
+
 const _actValSelItem = o => {
 	let arr = o.actVal.split(' ');
 	let last = arr.splice(-1);
@@ -9845,6 +9982,32 @@ ActiveCSS._addClassObj = (obj, str) => {
 	if (!obj || !obj.classList) return; // element is no longer there.
 	let arr = str.replace('.', '').split(' ');
 	obj.classList.add(...arr);
+};
+
+const _checkBoundaries = (el, cont, tot) => {
+	// Returns true if the boundaries checks pass.
+	let left = _absLeft(el),
+		right = left + el.offsetWidth,
+		top = _absTop(el),
+		bottom = top + el.offsetHeight;
+	let cleft = _absLeft(cont),
+		cright = cleft + cont.offsetWidth,
+		ctop = _absTop(cont),
+		cbottom = ctop + cont.offsetHeight;
+
+// Working code for counting all 4 corners. For now, we are just interested in supporting vertical.
+// More parameters need to be added - horizontal, vertical and both, with a default of vertical if no parameters added.
+//	if (tot) {
+//		return (left >= cleft && top >= ctop && right <= cright && bottom <= cbottom);
+//	} else {
+//		return (left >= cleft || right <= cright) && (top >= ctop || bottom <= cbottom);
+//	}
+
+	if (tot) {
+		return top >= ctop && bottom <= cbottom;
+	} else {
+		return top >= ctop && bottom <= cbottom || top >= ctop && top <= cbottom || bottom >= ctop && bottom <= cbottom;
+	}
 };
 
 const _checkForm = (frm, wot) => {
@@ -9984,8 +10147,8 @@ const _doDebug = (typ, primSel) => {
 	}
 };
 
-const _eachRemoveClass = (inClass, classToRemove, doc) => {
-	doc.querySelectorAll('.' + inClass).forEach(function (obj, index) {
+const _eachRemoveClass = (inClass, classToRemove, doc, scope='') => {
+	doc.querySelectorAll(scope + ' .' + inClass + ((scope !== '') ? ',' + scope + '.' + inClass : '')).forEach(function (obj, index) {
 		if (!obj) return; // element is no longer there.
 		ActiveCSS._removeClassObj(obj, classToRemove);
 	});
@@ -10187,19 +10350,122 @@ const _evalDetachedExpr = (valToExpr, varScope) => {
 	return _replaceJSExpression(expr, true, false, varScope, -1);	// realVal=true, quoteIfString=false, varReplacementRef=-1
 };
 
+const _extractActionPars = (actionValue, parArr, o) => {
+	// Extracts bracket parameters from an action value and returns an object with separated values.
+	// Used in take-class, and designed to be used by others.
+	// It can handle inner brackets for selectors with pseudo-selectors like :not().
+	// The "o" is only used for reporting errors.
+	// actionValue = the full action command value.
+	// parArr = an array of parameter names that has content in parentheses, eg. [ 'scope', 'something' ].
+	// Example:
+	// my-command: .myClass scope(#myScope:not(.cheese)) something(some command string);
+	// Should return this: { action: '.myClass', scope: '#myScope:not(.cheese)', something: 'some command string' }
+
+	let newActionValue = actionValue;
+	let res = {}, pos, parStartLen, splitRes;
+
+	// Escape any escaped parentheses or in quotes so they don't factor into the parentheses splitting that is about to take place.
+	newActionValue = newActionValue.replace(/\\\(/g, '_ACSS_opPa').replace(/\\\)/g, '_ACSS_clPa');
+	newActionValue = _escInQuo(newActionValue, '(', '_ACSS_opPa');
+	newActionValue = _escInQuo(newActionValue, ')', '_ACSS_clPa');
+
+	parArr.forEach(parName => {
+		// Note this was further abstracted out, but would have been slower with the char escaping going on above happening within the abstraction,
+		// so I put it back to this for the sake of speed.
+		let currentActionValue = newActionValue;
+		pos = newActionValue.indexOf(parName + '(');
+		if (pos !== -1) {
+			parStartLen = parName.length + 1;	// Includes name of parameter and first parenthesis.
+			newActionValue = currentActionValue.substr(0, pos - 1).trim();		// Strips off the parameters as it goes.
+			// Get the parameter value and the remainder of the action value.
+			// Send over the action value from the beginning of the parameter value.
+			splitRes = _extractActionParsSplit(currentActionValue.substr(pos + parStartLen), actionValue, o);
+			res[parName] = _extractActionParsUnEsc(splitRes.value);
+			newActionValue += splitRes.remainder;
+		}
+	});
+	res.action = _extractActionParsUnEsc(newActionValue);	// The action is what is left after the parameter loop.
+
+	return res;
+};
+
+const _extractActionParsUnEsc = str => {
+	return str.replace(/_ACSS_opPa/g, '\\(').replace(/_ACSS_clPa/g, '\\)');
+};
+
+const _extractActionParsSplit = (str, original, o) => {
+	// Example of str content:
+	// str = "#left) another(#myEl:not(has(something))) hi(and the rest) something"
+	// We have already accounted for the opening parenthesis.
+	// Return value should be:
+	// res.value = "#left";
+	// res.remainder = " another(#myEl:not(has(something))) hi(and the rest) something"
+
+	let res = {};
+	// Split by "(".
+	let openingArr = str.split('(');
+	if (openingArr.length == 1) {
+		// No "(" found - there should be only one parameter.
+		let closingPos = str.indexOf(')');
+		if (closingPos === -1) {
+			_err('No closing parenthesis found for parameter in action command', o);
+		}
+		res.value = str.substr(0, closingPos).trim();
+		res.remainder = str.substr(closingPos + 1);
+	} else {
+		let lineCarry = '', line, innerRes, remainderArr;
+		for (let n = 0; n < openingArr.length; n++) {
+			line = openingArr[n];
+			// Now get the content of this line sorted out.
+			innerRes = _extractActionParsInner(line, n + 1, original, o);
+			if (innerRes.value) {
+				// We got the variable that we needed.
+				res.value = lineCarry + innerRes.value;
+				res.remainder = innerRes.remainder;
+				if (n < openingArr.length) {
+					remainderArr = openingArr.slice(n + 1);
+					res.remainder += (typeof remainderArr[0] !== undefined && remainderArr[0] != '' ? '(' : '') + remainderArr.join('(');
+				}
+				break;
+			}
+			lineCarry += line + '(';
+		}
+
+	}
+
+	return res;
+};
+
+const _extractActionParsInner = (str, numOpening, original, o) => {
+	// Split by ')'.
+	let closingArr = str.split(')');
+	if (closingArr.length - 1 > numOpening) {
+		_err('Too many closing parenthesis found in action command', o);
+	} else if (closingArr.length - 1 < numOpening) {
+		// Not enough closing parameters. Return an empty object without a value.
+		return {};
+	} else {
+		// We have the right number of closing parentheses.
+		let res = {};
+		res.remainder = closingArr.slice(-1);
+		res.value = closingArr.slice(0, -1).join(')');
+		return res;
+	}
+};
+
 const _fade = o => {
 	/***
 	 * Work out which function called this and then call the generic function which can be kept separate to this to help split up actual functionality.
 	 *
 	 * fade-in *el* *duration* *displayValue*
-	 * fade-out *el* *duration* [no-display-none]
+	 * fade-out *el* *duration* [no-hide]
 	 * fade-to *el* *duration* *toOpacity* *displayValue*
 	 *
 	 * duration = (number)(ms or s).
 	 * toOpacity = (number).
 	 * displayValue = optional - last value if it isn't duration or opacity - don't need to qualify it further so we keep forward compatibility.
-	 * no-display-none = optional - don't set the display none at the end of the fade-out.
-	 * wait-display-none = optional - don't set the display none at the end of the fade-out until the duration has completed.
+	 * no-hide = optional - do not set the display none at the end of the fade-out.
+	 * complete-then-hide = optional - do not set the display none at the end of the fade-out until the duration has completed for all in selection.
 	 * el = the remainder.
 	 * An easy and performant way to do this is to split o.actVal by space and work it from the back to the beginning.
 	 * Last thing is to call the _fadeDo with the appropriate options.
@@ -10221,9 +10487,9 @@ const _fade = o => {
 	    } else if (!duration && _isPositive(actValArr[i][0])) {
 		    // This starts with a number so this should be the duration parameter. Display values don't start with a number.
 		    duration = _convertToMS(actValArr[i], 'Invalid fading delay: ' + actValArr[i]);
-		} else if (o.func == 'FadeOut' && actValArr[i] == 'no-display-none') {
+		} else if (o.func == 'FadeOut' && actValArr[i] == 'no-hide') {
 			noDisplayNone = true;
-		} else if (o.func == 'FadeOut' && actValArr[i] == 'wait-display-none') {
+		} else if (o.func == 'FadeOut' && actValArr[i] == 'complete-then-hide') {
 			waitDisplayNone = true;
 		} else if (!displayValue && i == actValArrLen - 1) {
 			// This is the last in the array (the first hit in the loop) and if it gets this far on the first iteration then it's a display value.
@@ -10242,24 +10508,21 @@ const _fade = o => {
 	// Set the display value if it isn't set. This won't be used for fade-out, which always ends up with a display of "none".
 	if (!displayValue && o.func != 'FadeOut') displayValue = 'initial';
 
-	let el = _getSel(o, sel, true);
-	let func;
-	if (el !== false) {
-		// Me, self or this.
-		func = _fadeGetFunc(el, o.func, toOpacity);
-		if (func) _fadeDo(el, duration, func, toOpacity, displayValue, noDisplayNone, waitDisplayNone);
+	let func, objs;
+	if (!sel) {
+		// Use the target selector if there is no selector specified.
+		if (typeof o.secSelObj === 'object') objs = [ o.secSelObj ];
 	} else {
-		// Regular selector.
-		let targArr = _splitIframeEls(sel, o);
-		if (!targArr) return false;	// invalid target.
-		targArr[0].querySelectorAll(targArr[1]).forEach(function (obj) {
-			func = _fadeGetFunc(obj, o.func, toOpacity);
-			if (func) _fadeDo(obj, duration, func, toOpacity, displayValue, noDisplayNone, waitDisplayNone);
-		});
+		objs = _getSels(o, sel);
 	}
+	if (!objs) return false;	// invalid target.
+	objs.forEach(function (obj) {
+		func = _fadeGetFunc(obj, o.func, toOpacity, o);
+		if (func) _fadeDo(obj, duration, func, toOpacity, displayValue, noDisplayNone, waitDisplayNone, o);
+	});
 };
 
-const _fadeGetFunc = (el, funcIn, toOpacity) => {
+const _fadeGetFunc = (el, funcIn, toOpacity, o) => {
 	let funcOut = funcIn;
 	let existingOpac;
 	let computedStylesEl = window.getComputedStyle(el);
@@ -10275,17 +10538,20 @@ const _fadeGetFunc = (el, funcIn, toOpacity) => {
 		if (existingOpac > toOpacity) {
 			funcOut = 'FadeOut';
 		} else if (existingOpac == toOpacity) {
+			// Restart the sync queue if await was used.
+			_syncRestart(o, o._subEvCo);
 			return;
 		}
 	}
 	return funcOut;
 };
 
-const _fadeDo = (el, duration, func, toOpac, displayValue, noDisplayNone, waitDisplayNone) => {
+const _fadeDo = (el, duration, func, toOpac, displayValue, noDisplayNone, waitDisplayNone, o) => {
 	// If this function starts getting overly complicated then split out FadeOut functionality and put into a separate function.
 	// It doesn't need that level of engineering currently though as it's still maintainable and keeps the general animation all together in one place.
 	var last = +new Date();
 	var Tracker = last;
+	var StartingLast = last;
 	el._acssMidFade = Tracker;
 	let computedStylesEl = window.getComputedStyle(el);
 	let elStartingOpac = el.style.opacity;
@@ -10307,14 +10573,16 @@ const _fadeDo = (el, duration, func, toOpac, displayValue, noDisplayNone, waitDi
 		el.style.display = displayValue;
 	}
 
-	var tick = () => {
+	var tick = (timeStamp, noChange=false) => {
 		// Skip out if the element is no longer on the page or if this fading event should be halted.
 		if (!el || !_isConnected(el) || el._acssMidFade != Tracker) return;
 		var amount = (new Date() - last) / duration;
-		el.style.opacity = (func == 'FadeOut') ? +el.style.opacity - amount : +el.style.opacity + amount;
+		if (noChange !== true) el.style.opacity = (func == 'FadeOut') ? +el.style.opacity - amount : +el.style.opacity + amount;
 		last = +new Date();
 		if (func == 'FadeOut' && +el.style.opacity > toOpac || func != 'FadeOut' && +el.style.opacity < toOpac) {
 			requestAnimationFrame(tick);
+		} else if (waitDisplayNone && last - StartingLast < duration) {
+			requestAnimationFrame(() => tick(undefined, true));
 		} else {
 			if (func == 'FadeOut' && toOpac == 0) {
 				if (!noDisplayNone) el.style.display = 'none';
@@ -10323,10 +10591,12 @@ const _fadeDo = (el, duration, func, toOpac, displayValue, noDisplayNone, waitDi
 				el.style.opacity = toOpac;
 			}
 			delete el._acssMidFade;
+			// Restart the sync queue if await was used.
+			_syncRestart(o, o._subEvCo);
 		}
 	};
 
-	tick(true);
+	tick();
 };
 
 const _fullscreenDetails = () => {
@@ -10472,7 +10742,7 @@ const _getFocusedOfNodes = (sel, o, startingFrom='') => {
 	let targArr, nodes, obj, i = -1, useI = -1, checkNode;
 	targArr = _splitIframeEls(sel, o);
 	if (!targArr) return false;	// invalid target.
-	checkNode = (startingFrom !== '') ? _getSel(o, startingFrom) : targArr[0].activeElement;
+	checkNode = (startingFrom !== '') ? _getSel(o, startingFrom) : (targArr[0].activeElement) ? targArr[0].activeElement : (targArr[0].ownerDocument) ? targArr[0].ownerDocument.activeElement : false;
 	if (!checkNode) return -1;
 	nodes = targArr[0].querySelectorAll(targArr[1]) || null;
 	for (obj of nodes) {
@@ -10489,17 +10759,6 @@ const _getNumber = str => {
 	let val = parseFloat(str);
 	let num = str - val + 1;
 	return (num >= 0) ? val : false;
-};
-
-const _getObj = (str, o) => {
-	let targArr = _splitIframeEls(str, o);
-	if (!targArr) return false;	// invalid target.
-	try {
-		let obj = targArr[0].querySelector(targArr[1]);
-		return obj;
-	} catch(err) {
-		return false;
-	}
 };
 
 const _getPageFromList = hrf => {
@@ -10613,26 +10872,55 @@ const _getScopedRoot = (obj) => {
 	return (obj.parentNode) ? obj.parentNode.closest('[data-active-scoped]') : null;		// Should return null if no closest scoped component found.
 };
 
-const _getSel = (o, sel, priorToGrabAll) => {
+//const _getSel = (o, sel, priorToGrabAll, many=false) => {
+const _getSel = (o, sel, many=false) => {
+	let item = false;
+
+// This switch statement needs to be put into the _splitIframeEls loop.
+// Get the '<' and '&' selectors in there too, which is currently in _prepSelector.
+
+// Consider the potential for double-evaluation if you consider variable substitution as part of this evolution.
+
 	switch (sel) {
 		case 'me':
 		case 'self':
 		case 'this':
-			return o.secSelObj;
+			item = o.secSelObj;
+			if (item && many) item = [ item ];
+			break;
 		case 'host':
 			if (['beforeComponentOpen', 'componentOpen'].indexOf(o.event) !== -1) {
 				// The host is already being used as the target selector with these events.
-				return o.secSelObj;
+				item = o.secSelObj;
+			} else {
+				let rootNode = _getRootNode(o.secSelObj);
+				item = (rootNode._acssScoped) ? rootNode : rootNode.host;
 			}
-			let rootNode = _getRootNode(o.secSelObj);
-			return (rootNode._acssScoped) ? rootNode : rootNode.host;
+			if (item && many) item = [ item ];
+			break;
 		default:
 			// Set priorToGrabAll to return true to handle result sets in the calling function.
 			// See _a.Remove for an example of handling a result set - it depends on the context, so the action is done in there.
 			// If this happens a lot, use a callback function and pass in arguments - it's not worth the complexity this brings right now though.
 			// Grab the element or the first in the group specified.
-			return (priorToGrabAll !== true) ? _getObj(sel, o) : false;
+			let targArr = _splitIframeEls(sel, o);
+			if (!targArr) return false;	// invalid target.
+			try {
+				let obj = (many) ? targArr[0].querySelectorAll(targArr[1]) : targArr[0].querySelector(targArr[1]);
+				item = obj;
+			} catch(err) {
+				// no need to do anything more.
+			}
 	}
+	if (item) {
+		return item;
+	} else {
+		return false;
+	}
+};
+
+const _getSels = (o, sel) => {
+	return _getSel(o, sel, true);	// true = many objects
 };
 
 const _getTempActiveID = obj => {
@@ -10699,7 +10987,27 @@ const _ifFocus = (o, first=true) => {
 };
 
 ActiveCSS._ifVisible = (o, tot) => {	// tot true is completely visible, false is partially visible. Used by extensions.
-	let el = (typeof o.actVal === 'object') ? o.actVal : (o.actVal._ACSSRepQuo().trim() == '') ? o.secSelObj : _getSel(o, o.actVal);	// Used by devtools highlighting.
+	let el, elContainer, aV;
+	if (typeof aV === 'object') {	// Used by devtools highlighting.
+		aV = o.actVal;
+	} else {
+		// The optional "scope" parameter determines which container holds the boundary information.
+		// No "scope" parameter means that the document itself is the container.
+		let aVRes = _extractActionPars(o.actVal, [ 'scope' ], o);
+		if (aVRes.scope) {
+			// Get scope element.
+			elContainer = _getSel(o, aVRes.scope);
+		}
+		aV = aVRes.action;
+	}
+
+	el = (aV._ACSSRepQuo().trim() == '') ? o.secSelObj : _getSel(o, aV);
+	if (!el) return false;
+
+	// Check in a container if one is found.
+	if (elContainer) return _checkBoundaries(el, elContainer, tot);
+
+	// Container not found. Use the document.
 	let rect = el.getBoundingClientRect();
 	let elTop = rect.top;
 	let elBot = rect.bottom;
@@ -10707,7 +11015,7 @@ ActiveCSS._ifVisible = (o, tot) => {	// tot true is completely visible, false is
 };
 
 const _isACSSStyleTag = (nod) => {
-	return (nod.tagName == 'STYLE' && nod.hasAttribute('type') && nod.getAttribute('type') == 'text/acss');
+	return (nod && nod.tagName == 'STYLE' && nod.hasAttribute('type') && nod.getAttribute('type') == 'text/acss');
 };
 
 const _isCond = cond => typeof _c[cond] === 'function';
@@ -10854,7 +11162,7 @@ const _selCompare = (o, opt) => {
 	// Takes two parameters. First a selector, and secondly something else to compare.
 	let actVal = o.actVal._ACSSSpaceQuoIn();
 	let spl, compareVal;
-	if (opt == 'eM') {
+	if (opt == 'eM' || opt == 'eMT') {
 		// There can be only one (parameter).
 		if (!actVal) return true;	// No point going further - this could be a variable substitution that equates to empty.
 		if (actVal && actVal == '__object') return false;	// No point going further - this is not empty - it is an array or a variable object.
@@ -10913,6 +11221,7 @@ const _selCompare = (o, opt) => {
 	}
 	switch (opt) {
 		case 'eM':
+		case 'eMT':
 		case 'maL':
 		case 'miL':
 			// _c.IfEmpty, _c.IfMaxLength, _c.IfMinLength
@@ -10925,7 +11234,8 @@ const _selCompare = (o, opt) => {
 			}
 			switch (opt) {
 				case 'eM':
-					return (!firstVal || firstVal === '');
+				case 'eMT':
+					return (!firstVal || (opt == 'eMT') ? firstVal.trim() === '' : firstVal === '');
 				case 'maL':
 					return (firstVal.length <= compareVal);
 				case 'miL':
@@ -10938,6 +11248,12 @@ const _selCompare = (o, opt) => {
 		case 'iH':
 			// _cIfInnerHTML
 			return (el && compareVal == el.innerHTML);
+		case 'iV':
+			// _cIfValue
+			return (el && compareVal == el.value);
+		case 'iC':
+			// _cIfChecked
+			return (el && el.checked);
 	}
 };
 
@@ -11060,7 +11376,7 @@ const _urlTitle = (url, titl, o, alsoRemove='') => {
 				// This has been triggered from this page, so we can simply get the current state attrs value which contains all we need.
 				attrs = window.history.state.attrs || '';
 			} else {
-				[...o.secSelObj.attributes].forEach((attr) => {
+				[...o.secSelObj.attributes].forEach(attr => {
 					if (attr.name == 'id') return;	// mustn't set these, otherwise the url could change again in the SPA trigger event.
 					attrs += attr.name + '="' + attr.value + '" ';
 				});
@@ -11605,9 +11921,9 @@ String.prototype._ACSSRepAllQuo = function() {
 };
 
 String.prototype._ACSSRepQuo = function() {
-	var html = this.replace(/\\"/g, '_ACSS*�%_');
+	var html = this.replace(/\\"/g, '_ACSS*%%_');
 	html = html.replace(/(^")|("$)/g, '');
-	html = html.replace(/_ACSS\*�%_/g, '"');
+	html = html.replace(/_ACSS\*%%_/g, '"');
 	return html;
 };
 
