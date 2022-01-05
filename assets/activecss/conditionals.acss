@@ -2,7 +2,50 @@
 body:init {
   console-log: "Initializing ACSS";
   var: co 0;
+	#myList {
+	  trigger: setup;
+	}
 }
+window:resize {
+  #myList {
+	  trigger: setup;
+	}
+}
+#myList:setup {
+  var: totalVisible 0,
+	     totalNonVisible 0,
+			 liCo: 0,
+		  startingLiCo: 0;
+	#myList li {
+    var: liCo++;
+	}
+	#myList {
+    trigger: countRows;
+	}
+  #myList: countRows {
+    @for n from (startingLiCo) + 1 to {liCo} {
+		  @if completely-visible(li[data-list-item="{n}"]) {
+			  var: totalVisible++;
+			} @else {
+				var: totalNonVisible++;
+				}
+			}
+			#visibleCount {
+			  @if {totalVisible} < 10 {
+				  render: 0{totalVisible};
+				} @else {
+				  render: {totalVisible};
+				}
+			}
+			#nonVisibleCount {
+			  @if {totalVisible} < 10 {
+				  render: 0{totalNonVisible};
+				} @else {
+				  render: {totalNonVisible};
+				}
+			}	
+		}
+ 
 table-results ol li:click {
   func: myExternalFunction after 100ms;
   table-results ol li {
