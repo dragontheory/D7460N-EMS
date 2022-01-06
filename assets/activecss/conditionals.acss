@@ -2,7 +2,7 @@
 body:init {
   console-log: "Initializing ACSS";
   var: co 0;
-	ajax: "https://jsonplaceholder.typicode.com/users" get json await;
+  ajax: "https://jsonplaceholder.typicode.com/users" get json await;
   #myList {
     trigger: setup;
   }
