@@ -79,7 +79,7 @@ table-container table-cell {
 	display: var(--table-display);
 	justify-content: start;
 	align-content: start;
-	padding: 1rem;
+	padding: 1rem .5rem;
 }
 table-cell-divider {
   color: var(--table-cell-color);
