@@ -1,6 +1,6 @@
 body:init{
   #myList {trigger: setup;}
-  ajax: "https://jsonplaceholder.typicode.com/users" get json;
+  ajax: "https://jsonplaceholder.typicode.com/users" get json await;
   #myList {
     var: startingLiCo {liCo};
     @each item in {JSON} {
