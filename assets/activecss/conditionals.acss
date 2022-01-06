@@ -14,9 +14,9 @@ window:resize {
 
 #myList:setup {
   var: totalVisible 0,
-  totalNonVisible 0,
-  liCo 0,
-  startingLiCo 0;
+       totalNonVisible 0,
+       liCo 0,
+       startingLiCo 0;
   #myList li {
     var: liCo++;
   }
@@ -37,19 +37,19 @@ window:resize {
     /* add 0 if less than 10 */
     @if {totalVisible} < 10 {
       render: 0{totalVisible};
-        } @else {
+    } @else {
       render: {totalVisible};
-      }
-    }
-    #nonVisibleCount {
-      /* add 0 if less than 10 */
-      @if {totalNonVisible} < 10 {
-        render: 0{totalNonVisible};
-      } @else {
-        render: {totalNonVisible};
-      }
     }
   }
+  #nonVisibleCount {
+    /* add 0 if less than 10 */
+    @if {totalNonVisible} < 10 {
+      render: 0{totalNonVisible};
+    } @else {
+      render: {totalNonVisible};
+    }
+  }
+}
  
 table-results ol li:click {
   func: myExternalFunction after 100ms;
