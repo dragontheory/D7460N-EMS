@@ -64,7 +64,7 @@ table-container ol > li::before {content: "0" attr(data-co);}
 table-container ol > li {
 	display: var(--table-display);
 	counter-increment: table-row-counter;
-	grid-template-columns: auto 100px 1fr 1fr .5fr .5fr;
+	grid-template-columns: .1fr .1fr .25fr .8fr .6fr .5fr 1fr;
 	grid-template-rows: 1fr;
 	/* border: solid 1px yellow; */
 	border-radius: 0.3rem;
