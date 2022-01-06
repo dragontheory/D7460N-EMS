@@ -1,7 +1,7 @@
 body:init{
   ajax: "https://jsonplaceholder.typicode.com/users" get json await;
   #myList {
-	  trigger: setup;
+    trigger: setup;
     var: startingLiCo {liCo};
     @each item in {JSON} {
       var: liCo++;
@@ -17,7 +17,7 @@ body:init{
         <table-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></table-cell>
       </li>";
     }
-		trigger: countRows;
+    trigger: countRows;
   }
 }
 
