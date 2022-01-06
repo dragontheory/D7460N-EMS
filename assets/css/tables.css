@@ -3,8 +3,9 @@
   --table-cell-divider-text-shadow: 2px 0 0 #000;
 }
 table-container {
-	display: var(--table-display);
-    position: relative;
+  display: var(--table-display);
+  position: relative;
+overflow-y: hidden;
 }
 /*
 TABLE CONTROLS
@@ -14,15 +15,15 @@ table-container > input:checked + label {color: var(--page-text-color-hover);}
 table-container > label:hover {color: var(--page-text-color-hover);}
 
 table-container > label {
-	cursor: pointer;
-	transition: color 250ms;
-	color: var(--page-text-color);
-	padding: 5px 10px;
-	border-right: solid 1px var(--page-text-color-notes);
-	position: absolute;
-    top: 12px;
-	font-family: var(--font01);
-	letter-spacing: var(--font01-letter-spacing);
+  cursor: pointer;
+  transition: color 250ms;
+  color: var(--page-text-color);
+  padding: 5px 10px;
+  border-right: solid 1px var(--page-text-color-notes);
+  position: absolute;
+  top: 12px;
+  font-family: var(--font01);
+  letter-spacing: var(--font01-letter-spacing);
 }
 table-container > label:nth-of-type(1) {right: 160px;}
 table-container > label:nth-of-type(2) {right: 120px;}
@@ -39,52 +40,51 @@ table-container > input#tablePagination04:checked ~ table-content:not(:nth-of-ty
 table-container > input#tablePagination05:checked ~ table-content:not(:nth-of-type(5)) {display: none;}
 
 table-container table-results {
-	overflow-y: auto;
+  overflow-y: auto;
 }
 table-container table-content {
-	display: var(--tab-display);
-	/* border: solid 1px red; */
-	grid-column: 1 / -1;
-	align-content: start;
-	overflow-y: hidden;
-	overflow-y: auto;
+  display: var(--tab-display);
+  /* border: solid 1px red; */
+  grid-column: 1 / -1;
+  align-content: start;
+  overflow-y: hidden;
 }
 
 table-container ol {
-	list-style-type: none;
-	counter-reset: table-row-counter 0;
-	display: var(--table-display);
-	grid-template-columns: 1fr;
-	grid-template-rows: auto;
-	padding: 0;
-	margin: 0;
-	gap: .5rem 0;
+  list-style-type: none;
+  counter-reset: table-row-counter 0;
+  display: var(--table-display);
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  padding: 0;
+  margin: 0;
+  gap: .5rem 0;
 }
 table-container ol > li::before {content: "0" attr(data-co);}
 table-container ol > li {
-	display: var(--table-display);
-	counter-increment: table-row-counter;
-	grid-template-columns: .1fr .1fr .25fr .8fr .6fr .5fr 1fr;
-	grid-template-rows: 1fr;
-	/* border: solid 1px yellow; */
-	border-radius: 0.3rem;
-	background-color: var(--panel-bg-color);
-	align-content: center;
-	transition: all 250ms;
+  display: var(--table-display);
+  counter-increment: table-row-counter;
+  grid-template-columns: .1fr .1fr .25fr .8fr .6fr .5fr 1fr;
+  grid-template-rows: 1fr;
+  /* border: solid 1px yellow; */
+  border-radius: 0.3rem;
+  background-color: var(--panel-bg-color);
+  align-content: center;
+  transition: all 250ms;
 }
 table-container ol > li:hover {
 background-color: var(--page-bg-color-hover);/* #00a1ff */
 }
 table-container table-cell {
-	display: var(--table-display);
-	justify-content: start;
-	align-content: start;
-	padding: 1rem .5rem;
+  display: var(--table-display);
+  justify-content: start;
+  align-content: start;
+  padding: 1rem .5rem;
 }
 table-cell-divider {
   color: var(--table-cell-color);
   text-shadow: var(--table-cell-divider-text-shadow);
 }
 table-results ol li {
-	cursor: pointer;	
+  cursor: pointer;	
 }
