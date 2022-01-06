@@ -60,7 +60,7 @@ table-container ol {
 	margin: 0;
 	gap: .5rem 0;
 }
-
+table-container ol > li::before {content: "0" attr(data-co);}
 table-container ol > li {
 	display: var(--table-display);
 	counter-increment: table-row-counter;
