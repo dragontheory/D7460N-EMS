@@ -1,7 +1,4 @@
-
 body:init {
-  console-log: "Initializing ACSS";
-  var: co 0;
   #myList {
     trigger: setup;
   }
@@ -35,64 +32,40 @@ window:resize {
 
 #myList:setup {
   var: totalVisible 0,
-       totalNonVisible 0,
-       liCo 0,
-       startingLiCo 0;
+  totalNonVisible 0,
+  liCo 0,
+  startingLiCo 0;
   #myList li {
-    var: liCo++;
-  }
+	  var: liCo++;
+	}
   #myList {
-    trigger: countRows;
+	  trigger: countRows;
   }
 }
 
 #myList:countRows {
   @for n from {startingLiCo} + 1 to {liCo} {
-    @if completely-visible(li[data-co="{n}"] scope(#myList)) {
-      var: totalVisible++;
-        } @else {
-      var: totalNonVisible++;
-    }
+	  @if completely-visible(li[data-co="{n}"] scope(#myList)) {
+		  var: totalVisible++;
+    }  @else  {
+		  var: totalNonVisible++;
+		}
   }
   #visibleCount {
     /* add 0 if less than 10 */
     @if {totalVisible} < 10 {
-      render: 0{totalVisible};
-    } @else {
-      render: {totalVisible};
-    }
+		  render: 0{totalVisible};
+	  } @else {
+		  render: {totalVisible};
+	  }
   }
   #nonVisibleCount {
-    /* add 0 if less than 10 */
+	  /* add 0 if less than 10 */
     @if {totalNonVisible} < 10 {
       render: 0{totalNonVisible};
     } @else {
-      render: {totalNonVisible};
-    }
-  }
-}
-
-#myList {
-  var: startingLiCo {liCo};
-  @each item in {JSON} {
-    var: liCo++;
-    render-before-end:
-      "<li data-co=\"{liCo}\">
-        <table-cell-divider> | </table-cell-divider>
-        <table-cell>ID {item.id}</table-cell>
-        <table-cell-divider> | </table-cell-divider>
-        <table-cell>{item.name}</table-cell>
-        <table-cell-divider> | </table-cell-divider>
-        <table-cell>{item.username}</table-cell>
-        <table-cell-divider> | </table-cell-divider>
-        <table-cell><a href=\"https://{item.website}\" target=\"_new\">{item.website}</a></table-cell>
-        <table-cell-divider> | </table-cell-divider>
-        <table-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></table-cell>
-      </li>";
-    }
-  }
-  #myList {
-    trigger: countRows;
+		 render: {totalNonVisible};
+	  }
   }
 }
  
