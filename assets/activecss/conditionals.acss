@@ -8,10 +8,10 @@ body:init{
       render-before-end:
       "<li data-co=\"{liCo}\">
         <table-cell>
-          <input type="checkbox" id="" name="table-row" value="" />
+          <input type=\"checkbox\" id=\"\" name=\"table-row\" value=\"\" />
         </table-cell>
         <table-cell>ID {item.id}</table-cell>
-        <table-cell><a href="#">{item.name}</a></table-cell>
+        <table-cell>{item.name}</table-cell>
         <table-cell>{item.username}</table-cell>
         <table-cell><a href=\"https://{item.website}\" target=\"_new\">{item.website}</a></table-cell>
         <table-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></table-cell>
