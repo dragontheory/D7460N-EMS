@@ -8,7 +8,7 @@ body:init{
       render-before-end:
       "<li data-co=\"{liCo}\">
         <table-cell>
-          <input type=\"checkbox\" id=\"\" name=\"table-row\" value=\"\" />
+          []
         </table-cell>
         <table-cell>ID {item.id}</table-cell>
         <table-cell>{item.name}</table-cell>
