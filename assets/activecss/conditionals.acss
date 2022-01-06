@@ -1,7 +1,5 @@
-body:init {
-  #myList {
-    trigger: setup;
-  }
+body:init{
+  #myList {trigger: setup;}
   ajax: "https://jsonplaceholder.typicode.com/users" get json await;
   #myList {
     var: startingLiCo {liCo};
@@ -24,10 +22,9 @@ body:init {
     trigger: countRows;
   }
 }
+
 window:resize {
-  #myList {
-    trigger: setup;
-  }
+  #myList {trigger: setup;}
 }
 
 #myList:setup {
@@ -35,37 +32,33 @@ window:resize {
   totalNonVisible 0,
   liCo 0,
   startingLiCo 0;
-  #myList li {
-	  var: liCo++;
-	}
-  #myList {
-	  trigger: countRows;
-  }
+  #myList li {var: liCo++;}
+  #myList {trigger: countRows;}
 }
 
 #myList:countRows {
   @for n from {startingLiCo} + 1 to {liCo} {
-	  @if completely-visible(li[data-co="{n}"] scope(#myList)) {
-		  var: totalVisible++;
-    }  @else  {
-		  var: totalNonVisible++;
-		}
+    @if completely-visible(li[data-co="{n}"] scope(#myList)) {
+      var: totalVisible++;
+    } @else {
+      var: totalNonVisible++;
+    }
   }
   #visibleCount {
     /* add 0 if less than 10 */
     @if {totalVisible} < 10 {
-		  render: 0{totalVisible};
-	  } @else {
-		  render: {totalVisible};
-	  }
+      render: 0{totalVisible};
+    } @else {
+      render: {totalVisible};
+    }
   }
   #nonVisibleCount {
-	  /* add 0 if less than 10 */
+    /* add 0 if less than 10 */
     @if {totalNonVisible} < 10 {
       render: 0{totalNonVisible};
     } @else {
-		 render: {totalNonVisible};
-	  }
+      render: {totalNonVisible};
+    }
   }
 }
  
