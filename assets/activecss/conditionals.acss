@@ -5,7 +5,7 @@ body:init {
   #myList {
     trigger: setup;
   }
-	ajax: "https://jsonplaceholder.typicode.com/users" get json await;
+  ajax: "https://jsonplaceholder.typicode.com/users" get json await;
   #myList {
     var: startingLiCo {liCo};
     @each item in {JSON} {
@@ -26,8 +26,8 @@ body:init {
     }
   }
   #myList {
-	 trigger: countRows;
-	}
+    trigger: countRows;
+  }
 }
 window:resize {
   #myList {
