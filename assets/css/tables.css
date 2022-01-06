@@ -1,5 +1,6 @@
 :root {
-	--table-display: grid;
+  --table-display: grid;
+  --table-cell-divider-text-shadow: 2px 0 0 #000;
 }
 table-container {
 	display: var(--table-display);
@@ -79,6 +80,10 @@ table-container table-cell {
 	justify-content: start;
 	align-content: start;
 	padding: 1rem;
+}
+table-cell-divider {
+  color: var(--table-cell-color);
+  text-shadow: var(--table-cell-divider-text-shadow);
 }
 table-results ol li {
 	cursor: pointer;	
