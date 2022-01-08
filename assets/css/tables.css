@@ -61,11 +61,7 @@ table-container ol > li {
 	align-content: center;
 	transition: all 250ms;
 }
-ol#myList {overflow-y: auto;}
-/* ol#myList > li::before {content: "0" attr(data-co);} */
-ol#myList > li:hover {background-color: var(--page-bg-color-hover);}/* #00a1ff */
-
-table-container table-cell {
+table-container ol > li table-cell {
 	display: var(--table-display);
 	justify-content: start;
 	align-content: start;
@@ -75,3 +71,6 @@ table-container table-cell {
     overflow: hidden;
 	display: inline-block;
 }
+ol#myList {overflow-y: auto;}
+/* ol#myList > li::before {content: "0" attr(data-co);} */
+ol#myList > li:hover {background-color: var(--page-bg-color-hover);}/* #00a1ff */
