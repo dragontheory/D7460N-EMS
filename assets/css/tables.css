@@ -5,6 +5,7 @@
 table-container {
 	display: var(--table-display);
     position: relative;
+	overflow-y: hidden;
 }
 /*
 TABLE CONTROLS
@@ -32,23 +33,12 @@ table-container > label:nth-of-type(5) {right: 0;}
 
 table-container > label:last-of-type {border: none; }
 
-table-container > input#tablePagination01:checked ~ table-content:not(:nth-of-type(1)),
-table-container > input#tablePagination02:checked ~ table-content:not(:nth-of-type(2)),
-table-container > input#tablePagination03:checked ~ table-content:not(:nth-of-type(3)),
-table-container > input#tablePagination04:checked ~ table-content:not(:nth-of-type(4)),
-table-container > input#tablePagination05:checked ~ table-content:not(:nth-of-type(5)) {display: none;}
-
-table-container table-results {
-	overflow-y: auto;
-}
-table-container table-content {
+/* table-container table-content {
 	display: var(--tab-display);
-	/* border: solid 1px red; */
 	grid-column: 1 / -1;
 	align-content: start;
 	overflow-y: hidden;
-	overflow-y: auto;
-}
+} */
 
 table-container ol {
 	list-style-type: none;
@@ -60,11 +50,10 @@ table-container ol {
 	margin: 0;
 	gap: .5rem 0;
 }
-table-container ol > li::before {content: "0" attr(data-co);}
 table-container ol > li {
 	display: var(--table-display);
 	counter-increment: table-row-counter;
-	grid-template-columns: .1fr .1fr .25fr .8fr .6fr .5fr 1fr;
+	grid-template-columns: .1fr .1fr .5fr .5fr .5fr 1fr;
 	grid-template-rows: 1fr;
 	/* border: solid 1px yellow; */
 	border-radius: 0.3rem;
@@ -72,19 +61,13 @@ table-container ol > li {
 	align-content: center;
 	transition: all 250ms;
 }
-table-container ol > li:hover {
-background-color: var(--page-bg-color-hover);/* #00a1ff */
-}
+ol#myList {overflow-y: auto;}
+/* ol#myList > li::before {content: "0" attr(data-co);} */
+ol#myList > li:hover {background-color: var(--page-bg-color-hover);}/* #00a1ff */
+
 table-container table-cell {
 	display: var(--table-display);
 	justify-content: start;
 	align-content: start;
 	padding: 1rem .5rem;
-}
-table-cell-divider {
-  color: var(--table-cell-color);
-  text-shadow: var(--table-cell-divider-text-shadow);
-}
-table-results ol li {
-	cursor: pointer;	
 }

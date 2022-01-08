@@ -40,11 +40,6 @@ body {
   font-smooth: auto;
 }
 
-content-section {
-  overflow-y: auto;
-  /* background-color: rgba(0,0,0,0.1); */
-}
-
 /* Seven middle columns */
 page-container {
   display: grid;
