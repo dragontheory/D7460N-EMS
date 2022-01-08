@@ -1,28 +1,26 @@
 body:init {
-  ajax: "https://jsonplaceholder.typicode.com/users" get json await;
-  console-log: "Data loaded";
-  var: co 0;
+  ajax: "https://my-json-server.typicode.com/dragontheory/D7460N-data/names" get json await;
   #myList {
     trigger: setup;
     var: startingLiCo {liCo};
     @each item in {JSON} {
       var: liCo++;
       render-before-end:
-      "<li data-co=\"{liCo}\">
-        <table-cell>
-          <input type="checkbox" id="" name="table-row" value="" />
-        </table-cell>
-        <table-cell>{item.id}</table-cell>
-        <table-cell>{item.name}</table-cell>
-        <table-cell>{item.username}</table-cell>
-        <table-cell><a href=\"https://{item.website}\" target=\"_new\">{item.website}</a></table-cell>
-        <table-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></table-cell>
-      </li>";
+        "<li data-co=\"{liCo}\">
+          <table-cell>
+            <input type="checkbox" id="" name="table-row" value="" />
+          </table-cell>
+          <table-cell>{item.id}</table-cell>
+          <table-cell>{item.name}</table-cell>
+          <table-cell>{item.username}</table-cell>
+          <table-cell><a href=\"https://{item.website}\" target=\"_new\">{item.website}</a></table-cell>
+          <table-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></table-cell>
+        </li>";
+      }
+      trigger: countRows;
     }
-    trigger: countRows;
   }
 }
-
 window:resize {
   #myList {
     trigger: setup;
@@ -41,12 +39,11 @@ window:resize {
     trigger: countRows;
   }
 }
-
 #myList:countRows {
   @for n from {startingLiCo} + 1 to {liCo} {
     @if completely-visible(li[data-co="{n}"] scope(#myList)) {
       var: totalVisible++;
-        } @else {
+    } @else {
       var: totalNonVisible++;
     }
   }
@@ -65,31 +62,32 @@ window:resize {
     }
   }
 }
-}
 
 /* #myList = ol */
 #myList li:click {
-  func: myExternalFunction after 100ms;
-  ol#myList li {
-    remove-class: .active-li;
-  }
-  add-class: .active-li;
+  /* func: myExternalFunction after 100ms; */
+  /* Add .active class to clicked row. Remove .active class form all other rows withing #myList. */
+  take-class: .active scope(#myList);
+  /* Add HTML child li to <table-details> ol */
   table-details ol {
-    render: "<li><table-cell>key</table-cell><table-cell>value</table-cell></li>";
+    render: "<li><table-cell>ID</table-cell><table-cell>{item.id}</table-cell></li>
+             <li><table-cell>name</table-cell><table-cell>{item.name}</table-cell></li>
+             <li><table-cell>username</table-cell><table-cell>{item.username}</table-cell></li>
+             <li><table-cell>website</table-cell><table-cell>{item.website}</table-cell></li>
+             <li><table-cell>email</table-cell><table-cell>{item.email}</table-cell></li>";
   }
 }
+
+/* Remove .profile from <body> the moment <table-details> ol IS empty. */
 #myList:if-empty:observe {
   body {
     remove-class: .profile;
   }
 }
+
+/* Add .profile to <body> the moment <table-details> ol is NOT empty. */
 table-details ol:not-if-empty:observe {
   body {
     add-class: .profile; 
   }
-}
-#myList li:observe {
-  var: co++;
-  set-property: customIndex "{co}";
-  set-attribute: data-count "{@@customIndex}";
 }
