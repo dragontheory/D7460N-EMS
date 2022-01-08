@@ -1,6 +1,6 @@
 body:init {
   ajax: "https://jsonplaceholder.typicode.com/users" get json await;
-  console-log: "Initializing ACSS";
+  console-log: "Data loaded";
   var: co 0;
   #myList {
     trigger: setup;
@@ -12,8 +12,8 @@ body:init {
         <table-cell>
           <input type="checkbox" id="" name="table-row" value="" />
         </table-cell>
-        <table-cell>ID {item.id}</table-cell>
-        <table-cell><a href="#">{item.name}</a></table-cell>
+        <table-cell>{item.id}</table-cell>
+        <table-cell>{item.name}</table-cell>
         <table-cell>{item.username}</table-cell>
         <table-cell><a href=\"https://{item.website}\" target=\"_new\">{item.website}</a></table-cell>
         <table-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></table-cell>
@@ -51,7 +51,6 @@ window:resize {
     }
   }
   #visibleCount {
-    /* add 0 if less than 10 */
     @if {totalVisible} < 10 {
       render: 0{totalVisible};
     } @else {
@@ -59,7 +58,6 @@ window:resize {
     }
   }
   #nonVisibleCount {
-    /* add 0 if less than 10 */
     @if {totalNonVisible} < 10 {
       render: 0{totalNonVisible};
     } @else {
@@ -67,34 +65,12 @@ window:resize {
     }
   }
 }
-
-#myList {
-  var: startingLiCo {liCo};
-  @each item in {JSON} {
-    var: liCo++;
-    render-before-end:
-      "<li data-co=\"{liCo}\">
-        <table-cell-divider> | </table-cell-divider>
-        <table-cell>ID {item.id}</table-cell>
-        <table-cell-divider> | </table-cell-divider>
-        <table-cell>{item.name}</table-cell>
-        <table-cell-divider> | </table-cell-divider>
-        <table-cell>{item.username}</table-cell>
-        <table-cell-divider> | </table-cell-divider>
-        <table-cell><a href=\"https://{item.website}\" target=\"_new\">{item.website}</a></table-cell>
-        <table-cell-divider> | </table-cell-divider>
-        <table-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></table-cell>
-      </li>";
-    }
-  }
-  #myList {
-    trigger: countRows;
-  }
 }
- 
-table-results ol li:click {
+
+/* #myList = ol */
+#myList li:click {
   func: myExternalFunction after 100ms;
-  table-results ol li {
+  ol#myList li {
     remove-class: .active-li;
   }
   add-class: .active-li;
@@ -102,7 +78,7 @@ table-results ol li:click {
     render: "<li><table-cell>key</table-cell><table-cell>value</table-cell></li>";
   }
 }
-table-details ol:if-empty:observe {
+#myList:if-empty:observe {
   body {
     remove-class: .profile;
   }
@@ -112,7 +88,7 @@ table-details ol:not-if-empty:observe {
     add-class: .profile; 
   }
 }
-table-results li:observe {
+#myList li:observe {
   var: co++;
   set-property: customIndex "{co}";
   set-attribute: data-count "{@@customIndex}";
