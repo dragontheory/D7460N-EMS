@@ -70,4 +70,8 @@ table-container table-cell {
 	justify-content: start;
 	align-content: start;
 	padding: 1rem .5rem;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+	display: inline-block;
 }
