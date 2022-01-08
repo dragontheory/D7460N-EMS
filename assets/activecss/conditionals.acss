@@ -65,31 +65,28 @@ window:resize {
     }
   }
 }
-}
 
 /* #myList = ol */
 #myList li:click {
-  func: myExternalFunction after 100ms;
-  ol#myList li {
-    remove-class: .active-li;
-  }
-  add-class: .active-li;
+  /* func: myExternalFunction after 100ms; */
+  /* Add .active class to clicked row. Remove .active class form all other rows withing #myList. */
+  take-class: .active scope(#myList);
+  /* Add HTML child li to <table-details> ol */
   table-details ol {
     render: "<li><table-cell>key</table-cell><table-cell>value</table-cell></li>";
   }
 }
+
+/* Remove .profile from <body> the moment table-details ol IS empty. */
 #myList:if-empty:observe {
   body {
     remove-class: .profile;
   }
 }
+
+/* Add .profile to <body> the moment <table-details> ol is NOT empty. */
 table-details ol:not-if-empty:observe {
   body {
     add-class: .profile; 
   }
-}
-#myList li:observe {
-  var: co++;
-  set-property: customIndex "{co}";
-  set-attribute: data-count "{@@customIndex}";
 }
