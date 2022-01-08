@@ -1,26 +1,27 @@
 body:init {
   ajax: "https://my-json-server.typicode.com/dragontheory/D7460N-data/names" get json await;
   #myList {
+    console-log: "getting here";
     trigger: setup;
     var: startingLiCo {liCo};
     @each item in {JSON} {
       var: liCo++;
       render-before-end:
-        "<li data-co=\"{liCo}\">
-          <table-cell>
-            <input type="checkbox" id="" name="table-row" value="" />
-          </table-cell>
-          <table-cell>{item.id}</table-cell>
-          <table-cell>{item.name}</table-cell>
-          <table-cell>{item.username}</table-cell>
-          <table-cell><a href=\"https://{item.website}\" target=\"_new\">{item.website}</a></table-cell>
-          <table-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></table-cell>
-        </li>";
-      }
-      trigger: countRows;
+      "<li data-co=\"{liCo}\">
+        <table-cell>
+          <input type="checkbox" id="" name="table-row" value="" />
+        </table-cell>
+        <table-cell>{item.id}</table-cell>
+        <table-cell>{item.name}</table-cell>
+        <table-cell>{item.username}</table-cell>
+        <table-cell><a href=\"https://{item.website}\" target=\"_new\">{item.website}</a></table-cell>
+        <table-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></table-cell>
+      </li>";
     }
+    trigger: countRows;
   }
 }
+
 window:resize {
   #myList {
     trigger: setup;
@@ -78,16 +79,16 @@ window:resize {
   }
 }
 
-/* Remove .profile from <body> the moment <table-details> ol IS empty. */
+/* Remove .profile from <body> the moment <table-details> ol IS empty. 
 #myList:if-empty:observe {
   body {
     remove-class: .profile;
   }
-}
+}*/
 
-/* Add .profile to <body> the moment <table-details> ol is NOT empty. */
+/* Add .profile to <body> the moment <table-details> ol is NOT empty. 
 table-details ol:not-if-empty:observe {
   body {
     add-class: .profile; 
   }
-}
+}*/
