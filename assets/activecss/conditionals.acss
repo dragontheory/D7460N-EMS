@@ -1,5 +1,5 @@
 body:init {
-  ajax: "https://jsonplaceholder.typicode.com/users" get json await;
+  ajax: "https://my-json-server.typicode.com/dragontheory/D7460N-data/names" get json await;
   console-log: "Data loaded";
   var: co 0;
   #myList {
