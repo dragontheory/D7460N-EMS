@@ -196,129 +196,47 @@
                 </panel-header-right>
             </panel-header>
             <panel-content>
-                <content-section>
-                    <table-container>
-                        <!-- TAB CONTROLS -->
-                        <input type="radio" id="tablePagination01" name="table-pagination" value="1" checked />
-                        <label for="tablePagination01" checked="checked">01</label>
-                        <input type="radio" id="tablePagination02" name="table-pagination" value="2" />
-                        <label for="tablePagination02">02</label>
-                        <input type="radio" id="tablePagination03" name="table-pagination" value="3" />
-                        <label for="tablePagination03">03</label>
-                        <input type="radio" id="tablePagination04" name="table-pagination" value="4" />
-                        <label for="tablePagination04">04</label>
-                        <input type="radio" id="tablePagination05" name="table-pagination" value="5" />
-                        <label for="tablePagination05">05</label>
-                        <table-content>
-                            <p>Visible/Non-Visible: [
-                                <span id="totalVisible"
-                                    style="font-family: var(--font01); color: var(--page-high-light-color); letter-spacing: var(--font01-letter-spacing);">00</span>
-                                /
-                                <span id="totalNonVisible"
-                                    style="font-family: var(--font01); color: var(--page-high-light-color); letter-spacing: var(--font01-letter-spacing);">00</span>
-                                ] Page: [
-                                <span
-                                    style="font-family: var(--font01); color: var(--page-high-light-color); letter-spacing: var(--font01-letter-spacing);">01</span>
-                                /
-                                <span
-                                    style="font-family: var(--font01); color: var(--page-high-light-color); letter-spacing: var(--font01-letter-spacing);">05</span>
-                                ]
-                            </p>
-                            <ol>
-                                <li>
-                                    <table-cell>
-                                        <input type="checkbox" id="tableHeader01" name="table-header" value="1" />
-                                    </table-cell>
-                                    <table-cell>Record #</table-cell>
-                                    <table-cell>Name</table-cell>
-                                    <table-cell>Alias</table-cell>
-                                    <table-cell>Affiliation</table-cell>
-                                    <table-cell>Status</table-cell>
-                                </li>
-                            </ol>
-                            <table-results>
-                                <ol id="myList" style="margin-top: 5px;">
-                                    <!-- <li class="active-li">
-                                        <table-cell>
-                                            <input type="checkbox" id="tableRowSelect02" name="table-row" value="2" />
-                                        </table-cell>
-                                        <table-cell>321654987</table-cell>
-                                        <table-cell><a href="#">Steven Grant Rogers</a></table-cell>
-                                        <table-cell>Captain America</table-cell>
-                                        <table-cell>S.H.I.E.L.D.</table-cell>
-                                        <table-cell>Unknown</table-cell>
-                                    </li>
-                                    <li>
-                                        <table-cell>
-                                            <input type="checkbox" id="tableRowSelect03" name="table-row" value="3" />
-                                        </table-cell>
-                                        <table-cell>321654987</table-cell>
-                                        <table-cell><a href="#">Clinton Francis Barton</a></table-cell>
-                                        <table-cell>Hawkeye</table-cell>
-                                        <table-cell>S.H.I.E.L.D.</table-cell>
-                                        <table-cell>Alive</table-cell>
-                                    </li>
-                                    <li>
-                                        <table-cell>
-                                            <input type="checkbox" id="tableRowSelect04" name="table-row" value="4" />
-                                        </table-cell>
-                                        <table-cell>321654987</table-cell>
-                                        <table-cell><a href="#">Wanda Maximoff</a></table-cell>
-                                        <table-cell>Scarlet Witch</table-cell>
-                                        <table-cell>S.H.I.E.L.D.</table-cell>
-                                        <table-cell>Alive</table-cell>
-                                    </li>
-                                    <li>
-                                        <table-cell>
-                                            <input type="checkbox" id="tableRowSelect05" name="table-row" value="5" />
-                                        </table-cell>
-                                        <table-cell>321654987</table-cell>
-                                        <table-cell><a href="#">Janet van Dyne</a></table-cell>
-                                        <table-cell>Wasp</table-cell>
-                                        <table-cell>S.H.I.E.L.D.</table-cell>
-                                        <table-cell>Unknown</table-cell>
-                                    </li>
-                                    <li>
-                                        <table-cell>
-                                            <input type="checkbox" id="tableRowSelect06" name="table-row" value="6" />
-                                        </table-cell>
-                                        <table-cell>321654987</table-cell>
-                                        <table-cell><a href="#">Anthony Edward Stark</a></table-cell>
-                                        <table-cell>Iron Man</table-cell>
-                                        <table-cell>S.H.I.E.L.D.</table-cell>
-                                        <table-cell>Deceased</table-cell>
-                                    </li>
-                                    <li>
-                                        <table-cell>
-                                            <input type="checkbox" id="tableRowSelect07" name="table-row" value="7" />
-                                        </table-cell>
-                                        <table-cell>321654987</table-cell>
-                                        <table-cell><a href="#">Robert Bruce Banner</a></table-cell>
-                                        <table-cell>Hulk</table-cell>
-                                        <table-cell>S.H.I.E.L.D.</table-cell>
-                                        <table-cell>Alive</table-cell>
-                                    </li>
-                                    <li>
-                                        <table-cell>
-                                            <input type="checkbox" id="tableRowSelect08" name="table-row" value="8" />
-                                        </table-cell>
-                                        <table-cell>321654987</table-cell>
-                                        <table-cell><a href="#">Yondu Udonta</a></table-cell>
-                                        <table-cell>Yondu</table-cell>
-                                        <table-cell>Raveners</table-cell>
-                                        <table-cell>Deceased</table-cell>
-                                    </li> -->
-                                </ol>
-                            </table-results>
-                        </table-content>
-                    </table-container>
-                </content-section>
+                <!-- TABLE PAGINATION -->
+                <!-- <label for="tablePagination01">01</label>
+                <label for="tablePagination02">02</label>
+                <label for="tablePagination03">03</label>
+                <label for="tablePagination04">04</label>
+                <label for="tablePagination05">05</label> -->
+                <table-container>
+                    <p>Visible/Non-Visible: [
+                        <span id="totalVisible"
+                            style="font-family: var(--font01); color: var(--page-high-light-color); letter-spacing: var(--font01-letter-spacing);">00</span>
+                        /
+                        <span id="totalNonVisible"
+                            style="font-family: var(--font01); color: var(--page-high-light-color); letter-spacing: var(--font01-letter-spacing);">00</span>
+                        ] Page: [
+                        <span
+                            style="font-family: var(--font01); color: var(--page-high-light-color); letter-spacing: var(--font01-letter-spacing);">01</span>
+                        /
+                        <span
+                            style="font-family: var(--font01); color: var(--page-high-light-color); letter-spacing: var(--font01-letter-spacing);">05</span>
+                        ]
+                    </p>
+                    <ol>
+                        <li>
+                            <table-cell>
+                                <input type="checkbox" id="tableHeader01" name="table-header" value="1" />
+                            </table-cell>
+                            <table-cell>#</table-cell>
+                            <table-cell>Name</table-cell>
+                            <table-cell>Username</table-cell>
+                            <table-cell>Website</table-cell>
+                            <table-cell>Email</table-cell>
+                        </li>
+                    </ol>
+                    <ol id="myList" style="margin-top: .5rem;"></ol>
+                </table-container>
             </panel-content>
             <!-- <panel-footer>
-		<panel-footer-left>: :</panel-footer-left>
-		<panel-footer-center>: :</panel-footer-center>
-		<panel-footer-right>: :</panel-footer-right>
-	</panel-footer> -->
+                <panel-footer-left>: :</panel-footer-left>
+                <panel-footer-center>: :</panel-footer-center>
+                <panel-footer-right>: :</panel-footer-right>
+            </panel-footer> -->
         </page-panel>
         <page-panel>
             <panel-header>
