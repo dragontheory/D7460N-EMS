@@ -61,6 +61,10 @@ table-container ol > li {
 	align-content: center;
 	transition: all 250ms;
 }
+table-container ol > li.active {
+	background-color: var(--page-bg-color-hover);
+	color: var(--page-text-color-hover);
+}
 table-container ol > li table-cell {
 	display: var(--table-display);
 	justify-content: start;
