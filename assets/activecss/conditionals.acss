@@ -68,29 +68,30 @@ window:resize {
 /* #myList = ol */
 #myList li:click {
   ajax: "https://my-json-server.typicode.com/dragontheory/D7460N-data/names/{@data-id}" get json await;
-  /* func: myExternalFunction after 100ms; */
+  
   /* Add .active class to clicked row. Remove .active class form all other rows withing #myList. */
   take-class: .active scope(#myList);
+
   /* Add HTML child li to <table-details> ol */
   table-details ol {
-    render: "<li><table-cell>ID</table-cell><table-cell>{JSON.item.id}</table-cell></li>
-             <li><table-cell>name</table-cell><table-cell>{JSON.item.name}</table-cell></li>
-             <li><table-cell>username</table-cell><table-cell>{JSON.item.username}</table-cell></li>
-             <li><table-cell>website</table-cell><table-cell><a href=\"https://{JSON.item.website}\" target=\"_new\">{JSON.item.website}</a></table-cell></li>
-             <li><table-cell>email</table-cell><table-cell><a href=\"mailto:{JSON.item.email}\" target=\"_new\">{JSON.item.email}</a></table-cell></li>";
+    render: "<li><table-cell>ID</table-cell><table-cell>{item.id}</table-cell></li>
+             <li><table-cell>name</table-cell><table-cell>{item.name}</table-cell></li>
+             <li><table-cell>username</table-cell><table-cell>{item.username}</table-cell></li>
+             <li><table-cell>website</table-cell><table-cell><a href=\"https://{item.website}\" target=\"_new\">{item.website}</a></table-cell></li>
+             <li><table-cell>email</table-cell><table-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></table-cell></li>";
   }
 }
 
-/* Remove .profile from <body> the moment <table-details> ol IS empty. 
+/* Remove .profile from <body> the moment <table-details> ol IS empty. */
 #myList:if-empty:observe {
   body {
     remove-class: .profile;
   }
-}*/
+}
 
-/* Add .profile to <body> the moment <table-details> ol is NOT empty. 
+/* Add .profile to <body> the moment <table-details> ol is NOT empty. */
 table-details ol:not-if-empty:observe {
   body {
     add-class: .profile; 
   }
-}*/
+}
