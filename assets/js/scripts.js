@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
 });
 
 //https://split.js.org/#/split-grid
+import Split from 'split-grid'
+
 Split({
     columnGutters: [{
         track: 1,
