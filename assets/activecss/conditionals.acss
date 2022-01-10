@@ -69,6 +69,8 @@ window:resize {
 #myList li:click {
   ajax: "https://my-json-server.typicode.com/dragontheory/D7460N-data/names/{@data-id}" get json await;
   
+  var: item {JSON};
+  
   /* Add .active class to clicked row. Remove .active class form all other rows withing #myList. */
   take-class: .active scope(#myList);
 
