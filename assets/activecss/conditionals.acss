@@ -48,14 +48,14 @@ window:resize {
       var: totalNonVisible++;
     }
   }
-  #visibleCount {
+  #totalVisible {
     @if {totalVisible} < 10 {
-      render: 0{totalVisible};
+      render: "0{totalVisible}";
     } @else {
-      render: {totalVisible};
+      render: "{totalVisible}";
     }
   }
-  #nonVisibleCount {
+  #totalNonVisible {
     @if {totalNonVisible} < 10 {
       render: 0{totalNonVisible};
     } @else {
