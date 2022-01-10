@@ -1,5 +1,6 @@
 body:init {
   ajax: "https://my-json-server.typicode.com/dragontheory/D7460N-data/names/" get json await;
+	var: totalRecords 243;
   #myList {
     console-log: "getting here";
     trigger: setup;
