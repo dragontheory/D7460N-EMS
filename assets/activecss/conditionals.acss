@@ -8,7 +8,7 @@ body:init {
     @each item in {JSON} {
       var: liCo++;
       render-before-end:
-      "<li data-co=\"{liCo}\">
+      "<li data-co=\"{liCo}\" data-id=\"{item.id}\">
         <table-cell>
           <input type="checkbox" id="" name="table-row" value="" />
         </table-cell>
