@@ -66,7 +66,7 @@ window:resize {
 
 /* #myList = ol */
 #myList li:click {
-  /* func: myExternalFunction after 100ms; */
+  func: myExternalFunction after 100ms;
   /* Add .active class to clicked row. Remove .active class form all other rows withing #myList. */
   take-class: .active scope(#myList);
   /* Add HTML child li to <table-details> ol */
