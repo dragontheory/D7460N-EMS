@@ -14,8 +14,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
   }],
 })*/
 
-import Split from 'split-grid'
-
 Split({
     columnGutters: [{
         track: 1,
