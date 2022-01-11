@@ -8,8 +8,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
 // https://split.js.org/#/split-grid
 // https://github.com/nathancahill/split/tree/master/packages/splitjs
 Split({
+	minSize: 100,
   columnGutters: [{
     track: 1,
-    element: document.querySelector('.gutter-col-1'),
+    element: document.querySelector('[data-gutter-col="1"]'),
   }],
 })
