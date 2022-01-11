@@ -13,10 +13,3 @@ document.addEventListener('DOMContentLoaded', function(e) {
     element: document.querySelector('.gutter-col-1'),
   }],
 })*/
-
-Split({
-    columnGutters: [{
-        track: 1,
-        element: document.querySelector('.gutter-col-1'),
-    }],
-})
