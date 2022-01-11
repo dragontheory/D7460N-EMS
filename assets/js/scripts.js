@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
 // https://split.js.org/#/split-grid
 // https://github.com/nathancahill/split/tree/master/packages/splitjs
-/*window.Split({
+Split({
   columnGutters: [{
     track: 1,
     element: document.querySelector('.gutter-col-1'),
   }],
-})*/
+})
