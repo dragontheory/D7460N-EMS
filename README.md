@@ -1,6 +1,6 @@
 <h1 align="center" width="100%"><img width="340px" height="400px" src="assets/images/logos/logo_380x380_.svg" /></h1>
 
-# **D7460N DMS | Entity Management System**
+# **D7460N EMS | Entity Management System**
 
 ## Your data your way. **Fast**&#160;/&#160;**Easy**&#160;/&#160;**Secure**
 
