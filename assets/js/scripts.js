@@ -7,10 +7,12 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
 // https://split.js.org/#/split-grid
 // https://github.com/nathancahill/split/tree/master/packages/splitjs
+
+
 Split({
-  minSize: 100,
+  minSize: 150,
   columnGutters: [{
-    track: 1,
-    element: document.querySelector('body input#layoutToggle02:checked ~ page-container > :nth-child(4)'),
+      track: 2,
+      element: document.querySelector('panel-gutter'),
   }],
 })
