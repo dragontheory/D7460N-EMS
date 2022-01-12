@@ -1,13 +1,8 @@
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 10px 1fr;
-}
-
-.gutter-col {
-    grid-row: 1/-1;
+panel-gutter { /* GUTTER */
+    background-color: var(--panel-bg-color);
     cursor: col-resize;
+    grid-column: 3;
 }
-
-.gutter-col-1 {
-    grid-column: 2;
+panel-gutter:hover {
+    background-color: var(--page-bg-color-hover);
 }
