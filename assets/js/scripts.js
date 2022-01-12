@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 Split({
   minSize: 150,
   columnGutters: [{
-      track: 2,
+      track: 3,
       element: document.querySelector('panel-gutter'),
   }],
 })
