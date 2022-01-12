@@ -209,11 +209,25 @@
     LAYOUT 02
   \*------------------------------------*/
   input#layoutToggle02:checked ~ page-container {grid-template-columns: 250px 1fr;} /* NAV | RESULTS */
-  input#layoutToggle02:checked ~ page-container > :nth-child(n+4):nth-child(-n+13) {display: none;} /* HIDE EVERYTHING ELSE */
-  body input#layoutToggle02:checked ~ page-container > :nth-child(14) {display: none;}
+  input#layoutToggle02:checked ~ page-container > :nth-child(n+4):nth-child(-n+13) { /* HIDE EVERYTHING ELSE */
+    position: absolute;
+    opacity: 0.0;
+    pointer-events: none;
+  }
+  body input#layoutToggle02:checked ~ page-container > :nth-child(14) {
+    position: absolute;
+    opacity: 0.0;
+    pointer-events: none;
+  }
   body.profile input#layoutToggle02:checked ~ page-container {grid-template-columns: 250px 1.5fr 10px 1fr;} /* NAV | RESULTS | PROFILE */
-  body.profile input#layoutToggle02:checked ~ page-container > :nth-child(4){display: grid;} /* GUTTER */
-  body.profile input#layoutToggle02:checked ~ page-container > :nth-child(5){display: grid;} /* PROFILE */
+  body.profile input#layoutToggle02:checked ~ page-container > :nth-child(4), /* GUTTER */
+  body.profile input#layoutToggle02:checked ~ page-container > :nth-child(5) { /* PROFILE */
+    position: relative;
+    opacity: 1.0;
+    pointer-events: auto;
+  }
+
+  
   
   
   /*------------------------------------*\
@@ -222,7 +236,7 @@
   input#layoutToggle03:checked ~ page-container {grid-template-columns: 250px 1.5fr 10px 1fr;} /* NAV | RESULTS | PROFILE */
   input#layoutToggle03:checked ~ page-container > :nth-child(n+6):nth-child(-n+13) {display: none;}
   input#layoutToggle03:checked ~ page-container > :nth-child(14) {display: none;}
-  input#layoutToggle03:checked ~ page-container > :nth-child(5){display: grid;} /* PROFILE */
+  input#layoutToggle03:checked ~ page-container > :nth-child(5) {display: grid;} /* PROFILE */
   
   
   /*------------------------------------*\
