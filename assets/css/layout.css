@@ -107,7 +107,7 @@
       color: rgba(255,255,255,0.2);
     }
     page-header-right ul li a {
-      padding: 0 1rem;
+      padding: 0 .5rem;
     }
   /* FOOTER left */
   page-container page-footer page-footer-left  {
