@@ -44,20 +44,7 @@
     </script>
 </head>
 
-<body>
-    <!-- LAYOUT CONTROLS -->
-    <input type="checkbox" id="themeToggle" name="themes" value="dark" />
-    <label for="themeToggle"></label>
-    <input type="radio" id="layoutToggle01" name="layouts" value="1" />
-    <label for="layoutToggle01">01</label>
-    <input type="radio" id="layoutToggle02" name="layouts" value="2" checked />
-    <label for="layoutToggle02" checked="checked">02</label>
-    <input type="radio" id="layoutToggle03" name="layouts" value="3" />
-    <label for="layoutToggle03">03</label>
-    <input type="radio" id="layoutToggle04" name="layouts" value="4" />
-    <label for="layoutToggle04">04</label>
-    <input type="radio" id="layoutToggle05" name="layouts" value="5" />
-    <label for="layoutToggle05">05</label>
+<body class="layout02">
     <page-container>
         <page-header>
             <page-header-left>
@@ -76,7 +63,16 @@
                 </page-logo>
             </page-header-left>
             <page-header-center>: :</page-header-center>
-            <page-header-right>&#160;</page-header-right>
+            <page-header-right>
+              <!-- LAYOUT CONTROLS -->
+              <ul class="layout">
+                  <li><a href="#">01</a> | </li>
+                  <li><a href="#">02</a> | </li>
+                  <li><a href="#">03</a> | </li>
+                  <li><a href="#">04</a> | </li>
+                  <li><a href="#">05</a></li>
+              </ul>
+            </page-header-right>
         </page-header>
         <page-panel>
             <panel-header>
