@@ -66,7 +66,7 @@ window:resize {
 }
 
 /* #myList = ol */
-#myList li:click {
+#myList li:if-empty-trimmed(table-details ol):click {
   ajax: "https://my-json-server.typicode.com/dragontheory/D7460N-data/names/{@data-id}" get json await;
   
   var: item {JSON};
@@ -81,6 +81,11 @@ window:resize {
              <li><table-cell>username</table-cell><table-cell>{item.username}</table-cell></li>
              <li><table-cell>website</table-cell><table-cell><a href=\"https://{item.website}\" target=\"_new\">{item.website}</a></table-cell></li>
              <li><table-cell>email</table-cell><table-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></table-cell></li>";
+  }
+}
+#myList li:not-if-empty-trimmed(table-details ol):click {
+  table-details ol {
+    render: "";
   }
 }
 
