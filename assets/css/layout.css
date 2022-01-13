@@ -93,6 +93,22 @@
     justify-self: right;
     align-self: center;
   }
+    /* LAYOUT CONTROLS */
+    page-header-right ul {
+      list-style-type: none;
+      display: var(--table-display);
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr;
+      padding: 0;
+      margin: 0;
+      gap: .5rem 0;
+    }
+    page-header-right ul li {
+      color: rgba(255,255,255,0.2);
+    }
+    page-header-right ul li a {
+      padding: 0 1rem;
+    }
   /* FOOTER left */
   page-container page-footer page-footer-left  {
     padding: var(--panel-padding);
@@ -164,68 +180,56 @@
   a {transition: var(--transition);}
   a:hover {color: var(--page-text-color-hover);}
   
-  /* LAYOUT CONTROLS */
-  /* Hide radios and checkboxes */
-  body > input {display: none;}
-  
-  body > label {
-    position: absolute;
-    top: 30px;
-    cursor: pointer;
-    transition: var(--transition);
-    padding: 5px 10px;
-    font-family: var(--font01);
-    letter-spacing: var(--font01-letter-spacing);
-  }
-  
-  input#layoutToggle01:checked + label,
-  input#layoutToggle02:checked + label,
-  input#layoutToggle03:checked + label,
-  input#layoutToggle04:checked + label,
-  input#layoutToggle05:checked + label {color: var(--page-text-color-hover);}
-  
-  label[for*='layoutToggle']:checked {color: var(--page-text-color-hover);}
-  label[for*='layoutToggle']:hover {color: var(--page-text-color-hover);}
-  
-  input#layoutToggle01 + label {right: 178px;}
-  input#layoutToggle02 + label {right: 142px;}
-  input#layoutToggle03 + label {right: 106px;}
-  input#layoutToggle04 + label {right: 66px;}
-  input#layoutToggle05 + label {right: 30px;}
+
+
+
   
   /*------------------------------------*\
     LAYOUT 01
   \*------------------------------------*/
-  input#layoutToggle01:checked ~ page-container {
+  .layout01 page-container {
     grid-template-columns: 250px 1fr 1fr 1fr; /* HOME | HOME | HOME | HOME */
     grid-template-rows: auto auto 1fr auto;
   }
-  input#layoutToggle01:checked ~ page-container > :nth-child(n+2):nth-child(-n+5) {display: none;}
-  input#layoutToggle01:checked ~ page-container > page-panel:nth-child(6) {grid-row: 2/4;}
-  input#layoutToggle01:checked ~ page-container > page-panel:nth-child(6) {display: none;}
+  .layout01 page-container > :nth-child(n+2):nth-child(-n+5) {
+    opacity: 0.0;
+    position: absolute;
+    pointer-events: none;
+  }
+  .layout01 page-container > page-panel:nth-child(6) {grid-row: 2/4;}
+  .layout01 page-container > page-panel:nth-child(6) {
+    opacity: 0.0;
+    position: absolute;
+    pointer-events: none;
+  }
   
   
   /*------------------------------------*\
     LAYOUT 02
   \*------------------------------------*/
-  input#layoutToggle02:checked ~ page-container {grid-template-columns: 250px 1fr;} /* NAV | RESULTS */
-  input#layoutToggle02:checked ~ page-container > :nth-child(n+4):nth-child(-n+13) { /* HIDE EVERYTHING ELSE */
-    position: absolute;
+  .layout02 page-container {grid-template-columns: 250px 1fr;} /* NAV | RESULTS */
+  .layout02 page-container > :nth-child(n+4):nth-child(-n+13) { /* HIDE EVERYTHING ELSE */
     opacity: 0.0;
+    position: absolute;
     pointer-events: none;
   }
-  body input#layoutToggle02:checked ~ page-container > :nth-child(14) {
-    position: absolute;
+  .layout02 page-container > :nth-child(14) {
     opacity: 0.0;
+    position: absolute;
     pointer-events: none;
   }
-  body.profile input#layoutToggle02:checked ~ page-container {grid-template-columns: 250px 1.5fr 10px 1fr;} /* NAV | RESULTS | PROFILE */
-  body.profile input#layoutToggle02:checked ~ page-container > :nth-child(4), /* GUTTER */
-  body.profile input#layoutToggle02:checked ~ page-container > :nth-child(5) { /* PROFILE */
+  .layout02.profile page-container {grid-template-columns: 250px 1.5fr 10px 1fr;} /* NAV | RESULTS | PROFILE */
+  .layout02.profile page-container > :nth-child(4), /* GUTTER */
+  .layout02.profile page-container > :nth-child(5) { /* PROFILE */
     position: relative;
     opacity: 1.0;
     pointer-events: auto;
   }
+  .layout02.profile page-container > :nth-child(4) {
+    background-color: var(--panel-bg-color);
+    cursor: col-resize;
+    grid-column: 3;
+}
 
   
   
@@ -233,26 +237,54 @@
   /*------------------------------------*\
     LAYOUT 03
   \*------------------------------------*/
-  input#layoutToggle03:checked ~ page-container {grid-template-columns: 250px 1.5fr 10px 1fr;} /* NAV | RESULTS | PROFILE */
-  input#layoutToggle03:checked ~ page-container > :nth-child(n+6):nth-child(-n+13) {display: none;}
-  input#layoutToggle03:checked ~ page-container > :nth-child(14) {display: none;}
-  input#layoutToggle03:checked ~ page-container > :nth-child(5) {display: grid;} /* PROFILE */
+  .layout03 page-container {grid-template-columns: 250px 1.5fr 10px 1fr;} /* NAV | RESULTS | PROFILE */
+  .layout03 page-container > :nth-child(n+6):nth-child(-n+13) {
+    opacity: 0.0;
+    position: absolute;
+    pointer-events: none;
+  }
+  .layout03 page-container > :nth-child(14) {
+    opacity: 0.0;
+    position: absolute;
+    pointer-events: none;
+  }
+  .layout03 page-container > :nth-child(5) {
+    position: relative;
+    opacity: 1.0;
+    pointer-events: auto;
+  } /* PROFILE */
   
   
   /*------------------------------------*\
     LAYOUT 04
   \*------------------------------------*/
-  input#layoutToggle04:checked ~ page-container {grid-template-columns: 250px 1.5fr 10px 1fr 350px;} /* NAV | RESULTS | PROFILE | DETAILS */
-  input#layoutToggle04:checked ~ page-container > :nth-child(n+7):nth-child(-n+13) {display: none;}
-  input#layoutToggle04:checked ~ page-container > page-panel:nth-child(7) {display: none;}
-  input#layoutToggle04:checked ~ page-container > :nth-child(14) {display: none;}
+  .layout04 page-container {grid-template-columns: 250px 1.5fr 10px 1fr 350px;} /* NAV | RESULTS | PROFILE | DETAILS */
+  .layout04 page-container > :nth-child(n+7):nth-child(-n+13) {
+    opacity: 0.0;
+    position: absolute;
+    pointer-events: none;
+  }
+  .layout04 page-container > page-panel:nth-child(7) {
+    opacity: 0.0;
+    position: absolute;
+    pointer-events: none;
+  }
+  .layout04 page-container > :nth-child(14) {
+    opacity: 0.0;
+    position: absolute;
+    pointer-events: none;
+  }
   
   
   /*------------------------------------*\
     LAYOUT 05
   \*------------------------------------*/
-  input#layoutToggle05:checked ~ page-container {
+  .layout05  page-container {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /* HOME | HOME | HOME | HOME */
   }
-  input#layoutToggle05:checked ~ page-container > :nth-child(n+2):nth-child(-n+9) {display: none;}
+  .layout05 page-container > :nth-child(n+2):nth-child(-n+9) {
+    opacity: 0.0;
+    position: absolute;
+    pointer-events: none;
+  }
   
