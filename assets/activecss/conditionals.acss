@@ -1,6 +1,7 @@
 body:init {
   ajax: "https://my-json-server.typicode.com/dragontheory/D7460N-data/names/" get json await;
 	var: totalRecords 243;
+  var: currentUserID "";
   #myList {
     console-log: "getting here";
     trigger: setup;
@@ -66,7 +67,9 @@ window:resize {
 }
 
 /* #myList = ol */
-#myList li:if-empty-trimmed(table-details ol):click {
+/* Check if the current user is the same one in the <table-details> <li> */
+#myList li:not-if-var(currentUserID "{@data-id}"):click {
+  var: currentUserID "{@data-id}";
   ajax: "https://my-json-server.typicode.com/dragontheory/D7460N-data/names/{@data-id}" get json await;
   
   var: item {JSON};
@@ -83,9 +86,10 @@ window:resize {
              <li><table-cell>email</table-cell><table-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></table-cell></li>";
   }
 }
-#myList li:not-if-empty-trimmed(table-details ol):click {
+#myList li:not-if-empty-trimmed(table-details ol):if-var(currentUserID "{@data-id}"):click {
   table-details ol {
     render: "";
+    var: currentUserID "";
   }
 }
 
