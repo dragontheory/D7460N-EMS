@@ -156,3 +156,12 @@ table-details ol:not-if-empty:observe {
     add-class: .layout05;
   }
 }
+
+close-panel:not-if-empty-trimmed(table-details ol):click {
+  table-details ol {
+    render: "";
+  }
+  #myList li {
+    remove-class: .active;
+  }
+}
