@@ -38,6 +38,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-smooth: auto;
+    overflow: hidden;
   }
   
   /* Seven middle columns */
@@ -191,13 +192,7 @@
     grid-template-columns: 250px 1fr 1fr 1fr; /* HOME | HOME | HOME | HOME */
     grid-template-rows: auto auto 1fr auto;
   }
-  .layout01 page-container > :nth-child(n+2):nth-child(-n+5) {
-    opacity: 0.0;
-    position: absolute;
-    pointer-events: none;
-  }
-  .layout01 page-container > page-panel:nth-child(6) {grid-row: 2/4;}
-  .layout01 page-container > page-panel:nth-child(6) {
+  .layout01 page-container > :nth-child(n+2):nth-child(-n+6) {
     opacity: 0.0;
     position: absolute;
     pointer-events: none;
@@ -208,16 +203,12 @@
     LAYOUT 02
   \*------------------------------------*/
   .layout02 page-container {grid-template-columns: 250px 1fr;} /* NAV | RESULTS */
-  .layout02 page-container > :nth-child(n+4):nth-child(-n+13) { /* HIDE EVERYTHING ELSE */
+  .layout02 page-container > :nth-child(n+4):nth-child(-n+14) { /* HIDE EVERYTHING ELSE */
     opacity: 0.0;
     position: absolute;
     pointer-events: none;
   }
-  .layout02 page-container > :nth-child(14) {
-    opacity: 0.0;
-    position: absolute;
-    pointer-events: none;
-  }
+  
   .layout02.profile page-container {grid-template-columns: 250px 1.5fr 10px 1fr;} /* NAV | RESULTS | PROFILE */
   .layout02.profile page-container > :nth-child(4), /* GUTTER */
   .layout02.profile page-container > :nth-child(5) { /* PROFILE */
@@ -225,7 +216,7 @@
     opacity: 1.0;
     pointer-events: auto;
   }
-  .layout02.profile page-container > :nth-child(4) {
+  .layout02.profile page-container > :nth-child(4) { /* GUTTER */
     background-color: var(--panel-bg-color);
     cursor: col-resize;
     grid-column: 3;
@@ -248,18 +239,23 @@
     position: absolute;
     pointer-events: none;
   }
-  .layout03 page-container > :nth-child(5) {
+  .layout03 page-container > :nth-child(5) { /* PROFILE */
     position: relative;
     opacity: 1.0;
     pointer-events: auto;
-  } /* PROFILE */
+  }
+  .layout03.profile page-container > :nth-child(4) { /* GUTTER */
+    background-color: var(--panel-bg-color);
+    cursor: col-resize;
+    grid-column: 3;
+}
   
   
   /*------------------------------------*\
     LAYOUT 04
   \*------------------------------------*/
   .layout04 page-container {grid-template-columns: 250px 1.5fr 10px 1fr 350px;} /* NAV | RESULTS | PROFILE | DETAILS */
-  .layout04 page-container > :nth-child(n+7):nth-child(-n+13) {
+  .layout04 page-container > :nth-child(n+7):nth-child(-n+14) {
     opacity: 0.0;
     position: absolute;
     pointer-events: none;
@@ -269,11 +265,11 @@
     position: absolute;
     pointer-events: none;
   }
-  .layout04 page-container > :nth-child(14) {
-    opacity: 0.0;
-    position: absolute;
-    pointer-events: none;
-  }
+  .layout04.profile page-container > :nth-child(4) { /* GUTTER */
+    background-color: var(--panel-bg-color);
+    cursor: col-resize;
+    grid-column: 3;
+}
   
   
   /*------------------------------------*\
