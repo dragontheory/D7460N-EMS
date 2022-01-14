@@ -160,6 +160,7 @@ table-details ol:not-if-empty:observe {
 close-panel:not-if-empty-trimmed(table-details ol):click {
   table-details ol {
     render: "";
+    var: currentUserID "";
   }
   #myList li {
     remove-class: .active;
