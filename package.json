@@ -1,6 +1,5 @@
 {
-"scripts": {
-        "format": "prettier --write \"./**/*.{js,json}\""
-    }
-
+  "scripts": {
+    "format": "prettier --write \"./**/*.{js,json}\""
+  }
 }
