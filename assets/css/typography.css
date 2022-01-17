@@ -5,6 +5,11 @@
     --font03-font-size: .9rem;
     --font04: Orbitron;
     --font04-font-size: .8rem;
+    --font05: Calibri, "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+    --font05-font-size: .9rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smooth: auto;
 }
 /* Logo Text 'D7460N' */
 /* page-container page-header page-header-left logo-text {
@@ -130,6 +135,10 @@ page-title	{
 	padding: 0 1rem;
     color: var(--page-high-light-color);
     letter-spacing: var(--font01-letter-spacing);
+}
+panel-header h1 { 
+    padding: 0;
+    margin: 0;   
 }
 page-title {
     font-size: 1.5rem;

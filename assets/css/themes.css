@@ -94,8 +94,6 @@ input:checked#themeToggle + label:active:after {width: 13px;}
 html, body {
   background-color: var(--page-bg-color);
   background-image: var(--page-bg-image);
-  /* font-family: var(--font03);
-  font-size: var(--font03-font-size); */
   font-family: var(--font03);
   font-size: var(--font03-font-size);
 }

@@ -13,7 +13,6 @@
     --padding: 0;
     --container-padding: 20px;
     --overflow: hidden;
-    --font-family: Calibri, "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
   
   /* PANEL */
     --panel-padding: 1em;
@@ -34,10 +33,6 @@
   body { 
     margin: var(--margin);
     padding: var(--padding);
-    font-family: var(--font-family);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-smooth: auto;
     overflow: hidden;
   }
   
@@ -180,9 +175,6 @@
   
   a {transition: var(--transition);}
   a:hover {color: var(--page-text-color-hover);}
-  
-
-
 
   
   /*------------------------------------*\
@@ -220,9 +212,7 @@
     background-color: var(--panel-bg-color);
     cursor: col-resize;
     grid-column: 3;
-}
-
-  
+  }
   
   
   /*------------------------------------*\
@@ -248,13 +238,13 @@
     background-color: var(--panel-bg-color);
     cursor: col-resize;
     grid-column: 3;
-}
+  }
   
   
   /*------------------------------------*\
     LAYOUT 04
   \*------------------------------------*/
-  .layout04 page-container {grid-template-columns: 250px 1.5fr 10px 1fr 350px;} /* NAV | RESULTS | PROFILE | DETAILS */
+  .layout04 page-container {grid-template-columns: 250px 1.5fr 10px 1fr 260px;} /* NAV | RESULTS | PROFILE | DETAILS */
   .layout04 page-container > :nth-child(n+7):nth-child(-n+14) {
     opacity: 0.0;
     position: absolute;
@@ -269,7 +259,7 @@
     background-color: var(--panel-bg-color);
     cursor: col-resize;
     grid-column: 3;
-}
+  }
   
   
   /*------------------------------------*\
