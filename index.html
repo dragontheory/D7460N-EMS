@@ -421,12 +421,23 @@
         </page-panel>
         <page-panel>
             <panel-header>
-                <panel-header-left style="padding: 0;"></panel-header-left>
-                <panel-header-center style="padding: 0;"></panel-header-center>
-                <panel-header-right style="padding: 0;"></panel-header-right>
+                <panel-header-left><h1>DASHBOARD</h1></panel-header-left>
+                <panel-header-center></panel-header-center>
+                <panel-header-right></panel-header-right>
             </panel-header>
             <panel-content>
-                <h1>DASHBOARD</h1>
+                <!-- <p>Calendar</p>
+                <p>Transactions</p>
+                <p>Clients</p>
+                <p>Employees</p>
+                <p>Contacts</p>
+                <p>Legal</p>
+                <p>Logistics</p>
+                <p>Marketing</p>
+                <p>Sales</p>
+                <p>Budget</p>
+                <p>Alerts</p>
+                <p>Favorites</p> -->
             </panel-content>
             <panel-footer>
                 <panel-footer-left>: :</panel-footer-left>
@@ -536,12 +547,19 @@
         </page-panel>
         <page-panel>
             <panel-header>
-                <panel-header-left style="padding: 0;"></panel-header-left>
-                <panel-header-center style="padding: 0;"></panel-header-center>
-                <panel-header-right style="padding: 0;"></panel-header-right>
+                <panel-header-left><h1>FAVORITES</h1></panel-header-left>
+                <panel-header-center></panel-header-center>
+                <panel-header-right></panel-header-right>
             </panel-header>
             <panel-content>
-                <h1>FAVORITES</h1>
+                <p>Favorites content</p>
+                <ul>
+                    <li><table-cell>ID</table-cell><table-cell>{item.id}</table-cell></li>
+                    <li><table-cell>name</table-cell><table-cell>{item.name}</table-cell></li>
+                    <li><table-cell>username</table-cell><table-cell>{item.username}</table-cell></li>
+                    <li><table-cell>website</table-cell><table-cell><a href=\"https://{item.website}\" target=\"_new\">{item.website}</a></table-cell></li>
+                    <li><table-cell>email</table-cell><table-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></table-cell></li>
+                </ul>
             </panel-content>
             <panel-footer>
                 <panel-footer-left>: :</panel-footer-left>
@@ -551,12 +569,19 @@
         </page-panel>
         <page-panel>
             <panel-header>
-                <panel-header-left style="padding: 0;"></panel-header-left>
-                <panel-header-center style="padding: 0;"></panel-header-center>
-                <panel-header-right style="padding: 0;"></panel-header-right>
+                <panel-header-left><h1>HISTORY</h1></panel-header-left>
+                <panel-header-center></panel-header-center>
+                <panel-header-right></panel-header-right>
             </panel-header>
             <panel-content>
-                <h1>HISTORY</h1>
+                <p>History content</p>
+                <ul>
+                    <li><table-cell>ID</table-cell><table-cell>{item.id}</table-cell></li>
+                    <li><table-cell>name</table-cell><table-cell>{item.name}</table-cell></li>
+                    <li><table-cell>username</table-cell><table-cell>{item.username}</table-cell></li>
+                    <li><table-cell>website</table-cell><table-cell><a href=\"https://{item.website}\" target=\"_new\">{item.website}</a></table-cell></li>
+                    <li><table-cell>email</table-cell><table-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></table-cell></li>
+                </ul>
             </panel-content>
             <panel-footer>
                 <panel-footer-left>: :</panel-footer-left>
@@ -566,12 +591,19 @@
         </page-panel>
         <page-panel>
             <panel-header>
-                <panel-header-left style="padding: 0;"></panel-header-left>
-                <panel-header-center style="padding: 0;"></panel-header-center>
-                <panel-header-right style="padding: 0;"></panel-header-right>
+                <panel-header-left><h1>MESSAGES</h1></panel-header-left>
+                <panel-header-center></panel-header-center>
+                <panel-header-right></panel-header-right>
             </panel-header>
             <panel-content>
-                <h1>MESSAGES</h1>
+                <p>Messages content</p>
+                <ul>
+                    <li><table-cell>ID</table-cell><table-cell>{item.id}</table-cell></li>
+                    <li><table-cell>name</table-cell><table-cell>{item.name}</table-cell></li>
+                    <li><table-cell>username</table-cell><table-cell>{item.username}</table-cell></li>
+                    <li><table-cell>website</table-cell><table-cell><a href=\"https://{item.website}\" target=\"_new\">{item.website}</a></table-cell></li>
+                    <li><table-cell>email</table-cell><table-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></table-cell></li>
+                </ul>
             </panel-content>
             <panel-footer>
                 <panel-footer-left>: :</panel-footer-left>
@@ -581,12 +613,19 @@
         </page-panel>
         <page-panel>
             <panel-header>
-                <panel-header-left style="padding: 0;"></panel-header-left>
-                <panel-header-center style="padding: 0;"></panel-header-center>
-                <panel-header-right style="padding: 0;"></panel-header-right>
+                <panel-header-left><h1>ALERTS</h1></panel-header-left>
+                <panel-header-center></panel-header-center>
+                <panel-header-right></panel-header-right>
             </panel-header>
             <panel-content>
-                <h1>TODO</h1>
+                <p>Alerts content</p>
+                <ul>
+                    <li><table-cell>ID</table-cell><table-cell>{alert.id}</table-cell></li>
+                    <li><table-cell>Title</table-cell><table-cell>{alert.title}</table-cell></li>
+                    <li><table-cell>Recipient</table-cell><table-cell>{alert.recipient}</table-cell></li>
+                    <li><table-cell>Details</table-cell><table-cell><a href=\"https://{alert.details}\" target=\"_new\">{alert.details}</a></table-cell></li>
+                    <li><table-cell>Respond</table-cell><table-cell><a href=\"mailto:{alert.response}\" target=\"_new\">{alert.response}</a></table-cell></li>
+                </ul>
             </panel-content>
             <panel-footer>
                 <panel-footer-left>: :</panel-footer-left>
