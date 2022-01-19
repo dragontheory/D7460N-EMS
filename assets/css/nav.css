@@ -19,7 +19,7 @@ nav-container > label {
 		grid-template-columns: 1fr auto;
 		cursor: pointer;
 		color: var(--text-color);
-		padding: .5rem 1rem;
+		padding: 1rem;
 		align-content: center;
 		
 		transition: var(--transition);
@@ -53,7 +53,7 @@ nav-container > label {
 	nav-content > label {
 		display: var(--display);
 		grid-template-columns: auto 1fr auto;
-		padding: 10px 15px;
+		padding: 1rem;
 		cursor: pointer;
 		box-shadow: inset 0 -1px 0 0 rgba(0,0,0,1),
 					inset 0 1px 0 0 rgba(255,255,255,0.1);
