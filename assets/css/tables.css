@@ -60,6 +60,7 @@ table-container ol > li {
 	background-color: var(--panel-bg-color);
 	align-content: center;
 	transition: all 250ms;
+	cursor: pointer;
 }
 table-container ol > li.active {
 	background-color: var(--page-bg-color-hover);
