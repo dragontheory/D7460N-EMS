@@ -60,6 +60,9 @@
   --page-logo-color-hover: var(--light-theme-logo-color-hover);
   --panel-bg-color: var(--light-theme-panel-bg-color);
 }
+page-main {
+  background-color: transparent;
+}
 input#themeToggle + label {
   display: grid;
   position: absolute;

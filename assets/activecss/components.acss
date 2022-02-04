@@ -1,1 +1,28 @@
-
+body:init {
+    create-element: 
+        page-container pageContainer,
+        page-header pageHeader,
+        page-nav pageNav,
+        page-main pageMain,
+        page-splitter pageSplitter,
+        page-aside pageAside,
+        page-footer pageFooter;
+}
+@component pageContainer html("/assets/activecss/components/page-container.html" get) {}
+@component pageHeader html("/assets/activecss/components/page-header.html" get) {}
+@component pageNav html("/assets/activecss/components/page-nav.html" get) {}
+@component pageMain html("/assets/activecss/components/page-main.html" get) {}
+@component pageSplitter html("/assets/activecss/components/page-splitter.html" get) {
+    &:componentOpen {
+        run: {=
+            Split({
+                columnGutters: [{
+                    track: 2,
+                    element: document.querySelector('page-splitter'),
+                }]
+            });
+        =};
+    }
+}
+@component pageAside html("/assets/activecss/components/page-aside.html" get) {}
+@component pageFooter html("/assets/activecss/components/page-footer.html" get) {}
