@@ -1,48 +1,48 @@
 tab-container {
-	display: var(--tab-display);
-	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-template-rows: auto 1fr;
-	overflow-y: hidden;
+  display: var(--tab-display);
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  overflow-y: hidden;
 }
 /*
 TAB CONTROLS
 Hide radios */
 tab-container > input {display: none;}
 tab-container > input:checked + label {
-	color: #FFF;
-	box-shadow: 0 1px 0 0 var(--page-text-color-hover);;
+  color: #FFF;
+  box-shadow: 0 1px 0 0 var(--page-text-color-hover);;
 }
 tab-container > label:hover {color: var(--page-text-color-hover);}
 
 tab-container > label {
-	cursor: pointer;
-	transition: color 250ms;
-	color: var(--page-text-color);
-	padding: 5px 10px;
-	border-right: solid 1px var(--page-text-color-notes);
-	justify-self: center;
+  cursor: pointer;
+  transition: color 250ms;
+  color: var(--page-text-color);
+  padding: 5px 10px;
+  border-right: solid 1px var(--page-text-color-notes);
+  justify-self: center;
 }
 
 tab-container > label:last-of-type {border: none; }
 
 tab-container tab-content {
-	display: var(--tab-display);
-	grid-column: 1 / -1;
-	align-content: start;
-	overflow-y: auto;
+  display: var(--tab-display);
+  grid-column: 1 / -1;
+  align-content: start;
+  overflow-y: auto;
 }
 tab-content table-container ol {
-	grid-gap: 0;
+  grid-gap: 0;
 }
 tab-content table-container ol > li {
-	grid-template-columns: .5fr 1fr;
-	background-color: transparent;
-	border-radius: 0;
-	box-shadow: inset 0 -1px 0 0 rgba(0,0,0,1),
-					inset 0 1px 0 0 rgba(255,255,255,.1);
+  grid-template-columns: .5fr 1fr;
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: inset 0 -1px 0 0 rgba(0,0,0,1),
+              inset 0 1px 0 0 rgba(255,255,255,.1);
 }
 tab-content table-container ol > li table-cell {
-	padding: 1rem;
+  padding: 1rem;
 }
 
 
@@ -55,4 +55,3 @@ tab-container > input#detailsTabToggle01:checked ~ tab-content:not(:nth-of-type(
 tab-container > input#detailsTabToggle02:checked ~ tab-content:not(:nth-of-type(2)),
 tab-container > input#detailsTabToggle03:checked ~ tab-content:not(:nth-of-type(3)),
 tab-container > input#detailsTabToggle04:checked ~ tab-content:not(:nth-of-type(4)) {display: none;}
-
