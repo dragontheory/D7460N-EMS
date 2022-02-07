@@ -98,6 +98,18 @@ panel-header-left {
   justify-self: left;
   align-self: center;
 }
+panel-footer-right {
+  justify-self: right;
+  align-self: center;
+}
+panel-footer-center {
+  justify-self: center;
+  align-self: center;
+}
+panel-footer-left {
+  justify-self: left;
+  align-self: center;
+}
 
 
 /* NAV + MAIN */
