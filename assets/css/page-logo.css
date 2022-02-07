@@ -1,0 +1,58 @@
+page-logo svg {
+  width: 5rem;
+  position: absolute;
+  left: 0rem;
+  top: .1rem;
+}
+page-logo svg {
+  fill: var(--page-high-light-color);
+  transition: var(--transition);
+}
+page-logo svg:hover {
+  fill: var(--page-logo-color-hover);
+  transition: var(--transition);
+  cursor: pointer;
+}
+logo-text {
+  display: grid;
+  position: absolute;
+  left: 4.7rem; 
+  top: .8rem;
+  font-family: AgencyGothicCT-Bold, Tahoma, serif;
+  font-size: 3rem;
+  letter-spacing: 0.01rem;
+  transform: scale(1, 0.7);
+  color: var(--page-high-light-color);
+}
+logo-text-2 {
+  display: grid;
+  position: absolute;
+  left: 11rem;
+  top: .7rem;
+  transform: scale(0.5, 0.3);
+  font-family: var(--font01);
+  font-size: 2.7rem;
+  letter-spacing: 0.01rem;
+}
+logo-text-3 {
+  display: grid;
+  left: 8.5rem;
+  top: 1.9rem;
+  transform: scale(0.51, 0.3);
+  position: absolute;
+  font-family: var(--font01);
+  font-size: 2rem;
+  letter-spacing: 0.02rem;
+  text-transform: uppercase;
+}
+logo-text-4 {
+  display: grid;
+  left: 13.65rem;
+  top: 1.7rem;
+  transform: scale(1, 1);
+  position: absolute;
+  font-family: var(--font01);
+  font-size: 0.8rem;
+  letter-spacing: 0.07rem;
+  font-variant: small-caps;
+}
