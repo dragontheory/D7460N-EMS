@@ -62,6 +62,9 @@ body:init {
     body {
       remove-class: .aside;
     }
+    page-container {
+      remove-property: grid-template-columns;
+    }
   }
 }
 @component pageFooter html("/assets/activecss/components/page-footer.html" get) {}
