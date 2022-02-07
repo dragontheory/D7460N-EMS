@@ -31,6 +31,20 @@ page-splitter { grid-area: splitter; }
 page-aside  	{ grid-area: aside; }
 page-footer 	{ grid-area: footer; }
 
+page-header-left {
+  display: grid;
+  justify-self: left;
+  align-self: center;
+}
+page-header-center {
+  justify-self: center;
+  align-content: start;
+}
+page-header-right {
+  justify-self: right;
+  align-self: center;
+}
+
 page-container > * {
   display: grid;
   grid-template-columns: 1fr;
