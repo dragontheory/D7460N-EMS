@@ -2,17 +2,43 @@ body:init {
     create-element: 
         page-container pageContainer,
         page-header pageHeader,
+        page-logo pageLogo,
         page-nav pageNav,
         page-main pageMain,
         page-splitter pageSplitter,
         page-aside pageAside,
         page-footer pageFooter;
 }
-@component pageContainer html("/assets/activecss/components/page-container.html" get) {}
-@component pageHeader html("/assets/activecss/components/page-header.html" get) {}
-@component pageNav html("/assets/activecss/components/page-nav.html" get) {}
-@component pageMain html("/assets/activecss/components/page-main.html" get) {}
-@component pageSplitter html("/assets/activecss/components/page-splitter.html" get) {
+@component pageContainer html("/assets/activecss/components/page-container.html" get nocache) {}
+@component pageHeader html("/assets/activecss/components/page-header.html" get nocache) {}
+@component pageLogo html("/assets/activecss/components/page-logo.html" get nocache) {}
+@component pageNav html("/assets/activecss/components/page-nav.html" get nocache) {}
+@component pageMain html("/assets/activecss/components/page-main.html" get) {
+  &:componentOpen {
+    #myList {
+      ajax: "https://my-json-server.typicode.com/dragontheory/D7460N-data/names/" get json await;
+      console-log: "getting here";
+      trigger: setup;
+      var: startingLiCo {liCo};
+      @each item in {JSON} {
+        var: liCo++;
+        render-before-end:
+        "<li data-co=\"{liCo}\" data-id=\"{item.id}\">
+          <table-cell>
+            <input type="checkbox" id="" name="table-row" value="" />
+          </table-cell>
+          <table-cell>{item.id}</table-cell>
+          <table-cell>{item.name}</table-cell>
+          <table-cell>{item.username}</table-cell>
+          <table-cell><a href=\"https://{item.website}\" target=\"_new\">{item.website}</a></table-cell>
+          <table-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></table-cell>
+        </li>";
+      }
+      trigger: countRows;
+    }
+  }
+}
+@component pageSplitter html("/assets/activecss/components/page-splitter.html" get nocache) {
     &:componentOpen {
         run: {=
             Split({
