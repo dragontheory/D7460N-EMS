@@ -113,6 +113,7 @@ page-container {
 /* All immediate children of page-container */
 page-container > * {
   background-color: var(--panel-bg-color);
+  border-radius: 0.3rem;
 }
 page-main {
   background-color: transparent;
