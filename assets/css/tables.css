@@ -74,7 +74,7 @@ table-container ol > li table-cell {
 	text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-	display: inline-block;
+	/* display: inline-block; */
 }
 ol#myList {overflow-y: auto;}
 /* ol#myList > li::before {content: "0" attr(data-co);} */
