@@ -72,13 +72,6 @@ window:resize {
   }
 }
 
-/* Remove .profile from <body> the moment <table-details> ol IS empty. */
-#myList:if-empty:observe, table-details ol:if-empty:observe {
-  body {
-    remove-class: .profile;
-  }
-}
-
 #layout li:click {
   take-class: .active scope(#layout);
 }
