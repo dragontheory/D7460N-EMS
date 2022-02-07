@@ -122,25 +122,11 @@ page-main {
 /* @media (prefers-color-scheme: dark) {
   path {fill: #8E9196;}
 } */
-svg {
-  fill: var(--page-high-light-color);
-  transition: var(--transition);
-}
-svg:hover {
-  fill: var(--page-logo-color-hover);
-  transition: var(--transition);
-  cursor: pointer;
-}
-page-container page-header page-header-left page-logo {
-  transition: var(--transition);
-}
-page-container page-header page-header-left page-logo:hover {
-  color: var(--page-logo-color-hover);
-}
+
 page-splitter   { transition: background-color 250ms;}
 page-splitter:hover {
-  background-color: rgba(102,175,233,0.3);
-  cursor: col-resize;
+	background-color: rgba(102,175,233,0.3);
+	cursor: col-resize;
 }
 page-splitter:focus,
 page-splitter:active {
