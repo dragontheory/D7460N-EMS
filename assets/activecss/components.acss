@@ -50,5 +50,12 @@ body:init {
         =};
     }
 }
-@component pageAside html("/assets/activecss/components/page-aside.html" get) {}
+@component pageAside html("/assets/activecss/components/page-aside.html" get) {
+    /* Add .profile to <body> the moment <table-details> ol is NOT empty. */
+    table-details ol:not-if-empty:observe {
+    body {
+        add-class: .profile; 
+    }
+  }
+}
 @component pageFooter html("/assets/activecss/components/page-footer.html" get) {}
