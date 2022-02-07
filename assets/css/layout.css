@@ -72,6 +72,18 @@ panel-footer {
   grid-template-columns: 1fr 1fr 1fr;
   padding: 1rem;
 }
+panel-header-right {
+  justify-self: right;
+  align-self: center;
+}
+panel-header-center {
+  justify-self: center;
+  align-self: center;
+}
+panel-header-left {
+  justify-self: left;
+  align-self: center;
+}
 
 
 /* NAV + MAIN */
