@@ -60,9 +60,7 @@
   --page-logo-color-hover: var(--light-theme-logo-color-hover);
   --panel-bg-color: var(--light-theme-panel-bg-color);
 }
-page-main {
-  background-color: transparent;
-}
+
 input#themeToggle + label {
   display: grid;
   position: absolute;
@@ -95,8 +93,8 @@ input:checked#themeToggle + label {background-color: var(--page-bg-color);}
 input:checked#themeToggle + label:active:after {width: 13px;}
 
 html, body {
-  background-color: var(--page-bg-color);
-  background-image: var(--page-bg-image);
+  background: linear-gradient(#101925, #1f3949);
+  background-size: cover;
   font-family: var(--font03);
   font-size: var(--font03-font-size);
 }
@@ -116,6 +114,10 @@ page-container {
 page-container > * {
   background-color: var(--panel-bg-color);
 }
+page-main {
+  background-color: transparent;
+}
+
 /* @media (prefers-color-scheme: dark) {
   path {fill: #8E9196;}
 } */
@@ -134,9 +136,13 @@ page-container page-header page-header-left page-logo {
 page-container page-header page-header-left page-logo:hover {
   color: var(--page-logo-color-hover);
 }
-page-container {
-  background: linear-gradient(#101925, #1f3949)
-  /*-webkit-box-shadow: inset 0px 0px 150px 0px rgba(0, 0, 0, 0.8);
-  -moz-box-shadow: inset 0px 0px 150px 0px rgba(0, 0, 0, 0.8);
-  box-shadow: inset 0px 0px 150px 0px rgba(0, 0, 0, 0.8);*/
+page-splitter   { transition: background-color 250ms;}
+page-splitter:hover {
+	background-color: rgba(102,175,233,0.3);
+	cursor: col-resize;
+}
+page-splitter:focus,
+page-splitter:active {
+  cursor: col-resize;
+  background-color: rgba(102,175,233,1.0);
 }
