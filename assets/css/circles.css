@@ -40,9 +40,9 @@ panel-content-right .percent circle-number {
   color: var(--page-high-light-color);
 }
 panel-content-right .percent circle-text {
-    position: absolute;
-    color: #777;
-    margin-top: 60px;
-    text-transform: uppercase;
-    transition: 0.5s;
+  position: absolute;
+  color: #777;
+  margin-top: 60px;
+  text-transform: uppercase;
+  transition: 0.5s;
 }
