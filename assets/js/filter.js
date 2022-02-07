@@ -44,9 +44,9 @@ function generateCountMessage() {
   
 function generateListItem(item) {
     var li = document.createElement('li'),
-          spanName = document.createElement('span'),
-          spanType = document.createElement('span'),
-          spanCategory = document.createElement('span');
+        spanName = document.createElement('span'),
+        spanType = document.createElement('span'),
+        spanCategory = document.createElement('span');
       spanName.classList.add('name');
       spanType.classList.add('type');
       spanCategory.classList.add('category');
