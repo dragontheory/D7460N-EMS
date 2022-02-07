@@ -139,8 +139,8 @@ page-container page-header page-header-left page-logo:hover {
 }
 page-splitter   { transition: background-color 250ms;}
 page-splitter:hover {
-	background-color: rgba(102,175,233,0.3);
-	cursor: col-resize;
+  background-color: rgba(102,175,233,0.3);
+  cursor: col-resize;
 }
 page-splitter:focus,
 page-splitter:active {
