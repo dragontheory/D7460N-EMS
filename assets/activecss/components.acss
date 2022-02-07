@@ -51,10 +51,16 @@ body:init {
     }
 }
 @component pageAside html("/assets/activecss/components/page-aside.html" get) {
-    /* Add .profile to <body> the moment <table-details> ol is NOT empty. */
+    /* Add .aside to <body> the moment <table-details> ol is NOT empty. */
     table-details ol:not-if-empty:observe {
     body {
-        add-class: .profile; 
+        add-class: .aside; 
+    }
+  }
+  /* Remove .aside from <body> the moment <table-details> ol IS empty. */
+  #myList:if-empty:observe, table-details ol:if-empty:observe {
+    body {
+      remove-class: .aside;
     }
   }
 }
