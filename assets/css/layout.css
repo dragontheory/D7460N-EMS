@@ -5,14 +5,11 @@
 body {
 	padding: 0;
 	margin: 0;
-	background: linear-gradient(#182c38, #101925);
 	font-size: 1rem;
 	color: rgba(255, 255, 255, 0.7);
 	font-family: Oxanium;
 	overflow: hidden;
 }
-
-/* PAGE LAYOUT */
 page-container {
 	gap: 1rem;
 	padding: 1rem;
@@ -20,16 +17,17 @@ page-container {
 	display: grid;
 	overflow: hidden;
 	grid-template-rows: auto 1fr auto;
-	grid-template-columns: 250px 1fr;
+	grid-template-columns: 250px 1fr 10px 300px;
 	grid-template-areas:
-    "header header"
-    "nav    main"
-    "footer footer";
+    "header header header   header"
+    "nav    main   splitter aside"
+    "footer footer footer   footer";
 }
+
 page-header		{ grid-area: header; }
 page-nav    	{ grid-area: nav; }
 page-main   	{ grid-area: main; }
-page-splitter   { grid-area: splitter; transition: background-color 250ms;}
+page-splitter   { grid-area: splitter; }
 page-aside  	{ grid-area: aside; }
 page-footer 	{ grid-area: footer; }
 
@@ -39,13 +37,43 @@ page-container > * {
 	grid-template-rows: auto 1fr auto;
 	overflow: hidden;
 	border-radius: .3rem;
-	background-color: rgba(255,255,255,0.03);
+}
+page-header,
+page-footer {
+	grid-template-rows: auto;
+	grid-template-columns: 1fr 1fr 1fr;
+	padding: 1rem;
 }
 
-page-aside,
-page-splitter {display: none;}
+panel-content {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	padding: 1rem;
+  overflow-y: auto;
+}
+page-main panel-header,
+page-main panel-content,
+page-main panel-footer {
+	padding: 0;
+  }
+panel-header,
+panel-footer {
+	display: grid;
+	grid-template-rows: auto;
+	grid-template-columns: 1fr 1fr 1fr;
+	padding: 1rem;
+}
 
-.profile page-aside,
+body.nav.main page-container {
+	grid-template-columns: 250px 1fr 0px 0px;
+}
+
+body.nav.main.aside page-container {
+	grid-template-columns: 250px 1fr 10px 300px;
+}
+
+/*.profile page-aside,
 .profile page-splitter {display: grid;}
 
 .profile page-container {
@@ -54,37 +82,4 @@ page-splitter {display: none;}
     "header header header   header"
     "nav    main   splitter aside"
     "footer footer footer   footer";
-}
-
-page-splitter:hover {
-	background-color: rgba(102,175,233,0.3);
-	cursor: col-resize;
-}
-page-splitter:focus,
-page-splitter:active {
-  cursor: col-resize;
-  background-color: rgba(102,175,233,1.0);
-}
-
-page-header,
-page-footer {
-	grid-template-rows: auto;
-	grid-template-columns: 1fr 1fr 1fr;
-	padding: 1rem;
-}
-
-/* PANEL LAYOUT */
-panel-content {
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: 1fr;
-	padding: 1rem;
-  overflow-y: auto;
-}
-panel-header,
-panel-footer {
-	display: grid;
-	grid-template-rows: auto;
-	grid-template-columns: 1fr 1fr 1fr;
-	padding: 1rem;
-}
+} */
