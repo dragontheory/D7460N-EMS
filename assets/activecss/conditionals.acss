@@ -79,13 +79,6 @@ window:resize {
   }
 }
 
-/* Add .profile to <body> the moment <table-details> ol is NOT empty. */
-table-details ol:not-if-empty:observe {
-  body {
-    add-class: .profile; 
-  }
-}
-
 #layout li:click {
   take-class: .active scope(#layout);
 }
