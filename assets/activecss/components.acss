@@ -1,13 +1,13 @@
 body:init {
-    create-element: 
-        page-container pageContainer,
-        page-header pageHeader,
-        page-logo pageLogo,
-        page-nav pageNav,
-        page-main pageMain,
-        page-splitter pageSplitter,
-        page-aside pageAside,
-        page-footer pageFooter;
+  create-element: 
+    page-container pageContainer,
+    page-header pageHeader,
+    page-logo pageLogo,
+    page-nav pageNav,
+    page-main pageMain,
+    page-splitter pageSplitter,
+    page-aside pageAside,
+    page-footer pageFooter;
 }
 @component pageContainer html("/assets/activecss/components/page-container.html" get nocache) {}
 @component pageHeader html("/assets/activecss/components/page-header.html" get nocache) {}
@@ -39,22 +39,22 @@ body:init {
   }
 }
 @component pageSplitter html("/assets/activecss/components/page-splitter.html" get nocache) {
-    &:componentOpen {
-        run: {=
-            Split({
-                columnGutters: [{
-                    track: 2,
-                    element: document.querySelector('page-splitter'),
-                }]
-            });
-        =};
-    }
+  &:componentOpen {
+    run: {=
+      Split({
+        columnGutters: [{
+          track: 2,
+            element: document.querySelector('page-splitter'),
+          }]
+       });
+    =};
+  }
 }
 @component pageAside html("/assets/activecss/components/page-aside.html" get) {
-    /* Add .aside to <body> the moment <table-details> ol is NOT empty. */
-    table-details ol:not-if-empty:observe {
+  /* Add .aside to <body> the moment <table-details> ol is NOT empty. */
+  table-details ol:not-if-empty:observe {
     body {
-        add-class: .aside; 
+      add-class: .aside; 
     }
   }
   /* Remove .aside from <body> the moment <table-details> ol IS empty. */
