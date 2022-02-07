@@ -1,27 +1,6 @@
 body:init {
-  ajax: "https://my-json-server.typicode.com/dragontheory/D7460N-data/names/" get json await;
 	var: totalRecords 243;
   var: currentUserID "";
-  #myList {
-    console-log: "getting here";
-    trigger: setup;
-    var: startingLiCo {liCo};
-    @each item in {JSON} {
-      var: liCo++;
-      render-before-end:
-      "<li data-co=\"{liCo}\" data-id=\"{item.id}\">
-        <table-cell>
-          <input type="checkbox" id="" name="table-row" value="" />
-        </table-cell>
-        <table-cell>{item.id}</table-cell>
-        <table-cell>{item.name}</table-cell>
-        <table-cell>{item.username}</table-cell>
-        <table-cell><a href=\"https://{item.website}\" target=\"_new\">{item.website}</a></table-cell>
-        <table-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></table-cell>
-      </li>";
-    }
-    trigger: countRows;
-  }
 }
 
 window:resize {
