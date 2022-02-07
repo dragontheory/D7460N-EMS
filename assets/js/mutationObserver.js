@@ -1,19 +1,19 @@
 // Developed @ https://codepen.io/dragontheory/pen/NWjQjRZ
 
 function setDataLoadingAttr() {
-    document.getElementsByTagName("div")[0].removeAttribute("data-load", ""); 
-    document.getElementsByTagName("div")[0].removeAttribute("data-loaded", ""); 
-    document.getElementsByTagName("div")[0].setAttribute("data-loading", ""); 
+  document.getElementsByTagName("div")[0].removeAttribute("data-load", ""); 
+  document.getElementsByTagName("div")[0].removeAttribute("data-loaded", ""); 
+  document.getElementsByTagName("div")[0].setAttribute("data-loading", ""); 
 }
 function setDataLoadedAttr() {
-    document.getElementsByTagName("div")[0].removeAttribute("data-loading", ""); 
-    document.getElementsByTagName("div")[0].removeAttribute("data-load", ""); 
-    document.getElementsByTagName("div")[0].setAttribute("data-loaded", ""); 
+  document.getElementsByTagName("div")[0].removeAttribute("data-loading", ""); 
+  document.getElementsByTagName("div")[0].removeAttribute("data-load", ""); 
+  document.getElementsByTagName("div")[0].setAttribute("data-loaded", ""); 
 }
 function setDataLoadAttr() {
-    document.getElementsByTagName("div")[0].removeAttribute("data-loaded", ""); 
-    document.getElementsByTagName("div")[0].removeAttribute("data-loading", ""); 
-    document.getElementsByTagName("div")[0].setAttribute("data-load", ""); 
+  document.getElementsByTagName("div")[0].removeAttribute("data-loaded", ""); 
+  document.getElementsByTagName("div")[0].removeAttribute("data-loading", ""); 
+  document.getElementsByTagName("div")[0].setAttribute("data-load", ""); 
 }
 
 // Taken from https://developer.mozilla.org/en-US/docs/Web/API/MutationObserverInit/attributeFilter
