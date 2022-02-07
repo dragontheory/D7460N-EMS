@@ -12,107 +12,6 @@
   -moz-osx-font-smoothing: grayscale;
   font-smooth: auto;
 }
-/* Logo Text 'D7460N' */
-/* page-container page-header page-header-left logo-text {
-  display: grid;
-  margin-left: 5rem;
-  font-family: AgencyGothicCT-Bold, Tahoma, serif;
-  font-size: 3rem;
-  letter-spacing: .01rem;
-  transform: scale(1.1, 0.7);
-  position: absolute;
-  top: .75rem;
-  left: 2rem;
-} */
-page-container page-header page-header-left logo-text {
-  display: grid;
-  margin-left: 80px;
-  font-family: AgencyGothicCT-Bold, Tahoma, serif;
-  font-size: 3rem;
-  letter-spacing: 0.01rem;
-  transform: scale(1, 0.7);
-  color: var(--page-high-light-color);
-}
-/* Logo Text 2 'CMS' */
-/* page-container page-header page-header-left logo-text-2 {
-  display: grid;
-  left: 14.1rem;
-  top: 1.1rem;
-  transform: scale(1, .6);
-  position: absolute;
-  font-family: Agency FB, Tahoma, serif;
-  font-size: 1.5rem;
-  letter-spacing: .01rem;
-  font-weight: 900;
-} */
-page-container page-header page-header-left logo-text-2 {
-  display: grid;
-  left: 13rem;
-  top: 1.1rem;
-  transform: scale(0.5, 0.3);
-  position: absolute;
-  font-family: var(--font01);
-  font-size: 2.7rem;
-  letter-spacing: 0.01rem;
-}
-/* Text 3 'Fast | Easy | Secure' */
-/* page-container page-header page-header-left logo-text-3 {
-  display: grid;
-  left: 3rem;
-  top: 2.3rem;
-  transform: scale(.57, 0.3);
-  position: absolute;
-  font-family: Agency FB, Tahoma, serif;
-  font-size: 2.5rem;
-  letter-spacing: .02rem;
-  text-transform: uppercase;
-} */
-page-container page-header page-header-left logo-text-3 {
-  display: grid;
-  left: 10.55rem;
-  top: 2.2rem;
-  transform: scale(0.51, 0.3);
-  position: absolute;
-  font-family: var(--font01);
-  font-size: 2rem;
-  letter-spacing: 0.02rem;
-  text-transform: uppercase;
-}
-/* Logo Text 4 'Your data' */
-/* page-container page-header page-header-left logo-text-4 {
-  display: grid;
-  left: 14.5rem;
-  top: 0rem;
-  transform: scale(1, 1);
-  position: absolute;
-  font-family: Agency FB, Tahoma, serif;
-  font-size: .7rem;
-  letter-spacing: .01rem;
-  text-transform: uppercase;
-} */
-page-container page-header page-header-left logo-text-4 {
-  display: grid;
-  left: 15.7rem;
-  top: 2.1rem;
-  transform: scale(1, 1);
-  position: absolute;
-  font-family: var(--font01);
-  font-size: 0.8rem;
-  letter-spacing: 0.07rem;
-  font-variant: small-caps;
-}
-/* Text 5 'your way' */
-/* page-container page-header page-header-left logo-text-5 {
-  display: grid;
-  left: 9.95rem;
-  top: 2.2rem;
-  transform: scale(.51, 0.3);
-  position: absolute;
-  font-family: Agency FB, Tahoma, serif;
-  font-size: 2rem;
-  letter-spacing: .02rem;
-  text-transform: uppercase;
-} */
 a {
   color: var(--page-text-color-links);
   text-decoration: none;
@@ -123,13 +22,13 @@ a {
   color: var(--page-text-color-links-hover);
   box-shadow: 0 1px 0 0 var(--page-text-color-links-hover);
 } */
-p {padding: 0 1rem;}
+p	{padding: 0 1rem;}
 h1,
 h2,
 h3,
 h4,
 h5,
-page-title {
+page-title	{
   font-family: var(--font01);
   text-transform: uppercase;
   font-weight: 100;
@@ -152,7 +51,7 @@ panel-header h2 {
 highlight-h1 {
   font-family: var(--font01);
   font-size: 2rem;
-   color: var(--page-high-light-color);
+  color: var(--page-high-light-color);
 }
 low-light {
   color: var(--page-low-light-color);
