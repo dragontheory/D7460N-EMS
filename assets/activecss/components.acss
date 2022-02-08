@@ -63,7 +63,7 @@ body:init {
       remove-class: .aside;
     }
     page-container {
-      remove-property: grid-template-columns;
+      remove-attribute: style;
     }
   }
 }
