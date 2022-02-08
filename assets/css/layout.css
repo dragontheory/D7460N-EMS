@@ -74,6 +74,7 @@ panel-content {
   grid-template-rows: 1fr;
   padding: 1rem;
   overflow-y: auto;
+  align-items: start;
 }
 page-main panel-header,
 page-main panel-content,
@@ -113,12 +114,8 @@ panel-footer-left {
 
 
 /* NAV + MAIN */
-body.nav.main page-container {
-  grid-template-columns: 250px 1fr 0px 0px;
-  margin-right: -2rem;
-}
+body.nav.main page-container {grid-template-columns: 250px 1fr 0px 0px;}
+body.nav.main page-main {margin-right: -2rem;}
 
-body.nav.main.aside page-container {
-  grid-template-columns: 250px 1fr 10px 300px;
-  margin-right: 0;
-}
+body.nav.main.aside page-container {grid-template-columns: 250px 1fr 10px 300px;}
+body.nav.main.aside page-main {margin-right: 0;}
