@@ -10,6 +10,12 @@ body {
   font-family: Oxanium;
   overflow: hidden;
 }
+
+/*
+
+PAGE
+
+*/
 page-container {
   gap: 1rem;
   padding: 1rem;
@@ -68,18 +74,13 @@ page-footer-center {
   align-self: center;
 }
 
-panel-content {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  padding: 1rem;
-  overflow-y: auto;
-  align-items: start;
-}
-page-main panel-header,
-page-main panel-content,
-page-main panel-footer {padding: 0;}
 
+
+/*
+
+PANEL
+
+*/
 panel-header,
 panel-footer {
   display: grid;
@@ -99,6 +100,13 @@ panel-header-left {
   justify-self: left;
   align-self: center;
 }
+panel-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  overflow-y: auto;
+  align-items: start;
+}
 panel-footer-right {
   justify-self: right;
   align-self: center;
@@ -111,6 +119,14 @@ panel-footer-left {
   justify-self: left;
   align-self: center;
 }
+
+/* For results list */
+page-main panel-header,
+page-main panel-content,
+page-main panel-footer {padding: 0;}
+
+
+
 
 
 /* NAV + MAIN */
