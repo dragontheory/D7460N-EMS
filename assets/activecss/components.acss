@@ -4,6 +4,7 @@ body:init {
     page-header pageHeader,
     page-logo pageLogo,
     page-nav pageNav,
+    page-intro pageIntro,
     page-main pageMain,
     page-splitter pageSplitter,
     page-aside pageAside,
@@ -13,6 +14,7 @@ body:init {
 @component pageHeader html("/assets/activecss/components/page-header.html" get nocache) {}
 @component pageLogo html("/assets/activecss/components/page-logo.html" get nocache) {}
 @component pageNav html("/assets/activecss/components/page-nav.html" get nocache) {}
+@component pageIntro html("/assets/activecss/components/page-intro.html" get nocache) {}
 @component pageMain html("/assets/activecss/components/page-main.html" get) {
   &:componentOpen {
     #myList {
@@ -43,7 +45,7 @@ body:init {
     run: {=
       Split({
         columnGutters: [{
-          track: 2,
+          track: 3,
             element: document.querySelector('page-splitter'),
           }]
        });
