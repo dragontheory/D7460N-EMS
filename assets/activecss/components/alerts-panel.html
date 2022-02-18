@@ -1,0 +1,20 @@
+<panel-header>
+    <panel-header-left><h1>ALERTS</h1></panel-header-left>
+    <panel-header-center></panel-header-center>
+    <panel-header-right></panel-header-right>
+</panel-header>
+<panel-content>
+    <p>Alerts content</p>
+    <ul>
+        <li><table-cell>ID</table-cell><table-cell>{alert.id}</table-cell></li>
+        <li><table-cell>Title</table-cell><table-cell>{alert.title}</table-cell></li>
+        <li><table-cell>Recipient</table-cell><table-cell>{alert.recipient}</table-cell></li>
+        <li><table-cell>Details</table-cell><table-cell><a href=\"https://{alert.details}\" target=\"_new\">{alert.details}</a></table-cell></li>
+        <li><table-cell>Respond</table-cell><table-cell><a href=\"mailto:{alert.response}\" target=\"_new\">{alert.response}</a></table-cell></li>
+    </ul>
+</panel-content>
+<panel-footer>
+    <panel-footer-left>: :</panel-footer-left>
+    <panel-footer-center>: :</panel-footer-center>
+    <panel-footer-right>: :</panel-footer-right>
+</panel-footer>
