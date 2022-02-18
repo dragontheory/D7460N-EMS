@@ -1,9 +1,8 @@
-panel-gutter:hover {
+splitter-panel:hover {
   background-color: var(--page-bg-color-hover);
 }
 
-panel-gutter {
-  grid-column: 4;
+splitter-panel {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
   background-repeat: no-repeat;
   background-position: center;
