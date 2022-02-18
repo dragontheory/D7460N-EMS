@@ -1,27 +1,6 @@
 body:init {
-  ajax: "https://my-json-server.typicode.com/dragontheory/D7460N-data/names/" get json await;
 	var: totalRecords 243;
   var: currentUserID "";
-  #myList {
-    console-log: "getting here";
-    trigger: setup;
-    var: startingLiCo {liCo};
-    @each item in {JSON} {
-      var: liCo++;
-      render-before-end:
-      "<li data-co=\"{liCo}\" data-id=\"{item.id}\">
-        <table-cell>
-          <input type="checkbox" id="" name="table-row" value="" />
-        </table-cell>
-        <table-cell>{item.id}</table-cell>
-        <table-cell>{item.name}</table-cell>
-        <table-cell>{item.username}</table-cell>
-        <table-cell><a href=\"https://{item.website}\" target=\"_new\">{item.website}</a></table-cell>
-        <table-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></table-cell>
-      </li>";
-    }
-    trigger: countRows;
-  }
 }
 
 window:resize {
@@ -90,70 +69,6 @@ window:resize {
   table-details ol {
     render: "";
     var: currentUserID "";
-  }
-}
-
-/* Remove .profile from <body> the moment <table-details> ol IS empty. */
-#myList:if-empty:observe, table-details ol:if-empty:observe {
-  body {
-    remove-class: .profile;
-  }
-}
-
-/* Add .profile to <body> the moment <table-details> ol is NOT empty. */
-table-details ol:not-if-empty:observe {
-  body {
-    add-class: .profile; 
-  }
-}
-
-#layout li:click {
-  take-class: .active scope(#layout);
-}
-
-#layout li:nth-child(1):click {
-  body {
-    remove-class: .layout02;
-    remove-class: .layout03;
-    remove-class: .layout04;
-    remove-class: .layout05;
-    add-class: .layout01;
-  }
-}
-#layout li:nth-child(2):click {
-  body {
-    remove-class: .layout01;
-    remove-class: .layout03;
-    remove-class: .layout04;
-    remove-class: .layout05;
-    add-class: .layout02;
-  }
-}
-#layout li:nth-child(3):click {
-  body {
-    remove-class: .layout01;
-    remove-class: .layout02;
-    remove-class: .layout04;
-    remove-class: .layout05;
-    add-class: .layout03;
-  }
-}
-#layout li:nth-child(4):click {
-  body {
-    remove-class: .layout01;
-    remove-class: .layout02;
-    remove-class: .layout03;
-    remove-class: .layout05;
-    add-class: .layout04;
-  }
-}
-#layout li:nth-child(5):click {
-  body {
-    remove-class: .layout01;
-    remove-class: .layout02;
-    remove-class: .layout03;
-    remove-class: .layout04;
-    add-class: .layout05;
   }
 }
 
