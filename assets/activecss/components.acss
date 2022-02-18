@@ -3,19 +3,19 @@ body:init {
     page-container pageContainer,
     page-header pageHeader,
     page-logo pageLogo,
-    page-nav pageNav,
-    page-intro pageIntro,
-    page-main pageMain,
-    page-splitter pageSplitter,
-    page-aside pageAside,
+    nav-panel navPanel,
+    intro-panel introPanel,
+    main-panel mainPanel,
+    splitter-panel splitterPanel,
+    aside-panel asidePanel,
     page-footer pageFooter;
 }
 @component pageContainer html("/assets/activecss/components/page-container.html" get nocache) {}
 @component pageHeader html("/assets/activecss/components/page-header.html" get nocache) {}
 @component pageLogo html("/assets/activecss/components/page-logo.html" get nocache) {}
-@component pageNav html("/assets/activecss/components/page-nav.html" get nocache) {}
-@component pageIntro html("/assets/activecss/components/page-intro.html" get nocache) {}
-@component pageMain html("/assets/activecss/components/page-main.html" get) {
+@component navPanel html("/assets/activecss/components/nav-panel.html" get nocache) {}
+@component introPanel html("/assets/activecss/components/intro-panel.html" get nocache) {}
+@component mainPanel html("/assets/activecss/components/main-panel.html" get nocache) {
   &:componentOpen {
     #myList {
       ajax: "https://my-json-server.typicode.com/dragontheory/D7460N-data/names/" get json await;
@@ -40,19 +40,19 @@ body:init {
     }
   }
 }
-@component pageSplitter html("/assets/activecss/components/page-splitter.html" get nocache) {
+@component splitterPanel html("/assets/activecss/components/splitter-panel.html" get nocache) {
   &:componentOpen {
     run: {=
       Split({
         columnGutters: [{
           track: 3,
-            element: document.querySelector('page-splitter'),
+            element: document.querySelector('splitter-panel'),
           }]
        });
     =};
   }
 }
-@component pageAside html("/assets/activecss/components/page-aside.html" get) {
+@component asidePanel html("/assets/activecss/components/aside-panel.html" get) {
   /* Add .aside to <body> the moment <table-details> ol is NOT empty. */
   table-details ol:not-if-empty:observe {
     body {
