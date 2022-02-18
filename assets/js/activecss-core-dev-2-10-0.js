@@ -57,6 +57,16 @@
 			'if-value',
 			'if-visible'
 		],
+		CUSTOMEVENTS = [
+			'adoptedCallback',
+			'attributeChangedCallback',
+			'beforeComponentOpen',
+			'componentOpen',
+			'draw',
+			'disconnectCallback',
+			'innerhtmlchange',
+			'observe'
+		],
 		DIGITREGEX = /^\d+$/,
 		DYNAMICCHARS = {
 			',': '_ACSS_later_comma',
@@ -84,7 +94,7 @@
 		STYLEREGEX = /\/\*active\-var\-([\u00BF-\u1FFF\u2C00-\uD7FF\w\-\.\: \[\]]+)\*\/(((?!\/\*).)*)\/\*\/active\-var\*\//g,
 		SUPPORT_ED = !!((window.CSS && window.CSS.supports) || window.supportsCSS || false),
 		TABLEREGEX = /^\s*<t(r|d|body)/m,
-		TIMEDREGEX = /(after|every) (0|stack|(\{)?(\@)?[\u00BF-\u1FFF\u2C00-\uD7FF\w\-\.\:\[\]]+(\})?(s|ms))(?=(?:[^"]|"[^"]*")*$)/gm,
+		TIMEDREGEX = /( after| every) (0|stack|\{\=[\s\S]*?\=\}|[\{\@\u00BF-\u1FFF\u2C00-\uD7FF\w\$\-\.\:\[\]]+(\})?(s|ms)?)(?=([^"\\]*(\\.|"([^"\\]*\\.)*[^"\\]*"))*[^"]*$)/gm,
 		UNIQUEREF = Math.floor(Math.random() * 10000000);
 	const STATEMENTS = [ ...INNERSTATEMENTS, ...WRAPSTATEMENTS ];
 	const ATRULES = [ ...STATEMENTS, '@pages' ],		// @media and @support have a different handling to regular CSS at-rules.
@@ -2010,30 +2020,39 @@ const _clearTimeouts = delayID => {
 	delete delaySync[delayID];
 };
 
-const _delaySplit = (str, typ, varScope) => {
+const _delaySplit = (str, typ, o) => {
 	// Return an array containing an "after" or "every" timing, and any label (label not implemented yet).
 	// Ignore entries in double quotes. Wipe out the after or every entries after handling.
 	let regex, convTime, theLabel;
-	regex = new RegExp('(' + typ + ' (0|stack|([\\{]?[\\@]?[\\u00BF-\\u1FFF\\u2C00-\\uD7FF\\w\\-\\.\\:\\[\\]]+[\\}]?)(s|ms)))(?=(?:[^"]|"[^"]*")*)', 'gm');
+	regex = new RegExp(' (' + typ + ' (0|stack|(\\{\\=[\\s\\S]*?\\=\\}|[\\{\\@\\u00BF-\\u1FFF\\u2C00-\\uD7FF\\w\\=\\$\\-\\.\\:\\[\\]]+[\\}]?)(s|ms)?))(?=([^"\\\\]*(\\\\.|"([^"\\\\]*\\\\.)*[^"\\\\]*"))*[^"]*$)', 'gm');
 	str = str.replace(regex, function(_, wot, wot2, delayValue, delayType) {
 		if (delayValue && delayValue.indexOf('{') !== -1) {
-			// Remove any curlies. The variable if there will be evaluated as it is, in _replaceJSExpression. Only one variable is supported.
-			delayValue = delayValue.replace(/[\{\}]+/g, '');
-			// Replace any scoped variables that may be in the timer value from inside _replaceJSExpression.
-			convTime = _replaceJSExpression('{=' + delayValue + '=}', true, false, varScope) + delayType;
+			let strObj = _handleVars([ 'rand', 'expr', 'attrs', 'scoped' ],
+				{
+					str: delayValue,
+					func: o.func,
+					o,
+					obj: o.obj,
+					secSelObj: o.secSelObj,
+					varScope: o.varScope
+				}
+			);
+			convTime = _resolveVars(strObj.str, strObj.ref, o.func) + (delayType || '');
 		} else {
 			convTime = wot2;
 		}
 		convTime = _convertToMS(convTime, 'Invalid delay number format: ' + wot);
 		return '';
 	});
+
 	// "after" and "every" share the same label. I can't think of a scenario where they would need to have their own label, but this functionality may need to be
 	// added to later on. Maybe not.
-	str = str.replace(/(label [\u00BF-\u1FFF\u2C00-\uD7FF\w]+)(?=(?:[^"]|"[^"]*")*)$/gm, function(_, wot) {
+	str = str.replace(/(label [\u00BF-\u1FFF\u2C00-\uD7FF\w]+)(?=([^"\\\\]*(\\\\.|"([^"\\\\]*\\\\.)*[^"\\\\]*"))*[^"]*$)/gm, function(_, wot) {
 		// Label should be wot.
 		theLabel = wot.split(' ')[1];
 		return (typ == 'every') ? '' : wot;
 	});
+
 	return { str: str.trim(), tim: convTime, lab: theLabel };
 };
 
@@ -2101,20 +2120,6 @@ const _unloadAllCancelTimerLoop = i => {
 				}
 			}
 		}
-	}
-};
-
-const _run = (str, varScope, o) => {
-	let inn;
-	let funky = '"use strict";' + str.replace(/\{\=([\s\S]*?)\=\}/m, function(_, wot) {
-		inn = _handleVarsInJS(wot, varScope);
-		return inn;
-	});
-
-	try {
-		return Function('scopedProxy, o, _safeTags, _unSafeTags, _escNoVars', funky)(scopedProxy, o, _safeTags, _unSafeTags, _escNoVars);		// jshint ignore:line
-	} catch (err) {
-		_err('Function syntax error (' + err + '): ' + funky, o);
 	}
 };
 
@@ -2569,7 +2574,7 @@ const _handleFunc = function(o, delayActiveID=null, runButElNotThere=false) {
 		let o2 = _clone(o), delLoop = ['after', 'every'], aftEv;
 		let splitArr, tid, scope;
 		for (aftEv of delLoop) {
-			splitArr = _delaySplit(o2.actVal, aftEv, o.varScope);
+			splitArr = _delaySplit(o2.actVal, aftEv, o);
 			scope = (o.varScope) ? o.varScope : 'main';
 			if (splitArr.lab) splitArr.lab = scope + splitArr.lab;
 			if (typeof splitArr.tim == 'number' && splitArr.tim >= 0) {
@@ -2629,8 +2634,12 @@ const _handleFunc = function(o, delayActiveID=null, runButElNotThere=false) {
 	if (['Var', 'VarDelete', 'Func', 'ConsoleLog'].indexOf(o.func) !== -1) {
 		// Special handling for var commands, as each value after the variable name is a JavaScript expression, but not within {= =}, to make it quicker to type.
 		o.actValSing = o.actValSing.replace(/__ACSS_int_com/g, ',');
+
+	} else if (['Run', 'Eval'].indexOf(o.func) !== -1) {
+		// Leave command intact. No variable subsitution other than the use of vars.
+		o.actVal = o.actValSing;
 	} else {
-		let strObj = _handleVars([ 'rand', ((!['CreateCommand', 'CreateConditional', 'Eval', 'Run'].includes(o.func)) ? 'expr' : null), 'attrs', 'strings', 'scoped' ],
+		let strObj = _handleVars([ 'rand', ((!['CreateCommand', 'CreateConditional'].includes(o.func)) ? 'expr' : null), 'attrs', 'strings', 'scoped' ],
 			{
 				str: o.actValSing,
 				func: o.func,
@@ -2881,10 +2890,11 @@ const _handleSpaPop = (e, init) => {
 		// No use case available to do more than this currently, so this could be enhanced later on if a use case crops up.
 		try {
 			let url = new URL(realUrl);
-			if (url.href == realUrl) return;
+			if (url.href != realUrl) {
+				window.location.href = realUrl;
+			}
 		} catch(err) {
 		}
-		window.location.href = realUrl;
 	}
 
 };
@@ -3040,12 +3050,17 @@ ActiveCSS._nodeMutations = function(mutations, observer, dom=document, insideSha
 
 	_handleObserveEvents(mutations, dom);
 
+	let changeNodeList = [];
 	mutations.forEach(mutation => {
+		const mutationType = mutation.type;
+		const mutationTarget = mutation.target;
+		const mutationAddedNodes = mutation.addedNodes;
+		const mutationRemovedNodes = mutation.removedNodes;
 		// Handle any observe events on the node itself.
-		if (mutation.type == 'childList') {
-			if (mutation.addedNodes) {
+		if (mutationType == 'childList') {
+			if (mutationAddedNodes) {
 				if (DEVCORE) {
-					mutation.addedNodes.forEach(nod => {
+					mutationAddedNodes.forEach(nod => {
 						if (!(nod instanceof HTMLElement)) return;
 						// Handle the addition of embedded Active CSS styles into the config via DevTools. Config is already loaded if called via ajax.
 						if (_isACSSStyleTag(nod) && !nod._acssActiveID && !_isInlineLoaded(nod)) {
@@ -3058,10 +3073,10 @@ ActiveCSS._nodeMutations = function(mutations, observer, dom=document, insideSha
 					});
 				}
 			}
-		} else if (mutation.type == 'characterData' && !insideShadowDOM) {
+		} else if (mutationType == 'characterData' && !insideShadowDOM) {
 			// Detect change to embedded Active CSS. The handling is just to copy the insides of the tag and replace it with a new one.
 			// This will be sufficient to set off the processes to sort out the config.
-			let el = mutation.target;
+			let el = mutationTarget;
 			if (el.nodeType == Node.TEXT_NODE && _isACSSStyleTag(el.parentElement)) {
 				// We need to run this at the end of the call stack, otherwise we could clash with other stuff going on.
 				setTimeout(function() {
@@ -3081,8 +3096,8 @@ ActiveCSS._nodeMutations = function(mutations, observer, dom=document, insideSha
 			}
 		}
 
-		if (mutation.removedNodes) {
-			mutation.removedNodes.forEach(nod => {
+		if (mutationRemovedNodes) {
+			mutationRemovedNodes.forEach(nod => {
 				if (!(nod instanceof HTMLElement)) return;
 				// Now perform some clean-up on removed nodes. It doesn't have to be done immediately, so just do it after the current stack.
 				// Note that nested shadow DOMs can also come into play here, and we need to clean up those too.
@@ -3115,6 +3130,26 @@ ActiveCSS._nodeMutations = function(mutations, observer, dom=document, insideSha
 */
 				}, 0);
 			});
+		}
+
+		if (selectors.innerhtmlchange && _isConnected(mutationTarget) && (
+				mutationType == 'characterData' ||
+				mutationType == 'childList' && (mutationAddedNodes.length || mutationRemovedNodes.length)
+			)) {
+			// There's been an HTML change of some kind. Trigger the innerHTML event on the target. Run it through the main event handler with a dummy "e" so that it bubbles
+			// like a regular event.
+			let targetEl;
+			if (mutationTarget.nodeType === Node.TEXT_NODE) {
+				targetEl = mutationTarget.parentElement;
+			} else {
+				targetEl = mutationTarget;
+				// Handle any targeted non-bubbling innerhtmlchange events on elements inside the main element.
+				targetEl.querySelectorAll('*:not(template *)').forEach(function(obj) {
+					_handleEvents({ obj: obj, evType: 'innerhtmlchange' });
+				});
+			}
+			// Now run innerhtmlchange on the parent element and bubble up the DOM from here.
+			ActiveCSS._theEventFunction({ type: 'innerhtmlchange', target: targetEl, bubbles: true });
 		}
 	});
 };
@@ -3170,7 +3205,7 @@ const _passesConditional = (condObj) => {
 				    if (!c) return m;
 				    return '_ACSSComma';
 				});
-				let strObj = _handleVars([ 'rand', 'expr', 'attrs', 'scoped' ],
+				let strObj = _handleVars([ 'rand', 'expr', 'attrs', 'scoped', 'html' ],
 					{
 						str: aV,
 						func: 'Var',
@@ -3714,10 +3749,13 @@ const _renderCompDoms = (o, compDoc=o.doc, childTree='', numTopNodesInRender=0, 
 	compDoc.querySelectorAll('data-acss-component').forEach(function (obj, index) {
 		// If this component requires dynamic loading of HTML or CSS, do that here and then come back when both are completed (if both are present).
 		// This way we should get a non-flickering render, although rendering will be staggered due to dynamic loading.
-		if (obj.classList.contains('htmlPending') || obj.classList.contains('cssPending')) return;
-		if (obj.hasAttribute('data-html-file') || obj.hasAttribute('data-css-file')) {
-			_grabDynamicComponentFile(obj, [ 'html', 'css' ], o, compDoc, childTree, numTopNodesInRender);
-			return;
+		if (_isPendingAjaxForComponents(obj)) return;
+		if (obj.hasAttribute('data-html-file') ||
+				obj.hasAttribute('data-css-file') ||
+				obj.hasAttribute('data-html-template') ||
+				obj.hasAttribute('data-css-template')) {
+			let readyToRenderNow = _grabDynamicComponentFile(obj, [ 'html', 'css', 'data-html-template', 'data-css-template' ], o, compDoc, childTree, numTopNodesInRender);
+			if (!readyToRenderNow) return;
 		}
 
 		_renderCompDomsDo(o, obj, childTree, numTopNodesInRender, numTopElementsInRender);
@@ -3732,23 +3770,36 @@ const _renderCompDoms = (o, compDoc=o.doc, childTree='', numTopNodesInRender=0, 
 	});
 
 	function _grabDynamicComponentFile(obj, arr, o, compDoc, childTree, numTopNodesInRender, numTopElementsInRender) {
+		let readyToRenderNow = true;
 		arr.forEach(typ => {
-			let elClass = typ + 'Pending';
-			if (obj.classList.contains(elClass)) return;		// Already being loaded.
-			let attr = 'data-' + typ + '-file';
-			if (obj.hasAttribute(attr)) {
-				obj.classList.add(elClass);
-				let command = unEscQuotes(obj.getAttribute(attr));
-				obj.removeAttribute(attr);
-				if (command.indexOf(' json ') !== -1) {
-					command = command.replace(/ json /, ' html ');
-				} else if (command.indexOf(' html ') === -1) {
-					command += ' html';
+			if (typ.endsWith('template') && obj.hasAttribute(typ)) {
+				// Grab from a template and place directly into the compRender
+				let templObj = _getSelector(o, obj.getAttribute(typ));
+				if (templObj.obj) {
+					let templNode = templObj.obj.cloneNode(true);
+					let str = templNode.innerHTML;
+					_insertResForComponents(obj, typ, str);
 				}
-				let compName = obj.getAttribute('data-name');
-				_a.Ajax({ actVal: command, doc: o.doc, renderComp: true, renderObj: { renderO: o, typ, obj, compName, compDoc, childTree, numTopNodesInRender, numTopElementsInRender } });
+			} else {
+				let elClass = typ + 'Pending';
+				if (obj.classList.contains(elClass)) return;		// Already being loaded.
+				let attr = 'data-' + typ + '-file';
+				if (obj.hasAttribute(attr)) {
+					readyToRenderNow = false;
+					obj.classList.add(elClass);
+					let command = unEscQuotes(obj.getAttribute(attr));
+					obj.removeAttribute(attr);
+					if (command.indexOf(' json ') !== -1) {
+						command = command.replace(/ json /, ' html ');
+					} else if (command.indexOf(' html ') === -1) {
+						command += ' html';
+					}
+					let compName = obj.getAttribute('data-name');
+					_a.Ajax({ actVal: command, doc: o.doc, renderComp: true, renderObj: { renderO: o, typ, obj, compName, compDoc, childTree, numTopNodesInRender, numTopElementsInRender } });
+				}
 			}
 		});
+		return readyToRenderNow;
 	}
 };
 
@@ -4240,7 +4291,7 @@ const _replaceEventVars = (sel, obj) => {
 			obj
 		}
 	);
-	strObj = _handleVars([ 'strings', 'scoped' ],
+	strObj = _handleVars([ 'strings', 'scoped', 'html' ],
 		{
 			str: strObj.str,
 		},
@@ -4267,12 +4318,15 @@ const _replaceHTMLVars = (o, str, varReplacementRef=-1) => {
 			unEscaped = true;
 			c = c.replace(/\:UNESCAPED/, '');
 		}
-		if (c.startsWith('document:')) {
+		if (o === undefined) {
+			doc = document;
+		} else if (c.startsWith('document:')) {
 			c = c.substr(9);
 			doc = document;
 		} else {
 			doc = _resolveDocObj(o.doc);
 		}
+
 		let el = doc.getElementById(c);
 		if (el) {
 			let res;
@@ -4328,6 +4382,20 @@ const _resolveDynamicIframesDo = (el, iframes) => {
 
 	// Replace placeholder with completed iframe.
 	el.parentNode.replaceChild(iframe, el);
+};
+
+const _run = (str, varScope, o) => {
+	let inn;
+	let funky = '"use strict";' + str.replace(/\{\=([\s\S]*?)\=\}/m, function(_, wot) {
+		inn = _handleVarsInJS(wot, varScope);
+		return inn;
+	});
+
+	try {
+		return Function('scopedProxy, o, _safeTags, _unSafeTags, _escNoVars', funky)(scopedProxy, o, _safeTags, _unSafeTags, _escNoVars);		// jshint ignore:line
+	} catch (err) {
+		_err('Function syntax error (' + err + '): ' + funky, o);
+	}
 };
 
 const _runInnerEvent = (o, sel, ev, doc=document, initialization=false) => {
@@ -5816,12 +5884,16 @@ const _makeVirtualConfig = (subConfig='', statement='', componentName=null, remo
 							// Get any reference to load options. Done like this for speed. _extractBracketPars is necessarily intensive to handle inner parentheses for selectors.
 							let htmlPos = checkStr.indexOf(' html(');
 							let cssPos = checkStr.indexOf(' css(');
+							let htmlTemplPos = checkStr.indexOf(' html-template(');
+							let cssTemplPos = checkStr.indexOf(' css-template(');
 							let observePos = checkStr.indexOf(' observe(');
 							let templatePos = checkStr.indexOf(' selector(');
-							if (htmlPos !== -1 || cssPos !== -1 || observePos !== -1 || templatePos !== -1) {
-								let componentOpts = _extractBracketPars(checkStr, [ 'html', 'css', 'observe', 'template' ]);
+							if (htmlPos !== -1 || cssPos !== -1 || observePos !== -1 || templatePos !== -1 || htmlTemplPos !== -1 || cssTemplPos !== -1) {
+								let componentOpts = _extractBracketPars(checkStr, [ 'html', 'css', 'html-template', 'css-template', 'observe', 'template' ]);
 								if (componentOpts.html) components[compName].htmlFile = componentOpts.html;
 								if (componentOpts.css) components[compName].cssFile = componentOpts.css;
+								if (componentOpts['html-template']) components[compName].htmlTempl = componentOpts['html-template'];
+								if (componentOpts['css-template']) components[compName].cssTempl = componentOpts['css-template'];
 								if (componentOpts.observe) components[compName].observeOpt = componentOpts.observe;
 								if (componentOpts.selector) components[compName].selector = componentOpts.selector;
 								checkStr = componentOpts.action;
@@ -6557,6 +6629,11 @@ const _wrapUpStart = (o) => {
 		// Iterate items on this page and do any draw events. Note this needs to be here, because the page has already been drawn and so the draw event
 		// in the mutation section will never get run.
 		_runInnerEvent(null, '*:not(template *)', 'draw', document, true);
+
+		// Iterate document items on this page and do any observe events.
+		// Note this needs to be here, because the document elements that are not components have already been drawn and so the observe
+		// event in the mutation section would otherwise not get run.
+		_runInnerEvent(null, '*:not(template *)', 'innerhtmlchange', document, true);
 
 		// Iterate document items on this page and do any observe events.
 		// Note this needs to be here, because the document elements that are not components have already been drawn and so the observe
@@ -8012,13 +8089,17 @@ const _replaceComponents = (o, str, varReplacementRef=-1) => {
 			}
 			if (!components[c]) return '{|' + c + '}';
 
-			let ret;
-			if (!components[c].htmlFile && !components[c].cssFile) {
-				ret = components[c].data.trim();
-				ret = ActiveCSS._sortOutFlowEscapeChars(ret);
-			}
+			let ret = components[c].data.trim();
+			if (ret !== '') ret = ActiveCSS._sortOutFlowEscapeChars(ret);
 			found = true;
-			if (components[c].shadow || components[c].scoped || customElComp || components[c].htmlFile || components[c].cssFile) {
+			if (components[c].shadow ||
+					components[c].scoped ||
+					customElComp ||
+					components[c].htmlFile ||
+					components[c].cssFile ||
+					components[c].htmlTempl ||
+					components[c].cssTempl
+				) {
 				// This is supposed to be added to its container after the container has rendered. We shouldn't add it now.
 				// Add it to memory and attach after the container has rendered. Return a placeholder for this component.
 				// Note, we have by this point *drawn the contents of this component - each instance is individual*, so they get rendered separately and
@@ -8027,6 +8108,8 @@ const _replaceComponents = (o, str, varReplacementRef=-1) => {
 				let compRef = '<data-acss-component data-name="' + c + '" data-ref="' + compCount + '"';
 				if (components[c].htmlFile) compRef += ' data-html-file="' + escQuotes(components[c].htmlFile) + '"';
 				if (components[c].cssFile) compRef += ' data-css-file="' + escQuotes(components[c].cssFile) + '"';
+				if (components[c].htmlTempl) compRef += ' data-html-template="' + escQuotes(components[c].htmlTempl) + '"';
+				if (components[c].cssTempl) compRef += ' data-css-template="' + escQuotes(components[c].cssTempl) + '"';
 				if (components[c].observeOpt) compRef += ' data-observe-opt="' + escQuotes(components[c].observeOpt) + '"';
 				if (components[c].selector) compRef += ' data-html-selector="' + escQuotes(components[c].selector) + '"';
 				compRef += '></data-acss-component>';
@@ -9727,7 +9810,9 @@ const _addActValRaw = o => {
 		// _ajaxCallbackDisplay(o); is called from _resolveAjaxVars, as it needs to account for the asyncronyousness of the shadow DOM.
 	} else {
 		o.res = '';
-		_setHTMLVars(o, true);	// true for empty string.
+		if (!o.renderComp) {
+			_setHTMLVars(o, true);	// true for empty string.
+		}
 		// Commenting out for now - this will be for ajax return feedback.
 //		if (debuggerActive || !setupEnded && typeof _debugOutput == 'function') {
 //			_debugOutput(o);	//	'', 'ajax' + ((o.preGet) ? '-pre-get' : ''));
@@ -9766,7 +9851,11 @@ const _addActValRaw = o => {
 		// This has been called as an option for component rendering. Remove the pending class for this component and call _renderCompDoms again.
 		let { renderO, typ, obj, compName, compDoc, childTree, numTopNodesInRender, numTopElementsInRender } = o.renderObj;
 		obj.classList.remove(typ + 'Pending');
-		compPending[obj.getAttribute('data-ref')] = o.res;
+		_insertResForComponents(obj, typ, o.res);
+
+		// Are we ready to render yet? The answer is that we are not ready if we are still waiting for further ajax requests. This callback will be called again later.
+		if (_isPendingAjaxForComponents(obj)) return;
+
 		_renderCompDoms(renderO, compDoc, childTree, numTopNodesInRender, numTopElementsInRender);
 	} else {
 		if (!o.error && o.preGet) {
@@ -9997,6 +10086,16 @@ const _getParVal = (str, typ) => {
 	return '';
 };
 
+const _insertResForComponents = (obj, typ, str) => {
+	let ref = obj.getAttribute('data-ref');
+	if (compPending[ref] === undefined) compPending[ref] = '';
+	compPending[ref] += (compPending[ref] != '' ? "\n" : '' ) + (typ.startsWith('css') ? '<style>' + str + '</style>' : str);
+};
+
+const _isPendingAjaxForComponents = obj => {
+	return obj.classList.contains('htmlPending') || obj.classList.contains('cssPending');
+};
+
 const _absLeft = el => {
 	// Position of left edge relative to frame left courtesy of http://www.quirksmode.org/js/findpos.html
 	var x = 0;
@@ -10063,7 +10162,7 @@ const _checkForm = (frm, wot) => {
 	for (var e = 0, el = frm.elements.length; e < el; e++) {
 		n = frm.elements[e];
 		c = false;
-		if (!n.hasAttribute('name')) continue;
+ 		if (!n.hasAttribute('name') || n.disabled) continue;
 		switch (n.nodeName.toLowerCase()) {
 			case 'select':
 				def = 0;
@@ -10906,7 +11005,7 @@ const _getRealEvent = ev => {
 	} else if (ev == 'fullscreenEnter' || ev == 'fullscreenExit') {		// Active CSS only events.
 		ev = _fullscreenDetails()[1] + 'fullscreenchange';		// Active CSS only events.
 	} else {
-		if (['draw', 'observe', 'disconnectCallback', 'adoptedCallback', 'attributeChangedCallback', 'beforeComponentOpen', 'componentOpen'].includes(ev)) return false;	// custom Active CSS events.
+		if (CUSTOMEVENTS.includes(ev)) return false;	// custom Active CSS events.
 		if (ev.substr(0, 10) == 'attrChange') return false;	// custom Active CSS event attrChange(Attrname). We need to do this to avoid clash with custom event names by user.
 	}
 	return ev;
@@ -10973,7 +11072,7 @@ const _getSelector = (o, sel, many=false) => {
 	let attrActiveID, n, selItem, compDetails, elToUse;
 	let obj = o.secSelObj || o.obj;
 
-	let thisObj = false;
+//	let thisObj = false;
 	if ((
 			newSel.indexOf('&') !== -1 ||
 			/\bself\b/.test(newSel) ||
@@ -10991,14 +11090,15 @@ const _getSelector = (o, sel, many=false) => {
 		if (newSel.indexOf('self') !== -1) newSel = newSel.replace(/\bself\b/g, repStr);
 		if (newSel.indexOf('me') !== -1) newSel = newSel.replace(/\bme\b/g, repStr);
 		if (newSel.indexOf('this') !== -1) newSel = newSel.replace(/\bthis\b/g, repStr);
-		thisObj = true;
+//		thisObj = true;
 	}
 
 	// The string selector should now be fully iterable if we split by " -> " and "<".
 	let selSplit = newSel.split(/( \-> |<)/);
-	if (selSplit.length == 1 && thisObj) {
-		return { doc: newDoc, obj: (many ? [ obj ] : obj) };
-	}
+
+//	if (selSplit.length == 1 && thisObj) {	// leave this here for the moment - it was breaking things.
+//		return { doc: newDoc, obj: (many ? [ obj ] : obj) };
+//	}
 	let mainObj = obj;
 
 	let selSplitLen = selSplit.length;
@@ -11043,18 +11143,21 @@ const _getSelector = (o, sel, many=false) => {
 				break;
 
 			case 'shadow':		// Special ACSS selector
-				if (mainObj) newDoc = mainObj.shadowRoot;
-				mainObj = newDoc;
-				singleResult = true;
+				if (mainObj) {
+					let thisNode = mainObj.length == 1 ? mainObj[0] : mainObj;
+					if (thisNode) newDoc = thisNode.shadowRoot;
+					mainObj = newDoc;
+					singleResult = true;
+				}
 				break;
 
 			case 'parent':		// Special ACSS selector
 				// Get object root details.
 				compDetails = _getComponentDetails(o.compDoc);
-				if (!newDoc.isSameNode(compDetails.topEvDoc)) {
-					newDoc = compDetails.topEvDoc;
-				} else if (window.parent.document) {
+				if (!compDetails.topEvDoc || window.parent.document) {
 					newDoc = window.parent.document;
+				} else if (!newDoc.isSameNode(compDetails.topEvDoc)) {
+					newDoc = compDetails.topEvDoc;
 				}
 				mainObj = newDoc;
 				singleResult = true;
@@ -11403,18 +11506,20 @@ const _selCompare = (o, opt) => {
 		spl = spl.join(' ');
 	} 
 	let el;
-	el = _getSel(o, spl);
+	el = _getSelector(o, spl);
 
 	let widthHeightEl = false;
 	if (['maW', 'miW', 'maH', 'miH'].indexOf(opt) !== -1) {
 		widthHeightEl = true;
 	}
-	if (!el) {
+	if (!el || !el.obj) {
 		if (widthHeightEl) {
 			// When referencing height or width we need an element. If it isn't there then return false.
 			return false;
 		}
 		el = spl;
+	} else {
+		el = el.obj;
 	}
 	if (widthHeightEl) {
 		compareVal = compareVal.replace('px', '');
