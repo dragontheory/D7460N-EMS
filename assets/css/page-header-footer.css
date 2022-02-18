@@ -1,0 +1,37 @@
+page-header-left {
+  display: grid;
+  justify-self: left;
+  align-self: center;
+}
+page-header-center {
+  justify-self: center;
+  align-content: start;
+}
+page-header-right {
+  justify-self: right;
+  align-self: center;
+}
+
+page-container > * {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  border-radius: .3rem;
+}
+
+page-header,
+page-footer {
+  grid-template-rows: auto;
+  grid-column: 1 / -1;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 1rem;
+}
+page-footer-right {
+  justify-self: right;
+  align-self: center;
+}
+page-footer-center {
+  justify-self: center;
+  align-self: center;
+}

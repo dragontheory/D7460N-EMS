@@ -1,0 +1,47 @@
+/*  PANEL  */
+panel-header,
+panel-footer {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 1rem;
+}
+panel-header-right {
+  justify-self: end;
+  align-self: center;
+}
+panel-header-center {
+  justify-self: center;
+  align-self: center;
+}
+panel-header-left {
+  justify-self: start;
+  align-self: center;
+}
+panel-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  overflow-y: auto;
+  align-items: start;
+}
+panel-footer-right {
+  justify-self: end;
+  align-self: center;
+}
+panel-footer-center {
+  justify-self: center;
+  align-self: center;
+}
+panel-footer-left {
+  justify-self: start;
+  align-self: center;
+}
+
+/* Override for main and intro */
+intro-panel panel-header,
+intro-panel panel-content,
+intro-panel panel-footer,
+main-panel panel-header,
+main-panel panel-content,
+main-panel panel-footer {padding: 0;}
