@@ -72,56 +72,6 @@ window:resize {
   }
 }
 
-#layout li:click {
-  take-class: .active scope(#layout);
-}
-
-#layout li:nth-child(1):click {
-  body {
-    remove-class: .layout02;
-    remove-class: .layout03;
-    remove-class: .layout04;
-    remove-class: .layout05;
-    add-class: .layout01;
-  }
-}
-#layout li:nth-child(2):click {
-  body {
-    remove-class: .layout01;
-    remove-class: .layout03;
-    remove-class: .layout04;
-    remove-class: .layout05;
-    add-class: .layout02;
-  }
-}
-#layout li:nth-child(3):click {
-  body {
-    remove-class: .layout01;
-    remove-class: .layout02;
-    remove-class: .layout04;
-    remove-class: .layout05;
-    add-class: .layout03;
-  }
-}
-#layout li:nth-child(4):click {
-  body {
-    remove-class: .layout01;
-    remove-class: .layout02;
-    remove-class: .layout03;
-    remove-class: .layout05;
-    add-class: .layout04;
-  }
-}
-#layout li:nth-child(5):click {
-  body {
-    remove-class: .layout01;
-    remove-class: .layout02;
-    remove-class: .layout03;
-    remove-class: .layout04;
-    add-class: .layout05;
-  }
-}
-
 close-panel:not-if-empty-trimmed(table-details ol):click {
   table-details ol {
     render: "";
