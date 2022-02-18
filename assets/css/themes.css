@@ -60,6 +60,7 @@
   --page-logo-color-hover: var(--light-theme-logo-color-hover);
   --panel-bg-color: var(--light-theme-panel-bg-color);
 }
+
 input#themeToggle + label {
   display: grid;
   position: absolute;
@@ -92,8 +93,8 @@ input:checked#themeToggle + label {background-color: var(--page-bg-color);}
 input:checked#themeToggle + label:active:after {width: 13px;}
 
 html, body {
-  background-color: var(--page-bg-color);
-  background-image: var(--page-bg-image);
+  background: linear-gradient(#101925, #1f3949);
+  background-size: cover;
   font-family: var(--font03);
   font-size: var(--font03-font-size);
 }
@@ -112,28 +113,23 @@ page-container {
 /* All immediate children of page-container */
 page-container > * {
   background-color: var(--panel-bg-color);
+  border-radius: 0.3rem;
 }
+main-panel {
+  background-color: transparent;
+}
+
 /* @media (prefers-color-scheme: dark) {
   path {fill: #8E9196;}
 } */
-svg {
-  fill: var(--page-high-light-color);
-  transition: var(--transition);
+
+splitter-panel   { transition: background-color 250ms;}
+splitter-panel:hover {
+	background-color: rgba(102,175,233,0.3);
+	cursor: col-resize;
 }
-svg:hover {
-  fill: var(--page-logo-color-hover);
-  transition: var(--transition);
-  cursor: pointer;
-}
-page-container page-header page-header-left page-logo {
-  transition: var(--transition);
-}
-page-container page-header page-header-left page-logo:hover {
-  color: var(--page-logo-color-hover);
-}
-page-container {
-  background: linear-gradient(#101925, #1f3949)
-  /*-webkit-box-shadow: inset 0px 0px 150px 0px rgba(0, 0, 0, 0.8);
-  -moz-box-shadow: inset 0px 0px 150px 0px rgba(0, 0, 0, 0.8);
-  box-shadow: inset 0px 0px 150px 0px rgba(0, 0, 0, 0.8);*/
+splitter-panel:focus,
+splitter-panel:active {
+  cursor: col-resize;
+  background-color: rgba(102,175,233,1.0);
 }
