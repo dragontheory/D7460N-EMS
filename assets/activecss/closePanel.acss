@@ -1,0 +1,10 @@
+close-panel:not-if-empty-trimmed(table-details ol):click,
+#myList li:click {
+  table-details ol {
+    render: "";
+    var: currentUserID "";
+  }
+  #myList li {
+    remove-class: .active;
+  }
+}
