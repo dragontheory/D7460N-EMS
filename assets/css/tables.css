@@ -1,6 +1,6 @@
 :root {
   --table-display: grid;
-  --table-cell-divider-text-shadow: 2px 0 0 #000;
+  --list-cell-divider-text-shadow: 2px 0 0 #000;
 }
 table-container {
   display: var(--table-display);
@@ -84,7 +84,7 @@ table-container ol > li.active {
   background-color: var(--page-bg-color-hover);
   color: var(--page-text-color-hover);
 }
-table-container ol > li table-cell {
+table-container ol > li list-cell {
   display: var(--table-display);
   justify-content: start;
   align-content: start;

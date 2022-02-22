@@ -115,9 +115,7 @@ page-container > * {
   background-color: var(--panel-bg-color);
   border-radius: 0.3rem;
 }
-main-panel {
-  background-color: transparent;
-}
+main-panel {background-color: transparent;}
 
 /* @media (prefers-color-scheme: dark) {
   path {fill: #8E9196;}

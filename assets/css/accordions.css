@@ -8,14 +8,14 @@ accordion-container > input:checked + label {color: var(--page-text-color-hover)
 accordion-container > label:hover {color: var(--page-text-color-hover);}
 
 accordion-container {
-  display: var(--display);
+  display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto auto auto auto auto auto auto;
   overflow-y: hidden;
   align-content: start;
 }
 accordion-container > label {
-  display: var(--display);
+  display: grid;
   cursor: pointer;
   color: var(--text-color);
   padding: 1rem;
@@ -30,7 +30,7 @@ accordion-container > label:hover {
 }
 
 accordion-container accordion-content {
-  display: var(--display);
+  display: grid;
   height: 0;
   align-content: start;
   overflow-y: auto;
