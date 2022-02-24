@@ -1,1 +1,0 @@
-@component introPanel html("/assets/activecss/components/intro-panel.html" get nocache) {}
