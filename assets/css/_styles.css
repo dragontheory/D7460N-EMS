@@ -1,4 +1,3 @@
-@import url("/assets/css/page-layout.css");
 @import url("panels.css");
 @import url("tabs.css");
 @import url("buttons.css");
@@ -14,6 +13,7 @@
 @import url("media-queries.css");
 @import url("themes.css");
 /* @import url("css/animations.css");*/
+@import url("/assets/css/page-layout.css");
 @import url("/assets/activecss/components/page-container/page-container.css");
 @import url("/assets/activecss/components/page-header/page-header.css");
 @import url("/assets/activecss/components/page-logo/page-logo.css");
