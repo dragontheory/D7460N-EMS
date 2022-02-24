@@ -1,0 +1,58 @@
+<panel-header>
+    <panel-header-left>
+        <page-title>Supers 
+            <low-light style="font-size: 65%;">
+                [ Heroes <small>and</small> Villains ]
+            </low-light>
+        </page-title>
+    </panel-header-left>
+    <panel-header-center>: :</panel-header-center>
+    <panel-header-right>
+        <label>
+            <input placeholder="Search" maxlength="30" autocomplete="on" autocorrect="off" list="browsers"
+                spellcheck="false" type="search" />
+        </label>
+        <datalist id="browsers">
+            <option value="Search">Search</option>
+            <option value="Edge">Edge</option>
+            <option value="Firefox">Firefox</option>
+            <option value="Chrome">Chrome</option>
+            <option value="Opera">Opera</option>
+            <option value="Safari">Safari</option>
+        </datalist>
+    </panel-header-right>
+</panel-header>
+<panel-content>
+    <table-container>
+        <p>Visible/Non-Visible: [
+            <span id="totalVisible"
+                style="font-family: var(--font01); color: var(--page-high-light-color); letter-spacing: var(--font01-letter-spacing);">00</span>
+            /
+            <span id="totalNonVisible"
+                style="font-family: var(--font01); color: var(--page-high-light-color); letter-spacing: var(--font01-letter-spacing);">00</span>
+            ] Page: [
+            <span
+                style="font-family: var(--font01); color: var(--page-high-light-color); letter-spacing: var(--font01-letter-spacing);">01</span>
+            /
+            <span
+                style="font-family: var(--font01); color: var(--page-high-light-color); letter-spacing: var(--font01-letter-spacing);">05</span>
+            ]
+        </p>
+        <ol>
+            <li>
+                <list-cell><input type="checkbox" id="tableHeader01" name="table-header" value="1" /></list-cell>
+                <list-cell>#</list-cell>
+                <list-cell>Name</list-cell>
+                <list-cell>Username</list-cell>
+                <list-cell>Website</list-cell>
+                <list-cell>Email</list-cell>
+            </li>
+        </ol>
+        <ol id="myList" style="margin-top: .5rem;"></ol>
+    </table-container>
+</panel-content>
+<panel-footer>
+    <!-- <panel-footer-left>: :</panel-footer-left>
+    <panel-footer-center>: :</panel-footer-center>
+    <panel-footer-right>: :</panel-footer-right> -->
+</panel-footer>
