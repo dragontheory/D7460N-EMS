@@ -115,19 +115,7 @@ page-container > * {
   background-color: var(--panel-bg-color);
   border-radius: 0.3rem;
 }
-main-panel {background-color: transparent;}
 
 /* @media (prefers-color-scheme: dark) {
   path {fill: #8E9196;}
 } */
-
-splitter-panel   { transition: background-color 250ms;}
-splitter-panel:hover {
-	background-color: rgba(102,175,233,0.3);
-	cursor: col-resize;
-}
-splitter-panel:focus,
-splitter-panel:active {
-  cursor: col-resize;
-  background-color: rgba(102,175,233,1.0);
-}
