@@ -1,9 +1,20 @@
 /*  PANELS  */
+page-container > * {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  border-radius: .3rem;
+}
+/* page-header and page-footer are overwritten styles in their respective dedicated component CSS files */
 panel-header,
 panel-footer {
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr 1fr;
+}
+panel-header > *,
+panel-footer > * {
   padding: 1rem;
 }
 panel-header-right {
@@ -37,11 +48,3 @@ panel-footer-left {
   justify-self: start;
   align-self: center;
 }
-
-/* Override for main and intro panels */
-intro-panel panel-header,
-intro-panel panel-content,
-intro-panel panel-footer,
-main-panel panel-header,
-main-panel panel-content,
-main-panel panel-footer {padding: 0;}
