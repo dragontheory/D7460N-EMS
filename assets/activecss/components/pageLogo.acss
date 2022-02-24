@@ -1,1 +1,0 @@
-@component pageLogo html("/assets/activecss/components/page-logo.html" get nocache) {}
