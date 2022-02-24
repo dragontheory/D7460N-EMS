@@ -1,0 +1,18 @@
+page-header {
+  grid-template-rows: auto;
+  grid-column: 1 / -1;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 1rem;
+}
+page-header-left {
+  justify-self: left;
+  align-self: center;
+}
+page-header-center {
+  justify-self: center;
+  align-content: start;
+}
+page-header-right {
+  justify-self: right;
+  align-self: center;
+}
