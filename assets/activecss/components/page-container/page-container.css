@@ -1,0 +1,21 @@
+/*  PAGE [ default ] */
+page-container {
+  gap: 1rem;
+  padding: 1rem;
+  height: 100vh;
+  display: grid;
+  overflow: hidden;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 250px 1fr 0 10px 300px;
+}
+/* NAV + INTRO */
+.nav.intro page-container {grid-template-columns: 250px 1fr 0 0 0;}
+.nav.intro page-container intro-panel {margin-right: -3rem;}
+
+/* NAV + MAIN */
+.nav.main page-container {grid-template-columns: 250px 0 1fr 0 0;}
+.nav.main page-container main-panel {margin-right: -2rem;}
+
+/* NAV + MAIN + SPLITTER + ASIDE */
+.nav.main.aside page-container {grid-template-columns: 250px 0 1fr 10px 300px;}
+.nav.main.aside page-container main-panel {margin-right: 0;}
