@@ -1,1 +1,0 @@
-@component pageFooter html("/assets/activecss/components/page-footer.html" get) {}
