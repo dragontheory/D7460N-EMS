@@ -8,5 +8,6 @@ body:init {
     main-panel mainPanel,
     splitter-panel splitterPanel,
     aside-panel asidePanel,
+    close-panel closePanel,
     page-footer pageFooter;
 }

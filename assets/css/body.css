@@ -1,0 +1,10 @@
+*:before, *:after, *, ::after, ::before {box-sizing: border-box;}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: Oxanium;
+  overflow: hidden;
+}
