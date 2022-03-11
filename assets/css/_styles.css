@@ -1,16 +1,17 @@
+@import url("fonts.css");
+@import url("typography.css");
 @import url("body.css");
+@import url("accordions.css");
+@import url("scrollbars.css");
+@import url("themes.css");
 @import url("panels.css");
 @import url("tabs.css");
-@import url("fonts.css");
-@import url("scrollbars.css");
-@import url("typography.css");
 @import url("circles.css");
 @import url("carousels.css");
-@import url("accordions.css");
 @import url("data-lists.css");
 @import url("scroll-progress-to-top.css");
 @import url("media-queries.css");
-@import url("themes.css");
+
 /* @import url("css/animations.css");*/
 @import url("/assets/activecss/components/page-container/page-container.css");
 @import url("/assets/activecss/components/page-header/page-header.css");
