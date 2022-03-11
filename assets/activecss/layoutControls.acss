@@ -1,1 +1,9 @@
-
+body:if-exists(#myList li):observe {
+  add-class: .main;
+  remove-class: .intro;
+}
+body:not-if-exists(#myList li):observe {
+  add-class: .intro;
+  remove-class: .main;
+  remove-class: .aside;
+}
