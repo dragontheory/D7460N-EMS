@@ -13,10 +13,10 @@ panel-footer {
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr 1fr;
 }
-panel-header > *,
+/* panel-header > *,
 panel-footer > * {
   padding: 1rem;
-}
+} */
 panel-header-right {
   justify-self: end;
   align-self: center;
@@ -33,8 +33,7 @@ panel-content {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  overflow-y: auto;
-  align-items: start;
+  overflow-y: hidden;
 }
 panel-footer-right {
   justify-self: end;
