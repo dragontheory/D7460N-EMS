@@ -1,7 +1,8 @@
 @component mainPanel html("/assets/activecss/components/main-panel/main-panel.html" get nocache) {
   &:componentOpen {
     #myList {
-      ajax: "https://my-json-server.typicode.com/dragontheory/D7460N-data/names/" get json await;
+      // ajax: "https://my-json-server.typicode.com/dragontheory/D7460N-data/names/" get json await;
+			ajax: "http://dragontheory.com/json/D7460N.json" get json await;
       console-log: "getting here";
       trigger: setup;
       var: startingLiCo {liCo};
