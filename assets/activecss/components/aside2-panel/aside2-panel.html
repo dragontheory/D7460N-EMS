@@ -1,35 +1,109 @@
 <panel-header>
-    <panel-header-left>DETAILS</panel-header-left>
-    <panel-header-center>: :</panel-header-center>
-    <panel-header-right>: :</panel-header-right>
+    <panel-header-left>
+		<span>DETAILS</span>
+	</panel-header-left>
+    <panel-header-center></panel-header-center>
+    <panel-header-right title="Close panel">
+	  <panel-close>
+		<low-light>[</low-light>&#160;x&#160;<low-light>]</low-light>
+      </panel-close>
+	</panel-header-right>
 </panel-header>
 <panel-content>
-    <tab-container>
-        <!-- TAB CONTROLS -->
-        <input type="radio" id="detailsTabToggle01" name="details-tabs" value="1" checked />
-        <label for="detailsTabToggle01" checked="checked">TAB 01</label>
-        <input type="radio" id="detailsTabToggle02" name="details-tabs" value="2" />
-        <label for="detailsTabToggle02">TAB 02</label>
-        <input type="radio" id="detailsTabToggle03" name="details-tabs" value="3" />
-        <label for="detailsTabToggle03">TAB 03</label>
-        <input type="radio" id="detailsTabToggle04" name="details-tabs" value="4" />
-        <label for="detailsTabToggle04">TAB 04</label>
-        <tab-content>
-            <p>TAB 01 content</p>
-        </tab-content>
-        <tab-content>
-            <p>TAB 02 content</p>
-        </tab-content>
-        <tab-content>
-            <p>TAB 03 content</p>
-        </tab-content>
-        <tab-content>
-            <p>TAB 04 content</p>
-        </tab-content>
-    </tab-container>
+    <label>
+		<span>MOTION</span>
+	</label>
+	<list-item>
+	  <list-cell>
+	    <span>On </span>
+		<input type="radio" name="motion" checked />
+	  <list-cell>
+	  <list-cell>
+	    <span>Off</span>
+		<input type="radio" name="motion" />
+	  <list-cell>
+	</list-item>
+    <label>
+		<span>LAYOUT [ density ]</span>
+	</label>
+	<list-item>
+	  <list-cell>
+	    <span>Full <low-light>[</low-light>&#160;default&#160;<low-light>]</low-light></span>
+	  <list-cell>
+	  <list-cell>
+		<input type="radio" name="density" checked />
+	  <list-cell>
+	</list-item>
+    <list-item>
+	  <list-cell>
+	    <span>Medium</span>
+	  </list-cell>
+	  <list-cell>
+	    <input type="radio" name="density" />
+	  </list-cell>
+	</list-item>
+	<list-item>
+	  <list-cell>
+	    <span>Compact </span>
+	  </list-cell>
+	  <list-cell>
+	    <input type="radio" name="density" />
+	  </list-cell>
+	</list-item>
+    <label>
+	  <span>THEMES</span>
+	</label>
+    <list-item>
+	  <list-cell>
+	    <span>Light </span>
+	  </list-cell>
+	  <list-cell>
+	    <input type="radio" name="themes" />
+	  </list-cell>
+	</list-item>
+	<list-item>
+	  <list-cell>
+	    <span>Light [</low-light>&#160;minimal&#160;<low-light>]</low-light></span>
+	  </list-cell>
+	  <list-cell>
+	    <input type="radio" name="themes" />
+	  </list-cell>
+	</list-item>
+	<list-item>
+	  <list-cell>
+	    <span>Dark </span>
+	  </list-cell>
+	  <list-cell>
+	    <input type="radio" name="themes" />
+	  </list-cell>
+	</list-item>
+	<list-item>
+	  <list-cell>
+	    <span>Dark [</low-light>&#160;minimal&#160;<low-light>]</low-light></span>
+	  </list-cell>
+	  <list-cell>
+	    <input type="radio" name="themes" />
+	  </list-cell>
+	</list-item>
+	<list-item>
+	  <list-cell>
+	    <span>Globe [</low-light>&#160;default&#160;<low-light>]</low-light></span>
+	  </list-cell>
+	  <list-cell>
+	    <input type="radio" name="themes" />
+	  </list-cell>
+	</list-item>
+	<list-item>
+	  <list-cell>
+	    <span>Globe [</low-light>&#160;minimal&#160;<low-light>]</low-light></span>
+	  </list-cell>
+	  <list-cell>
+	    <input type="radio" name="themes" />
+	  </list-cell>
+	</list-item>
 </panel-content>
 <panel-footer>
-    <panel-footer-left>: :</panel-footer-left>
-    <panel-footer-center>: :</panel-footer-center>
-    <panel-footer-right>: :</panel-footer-right>
+    <panel-footer-left><span>: :</span></panel-footer-left>
+    <panel-footer-center><span>: :</span></panel-footer-center>
+    <panel-footer-right><span>: :</span></panel-footer-right>
 </panel-footer>
