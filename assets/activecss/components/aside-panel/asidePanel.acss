@@ -8,5 +8,5 @@ panel-aside panel-close:not-if-empty-trimmed(list-details):click {
 
 panel-aside list-results:if-empty:observe {
   body {remove-class: .aside;}
-	page-container {remove-attribute: style;}
+  page-container {remove-attribute: style;}
 }
