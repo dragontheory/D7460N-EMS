@@ -1,1 +1,5 @@
 @component pageHeader html("/assets/activecss/components/page-header/page-header.html" get nocache) {}
+
+page-header-right user-name:click {
+  body {add-class: .aside2;}
+}
