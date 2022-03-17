@@ -1,26 +1,9 @@
-@component mainPanel html("/assets/activecss/components/main-panel/main-panel.html" get nocache) {
-  &:componentOpen {
-    #myList {
-      // ajax: "https://my-json-server.typicode.com/dragontheory/D7460N-data/names/" get json await;
-			ajax: "http://dragontheory.com/json/D7460N.json" get json await;
-      console-log: "getting here";
-      trigger: setup;
-      var: startingLiCo {liCo};
-      @each item in {JSON} {
-        var: liCo++;
-        render-before-end:
-        "<li data-co=\"{liCo}\" data-id=\"{item.id}\">
-          <list-cell>
-            <input type="checkbox" id="" name="table-row" value="" />
-          </list-cell>
-          <list-cell>{item.id}</list-cell>
-          <list-cell>{item.name}</list-cell>
-          <list-cell>{item.username}</list-cell>
-          <list-cell><a href=\"https://{item.website}\" target=\"_new\">{item.website}</a></list-cell>
-          <list-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></list-cell>
-        </li>";
-      }
-      trigger: countRows;
+@component panelMain html("/assets/activecss/components/panel-main/panel-main.html" get nocache) {}
+
+meta-label:innerhtmlchange {
+  #filterAppList list-item {
+    @if inner-text("{#metaLabel}") {
+      take-class: .active-app;
     }
   }
 }
