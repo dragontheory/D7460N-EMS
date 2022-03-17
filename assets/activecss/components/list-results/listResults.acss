@@ -1,0 +1,21 @@
+@component listResults html("assets/activecss/components/list-results/list-results.html" get nocache) {}
+
+body:if-exists(list-details list-item):observe {
+  add-class: .main;
+  remove-class: .intro;
+}
+
+body:not-if-exists(list-details list-item):observe {
+  add-class: .intro;
+  remove-class: .main;
+  remove-class: .aside;
+}
+
+list-results list-item:click {
+  take-class: .active-li;
+  /* func: sendRowToAngular; */
+  list-details list-cell {
+    fade-out: 25ms 0.5 grid await;
+    fade-in: 25ms 1.0 grid;
+  }
+}
