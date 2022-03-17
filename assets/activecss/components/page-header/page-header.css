@@ -1,18 +1,57 @@
 page-header {
-  grid-template-rows: auto;
+  display: grid;
+	grid-template-rows: auto;
   grid-column: 1 / -1;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: 1rem;
+  background-color: rgba(255,255,255,0.05);
 }
-page-header-left {
-  justify-self: left;
-  align-self: center;
+
+page-header-left {display: grid;}
+
+page-logo {
+  display: grid;
+	align-content: center;
 }
+
+page-logo::before {
+  content: "/assets/img/asdf.svg";
+	position: absolute;
+}
+
+page-logo-text {
+  font-family: var(--font01);
+	letter-spacing: var(--font01-letter-spacing);
+  font-size: 1rem;
+	margin-left: 4rem;
+}
+
+page-logo-text span {
+  margin: 0 0.4rem;
+	border-left: solid 0.01rem rgba(255,255,255,0.2);
+}
+
 page-header-center {
-  justify-self: center;
-  align-content: start;
+  display: grid;
+	justify-content: center;
+  align-content: center;
 }
+
+page-header-center page-center {
+  font-family: var(--font01);
+	letter-spacing: var(--font01-letter-spacing);
+	color: rgba(255,255,255,0.3);
+}
+
 page-header-right {
-  justify-self: right;
-  align-self: center;
+	display: grid;
+  justify-self: end;
 }
+
+page-header-right user-name {
+	color: rgba(117,193,255,0.7); /* 00A1FF rgba(102,175,233,1.0) */
+	cursor: pointer;
+	transition: all 250ms;
+	padding: 1rem;
+}
+
+page-header-right user-name:hover {color: var(--page-text-color-links-hover);} 
