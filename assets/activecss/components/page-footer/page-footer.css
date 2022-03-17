@@ -1,18 +1,36 @@
 page-footer {
+	display: grid;
   grid-template-rows: auto;
   grid-column: 1 / -1;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: 1rem;
+  background-color: rgba(255,255,255,0.05);
 }
+
 page-footer-left {
-  justify-self: left;
-  align-self: center;
+	display: grid;
+  justify-content: start;
+  align-content: center;
+	color: rgba(255,255,255,0.3);
 }
+
 page-footer-center {
-  justify-self: center;
-  align-self: center;
+	display: grid;
+  justify-content: center;
+  align-content: center;
 }
+
 page-footer-right {
-  justify-self: right;
-  align-self: center;
+	display: grid;
+  justify-content: end;
+  align-content: center;
+	color: rgba(255,255,255,0.3);
+}
+
+page-footer powered-by,
+page-footer page-center,
+page-footer app-version {
+  padding: 1rem;
+	font-family: var(--font01);
+	letter-spacing: var(--font-01-letter-spacing);
+	color: color: rgba(255,255,255,0.3);
 }
