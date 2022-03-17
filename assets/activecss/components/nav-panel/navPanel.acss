@@ -1,1 +1,10 @@
-@component navPanel html("/assets/activecss/components/nav-panel/nav-panel.html" get nocache) {}
+@component panelNav html("/assets/activecss/components/panel-nav/panel-nav.html" get nocache) {}
+
+reset-filter:click {
+  list-dataset list-item {
+	  remove-class: .active-dataset scope(list-dataset);
+	}
+	list-dataset list-item {remove-class: .active-app scope(#filterAppList);
+	}
+	func: clearFilters;
+}
