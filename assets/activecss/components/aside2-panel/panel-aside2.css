@@ -101,3 +101,9 @@ panel-aside2 panel-footer {
 panel-aside2 panel-footer-left span,
 panel-aside2 panel-footer-center span,
 panel-aside2 panel-footer-right span {padding: 1rem;}
+
+/*
+@media (prefers-color-scheme: dark) {
+  path {fill: #8E9196;}
+}
+*/
