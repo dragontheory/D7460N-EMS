@@ -15,7 +15,7 @@ panel-aside panel-header-left {
   letter-spacing: 1px;
 }
 
-panel-aside panel-header-left {
+panel-aside panel-header-left span {
   font-family: var(--font01);
   font-size: 1.3rem;
   padding: 1rem;
