@@ -1,6 +1,11 @@
 body:init {
-  create-element: 
-    page-container pageContainer,
+  create-element:
+    list-app listApp,
+		list-dataset listDataset,
+		list-details listDetails,
+		list-pagination listPagination,
+		list-results listResults,
+		page-container pageContainer,
     page-header pageHeader,
     page-logo pageLogo,
     nav-panel navPanel,
