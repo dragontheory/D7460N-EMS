@@ -1,4 +1,4 @@
-@component listResults html("assets/activecss/components/list-results/list-results.html" get nocache) {}
+@component listResults html("/assets/activecss/components/list-results/list-results.html" get nocache) {}
 
 body:if-exists(list-details list-item):observe {
   add-class: .main;

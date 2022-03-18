@@ -7,12 +7,11 @@ body:init {
 		list-results listResults,
 		page-container pageContainer,
     page-header pageHeader,
-    page-logo pageLogo,
-    nav-panel navPanel,
-    intro-panel introPanel,
-    main-panel mainPanel,
-    splitter-panel splitterPanel,
-    aside-panel asidePanel,
-    close-panel closePanel,
+    panel-nav panelNav,
+    panel-intro panelIntro,
+    panel-main panelMain,
+    panel-splitter panelSplitter,
+    panel-aside panelAside,
+    panel-aside2 panelAside2,
     page-footer pageFooter;
 }

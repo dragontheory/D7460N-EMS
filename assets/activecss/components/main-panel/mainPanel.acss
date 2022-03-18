@@ -1,9 +1,0 @@
-@component panelMain html("/assets/activecss/components/panel-main/panel-main.html" get nocache) {}
-
-meta-label:innerhtmlchange {
-  #filterAppList list-item {
-    @if inner-text("{#metaLabel}") {
-      take-class: .active-app;
-    }
-  }
-}

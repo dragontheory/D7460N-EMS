@@ -1,0 +1,16 @@
+panel-splitter {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-color 250ms;
+}
+panel-splitter:hover {
+	background-color: rgba(102,175,233,0.3);
+	cursor: col-resize;
+}
+panel-splitter:focus,
+panel-splitter:active {
+  cursor: col-resize;
+  background-color: rgba(102,175,233,1.0);
+}
+

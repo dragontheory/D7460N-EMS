@@ -46,7 +46,7 @@ window:resize {
 }
 
 /* #myList = ol */
-/* Check if the current user is the same one in the <table-details> <li> */
+/* Check if the current user is the same one in the <list-details> <list-item> */
 #myList li:not-if-var(currentUserID "{@data-id}"):click {
   var: currentUserID "{@data-id}";
   ajax: "https://my-json-server.typicode.com/dragontheory/D7460N-data/names/{@data-id}" get json await;
@@ -56,17 +56,17 @@ window:resize {
   /* Add .active class to clicked row. Remove .active class form all other rows withing #myList. */
   take-class: .active scope(#myList);
 
-  /* Add HTML child li to <table-details> ol */
-  table-details ol {
-    render: "<li><list-cell>ID</list-cell><list-cell>{item.id}</list-cell></li>
-             <li><list-cell>name</list-cell><list-cell>{item.name}</list-cell></li>
-             <li><list-cell>username</list-cell><list-cell>{item.username}</list-cell></li>
-             <li><list-cell>website</list-cell><list-cell><a href=\"https://{item.website}\" target=\"_new\">{item.website}</a></list-cell></li>
-             <li><list-cell>email</list-cell><list-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></list-cell></li>";
+  /* Add HTML child li to <list-details> ol */
+  list-details ol {
+    render: "<list-item><list-cell>ID</list-cell><list-cell>{item.id}</list-cell></list-item>
+             <list-item><list-cell>name</list-cell><list-cell>{item.name}</list-cell></list-item>
+             <list-item><list-cell>username</list-cell><list-cell>{item.username}</list-cell></list-item>
+             <list-item><list-cell>website</list-cell><list-cell><a href=\"https://{item.website}\" target=\"_new\">{item.website}</a></list-cell></list-item>
+             <list-item><list-cell>email</list-cell><list-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></list-cell></list-item>";
   }
 }
-#myList li:not-if-empty-trimmed(table-details ol):if-var(currentUserID "{@data-id}"):click {
-  table-details ol {
+#myList li:not-if-empty-trimmed(list-details ol):if-var(currentUserID "{@data-id}"):click {
+  list-details ol {
     render: "";
     var: currentUserID "";
   }

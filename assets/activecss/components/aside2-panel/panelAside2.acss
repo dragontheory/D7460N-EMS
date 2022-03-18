@@ -1,5 +1,0 @@
-@component panelAside2 html("/assets/activecss/components/panel-aside2/panelaside2.html" get) {}
-
-panel-aside2 panel-close:click {
-  body {remove-class: .aside2;},
-}

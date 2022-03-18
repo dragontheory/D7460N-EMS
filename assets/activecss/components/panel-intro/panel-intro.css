@@ -1,0 +1,4 @@
+panel-intro {background-color: transparent;}
+panel-intro panel-header,
+panel-intro panel-content,
+panel-intro panel-footer {padding: 0;}

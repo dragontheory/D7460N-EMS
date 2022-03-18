@@ -1,10 +1,10 @@
 @import url("fonts.css");
 @import url("typography.css");
-@import url("body.css");
+@import url("_body.css");
 @import url("accordions.css");
-@import url("scrollbars.css");
-@import url("themes.css");
-@import url("panels.css");
+@import url("_scrollbars.css");
+@import url("_themes.css");
+@import url("_panels.css");
 @import url("tabs.css");
 @import url("circles.css");
 @import url("carousels.css");
@@ -15,11 +15,10 @@
 /* @import url("css/animations.css");*/
 @import url("/assets/activecss/components/page-container/page-container.css");
 @import url("/assets/activecss/components/page-header/page-header.css");
-@import url("/assets/activecss/components/page-logo/page-logo.css");
-@import url("/assets/activecss/components/nav-panel/nav-panel.css");
-@import url("/assets/activecss/components/intro-panel/intro-panel.css");
-@import url("/assets/activecss/components/main-panel/main-panel.css");
-@import url("/assets/activecss/components/splitter-panel/splitter-panel.css");
-@import url("/assets/activecss/components/aside-panel/aside-panel.css");
-@import url("/assets/activecss/components/close-panel/close-panel.css");
+@import url("/assets/activecss/components/panel-nav/panel-nav.css");
+@import url("/assets/activecss/components/panel-intro/panel-intro.css");
+@import url("/assets/activecss/components/panel-main/panel-main.css");
+@import url("/assets/activecss/components/panel-splitter/panel-splitter.css");
+@import url("/assets/activecss/components/panel-aside/panel-aside.css");
+@import url("/assets/activecss/components/panel-aside2/panel-aside2.css");
 @import url("/assets/activecss/components/page-footer/page-footer.css");

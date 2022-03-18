@@ -8,7 +8,7 @@ list-results-header list-item {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 120px;
   grid-template-rows: 1fr;
-  border-radisu: 0.3rem;
+  border-radius: 0.3rem;
   background-color: var(--panel-bg-color);
   align-content: center;
   transition: all 250ms;
@@ -35,7 +35,7 @@ list-results list-item {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 120px;
   grid-template-rows: 1fr;
-  border-radisu: 0.3rem;
+  border-radius: 0.3rem;
   background-color: var(--panel-bg-color);
   align-content: center;
   transition: all 250ms;

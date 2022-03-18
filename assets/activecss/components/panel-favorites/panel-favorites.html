@@ -1,0 +1,20 @@
+<panel-header>
+    <panel-header-left><h1>FAVORITES</h1></panel-header-left>
+    <panel-header-center></panel-header-center>
+    <panel-header-right></panel-header-right>
+</panel-header>
+<panel-content>
+    <p>Favorites content</p>
+    <ul>
+        <list-item><list-cell>ID</list-cell><list-cell>{item.id}</list-cell></list-item>
+        <list-item><list-cell>name</list-cell><list-cell>{item.name}</list-cell></list-item>
+        <list-item><list-cell>username</list-cell><list-cell>{item.username}</list-cell></list-item>
+        <list-item><list-cell>website</list-cell><list-cell><a href=\"https://{item.website}\" target=\"_new\">{item.website}</a></list-cell></list-item>
+        <list-item><list-cell>email</list-cell><list-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></list-cell></list-item>
+    </ul>
+</panel-content>
+<panel-footer>
+    <panel-footer-left>: :</panel-footer-left>
+    <panel-footer-center>: :</panel-footer-center>
+    <panel-footer-right>: :</panel-footer-right>
+</panel-footer>

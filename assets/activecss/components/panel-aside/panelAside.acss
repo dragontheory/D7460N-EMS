@@ -1,0 +1,12 @@
+@component panelAside html("/assets/activecss/components/panel-aside/panel-aside.html" get) {}
+
+panel-aside panel-close:not-if-empty-trimmed(list-details):click {
+  list-details {render: "";},
+  page-container {remove-attribute: style;},
+  list-results list-item {remove-class: .active-li;}
+}
+
+panel-aside list-results:if-empty:observe {
+  body {remove-class: .aside;}
+  page-container {remove-attribute: style;}
+}

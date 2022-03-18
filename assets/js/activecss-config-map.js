@@ -5,13 +5,16 @@ document.addEventListener('DOMContentLoaded', function(e) {
     'assets/activecss/conditionals.acss,' + 
     'assets/activecss/components/page-container/pageContainer.acss,' + 
     'assets/activecss/components/page-header/pageHeader.acss,' +
-    'assets/activecss/components/page-logo/pageLogo.acss,' +    
-    'assets/activecss/components/intro-panel/introPanel.acss,' + 
-    'assets/activecss/components/nav-panel/navPanel.acss,' + 
-    'assets/activecss/components/main-panel/mainPanel.acss,' + 
-    'assets/activecss/components/splitter-panel/splitterPanel.acss,' +
-    'assets/activecss/components/aside-panel/asidePanel.acss,' + 
-    'assets/activecss/components/close-panel/closePanel.acss,' + 
+    'assets/activecss/components/list-dataset/listDataset.acss,' +
+    'assets/activecss/components/list-details/listDetails.acss,' +
+    'assets/activecss/components/list-pagination/listPagination.acss,' +
+    'assets/activecss/components/list-results/listResults.acss,' +
+    'assets/activecss/components/panel-intro/panelIntro.acss,' + 
+    'assets/activecss/components/panel-nav/panelNav.acss,' + 
+    'assets/activecss/components/panel-main/panelMain.acss,' + 
+    'assets/activecss/components/panel-splitter/panelSplitter.acss,' +
+    'assets/activecss/components/panel-aside/panelAside.acss,' +
+    'assets/activecss/components/panel-aside2/panelAside2.acss,' +  
     'assets/activecss/components/page-footer/pageFooter.acss',
   });
 });
