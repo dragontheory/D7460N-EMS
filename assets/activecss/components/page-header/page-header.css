@@ -14,7 +14,7 @@ page-logo {
 }
 
 page-logo::before {
-  content: "/assets/img/asdf.svg";
+  content: "/assets/images/logos/logo_380x380.svg";
   position: absolute;
 }
 

@@ -3,7 +3,8 @@
 panel-aside panel-close:not-if-empty-trimmed(list-details):click {
   list-details {render: "";},
   page-container {remove-attribute: style;},
-  list-results list-item {remove-class: .active-li;}
+  list-results list-item {remove-class: .active-li;},
+  var: currentUserID "";
 }
 
 panel-aside list-results:if-empty:observe {

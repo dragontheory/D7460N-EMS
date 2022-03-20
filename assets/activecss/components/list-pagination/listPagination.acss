@@ -45,6 +45,7 @@ list-results:countRows {
       render: 0{totalVisible};
     } @else {
       render: {totalVisible};
+    }
   }
    #totalNonVisible {
     @if {totalNonVisible} < 10 {

@@ -1,14 +1,19 @@
-/*
-    PANEL HEADER
-*/
-
 panel-main {
-	margin-left: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  border-radius: .3rem;
+  margin-left: 0;
 	margin-right: 0;
 	background-color: transparent;
 	overflow-y: hidden;
 }
 
+
+/*
+    PANEL HEADER
+*/
 panel-main panel-header {grid-template-columns: 1fr auto auto;}
 
 

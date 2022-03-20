@@ -7,3 +7,12 @@ meta-label:innerhtmlchange {
     }
   }
 }
+#myList list-item:click {
+  list-details {
+    render: "";
+    var: currentUserID "";
+  }
+  #myList list-item {
+    remove-class: .active;
+  }
+}

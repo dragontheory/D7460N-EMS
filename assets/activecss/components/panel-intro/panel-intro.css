@@ -1,4 +1,21 @@
-panel-intro {background-color: transparent;}
+panel-intro {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  overflow-y: hidden;
+  border-radius: .3rem;
+  margin-left: 0;
+	margin-right: 0;
+	background-color: transparent;
+}
+
 panel-intro panel-header,
 panel-intro panel-content,
 panel-intro panel-footer {padding: 0;}
+
+canvas {
+  position: fixed;
+  right: -32rem;
+  /* height: 100vh; */
+  z-index: -1;
+}

@@ -1,3 +1,12 @@
+panel-aside {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  border-radius: .3rem;
+}
+
+
 /*
     PANEL HEADER
 */
@@ -9,15 +18,10 @@ panel-aside panel-header {
               inset 0 -1px 0 0 rgba(0,0,0,0.3);
 }
 
-panel-aside panel-header-left {
-  font-family: var(--font01);
-  font-size: 1.2rem;
-  letter-spacing: 1px;
-}
-
 panel-aside panel-header-left span {
   font-family: var(--font01);
   font-size: 1.3rem;
+  letter-spacing: 1px;
   padding: 1rem;
 }
 
