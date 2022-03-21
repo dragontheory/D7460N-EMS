@@ -3,3 +3,11 @@
 panel-aside2 panel-close:click {
   body {remove-class: .aside2;},
 }
+
+panel-aside2 list-cell .motion:not(checked):click {
+  body {add-class: .motion-hide;},
+}
+
+panel-aside2 list-cell .motion:checked:click {
+  body {remove-class: .motion-hide;},
+}
