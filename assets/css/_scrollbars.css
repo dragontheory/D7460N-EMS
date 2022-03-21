@@ -1,34 +1,80 @@
 /* https://codeconvey.com/custom-scrollbar-css-for-all-browsers/ */
 
 /* scrollbar width */
-::-webkit-scrollbar {width: 0.5rem;}
+/* ::-webkit-scrollbar {width: 0.5rem;} */
   
   /* scrollbar Track */
-  ::-webkit-scrollbar-track {
-      background: rgba(0,0,0,0.1);  /* fallback for old browsers */
-      background: -webkit-linear-gradient(to rgba(0,0,0,0.1), rgba(0,0,0,0.1), rgba(0,0,0,0.1));  /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.1)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-      border-radius: 0.1rem;
-  }
+  /* ::-webkit-scrollbar-track { */
+      /* background: rgba(0,0,0,0.1);   fallback for old browsers */
+      /* background: -webkit-linear-gradient(to rgba(0,0,0,0.1), rgba(0,0,0,0.1), rgba(0,0,0,0.1));   Chrome 10-25, Safari 5.1-6 */
+      /* background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.1));  W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      /* border-radius: 0.1rem;
+  } */
   
   /* scrollbar Handle */
-  ::-webkit-scrollbar-thumb {
-      background: rgba(255,255,255,0.1);  /* fallback for old browsers */
-      background: -webkit-linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.1));  /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.1)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* ::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.1);   fallback for old browsers */
+      /* background: -webkit-linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.1));   Chrome 10-25, Safari 5.1-6 */
+      /* background: linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.1));  W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ 
       border-radius: 0.1rem;
       transition: all 250ms;
-  }
+  } */
   
   /* scrollbar Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {background: #00527a /*rgba(62, 144, 252, 1.0)*/;}
+  /* ::-webkit-scrollbar-thumb:hover {background: #00527a rgba(62, 144, 252, 1.0);} 
   
   @media only screen and (max-width: 800px) {
     main {width: 80% !important;}
-  }
+  } */
 
 
 
-/* For Firefox */
+/* For Firefox 
 #myList { scrollbar-color: #00527a transparent;
-  scrollbar-width: thin;}
+  scrollbar-width: thin;}*/
+
+/* HIDE SCROLLBAR UNTIL HOVER */
+list-results,
+list-app,
+list-dataset,
+list-details {
+  mask-image linear-gradient(to top, transparent, black),
+             linear-gradient(to left, transparent .5rem, black .5rem);
+  mask-size: 100% 200rem;
+	mask-position: left-bottom;
+	
+	-webkit-mask-image: linear-gradient(to top, transparent, black),
+             linear-gradient(to left, transparent .5rem, black .5rem);
+  -webkit-mask-size: 100% 200rem;
+	-webkit-mask-position: left-bottom;
+	transition: mask-position 250ms, -webkit--mask-position 250ms;
+}
+
+list-results:hover,
+list-app:hover, 
+list-dataset:hover,
+list-details:hover {
+	mask-position: left top;
+	-webkit-mask-position: left top;
+}
+
+/* FF */
+list-results,
+list-app,
+list-dataset,
+list-details {
+  scrollbar-width: thin;
+	scrollbar-color: rgba(102,175,233,1.0) transparent;
+}
+
+/* EVERYTHING ELSE */
+::-webkit-scrollbar {
+  width: .3rem; /* vertical scrollbars */
+  height: .3rem; /* horizonatal scrollbars */
+}
+::-webkit-scrollbar-track {background: transparent;} /* background */
+::-webkit-scrollbar-thumb {
+	background-color: rgba(102,175,233,1.0);
+	border-radius: 6px;
+	border: 3px solid transparent;  /* background */
+} 
