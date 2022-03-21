@@ -122,7 +122,8 @@ page-container > * {
 
 .disabled,
 [disabled] {
-  cursor: not-allowed;
+  opacity: .65;
+	cursor: not-allowed;
   filter: alpha(opacity=65);
   -webkit-box-shadow: none;
           box-shadow: none;
