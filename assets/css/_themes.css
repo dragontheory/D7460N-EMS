@@ -119,3 +119,11 @@ page-container > * {
 /* @media (prefers-color-scheme: dark) {
   path {fill: #8E9196;}
 } */
+
+.disabled,
+[disabled] {
+  cursor: not-allowed;
+	filter: alpha(opacity=65);
+	-webkit-box-shadow: none;
+	        box-shadow: none;
+}
