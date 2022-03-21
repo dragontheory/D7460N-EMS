@@ -98,6 +98,10 @@ panel-aside2 panel-list-cell {
   padding: 0.5rem 1rem;
 }
 
+.motion-hide canvas {
+  display: none; 
+}
+
 /*
     PANEL FOOTER
 */
