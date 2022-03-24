@@ -43,7 +43,7 @@ list-results list-item {
 
 list-results list-item:hover,
 list-results list-item.selected {
-  background-color: var(--panel-bg-color-hover);/* #00A1FF */
+  background-color: rgba(102,175,233,0.2);/* #00A1FF */
   cursor: pointer;
 }
 

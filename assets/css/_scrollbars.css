@@ -38,7 +38,7 @@ list-results,
 list-app,
 list-dataset,
 list-details {
-  mask-image linear-gradient(to top, transparent, black),
+  mask-image: linear-gradient(to top, transparent, black),
              linear-gradient(to left, transparent .5rem, black .5rem);
   mask-size: 100% 200rem;
 	mask-position: left-bottom;
@@ -70,7 +70,7 @@ list-details {
 /* EVERYTHING ELSE */
 ::-webkit-scrollbar {
   width: .3rem; /* vertical scrollbars */
-  height: .3rem; /* horizonatal scrollbars */
+  height: .3rem; /* horizontal scrollbars */
 }
 ::-webkit-scrollbar-track {background: transparent;} /* background */
 ::-webkit-scrollbar-thumb {

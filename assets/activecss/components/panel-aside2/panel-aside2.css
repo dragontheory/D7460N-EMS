@@ -79,6 +79,10 @@ panel-aside2 list-item {
   box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.05),
               inset 0 -1px 0 0 rgba(0,0,0,0.2);
 }
+panel-aside2 list-item:hover {
+  background-color: rgba(102,175,233,0.2);/* #00A1FF */
+  cursor: pointer;
+}
 
 panel-aside2 list-item:first-of-type {
   box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.0),
@@ -86,8 +90,12 @@ panel-aside2 list-item:first-of-type {
 }
 
 panel-aside2 list-item:last-of-type {
-  box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.5),
+  box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.05),
               inset 0 -1px 0 0 rgba(0,0,0,0.0);
+}
+
+panel-aside2 list-item list-cell {
+  padding: 1rem;
 }
 
 panel-aside2 panel-list-cell {
@@ -98,9 +106,7 @@ panel-aside2 panel-list-cell {
   padding: 0.5rem 1rem;
 }
 
-.motion-hide canvas {
-  display: none; 
-}
+.motion-hide canvas {display: none;}
 
 /*
     PANEL FOOTER
