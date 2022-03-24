@@ -309,13 +309,15 @@ _a.CancelTimer = o => {
 	let func = val._ACSSConvFunc();
 	let found = true;
 	let i, pos, intID, delayRef, loopref;
-	let scope = (o.varScope) ? o.varScope : 'main';
+	let scope = (o.evScope) ? o.evScope : 'main';
+
 	// It could be a label cancel. If the label exists, remove the delay.
 	if (labelData[scope + val]) {
 		// This is a label cancel. We know it is tied to a specific action value.
 		// Format:
 		// labelData[splitArr.lab] => { del: delayRef, func: o2.func, pos: o2.pos, o2.intID, tid: tid };
 		// labelByIDs[tid] => { del: delayRef, func: o2.func, pos: o2.pos, o2.intID, lab: splitArr.lab };
+
 		let delData = labelData[scope + val];
 		_clearTimeouts(delayArr[delData.del][delData.func][delData.pos][delData.intID][delData.loopRef]);
 		_removeCancel(delData.del, delData.func, delData.pos, delData.intID, delData.loopRef);
@@ -2358,7 +2360,7 @@ const _handleEvents = evObj => {
 		// The DOM state could change at any time, thereby potential changing the state of any object, and it's more trouble than it's worth to keep track of it
 		// on a per object basis. It is fine as it is working dynamically. If you do have a go, you will need to consider things like routing affecting DOM
 		// attributes, adding/removing attributes, properties, plus monitoring all objects for any external manipulation. It's really not worth it. This code is
-		// short and fast enough on most devices.
+		// short and fast enough on most devices. Browser implementation may want to take that route though, as it is a cleaner approach at a lower code level.
 
 		// Events have an additional action in Active CSS. They can bubble up per component. So a selector in a higher component will be inherited by a lower
 		// component if the mode of the lower component is set to open. If set to closed, only that component's event will be processed. The developer can
@@ -2420,7 +2422,6 @@ const _handleEvents = evObj => {
 			if (primSel.substr(0, 1) == '|' || typeof obj !== 'string' && primSel.substr(0, 1) == '~') continue;
 			// Replace any attributes, etc. into the primary selector if this is an "after" callback event.
 			testSel = (afterEv && origObj) ? _replaceEventVars(primSel, origObj) : primSel;
-
 			if (testSel.indexOf('<') === -1 && !selectorList.includes(primSel)) {
 				if (typeof obj !== 'string') {
 				    try {
@@ -2595,7 +2596,7 @@ const _handleFunc = function(o, delayActiveID=null, runButElNotThere=false) {
 		let splitArr, tid, scope;
 		for (aftEv of delLoop) {
 			splitArr = _delaySplit(o2.actVal, aftEv, o);
-			scope = (o.varScope) ? o.varScope : 'main';
+			scope = (o.evScope) ? o.evScope : 'main';
 			if (splitArr.lab) splitArr.lab = scope + splitArr.lab;
 			if (typeof splitArr.tim == 'number' && splitArr.tim >= 0) {
 				o2.actVal = splitArr.str;
@@ -9760,13 +9761,22 @@ const _addActValRaw = o => {
 			mime = 'application/x-www-form-urlencoded';
 	}
 	r.setRequestHeader('Content-type', mime);
-	if (o && o.csrf) {
-		// Is there a meta tag with X-CSRF-TOKEN present?
-		let metaEl = document.querySelector('meta[name="csrf-token"]');
-		if (metaEl) {
-			r.setRequestHeader('X-CSRF-TOKEN', metaEl.getAttribute('content'));
+	if (o) {
+		if (o.csrf) {
+			// Is there a meta tag with X-CSRF-TOKEN present?
+			let metaEl = document.querySelector('meta[name="csrf-token"]');
+			if (metaEl) {
+				r.setRequestHeader('X-CSRF-TOKEN', metaEl.getAttribute('content'));
+			}
+		}
+		if (o.xhrHeaders) {
+			let xhrHeaderObj;
+			for (const xhrHeaderObj of o.xhrHeaders) {
+				r.setRequestHeader(xhrHeaderObj.key, xhrHeaderObj.val);
+			}
 		}
 	}
+
 	r.onload = () => {
 		if (r.status != 200) {
 			// Handle application level error.
@@ -9980,7 +9990,21 @@ const _ajaxDo = o => {
 		if (preGetMid == preGetMax) return;	// Skip this pre-get - there is a threshold set.
 	}
 	// Sort out the extra vars and grab the contents of the url.
-	let ajaxArr = o.actVal.split(' ');
+	let aVRes = _extractBracketPars(o.actVal, [ 'header' ], o);
+	if (aVRes.header) {
+		// Convert inner string to formatted headers array.
+		o.xhrHeaders = [];
+		const trimHeadVals = str => {
+			// Make this generic if same sort of thing needed again.
+			return str.trim()._ACSSRepQuo().replace(/_ACSS_comma/g, ',');
+		};
+		for (const headerStr of aVRes.header) {
+			let newHeaderStr = _escInQuo(headerStr, ',', '_ACSS_comma');
+			let arr = newHeaderStr.split(',');
+			o.xhrHeaders.push({ key: trimHeadVals(arr[0]), val: trimHeadVals(arr[1]) });
+		}
+	}
+	let ajaxArr = aVRes.action.split(' ');
 	o.formMethod = _optDef(ajaxArr, 'get', 'GET', 'POST');
 	o.dataType = _optDef(ajaxArr, 'html', 'HTML', 'JSON');
 	o.cache = _optDef(ajaxArr, 'cache', true, false);
@@ -10540,20 +10564,28 @@ const _extractBracketPars = (actionValue, parArr, o) => {
 	newActionValue = _escInQuo(newActionValue, ')', '_ACSS_clPa');
 
 	parArr.forEach(parName => {
-		// Note this was further abstracted out, but would have been slower with the char escaping going on above happening within the abstraction,
-		// so I put it back to this for the sake of speed.
-		let currentActionValue = newActionValue;
-		pos = newActionValue.indexOf(parName + '(');
-		if (pos !== -1) {
-			parStartLen = parName.length + 1;	// Includes name of parameter and first parenthesis.
-			newActionValue = currentActionValue.substr(0, pos - 1).trim();		// Strips off the parameters as it goes.
-			// Get the parameter value and the remainder of the action value.
-			// Send over the action value from the beginning of the parameter value.
-			splitRes = _extractBracketParsSplit(currentActionValue.substr(pos + parStartLen), actionValue, o);
-			res[parName] = _extractBracketParsUnEsc(splitRes.value);
-			newActionValue += splitRes.remainder;
+		let trackArr = [];
+		while (true) {
+			// Note this was further abstracted out, but would have been slower with the char escaping going on above happening within the abstraction,
+			// so I put it back to this for the sake of speed.
+			let currentActionValue = newActionValue;
+			pos = newActionValue.indexOf(parName + '(');
+			if (pos !== -1) {
+				parStartLen = parName.length + 1;	// Includes name of parameter and first parenthesis.
+				newActionValue = currentActionValue.substr(0, pos - 1).trim();		// Strips off the parameters as it goes.
+				// Get the parameter value and the remainder of the action value.
+				// Send over the action value from the beginning of the parameter value.
+				splitRes = _extractBracketParsSplit(currentActionValue.substr(pos + parStartLen), actionValue, o);
+				trackArr.push(_extractBracketParsUnEsc(splitRes.value));
+				newActionValue += splitRes.remainder;
+				// Check for any others.
+				continue;
+			}
+			if (trackArr.length > 0) res[parName] = (trackArr.length == 1) ? trackArr[0] : trackArr;
+			break;
 		}
 	});
+
 	res.action = _extractBracketParsUnEsc(newActionValue);	// The action is what is left after the parameter loop.
 
 	return res;
@@ -10570,7 +10602,6 @@ const _extractBracketParsSplit = (str, original, o) => {
 	// Return value should be:
 	// res.value = "#left";
 	// res.remainder = " another(#myEl:not(has(something))) hi(and the rest) something"
-
 	let res = {};
 	// Split by "(".
 	let openingArr = str.split('(');
@@ -10584,11 +10615,15 @@ const _extractBracketParsSplit = (str, original, o) => {
 		res.remainder = str.substr(closingPos + 1);
 	} else {
 		let lineCarry = '', line, innerRes, remainderArr;
+		let co = 0;
 		for (let n = 0; n < openingArr.length; n++) {
 			line = openingArr[n];
+			co++;
 			// Now get the content of this line sorted out.
-			innerRes = _extractBracketParsInner(line, n + 1, original, o);
-			if (innerRes.value) {
+			innerRes = _extractBracketParsInner(line, co, original, o);
+			if (typeof innerRes === 'number') {
+				co = co - innerRes;
+			} else if (innerRes.value) {
 				// We got the variable that we needed.
 				res.value = lineCarry + innerRes.value;
 				res.remainder = innerRes.remainder;
@@ -10600,7 +10635,6 @@ const _extractBracketParsSplit = (str, original, o) => {
 			}
 			lineCarry += line + '(';
 		}
-
 	}
 
 	return res;
@@ -10616,8 +10650,8 @@ const _extractBracketParsInner = (str, numOpening, original, o) => {
 			_err('Too many closing parenthesis found in component statement: ' + original);
 		}
 	} else if (closingArr.length - 1 < numOpening) {
-		// Not enough closing parameters. Return an empty object without a value.
-		return {};
+		// Not enough closing parameters. Return the number of closing parameters so they can be accounted for.
+		return closingArr.length - 1;
 	} else {
 		// We have the right number of closing parentheses.
 		let res = {};

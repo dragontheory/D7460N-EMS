@@ -1,0 +1,12 @@
+@component listThemes html("assets/activecss/components/list-themes/list-themes.html" get nocache) {}
+
+list-themes list-item:click {
+  take-class: .active-app scope(list-app);
+  mimic-into: #appSearchTerm;
+  func: filterByApplication;
+}
+list-themes list-item:click {
+  list-dataset list-item {
+    remove-class: .active-dataset scope(list-dataset);
+  }
+}

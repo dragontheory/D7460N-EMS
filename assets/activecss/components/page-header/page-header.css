@@ -13,16 +13,20 @@ page-logo {
   align-content: center;
 }
 
-page-logo::before {
-  content: "/assets/images/logos/logo_380x380.svg";
+page-logo svg {
   position: absolute;
+  top: 0;
+  width: 5rem;
+  fill: rgba(255,255,255,0.7);
 }
+/* @media (prefers-color-scheme:dark){path{fill:#d7dae0}} */
 
 page-logo-text {
   font-family: var(--font01);
   letter-spacing: var(--font01-letter-spacing);
-  font-size: 1rem;
-  margin-left: 4rem;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-left: 5rem;
 }
 
 page-logo-text span {
