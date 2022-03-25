@@ -1,0 +1,1 @@
+@component pageSearch html("/assets/activecss/components/page-search/page-search.html" get nocache) {}

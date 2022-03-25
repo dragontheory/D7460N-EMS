@@ -1,0 +1,20 @@
+panel-main-count total-visible {
+  font-family: var(--font01); 
+  color: var(--page-high-light-color); 
+  letter-spacing: var(--font01-letter-spacing);
+}
+panel-main-count total-non-visible {
+  font-family: var(--font01); 
+  color: var(--page-high-light-color); 
+  letter-spacing: var(--font01-letter-spacing);
+}
+panel-main-count total-page {
+  font-family: var(--font01); 
+  color: var(--page-high-light-color); 
+  letter-spacing: var(--font01-letter-spacing);
+}
+panel-main-count current-page {
+  font-family: var(--font01); 
+  color: var(--page-high-light-color); 
+  letter-spacing: var(--font01-letter-spacing);
+}

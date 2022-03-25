@@ -15,7 +15,16 @@ panel-main {
     PANEL HEADER
 */
 panel-main panel-header {grid-template-columns: 1fr auto auto;}
-
+panel-main panel-header-left {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+}
+panel-main panel-header-right {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+}
 
 /*
     PANEL CONTENT

@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
     'assets/activecss/conditionals.acss,' + 
     'assets/activecss/components/page-container/pageContainer.acss,' + 
     'assets/activecss/components/page-header/pageHeader.acss,' +
+    'assets/activecss/components/page-search/pageSearch.acss,' +
     'assets/activecss/components/list-dataset/listDataset.acss,' +
     'assets/activecss/components/list-details/listDetails.acss,' +
     'assets/activecss/components/list-graphics/listGraphics.acss,' +
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
     'assets/activecss/components/panel-intro/panelIntro.acss,' + 
     'assets/activecss/components/panel-nav/panelNav.acss,' + 
     'assets/activecss/components/panel-main/panelMain.acss,' + 
+    'assets/activecss/components/panel-main-count/panelMainCount.acss,' + 
     'assets/activecss/components/panel-splitter/panelSplitter.acss,' +
     'assets/activecss/components/panel-aside/panelAside.acss,' +
     'assets/activecss/components/panel-aside2/panelAside2.acss,' +  

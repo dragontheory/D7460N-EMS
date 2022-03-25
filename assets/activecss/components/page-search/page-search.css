@@ -1,0 +1,8 @@
+page-search [type="search"] {
+  background-color: var(--panel-bg-color);
+  color: var(--page-high-light-color);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 3px;
+  min-width: 250px;
+}
