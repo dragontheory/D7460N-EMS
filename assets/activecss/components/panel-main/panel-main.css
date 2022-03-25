@@ -18,12 +18,14 @@ panel-main panel-header {grid-template-columns: 1fr auto auto;}
 panel-main panel-header-left {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto;
+  justify-content: start; 
+  align-content: start;
 }
 panel-main panel-header-right {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto;
 }
 
 /*

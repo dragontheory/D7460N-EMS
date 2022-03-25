@@ -17,7 +17,7 @@ panel-footer {
 panel-footer > * {
   padding: 1rem;
 } */
-panel-header-right {
+/* panel-header-right {
   justify-self: end;
   align-self: center;
 }
@@ -46,4 +46,4 @@ panel-footer-center {
 panel-footer-left {
   justify-self: start;
   align-self: center;
-}
+} */
