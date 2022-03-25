@@ -1,3 +1,7 @@
+panel-main-count {
+  padding: 1rem 0;
+}
+
 panel-main-count total-visible {
   font-family: var(--font01); 
   color: var(--page-high-light-color); 
