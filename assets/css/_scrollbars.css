@@ -1,3 +1,50 @@
+/* HIDE SCROLLBAR UNTIL HOVER */
+list-results,
+list-app,
+list-dataset,
+list-details {
+  mask-image: linear-gradient(to top, transparent, black),
+              linear-gradient(to left, transparent .5rem, black .5rem);
+  mask-size: 100% 200rem;
+  mask-position: left-bottom;
+	
+  -webkit-mask-image: linear-gradient(to top, transparent, black),
+                      linear-gradient(to left, transparent .5rem, black .5rem);
+  -webkit-mask-size: 100% 200rem;
+  -webkit-mask-position: left bottom;
+  transition: all 250ms;
+  outline: none;
+}
+
+list-results:hover,
+list-app:hover, 
+list-dataset:hover,
+list-details:hover {
+  mask-position: left top;
+  -webkit-mask-position: left top;
+}
+
+/* FF */
+list-results,
+list-app,
+list-dataset,
+list-details {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(102,175,233,1.0) transparent;
+}
+
+/* EVERYTHING ELSE */
+::-webkit-scrollbar {
+  width: .3rem; /* vertical scrollbars */
+  height: .3rem; /* horizontal scrollbars */
+}
+::-webkit-scrollbar-track {background: transparent;} /* background */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(102,175,233,1.0);
+  border-radius: 6px;
+  border: 3px solid transparent;  /* background */
+} 
+
 /* https://codeconvey.com/custom-scrollbar-css-for-all-browsers/ */
 
 /* scrollbar width */
@@ -33,48 +80,4 @@
 #myList { scrollbar-color: #00527a transparent;
   scrollbar-width: thin;}*/
 
-/* HIDE SCROLLBAR UNTIL HOVER */
-list-results,
-list-app,
-list-dataset,
-list-details {
-  mask-image: linear-gradient(to top, transparent, black),
-             linear-gradient(to left, transparent .5rem, black .5rem);
-  mask-size: 100% 200rem;
-	mask-position: left-bottom;
-	
-	-webkit-mask-image: linear-gradient(to top, transparent, black),
-             linear-gradient(to left, transparent .5rem, black .5rem);
-  -webkit-mask-size: 100% 200rem;
-	-webkit-mask-position: left-bottom;
-	transition: mask-position 250ms, -webkit--mask-position 250ms;
-}
 
-list-results:hover,
-list-app:hover, 
-list-dataset:hover,
-list-details:hover {
-	mask-position: left top;
-	-webkit-mask-position: left top;
-}
-
-/* FF */
-list-results,
-list-app,
-list-dataset,
-list-details {
-  scrollbar-width: thin;
-	scrollbar-color: rgba(102,175,233,1.0) transparent;
-}
-
-/* EVERYTHING ELSE */
-::-webkit-scrollbar {
-  width: .3rem; /* vertical scrollbars */
-  height: .3rem; /* horizontal scrollbars */
-}
-::-webkit-scrollbar-track {background: transparent;} /* background */
-::-webkit-scrollbar-thumb {
-	background-color: rgba(102,175,233,1.0);
-	border-radius: 6px;
-	border: 3px solid transparent;  /* background */
-} 
