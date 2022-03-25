@@ -4,7 +4,6 @@
 panel-nav panel-header {
   grid-template-columns: 1fr auto auto;
   background-color: rgba(255,255,255,0.05);
-  backdrop-filter: blur(5px);
   box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.05),
               inset 0 -1px 0 0 rgba(0,0,0,0.3);
 }
@@ -15,12 +14,15 @@ panel-nav panel-header-left{
   justify-content: start;
   align-content: start;
 }
-panel-nav panel-header-left span {
+panel-nav panel-header-left span,
+panel-nav panel-header-right span {
   font-family: var(--font01);
   font-size: 1.3rem;
-  padding: 1rem;
   letter-spacing: 1px;
+  padding: 1rem;  
 }
+
+panel-nav panel-header-center {padding: 0;}
 
 panel-nav panel-header-right panel-close {
   display: grid;
@@ -32,7 +34,18 @@ panel-nav panel-header-right panel-close {
   padding: 1rem;
 }
 
-panel-nav panel-header-right panel-close:hover {color: rgba(102,175,233,1.0);}
+panel-nav panel-header-right rest-filter {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto;
+  align-items: baseline;
+  transition: all 250ms;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+panel-nav panel-header-right panel-close:hover,
+panel-nav panel-header-right reset-filter:hover{color: rgba(102,175,233,1.0);}
 
 
 /*
@@ -40,13 +53,55 @@ panel-nav panel-header-right panel-close:hover {color: rgba(102,175,233,1.0);}
 */
 panel-nav panel-content {
   display: grid;
-  backdrop-filter: blur(5px);
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   align-content: start;
   overflow-y: hidden;
 }
 
+panel-nav panel-content input.text-filter {
+  display: grid;
+  padding: .5rem 1rem;
+  background-color: rgba(255,255,255,0.05);
+  color: #FFF;
+  border: none;
+  outline: -webkit-focus-ring-color auto 0;
+  box-shadow: inset 0 -1px 0 0 rgba(0,0,0,0.3),
+              inset 0 1px 0 0 rgba(0,0,0,0.3);
+}
+
+.text-filter:active,
+.text-filter:hover,
+.text-filter:focus,
+.text-filter:focus-visible {box-shadow: inset 2px 0 0 0 rgba(102,175,233,1.0);}
+
+panel-nav panel-content label {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  cursor: pointer;
+  transition: all 250ms;
+  background-color: rgba(255,255,255,0.05),
+  box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.05),
+              inset 0 -1px 0 0 rgba(0,0,0,0.3);
+}
+
+panel-nav panel-content label span {
+  font-family: var(--font01);
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  padding: 1rem;
+}
+
+panel-nav panel-content label small {
+  font-family: var(--font01);
+  letter-spacing: var(--font01-letter-spacing);
+  color: rgba(255,255,255,0.5);
+  padding: 1rem;
+}
+
+panel-nav panel-content label > small > span {color: var(--page-hight-light-color);
+
+panel-nav panel-content label:hover {background-color: var(--page-bg-color-hover);
 
 /*
     PANEL FOOTER
