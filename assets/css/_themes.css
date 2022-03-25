@@ -93,7 +93,7 @@ input:checked#themeToggle + label {background-color: var(--page-bg-color);}
 input:checked#themeToggle + label:active:after {width: 13px;}
 
 html, body {
-  background: linear-gradient(#101925, #1f3949);
+  background: linear-gradient(#1f3949, #101925);
   background-size: cover;
   font-family: var(--font03);
   font-size: var(--font03-font-size);
@@ -123,7 +123,7 @@ page-container > * {
 .disabled,
 [disabled] {
   opacity: .65;
-	cursor: not-allowed;
+  cursor: not-allowed;
   filter: alpha(opacity=65);
   -webkit-box-shadow: none;
           box-shadow: none;
