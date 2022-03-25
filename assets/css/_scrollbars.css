@@ -2,7 +2,9 @@
 list-results,
 list-app,
 list-dataset,
-list-details {
+list-details,
+list-layouts,
+list-themes {
   mask-image: linear-gradient(to top, transparent, black),
               linear-gradient(to left, transparent .5rem, black .5rem);
   mask-size: 100% 200rem;
@@ -19,7 +21,9 @@ list-details {
 list-results:hover,
 list-app:hover, 
 list-dataset:hover,
-list-details:hover {
+list-details:hover,
+list-layouts:hover,
+list-themes:hover {
   mask-position: left top;
   -webkit-mask-position: left top;
 }
@@ -28,7 +32,9 @@ list-details:hover {
 list-results,
 list-app,
 list-dataset,
-list-details {
+list-details,
+list-layouts,
+list-themes {
   scrollbar-width: thin;
   scrollbar-color: rgba(102,175,233,1.0) transparent;
 }
@@ -79,5 +85,3 @@ list-details {
 /* For Firefox 
 #myList { scrollbar-color: #00527a transparent;
   scrollbar-width: thin;}*/
-
-
