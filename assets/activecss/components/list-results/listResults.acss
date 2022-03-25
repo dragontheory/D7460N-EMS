@@ -12,7 +12,7 @@ body:not-if-exists(list-details list-item):observe {
 }
 
 list-results list-item:click {
-  take-class: .active-li;
+  take-class: .active scope(list-results);
   /* func: sendRowToAngular; */
   list-details list-cell {
     fade-out: 25ms 0.5 grid await;

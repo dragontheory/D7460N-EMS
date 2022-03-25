@@ -1,12 +1,8 @@
 @component listGraphics html("assets/activecss/components/list-graphics/list-graphics.html" get nocache) {}
 
 list-graphics list-item:click {
-  take-class: .active-app scope(list-app);
-  mimic-into: #appSearchTerm;
-  func: filterByApplication;
-}
-list-graphics list-item:click {
-  list-dataset list-item {
-    remove-class: .active-dataset scope(list-dataset);
+  take-class: .active scope(list-graphics);
+  body {
+    set-attribute: data-graphics "{@data-graphics-motion}";
   }
 }

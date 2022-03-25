@@ -4,5 +4,4 @@ list-themes {
   grid-template-rows: auto;
   align-content: start;
   overflow-y: auto;
-  transition: all 250ms;
 }

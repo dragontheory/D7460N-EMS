@@ -42,8 +42,8 @@ list-results list-item {
 }
 
 list-results list-item:hover,
-list-results list-item.selected {
-  background-color: rgba(102,175,233,0.2);/* #00A1FF */
+list-results list-item.active {
+  background-color: rgba(102,175,233,0.1);/* #00A1FF */
   cursor: pointer;
 }
 
