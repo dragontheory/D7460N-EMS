@@ -1,4 +1,4 @@
-@component panelAside html("/assets/activecss/components/panel-aside/panel-aside.html" get) {}
+@component panel-aside html("/assets/activecss/components/panel-aside/panel-aside.html" get) {}
 
 panel-aside panel-close:not-if-empty-trimmed(list-details):click {
   list-details {render: "";},
