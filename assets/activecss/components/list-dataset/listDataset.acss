@@ -1,4 +1,4 @@
-@component listDataset html("assets/activecss/components/list-dataset/list-dataset.html" get nocache) {}
+@component list-dataset html("assets/activecss/components/list-dataset/list-dataset.html" get nocache) {}
 
 list-dataset list-item:click {
   take-class: .active-dataset scope(list-dataset);
