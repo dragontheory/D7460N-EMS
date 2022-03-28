@@ -1,4 +1,4 @@
-@component listApp html("assets/activecss/components/list-app/list-app.html" get nocache) {}
+@component list-app html("assets/activecss/components/list-app/list-app.html" get nocache) {}
 
 list-app list-item:click {
   take-class: .active-app scope(list-app);
