@@ -1,4 +1,4 @@
-@component listThemes html("assets/activecss/components/list-themes/list-themes.html" get nocache) {}
+@component list-themes html("assets/activecss/components/list-themes/list-themes.html" get nocache) {}
 
 list-themes list-item:click {
   take-class: .active scope(list-themes);
