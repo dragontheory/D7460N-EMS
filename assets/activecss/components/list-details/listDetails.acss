@@ -1,4 +1,4 @@
-@component listDetails html("assets/activecss/components/list-details/list-details.html" get nocache) {}
+@component list-details html("assets/activecss/components/list-details/list-details.html" get nocache) {}
 
 list-details:not-if-empty:observe {
   body {add-class: aside;}
