@@ -1,1 +1,1 @@
-@component panelMainCount html("/assets/activecss/components/panel-main-count/panel-main-count.html" get nocache) {}
+@component panel-main-count html("/assets/activecss/components/panel-main-count/panel-main-count.html" get nocache) {}
