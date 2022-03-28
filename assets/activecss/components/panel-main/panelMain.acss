@@ -1,4 +1,4 @@
-@component panelMain html("/assets/activecss/components/panel-main/panel-main.html" get nocache) {}
+@component panel-main html("/assets/activecss/components/panel-main/panel-main.html" get nocache) {}
 
 meta-label:innerhtmlchange {
   #filterAppList list-item {
