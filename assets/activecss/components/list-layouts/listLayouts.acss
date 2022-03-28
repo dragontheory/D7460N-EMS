@@ -1,4 +1,4 @@
-@component listLayouts html("assets/activecss/components/list-layouts/list-layouts.html" get nocache) {}
+@component list-layouts html("assets/activecss/components/list-layouts/list-layouts.html" get nocache) {}
 
 list-layouts list-item:click {
   take-class: .active scope(list-layouts);
