@@ -1,4 +1,4 @@
-@component listPagination html("assets/activecss/components/list-pagination/list-pagination.html" get nocache) {}
+@component list-pagination html("assets/activecss/components/list-pagination/list-pagination.html" get nocache) {}
 
 /* Auto enumerate list rows */
 /* list-results list-item:observe {
