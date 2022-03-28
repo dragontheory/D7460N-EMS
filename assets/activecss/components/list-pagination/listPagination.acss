@@ -13,7 +13,7 @@ body:init {
   }
   trigger: countRows;
 }
-window:resixe {
+window:resize {
   list-results {
     trigger: setup;
   }
