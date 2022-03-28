@@ -1,4 +1,4 @@
-@component panelSplitter html("/assets/activecss/components/panel-splitter/panel-splitter.html" get nocache) {
+@component panel-splitter html("/assets/activecss/components/panel-splitter/panel-splitter.html" get nocache) {
   &:componentOpen {
     run: {=
       Split({
