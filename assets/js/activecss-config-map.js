@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(e) {
   ActiveCSS.init({
     configLocation: 
-    'assets/activecss/components.acss,' + 
     'assets/activecss/conditionals.acss,' + 
     'assets/activecss/components/page-container/pageContainer.acss,' + 
     'assets/activecss/components/page-header/pageHeader.acss,' +
