@@ -1,4 +1,4 @@
-@component panelNav html("/assets/activecss/components/panel-nav/panel-nav.html" get nocache) {}
+@component panel-nav html("/assets/activecss/components/panel-nav/panel-nav.html" get nocache) {}
 
 reset-filter:click {
   list-dataset list-item {
