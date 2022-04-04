@@ -1,21 +1,21 @@
 *:before, *:after, *, ::after, ::before {
-	box-sizing: border-box;
-	margin: 0;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  margin: 0;
   padding: 0;
   border: 0;
-	word-wrap: break-word;
 }
 body, html {
   display: grid;
-	font-family: Oxanium;
+  font-family: Oxanium;
+  font-weight: 400;
+  font-size: .95rem;
+  color: rgba(255, 255, 255, 0.7);
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-	-webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-	color: rgba(255, 255, 255, 0.7);
-	font-weight: 400;
-  font-size: .95rem;
-  overflow: hidden;
   background: linear-gradient(#1f3949, #101925);
   background-size: cover;
+  overflow: hidden;
 }
