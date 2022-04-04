@@ -1,10 +1,21 @@
-*:before, *:after, *, ::after, ::before {box-sizing: border-box;}
-
-body {
+*:before, *:after, *, ::after, ::before {
+	box-sizing: border-box;
+	margin: 0;
   padding: 0;
-  margin: 0;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.7);
-  font-family: Oxanium;
+  border: 0;
+	word-wrap: break-word;
+}
+body, html {
+  display: grid;
+	font-family: Oxanium;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+	color: rgba(255, 255, 255, 0.7);
+	font-weight: 400;
+  font-size: .95rem;
   overflow: hidden;
+  background: linear-gradient(#1f3949, #101925);
+  background-size: cover;
 }
