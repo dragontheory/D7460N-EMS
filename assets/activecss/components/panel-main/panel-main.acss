@@ -1,9 +1,9 @@
 @component panel-main html("/assets/activecss/components/panel-main/panel-main.html" get nocache) {}
 
 meta-label:innerhtmlchange {
-  #filterAppList list-item {
+  list-app list-item {
     @if inner-text("{#metaLabel}") {
-      take-class: .active-app;
+      take-class: .active scope(list-app);
     }
   }
 }
@@ -13,6 +13,6 @@ list-results list-item:click {
     var: currentUserID "";
   }
   list-results list-item {
-    remove-class: .active;
+    remove-class: .active scope(list-results);
   }
 }
