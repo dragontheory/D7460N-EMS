@@ -1,5 +1,5 @@
 body:init {
-	var: totalRecords 243;
+  var: totalRecords 243;
   var: currentUserID "";
 }
 
