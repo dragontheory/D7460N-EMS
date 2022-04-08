@@ -20,6 +20,8 @@ list-results list-item:click {
   }
 }
 
+
+
 /* Check if the current user is the same one in the <list-details> <list-item> */
 list-results list-item:not-if-var(currentUserID "{@data-id}"):click {
   var: currentUserID "{@data-id}";
@@ -27,7 +29,7 @@ list-results list-item:not-if-var(currentUserID "{@data-id}"):click {
   
   var: item {JSON};
   
-  /* Add .active class to clicked row. Remove .active class form all other rows withing <list-results>. */
+  /* Add .active class to clicked row. Remove .active class form all other rows within <list-results>. */
   take-class: .active scope(list-results);
 
   /* Add HTML child <list-item> to <list-details> */
