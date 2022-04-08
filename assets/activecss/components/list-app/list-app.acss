@@ -1,12 +1,12 @@
 @component list-app html("assets/activecss/components/list-app/list-app.html" get nocache) {}
 
 list-app list-item:click {
-  take-class: .active-app scope(list-app);
+  take-class: .active scope(list-app);
   mimic-into: #appSearchTerm;
   func: filterByApplication;
 }
 list-app list-item:click {
   list-dataset list-item {
-    remove-class: .active-dataset scope(list-dataset);
+    remove-class: .active scope(list-dataset);
   }
 }
