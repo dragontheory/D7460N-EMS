@@ -14,9 +14,7 @@ body:init {
   trigger: countRows;
 }
 window:resize {
-  list-results {
-    trigger: setup;
-  }
+  list-results {trigger: setup;}
 }
 
 list-results:setup {
@@ -24,12 +22,8 @@ list-results:setup {
        totalNonVisible 0,
        liCo 0,
        startingLiCo 0;
-  list-results list-item {
-    var: liCo++;
-  }
-  list-results {
-    trigger: countRows;
-  }
+  list-results list-item {var: liCo++;}
+  list-results {trigger: countRows;}
 }
 
 list-results:countRows {
