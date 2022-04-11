@@ -5,7 +5,7 @@ page-container {
   height: 100vh;
   overflow: hidden;
   grid-template-rows: auto 1fr auto;
-  grid-template-columns: 15rem 0 1fr .3rem 15rem 0; /* same as when splitter-panel is visible */
+  grid-template-columns: 15rem 0 1fr .2rem 15rem 0; /* same as when splitter-panel is visible */
 }
 
 /* NAV */
