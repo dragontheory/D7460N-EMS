@@ -1,8 +1,9 @@
-/* HIDE SCROLLBAR UNTIL HOVER */
+/* SHOW SCROLLBARS ON HOVER ONLY */
+/* https://css-tricks.com/scrollbars-on-hover/ */ 
 /* https://codepen.io/dragontheory/details/WNrKYXm */ 
-list-results,
 list-app,
 list-dataset,
+list-results,
 list-details,
 list-layouts,
 list-themes {
@@ -18,9 +19,9 @@ list-themes {
   outline: none;
 }
 
-list-results:hover,
 list-app:hover, 
 list-dataset:hover,
+list-results:hover,
 list-details:hover,
 list-layouts:hover,
 list-themes:hover {
@@ -29,9 +30,9 @@ list-themes:hover {
 }
 
 /* FF */
-list-results,
 list-app,
 list-dataset,
+list-results,
 list-details,
 list-layouts,
 list-themes {
