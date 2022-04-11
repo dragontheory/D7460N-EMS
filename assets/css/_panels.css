@@ -13,6 +13,13 @@ panel-footer {
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr 1fr;
 }
+panel-header-left,
+panel-header-center,
+panel-header-right,
+panel-footer-left,
+panel-footer-center,
+panel-footer-right {display: grid;}
+
 /* panel-header > *,
 panel-footer > * {
   padding: 1rem;
