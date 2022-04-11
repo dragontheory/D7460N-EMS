@@ -8,8 +8,10 @@ list-results,
 list-details,
 list-layouts,
 list-themes {
+	padding-right: 0;
+	overflow-y: scroll;
   mask-image: linear-gradient(to top, transparent, black),
-              linear-gradient(to left, transparent .5rem, black .5rem);
+              linear-gradient(to left, transparent .3rem, black .3rem);
   mask-size: 100% 200rem;
   mask-position: left-bottom;	
   -webkit-mask-image: linear-gradient(to top, transparent, black),
@@ -49,7 +51,7 @@ list-themes {
 ::-webkit-scrollbar-track {background: transparent;} /* background */
 ::-webkit-scrollbar-thumb {
   background-color: rgba(102,175,233,1.0);
-  border-radius: 6px;
+  border-radius: .3rem;
   border: 3px solid transparent;  /* background */
 } /* HIDE SCROLLBAR UNTIL HOVER */
 /* https://codepen.io/dragontheory/details/WNrKYXm */ 
