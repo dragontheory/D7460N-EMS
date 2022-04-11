@@ -101,7 +101,11 @@ panel-aside2 list-item:last-of-type {
 }
 
 panel-aside2 list-item list-cell {
-  padding: 1rem;
+  display: grid;
+  justify-content: start;
+  align-content: center;
+  word-break: break-word;
+  padding: .5rem 1rem;
 }
 
 panel-aside2 panel-list-cell {
