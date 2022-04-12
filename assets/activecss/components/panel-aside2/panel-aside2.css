@@ -73,7 +73,7 @@ panel-aside2 panel-content label span {
   font-family: var(--font01);
   font-size: 1.2rem;
   letter-spacing: 1px;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
 }
 panel-aside2 list-item {
   display: grid;
