@@ -42,3 +42,6 @@ panel-main panel-content {
 /*
     PANEL FOOTER
 */
+panel-main panel-footer-left span,
+panel-main panel-footer-center span,
+panel-main panel-footer-right span {padding: 0.5rem 1rem;}
