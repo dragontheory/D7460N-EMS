@@ -70,4 +70,4 @@ panel-aside panel-footer {
 
 panel-aside panel-footer-left span,
 panel-aside panel-footer-center span,
-panel-aside panel-footer-right span {padding: 1rem;}
+panel-aside panel-footer-right span {padding: 0.5rem 1rem;}
