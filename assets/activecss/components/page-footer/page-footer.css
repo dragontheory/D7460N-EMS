@@ -1,5 +1,5 @@
 page-footer {
-	display: grid;
+  display: grid;
   grid-template-rows: auto;
   grid-column: 1 / -1;
   grid-template-columns: 1fr 1fr 1fr;
@@ -7,30 +7,30 @@ page-footer {
 }
 
 page-footer-left {
-	display: grid;
+  display: grid;
   justify-content: start;
   align-content: center;
-	color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.3);
 }
 
 page-footer-center {
-	display: grid;
+  display: grid;
   justify-content: center;
   align-content: center;
 }
 
 page-footer-right {
-	display: grid;
+  display: grid;
   justify-content: end;
   align-content: center;
-	color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.3);
 }
 
 page-footer powered-by,
 page-footer page-center,
 page-footer app-version {
   padding: 1rem;
-	font-family: var(--font01);
-	letter-spacing: var(--font-01-letter-spacing);
-	color: color: rgba(255,255,255,0.3);
+  font-family: var(--font01);
+  letter-spacing: var(--font-01-letter-spacing);
+  color: rgba(255,255,255,0.3);
 }
