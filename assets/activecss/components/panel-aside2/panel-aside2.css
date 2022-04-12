@@ -128,7 +128,7 @@ panel-aside2 panel-footer {
 
 panel-aside2 panel-footer-left span,
 panel-aside2 panel-footer-center span,
-panel-aside2 panel-footer-right span {padding: 1rem;}
+panel-aside2 panel-footer-right span {padding: 0.5rem 1rem;}
 
 /*
 @media (prefers-color-scheme: dark) {
