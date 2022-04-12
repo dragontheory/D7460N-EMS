@@ -6,7 +6,7 @@ list-results-header {
 
 list-results-header list-item {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 120px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 10rem;
   grid-template-rows: 1fr;
   border-radius: 0.3rem;
   background-color: var(--panel-bg-color);
@@ -33,7 +33,7 @@ list-results {
 
 list-results list-item {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 120px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 10rem;
   grid-template-rows: 1fr;
   border-radius: 0.3rem;
   background-color: var(--panel-bg-color);
