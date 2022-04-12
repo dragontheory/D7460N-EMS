@@ -29,8 +29,9 @@ page-footer-right {
 page-footer powered-by,
 page-footer page-center,
 page-footer app-version {
+	font-family: var(--font01);
+	letter-spacing: 0.05rem;
+	color: rgba(255,255,255,0.3);
+  font-size: 1rem;
   padding: 1rem;
-  font-family: var(--font01);
-  letter-spacing: var(--font-01-letter-spacing);
-  color: rgba(255,255,255,0.3);
 }
