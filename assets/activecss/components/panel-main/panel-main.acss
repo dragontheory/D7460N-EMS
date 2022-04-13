@@ -2,7 +2,7 @@
 
 meta-label:innerhtmlchange {
   list-app list-item {
-    @if inner-text("{#metaLabel}") {
+    @if inner-text("{meta-label}") {
       take-class: .active scope(list-app);
     }
   }
