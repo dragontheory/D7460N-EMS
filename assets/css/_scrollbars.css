@@ -52,7 +52,7 @@ list-themes {
 ::-webkit-scrollbar-thumb {
   background-color: rgba(102,175,233,1.0);
   border-radius: .3rem;
-  border: 3px solid transparent;  /* background */
+  border: .18rem solid transparent;  /* background */
 } /* HIDE SCROLLBAR UNTIL HOVER */
 /* https://codepen.io/dragontheory/details/WNrKYXm */ 
 list-results,
@@ -102,8 +102,8 @@ list-themes {
 ::-webkit-scrollbar-track {background: transparent;} /* background */
 ::-webkit-scrollbar-thumb {
   background-color: rgba(102,175,233,1.0);
-  border-radius: 6px;
-  border: 3px solid transparent;  /* background */
+  border-radius: .37rem;
+  border: .37rem solid transparent;  /* background */
 } 
 
 /* https://codeconvey.com/custom-scrollbar-css-for-all-browsers/ */
@@ -131,7 +131,7 @@ list-themes {
   /* scrollbar Handle on hover */
   /* ::-webkit-scrollbar-thumb:hover {background: #00527a rgba(62, 144, 252, 1.0);} 
   
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 50rem) {
     main {width: 80% !important;}
   } */
 
