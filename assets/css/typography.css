@@ -15,12 +15,12 @@
 a {
   color: var(--page-text-color-links);
   text-decoration: none;
-  box-shadow: 0 1px 0 0 transparent;
+  box-shadow: 0 .1rem 0 0 transparent;
   transition: all 250ms;
 }
 /* a:hover {
   color: var(--page-text-color-links-hover);
-  box-shadow: 0 1px 0 0 var(--page-text-color-links-hover);
+  box-shadow: 0 .1rem 0 0 var(--page-text-color-links-hover);
 } */
 p	{padding: 0 1rem;}
 h1,
@@ -36,6 +36,14 @@ page-title {
   color: var(--page-high-light-color);
   letter-spacing: var(--font01-letter-spacing);
 }
+page-title {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .5rem;
+  align-items: center;
+}
+page-title low-light {font-size: 65%;}
+
 panel-header h1 { 
   padding: 0;
   margin: 0;   
@@ -50,6 +58,4 @@ highlight-h1 {
   font-size: 2rem;
   color: var(--page-high-light-color);
 }
-low-light {
-  color: var(--page-low-light-color);
-}
+low-light {color: var(--page-low-light-color);}
