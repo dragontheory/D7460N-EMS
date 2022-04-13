@@ -34,18 +34,6 @@ panel-aside2 panel-header-left span {
   padding: 1rem;
 }
 
-panel-aside2 panel-header-right panel-close {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-template-rows: auto;
-  align-items: baseline;
-  transition: all 250ms;
-  cursor: pointer;
-  padding: 1rem;
-}
-
-panel-aside2 panel-header-right panel-close:hover {color: rgba(102,175,233,1.0);}
-
 
 /*
     PANEL CONTENT
