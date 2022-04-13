@@ -9,8 +9,8 @@ TAB CONTROLS
 Hide radios */
 tab-container > input {display: none;}
 tab-container > input:checked + label {
-  color: #FFF;
-  box-shadow: 0 1px 0 0 var(--page-text-color-hover);;
+  color: #FFFFFF;
+  box-shadow: 0 .1rem 0 0 var(--page-text-color-hover);;
 }
 tab-container > label:hover {color: var(--page-text-color-hover);}
 
@@ -18,8 +18,8 @@ tab-container > label {
   cursor: pointer;
   transition: color 250ms;
   color: var(--page-text-color);
-  padding: 5px 10px;
-  border-right: solid 1px var(--page-text-color-notes);
+  padding: .31rem .62rem;
+  border-right: solid .1rem var(--page-text-color-notes);
   justify-self: center;
 }
 
@@ -38,13 +38,10 @@ tab-content table-container ol > li {
   grid-template-columns: .5fr 1fr;
   background-color: transparent;
   border-radius: 0;
-  box-shadow: inset 0 -1px 0 0 rgba(0,0,0,1),
-              inset 0 1px 0 0 rgba(255,255,255,.1);
+  box-shadow: inset 0 -.1rem 0 0 rgba(0,0,0,1),
+              inset 0 .1rem 0 0 rgba(255,255,255,.1);
 }
-tab-content table-container ol > li list-cell {
-  padding: 1rem;
-}
-
+tab-content table-container ol > li list-cell {padding: 1rem;}
 
 tab-container > input#profileTabToggle01:checked ~ tab-content:not(:nth-of-type(1)),
 tab-container > input#profileTabToggle02:checked ~ tab-content:not(:nth-of-type(2)),
