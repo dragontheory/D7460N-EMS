@@ -8,8 +8,8 @@
   * Control & indicator mixin
 */
 .carousel {
-  height: 300px;
-  width: 400px;
+  height: 18.75rem;
+  width: 25rem;
   overflow: hidden;
   text-align: center;
   position: relative;
@@ -126,14 +126,14 @@
   opacity: 1;
 }
 .carousel__control {
-  height: 30px;
-  width: 30px;
-  margin-top: -15px;
+  height: 1.87rem;
+  width: 1.87rem;
+  margin-top: -.93rem;
   top: 50%;
   position: absolute;
   display: block;
   cursor: pointer;
-  border-width: 5px 5px 0 0;
+  border-width: .31rem .31rem 0 0;
   border-style: solid;
   border-color: #fafafa;
   opacity: 0.35;
@@ -144,28 +144,28 @@
   opacity: 1;
 }
 .carousel__control--backward {
-  left: 10px;
+  left: .62rem;
   transform: rotate(-135deg);
 }
 .carousel__control--forward {
-  right: 10px;
+  right: .62rem;
   transform: rotate(45deg);
 }
 .carousel__indicators {
   position: absolute;
-  bottom: 20px;
+  bottom: 1.25rem;
   width: 100%;
   text-align: center;
 }
 .carousel__indicator {
-  height: 15px;
-  width: 15px;
+  height: .93rem;
+  width: .93rem;
   border-radius: 100%;
   display: inline-block;
   z-index: 2;
   cursor: pointer;
   opacity: 0.35;
-  margin: 0 2.5px 0 2.5px;
+  margin: 0 .15rem 0 .15rem;
 }
 .carousel__indicator:hover {
   opacity: 0.75;
@@ -216,15 +216,15 @@
   display: inline-block;
 }
 .my-carousel {
-  border-radius: 5px;
-  margin: 30px;
+  border-radius: .31rem;
+  margin: 1.87rem;
 }
 .carousel__slide {
   overflow: hidden;
 }
 .carousel--thumb .carousel__indicator {
-  height: 30px;
-  width: 30px;
+  height: 1.87rem;
+  width: 1.87rem;
 }
 
 .carousel__indicator {
