@@ -58,4 +58,6 @@ highlight-h1 {
   font-size: 2rem;
   color: var(--page-high-light-color);
 }
-low-light {color: var(--page-low-light-color);}
+low-light {
+  color: var(--page-low-light-color);
+}
