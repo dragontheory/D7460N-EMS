@@ -15,9 +15,9 @@
 .fullscreen > .table {
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0 10px;
+  padding: 0 .62rem;
 }
-.fullscreen > .section-header {padding: 0 10px;}
+.fullscreen > .section-header {padding: 0 .62rem;}
 .fullscreen .modal {z-index: 10060;}
 .fullscreen .modal-backdrop {z-index: 10059;}
 .fullscreen .close-profile-and-details {display: none;}
