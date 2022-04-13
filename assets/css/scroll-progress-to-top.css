@@ -37,7 +37,7 @@
 
 .scroll-progress-to-top-container svg circle {
   stroke: rgba(0,0,0,0.1);
-  stroke-width: 5px;
+  stroke-width: .31rem;
   stroke-linecap: round;
   fill: transparent;
 }
@@ -45,7 +45,7 @@
 .scroll-progress-to-top-container svg .progress-bar {
   stroke: url(#grad);
   transition: stroke-dashoffset 0 ease-in-out; 
-  filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.2));
+  filter: drop-shadow(.12rem .12rem .18rem rgba(0,0,0,0.2));
 }
 
 .scroll-progress-to-top-container .pct {
@@ -56,6 +56,4 @@
   font-variant-numeric: tabular-nums;
   color: cyan;
 }
-.scroll-progress-to-top-container.hide {
-  opacity: 0.0;
-}
+.scroll-progress-to-top-container.hide {opacity: 0.0;}
