@@ -31,11 +31,3 @@ list-item list-cell {
   word-break: break-word;
   padding: .5rem 1rem;
 }
-
-panel-list-cell {
-  display: grid;
-  justify-content: start;
-  align-content: center;
-  word-break: break-word;
-  padding: 0.5rem 1rem;
-}
