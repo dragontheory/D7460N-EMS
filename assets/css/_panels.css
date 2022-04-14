@@ -1,12 +1,11 @@
-/*  PANELS  */
-page-container > * { /* automatically assigns styles to dynamically added/removed panels */
+page-container > * {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
   overflow: hidden;
   border-radius: .2rem;
 }
-/* page-header and page-footer styles are overwritten in their respective dedicated component CSS files */
+
 panel-header,
 panel-footer {
   display: grid;
