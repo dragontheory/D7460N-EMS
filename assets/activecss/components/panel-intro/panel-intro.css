@@ -5,8 +5,8 @@ panel-intro {
   overflow-y: hidden;
   border-radius: .3rem;
   margin-left: 0;
-  margin-right: 0;
-  background-color: transparent;
+	margin-right: 0;
+	background-color: transparent;
 }
 
 panel-intro panel-header,
@@ -18,4 +18,12 @@ canvas {
   right: -32rem;
   /* height: 100vh; */
   z-index: -1;
+}
+
+panel-intro panel-content svg {
+  position: absolute;
+  top: 0;
+  width: 50rem;
+  fill: rgba(255,255,255,0.7);
+  justify-self: center;
 }
