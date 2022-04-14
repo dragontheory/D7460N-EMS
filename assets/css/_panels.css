@@ -33,7 +33,7 @@ panel-header-left {
   font-family: var(--font01);
   font-size: 1.3rem;
   letter-spacing: .1rem;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
 }
 
 panel-close,
@@ -44,7 +44,7 @@ rest-filter {
   align-items: baseline;
   transition: all 250ms;
   cursor: pointer;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
 }
 
 panel-close:hover,
