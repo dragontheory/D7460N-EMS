@@ -16,6 +16,26 @@ panel-main panel-header,
 panel-main panel-content,
 panel-main panel-footer {padding: 0;}
 
+panel-main panel-header-left {
+  padding: 0;
+  align-content: start;
+}
+page-title {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .5rem;
+  align-items: center;
+
+  font-family: var(--font01);
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 100;
+  color: var(--page-high-light-color);
+  letter-spacing: var(--font01-letter-spacing);
+}
+
+page-title low-light {font-size: 65%;}
+
 panel-main panel-header {
   grid-template-columns: 1fr auto auto;
   background-color: rgba(255,255,255,0.00);
