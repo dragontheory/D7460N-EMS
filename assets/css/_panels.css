@@ -4,7 +4,7 @@ page-container > * { /* automatically assigns styles to dynamically added/remove
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
   overflow: hidden;
-  border-radius: .3rem;
+  border-radius: .2rem;
 }
 /* page-header and page-footer styles are overwritten in their respective dedicated component CSS files */
 panel-header,
