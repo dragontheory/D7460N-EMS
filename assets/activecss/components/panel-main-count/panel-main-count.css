@@ -1,24 +1,27 @@
 panel-main-count {
-  padding: 1rem 0;
+  padding: .3rem 0 1rem 0;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 1rem;
+  /* transform: scale(1, .9); */
 }
 
 panel-main-count total-visible {
   font-family: var(--font01); 
-  color: var(--page-high-light-color); 
+  color:  rgba(255, 255, 255, 0.5);
   letter-spacing: var(--font01-letter-spacing);
 }
 panel-main-count total-non-visible {
   font-family: var(--font01); 
-  color: var(--page-high-light-color); 
+  color: rgba(255, 255, 255, 0.5); 
   letter-spacing: var(--font01-letter-spacing);
 }
 panel-main-count total-page {
   font-family: var(--font01); 
-  color: var(--page-high-light-color); 
+  color: rgba(255, 255, 255, 0.5); 
   letter-spacing: var(--font01-letter-spacing);
 }
 panel-main-count current-page {
   font-family: var(--font01); 
-  color: var(--page-high-light-color); 
+  color: rgba(255, 255, 255, 0.5); 
   letter-spacing: var(--font01-letter-spacing);
 }
