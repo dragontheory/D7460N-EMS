@@ -5,8 +5,8 @@ panel-intro {
   overflow-y: hidden;
   border-radius: .3rem;
   margin-left: 0;
-	margin-right: 0;
-	background-color: transparent;
+  margin-right: 0;
+  background-color: transparent;
 }
 
 panel-intro panel-header,
