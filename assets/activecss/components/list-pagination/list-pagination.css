@@ -1,19 +1,16 @@
+/* Local override of _lists.css */
+
 list-pagination {
-  display: grid;
   grid-template-columns: auto;
-  grid-template-rows: auto;
   justify-content: end;
 }
-
 list-pagination list-item {
-  display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   background-color: transparent;
 }
 
 list-pagination list-cell {
-  display: grid;
   border-right: solid 0.01rem rgba(255,255,255,0.2);
   padding: 1rem;
   font-family: var(--font01);
