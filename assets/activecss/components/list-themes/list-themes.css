@@ -1,7 +1,1 @@
-list-themes {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
-  align-content: start;
-  overflow-y: auto;
-}
+/* Local override of _lists.css */
