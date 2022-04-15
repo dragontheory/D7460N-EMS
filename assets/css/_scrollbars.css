@@ -40,7 +40,7 @@ list-details,
 list-layouts,
 list-themes {
   scrollbar-width: thin;
-  scrollbar-color: rgba(102,175,233,1.0) transparent;
+  scrollbar-color: rgba(117,193,255,1.0) transparent;
 }
 
 /* EVERYTHING ELSE */
@@ -50,7 +50,7 @@ list-themes {
 }
 ::-webkit-scrollbar-track {background: transparent;} /* background */
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(102,175,233,1.0);
+  background-color: rgba(117,193,255,1.0);
   border-radius: .3rem;
   border: .18rem solid transparent;  /* background */
 } /* HIDE SCROLLBAR UNTIL HOVER */
@@ -91,7 +91,7 @@ list-details,
 list-layouts,
 list-themes {
   scrollbar-width: thin;
-  scrollbar-color: rgba(102,175,233,1.0) transparent;
+  scrollbar-color: rgba(117,193,255,1.0) transparent;
 }
 
 /* EVERYTHING ELSE */
@@ -101,7 +101,7 @@ list-themes {
 }
 ::-webkit-scrollbar-track {background: transparent;} /* background */
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(102,175,233,1.0);
+  background-color: rgba(117,193,255,1.0);
   border-radius: .37rem;
   border: .37rem solid transparent;  /* background */
 } 

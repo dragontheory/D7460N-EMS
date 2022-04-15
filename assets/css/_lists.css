@@ -26,7 +26,7 @@ list-item {
 }
 list-item:hover,
 list-item.active {
-  background-color: rgba(102,175,233,0.1);/* #00A1FF */
+  background-color: rgba(117,193,255,0.2);
   cursor: pointer;
 }
 

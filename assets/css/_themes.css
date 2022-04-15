@@ -20,12 +20,12 @@
 
   /* DARK THEME DEFINITIONS */
   --dark-theme-page-bg-color: radial-gradient(rgb(51, 51, 51), rgb(11, 17, 20));/*rgba(37,40,48,1.0); #1A1E23;*/
-  --dark-theme-page-bg-color-hover: rgba(102,175,233,0.1);
+  --dark-theme-page-bg-color-hover: rgba(117,193,255,0.2);
   --dark-theme-page-text-color: #CCC;
   --dark-theme-page-text-color-hover: #D7DAE0;
   --dark-theme-page-text-color-notes: #3B3E43;
-  --dark-theme-page-text-color-links: rgba(102,175,233,1.0); /* #00a1ff */
-  --dark-theme-page-text-color-links-hover: rgb(0,161,255,1.0); /* #00a1ff */
+  --dark-theme-page-text-color-links: rgba(117,193,255,0.5);
+  --dark-theme-page-text-color-links-hover: rgb(117,193,255,1.0);
   --dark-theme-logo-color: #FFFFFF; /* #8E9196 */
   --dark-theme-logo-color-hover: #D7DAE0;
   --dark-theme-panel-bg-color: rgba(255, 255, 255, 0.03);
