@@ -1,0 +1,45 @@
+@component list-main html("/assets/activecss/components/list-main/list-main.html" get nocache) {}
+
+body:if-exists(list-details list-item):observe {
+  add-class: .main;
+  remove-class: .intro;
+}
+
+body:not-if-exists(list-details list-item):observe {
+  add-class: .intro;
+  remove-class: .main;
+  remove-class: .aside;
+}
+
+list-main list-item:click {
+  take-class: .active scope(list-main);
+  /* func: sendRowToAngular; */
+  list-details list-cell {
+    fade-out: 25ms 0.5 grid await;
+    fade-in: 25ms 1.0 grid;
+  }
+}
+
+
+
+/* Check if the current user is the same one in the <list-details> <list-item> */
+list-main list-item:not-if-var(currentUserID "{@data-id}"):click {
+  var: currentUserID "{@data-id}";
+  ajax: "https://my-json-server.typicode.com/dragontheory/D7460N-data/names/{@data-id}" get json await;
+  
+  var: item {JSON};
+  
+  /* Add .active class to clicked row. Remove .active class form all other rows within <list-main>. */
+  take-class: .active scope(list-main);
+
+  /* Add HTML child <list-item> to <list-details> */
+  list-details {
+    render: "list-main.html";
+  }
+}
+list-main list-item:not-if-empty-trimmed(list-details):if-var(currentUserID "{@data-id}"):click {
+  list-details {
+    render: "";
+    var: currentUserID "";
+  }
+}
