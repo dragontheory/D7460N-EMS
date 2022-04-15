@@ -88,6 +88,6 @@ panel-aside panel-footer {
   background-color: rgba(255,255,255,0.05);
 }
 
-panel-aside panel-footer-left,
-panel-aside panel-footer-center,
-panel-aside panel-footer-right {padding: 0.5rem 1rem;}
+panel-footer-left,
+panel-footer-center,
+panel-footer-right {padding: 0.5rem 1rem;}
