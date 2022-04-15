@@ -1,7 +1,7 @@
 @component list-themes html("assets/activecss/components/list-themes/list-themes.html" get nocache) {}
 
 body:not-if-defined(theme):preInit {
-  var: theme "dark" local-storage;
+  var: theme {dark} local-storage;
 }
 
 list-themes list-item:click {
