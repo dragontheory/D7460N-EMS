@@ -36,29 +36,29 @@ d3.json("https://s3-us-west-2.amazonaws.com/s.cdpn.io/95802/world-110m.json", fu
     context.beginPath();
     path(sphere);
     context.lineWidth = 0;
-    context.strokeStyle = "rgba(102,175,233,1)";
+    context.strokeStyle = "rgba(117,193,255,1.0)";
     context.stroke();
-    context.fillStyle = "rgba(102,175,233,0.0)";
+    context.fillStyle = "rgba(117,193,255,0.0)";
     context.fill();
 
     projection.clipAngle(180);
 
     context.beginPath();
     path(land);
-    context.fillStyle = "rgba(102,175,233,0.04)";
+    context.fillStyle = "rgba(117,193,255,0.04)";
     context.fill();
 
     context.beginPath();
     path(grid);
     context.lineWidth = .5;
-    context.strokeStyle = "rgba(102,175,233,0.3)";
+    context.strokeStyle = "rgba(117,193,255,0.3)";
     context.stroke();
 
     projection.clipAngle(90);
 
     context.beginPath();
     path(land);
-    context.fillStyle = "rgba(102,175,233,0.1)";
+    context.fillStyle = "rgba(117,193,255,0.1)";
     context.fill();
     context.lineWidth = 0;
     context.strokeStyle = "transparent";
