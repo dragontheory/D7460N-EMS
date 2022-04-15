@@ -52,7 +52,7 @@ page-header-right {
 }
 
 page-header-right user-name {
-  color: rgba(117,193,255,0.7); /* 00A1FF rgba(102,175,233,1.0) */
+  color: rgba(117,193,255,0.7);
   cursor: pointer;
   transition: all 250ms;
   padding: 1rem;
