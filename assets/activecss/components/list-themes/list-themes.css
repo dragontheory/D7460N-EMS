@@ -1,1 +1,9 @@
 /* Local override of _lists.css */
+
+html [data-theme=globe],
+body [data-theme=globe] {background: linear-gradient(0.25turn, #101925, #1f3949);}
+
+[data-theme=globe] canvas {display: grid;}
+
+html [data-theme=dark],
+body [data-theme=dark] {background: #393F4A);}
