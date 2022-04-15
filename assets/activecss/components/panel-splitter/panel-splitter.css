@@ -5,12 +5,12 @@ panel-splitter {
   transition: background-color 250ms;
 }
 panel-splitter:hover {
-	background-color: rgba(102,175,233,0.3);
+	background-color: rgba(117,193,255,0.3);
 	cursor: col-resize;
 }
 panel-splitter:focus,
 panel-splitter:active {
   cursor: col-resize;
-  background-color: rgba(102,175,233,1.0);
+  background-color: rgba(117,193,255,1.0);
 }
 
