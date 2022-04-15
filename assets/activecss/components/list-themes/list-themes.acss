@@ -9,5 +9,5 @@ list-themes list-item:click {
   body {
     set-attribute: data-theme "{@data-theme-color}";
   }
-  var theme "{@data-theme-color}";
+  var: theme "{@data-theme-color}";
 }
