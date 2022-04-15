@@ -1,0 +1,93 @@
+page-container > * {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  border-radius: .2rem;
+}
+
+panel-header,
+panel-footer,
+panel-header-left,
+panel-header-center,
+panel-header-right,
+panel-content,
+panel-content label,
+panel-footer-left,
+panel-footer-center,
+panel-footer-right,
+panel-close,
+reset-filter {
+  display: grid;
+  grid-template-rows: auto;
+}
+
+panel-header,
+panel-footer {
+  grid-template-columns: 1fr 1fr auto;
+  /* backdrop-filter: blur(.2rem); */
+  background-color: rgba(255,255,255,0.05);
+  box-shadow: inset 0 .1rem 0 0 rgba(255,255,255,0.05),
+              inset 0 -.1rem 0 0 rgba(0,0,0,0.3);
+}
+
+panel-header-left {
+  grid-template-columns: 1fr;
+  justify-content: start;
+  align-content: center;
+  font-family: var(--font01);
+  font-size: 1.3rem;
+  letter-spacing: .1rem;
+  padding: 0.5rem 1rem;
+}
+
+panel-close,
+reset-filter {
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  transition: all 250ms;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+panel-close:hover,
+rest-filter:hover {color: rgba(117,193,255,1.0);}
+
+panel-content {
+  grid-template-columns: 1fr;
+  align-content: start;
+  overflow-y: hidden;
+}
+
+panel-content label {
+  grid-template-columns: 1fr;
+  cursor: pointer;
+  transition: all 250ms;
+  background-color: rgba(255,255,255,0.05);
+  box-shadow: inset 0 .1rem 0 0 rgba(255,255,255,0.05),
+              inset 0 -.1rem 0 0 rgba(0,0,0,0.3);
+
+  font-family: var(--font01);
+  font-size: 1.2rem;
+  letter-spacing: .1rem;
+  padding: 0.5rem 1rem;
+}
+panel-content label:hover {background-color: var(--page-bg-color-hover);}
+
+panel-content label small {
+  font-family: var(--font01);
+  letter-spacing: var(--font01-letter-spacing);
+  color: rgba(255,255,255,0.5);
+  padding: .5rem 1rem;
+}
+
+panel-content label small span {color: var(--page-hight-light-color);}
+
+panel-aside panel-footer {
+  box-shadow: inset 0 .1rem 0 0 rgba(255,255,255,0.05);
+  background-color: rgba(255,255,255,0.05);
+}
+
+panel-footer-left,
+panel-footer-center,
+panel-footer-right {padding: 0.5rem 1rem;}
