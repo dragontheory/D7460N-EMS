@@ -1,11 +1,11 @@
 @component list-main html("/assets/activecss/components/list-main/list-main.html" get nocache) {}
 
-body:if-exists(list-details list-item):observe {
+body:if-exists(list-aside list-item):observe {
   add-class: .main;
   remove-class: .intro;
 }
 
-body:not-if-exists(list-details list-item):observe {
+body:not-if-exists(list-aside list-item):observe {
   add-class: .intro;
   remove-class: .main;
   remove-class: .aside;
@@ -14,7 +14,7 @@ body:not-if-exists(list-details list-item):observe {
 list-main list-item:click {
   take-class: .active scope(list-main);
   /* func: sendRowToAngular; */
-  list-details list-cell {
+  list-aside list-cell {
     fade-out: 25ms 0.5 grid await;
     fade-in: 25ms 1.0 grid;
   }
@@ -22,7 +22,7 @@ list-main list-item:click {
 
 
 
-/* Check if the current user is the same one in the <list-details> <list-item> */
+/* Check if the current user is the same one in the <list-aside> <list-item> */
 list-main list-item:not-if-var(currentUserID "{@data-id}"):click {
   var: currentUserID "{@data-id}";
   ajax: "https://my-json-server.typicode.com/dragontheory/D7460N-data/names/{@data-id}" get json await;
@@ -32,13 +32,13 @@ list-main list-item:not-if-var(currentUserID "{@data-id}"):click {
   /* Add .active class to clicked row. Remove .active class form all other rows within <list-main>. */
   take-class: .active scope(list-main);
 
-  /* Add HTML child <list-item> to <list-details> */
-  list-details {
+  /* Add HTML child <list-item> to <list-aside> */
+  list-aside {
     render: "list-main.html";
   }
 }
-list-main list-item:not-if-empty-trimmed(list-details):if-var(currentUserID "{@data-id}"):click {
-  list-details {
+list-main list-item:not-if-empty-trimmed(list-aside):if-var(currentUserID "{@data-id}"):click {
+  list-aside {
     render: "";
     var: currentUserID "";
   }
