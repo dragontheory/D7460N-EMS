@@ -4,9 +4,7 @@ body:init {
 }
 
 window:resize {
-  list-main {
-    trigger: setup;
-  }
+  list-main {trigger: setup;}
 }
 
 list-main:setup {
@@ -17,9 +15,7 @@ list-main:setup {
   list-main list-item {
     var: liCo++;
   }
-  list-main {
-    trigger: countRows;
-  }
+  list-main {trigger: countRows;}
 }
 list-main:countRows {
   @for n from {startingLiCo} + 1 to {liCo} {
