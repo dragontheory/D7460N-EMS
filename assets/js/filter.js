@@ -43,7 +43,7 @@ function generateCountMessage() {
 }
   
 function generateListItem(item) {
-    var li = document.createElement('li'),
+    var li = document.createElement('list-item'),
         spanName = document.createElement('span'),
         spanType = document.createElement('span'),
         spanCategory = document.createElement('span');
