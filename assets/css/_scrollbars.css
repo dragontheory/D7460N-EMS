@@ -4,8 +4,8 @@
 /* SHOW SCROLLBARS ON HOVER ONLY */
 list-app,
 list-dataset,
-list-results,
-list-details,
+list-main,
+list-aside,
 list-layouts,
 list-themes {
 	padding-right: 0;
@@ -24,8 +24,8 @@ list-themes {
 
 list-app:hover, 
 list-dataset:hover,
-list-results:hover,
-list-details:hover,
+list-main:hover,
+list-aside:hover,
 list-layouts:hover,
 list-themes:hover {
   mask-position: left top;
@@ -35,8 +35,8 @@ list-themes:hover {
 /* FF */
 list-app,
 list-dataset,
-list-results,
-list-details,
+list-main,
+list-aside,
 list-layouts,
 list-themes {
   scrollbar-width: thin;
@@ -55,10 +55,10 @@ list-themes {
   border: .18rem solid transparent;  /* background */
 } /* HIDE SCROLLBAR UNTIL HOVER */
 /* https://codepen.io/dragontheory/details/WNrKYXm */ 
-list-results,
+list-main,
 list-app,
 list-dataset,
-list-details,
+list-aside,
 list-layouts,
 list-themes {
   mask-image: linear-gradient(to top, transparent, black),
@@ -73,10 +73,10 @@ list-themes {
   outline: none;
 }
 
-list-results:hover,
+list-main:hover,
 list-app:hover, 
 list-dataset:hover,
-list-details:hover,
+list-aside:hover,
 list-layouts:hover,
 list-themes:hover {
   mask-position: left top;
@@ -84,10 +84,10 @@ list-themes:hover {
 }
 
 /* FF */
-list-results,
+list-main,
 list-app,
 list-dataset,
-list-details,
+list-aside,
 list-layouts,
 list-themes {
   scrollbar-width: thin;

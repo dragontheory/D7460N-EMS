@@ -1,11 +1,11 @@
-@import url("fonts.css");
-@import url("typography.css");
 @import url("_body.css");
-@import url("accordions.css");
 @import url("_scrollbars.css");
 @import url("_themes.css");
 @import url("_panels.css");
 @import url("_lists.css");
+@import url("fonts.css");
+@import url("typography.css");
+@import url("accordions.css");
 @import url("tabs.css");
 @import url("circles.css");
 @import url("carousels.css");
@@ -14,12 +14,12 @@
 @import url("media-queries.css");
 
 @import url("/assets/activecss/components/list-app/list-app.css");
-@import url("/assets/activecss/components/list-details/list-details.css");
+@import url("/assets/activecss/components/list-aside/list-aside.css");
 @import url("/assets/activecss/components/list-dataset/list-dataset.css");
 @import url("/assets/activecss/components/list-graphics/list-graphics.css");
 @import url("/assets/activecss/components/list-layouts/list-layouts.css");
 @import url("/assets/activecss/components/list-pagination/list-pagination.css");
-@import url("/assets/activecss/components/list-results/list-results.css");
+@import url("/assets/activecss/components/list-main/list-main.css");
 @import url("/assets/activecss/components/list-themes/list-themes.css");
 @import url("/assets/activecss/components/page-container/page-container.css");
 @import url("/assets/activecss/components/page-footer/page-footer.css");
