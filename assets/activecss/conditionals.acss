@@ -4,26 +4,26 @@ body:init {
 }
 
 window:resize {
-  #myList {
+  list-main {
     trigger: setup;
   }
 }
 
-#myList:setup {
+list-main:setup {
   var: totalVisible 0,
        totalNonVisible 0,
        liCo 0,
        startingLiCo 0;
-  #myList li {
+  list-main list-item {
     var: liCo++;
   }
-  #myList {
+  list-main {
     trigger: countRows;
   }
 }
-#myList:countRows {
+list-main:countRows {
   @for n from {startingLiCo} + 1 to {liCo} {
-    @if completely-visible(li[data-co="{n}"] scope(#myList)) {
+    @if completely-visible(list-item[data-co="{n}"] scope(list-main)) {
       var: totalVisible++;
     } @else {
       var: totalNonVisible++;
@@ -45,19 +45,18 @@ window:resize {
   }
 }
 
-/* #myList = ol */
-/* Check if the current user is the same one in the <list-details> <list-item> */
-#myList li:not-if-var(currentUserID "{@data-id}"):click {
+/* Check if the current user is the same one in the <list-aside> <list-item> */
+list-main list-item:not-if-var(currentUserID "{@data-id}"):click {
   var: currentUserID "{@data-id}";
   ajax: "https://my-json-server.typicode.com/dragontheory/D7460N-data/names/{@data-id}" get json await;
   
   var: item {JSON};
   
-  /* Add .active class to clicked row. Remove .active class form all other rows withing #myList. */
-  take-class: .active scope(#myList);
+  /* Add .active class to clicked row. Remove .active class form all other rows within <list-main>. */
+  take-class: .active scope(list-main);
 
-  /* Add HTML child li to <list-details> ol */
-  list-details ol {
+  /* Add HTML child <list-item> to <list-aside> */
+  list-aside {
     render: "<list-item><list-cell>ID</list-cell><list-cell>{item.id}</list-cell></list-item>
              <list-item><list-cell>name</list-cell><list-cell>{item.name}</list-cell></list-item>
              <list-item><list-cell>username</list-cell><list-cell>{item.username}</list-cell></list-item>
@@ -65,8 +64,8 @@ window:resize {
              <list-item><list-cell>email</list-cell><list-cell><a href=\"mailto:{item.email}\" target=\"_new\">{item.email}</a></list-cell></list-item>";
   }
 }
-#myList li:not-if-empty-trimmed(list-details ol):if-var(currentUserID "{@data-id}"):click {
-  list-details ol {
+main-list list-item:not-if-empty-trimmed(list-aside):if-var(currentUserID "{@data-id}"):click {
+  list-aside {
     render: "";
     var: currentUserID "";
   }
