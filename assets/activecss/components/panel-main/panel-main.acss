@@ -7,12 +7,12 @@ meta-label:innerhtmlchange {
     }
   }
 }
-list-results list-item:click {
-  list-details {
+list-main list-item:click {
+  list-aside {
     render: "";
     var: currentUserID "";
   }
-  list-results list-item {
-    remove-class: .active scope(list-results);
+  list-main list-item {
+    remove-class: .active scope(list-main);
   }
 }
