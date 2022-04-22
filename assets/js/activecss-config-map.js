@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
     'assets/activecss/components/page-header/page-header.acss,' +
     'assets/activecss/components/page-search/page-search.acss,' +
     'assets/activecss/components/list-dataset/list-dataset.acss,' +
-    'assets/activecss/components/list-details/list-details.acss,' +
+    'assets/activecss/components/list-aside/list-aside.acss,' +
     'assets/activecss/components/list-graphics/list-graphics.acss,' +
     'assets/activecss/components/list-layouts/list-layouts.acss,' +
     'assets/activecss/components/list-pagination/list-pagination.acss,' +
-    'assets/activecss/components/list-results/list-results.acss,' +
+    'assets/activecss/components/list-main/list-main.acss,' +
     'assets/activecss/components/list-themes/list-themes.acss,' +
     'assets/activecss/components/panel-intro/panel-intro.acss,' + 
     'assets/activecss/components/panel-nav/panel-nav.acss,' + 
