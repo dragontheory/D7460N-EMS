@@ -1,13 +1,13 @@
 @component panel-aside html("/assets/activecss/components/panel-aside/panel-aside.html" get) {}
 
-panel-aside panel-close:not-if-empty-trimmed(list-details):click {
-  list-details {render: "";},
+panel-aside panel-close:not-if-empty-trimmed(list-aside):click {
+  list-aside {render: "";},
   page-container {remove-attribute: style;},
-  list-results list-item {remove-class: .active-li;},
+  list-main list-item {remove-class: .active;},
   var: currentUserID "";
 }
 
-panel-aside list-results:if-empty:observe {
+panel-aside list-main:if-empty:observe {
   body {remove-class: .aside;}
   page-container {remove-attribute: style;}
 }
