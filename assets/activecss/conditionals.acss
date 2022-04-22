@@ -12,9 +12,7 @@ list-main:setup {
        totalNonVisible 0,
        liCo 0,
        startingLiCo 0;
-  list-main list-item {
-    var: liCo++;
-  }
+  list-main list-item {var: liCo++;}
   list-main {trigger: countRows;}
 }
 list-main:countRows {
