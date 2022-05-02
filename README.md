@@ -1,9 +1,9 @@
-
 <div align="center">
-  ![Logo Dark](assets/images/logos/logo_380x380_.svg#gh-dark-mode-only)
-</div>
+  <img src="https://raw.githubusercontent.com/dragontheory/D7460N-EMS/migration/assets/images/logos/logo_light_380x380.png#gh-dark-mode-only" alt="D7460N EMS"
+style="max-width: 100%;"></div>
 <div align="center">
-  ![Logo Light](assets/images/logos/logo_380x380_.svg#gh-light-mode-only)
+  <img src="https://raw.githubusercontent.com/dragontheory/D7460N-EMS/migration/assets/images/logos/logo_dark_380x380.png#gh-light-mode-only" alt="D7460N EMS"
+style="max-width: 100%;">
 </div>
 <!-- <h1 align="center" width="100%"><img width="400px" height="400px" src="assets/images/logos/logo_380x380_.svg" /></h1> -->
 
