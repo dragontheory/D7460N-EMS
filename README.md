@@ -1,4 +1,11 @@
-<h1 align="center" width="100%"><img width="400px" height="400px" src="assets/images/logos/logo_380x380_.svg" /></h1>
+
+<div align="center">
+  ![Logo Dark](assets/images/logos/logo_380x380_.svg#gh-dark-mode-only)
+</div>
+<div align="center">
+  ![Logo Light](assets/images/logos/logo_380x380_.svg#gh-light-mode-only)
+</div>
+<!-- <h1 align="center" width="100%"><img width="400px" height="400px" src="assets/images/logos/logo_380x380_.svg" /></h1> -->
 
 # **D7460N EMS | Entity Management System**
 
