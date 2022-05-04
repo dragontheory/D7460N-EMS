@@ -1,0 +1,12 @@
+@component panel-splitter html("/assets/components/panel-splitter/panel-splitter.html" get nocache) {
+  &:componentOpen {
+    run: {=
+      Split({
+        columnGutters: [{
+          track: 3,
+          element: document.querySelector('panel-splitter'),
+          }]
+       });
+    =};
+  }
+}

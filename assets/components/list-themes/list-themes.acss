@@ -1,0 +1,13 @@
+@component list-themes html("assets/components/list-themes/list-themes.html" get nocache) {}
+
+body:not-if-defined(theme):preInit {
+  var: theme {dark} local-storage;
+}
+
+list-themes list-item:click {
+  take-class: .active scope(list-themes);
+  body {
+    set-attribute: data-theme "{@data-theme-color}";
+  }
+  var: theme "{@data-theme-color}";
+}

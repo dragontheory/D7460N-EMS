@@ -1,0 +1,7 @@
+@component list-dataset html("assets/components/list-dataset/list-dataset.html" get nocache) {}
+
+list-dataset list-item:click {
+  take-class: .active scope(list-dataset);
+  mimic-into: #datasetSearchTerm;
+  func: filterByDataset;
+}

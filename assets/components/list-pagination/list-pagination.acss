@@ -1,0 +1,51 @@
+@component list-pagination html("assets/components/list-pagination/list-pagination.html" get nocache) {}
+
+/* Auto enumerate list rows */
+/* list-main list-item:observe {
+  var: co++;
+  set-property: customIndex "{co}";
+  set-attribute: data-list-item "{@@customIndex}";
+} */
+
+body:init {
+  list-main {
+    trigger: setup after 100ms;
+  }
+  trigger: countRows;
+}
+window:resize {
+  list-main {trigger: setup;}
+}
+
+list-main:setup {
+  var: totalVisible 0,
+       totalNonVisible 0,
+       liCo 0,
+       startingLiCo 0;
+  list-main list-item {var: liCo++;}
+  list-main {trigger: countRows;}
+}
+
+list-main:countRows {
+  @for n from {startingLiCo} + 1 to {liCo} {
+    @if completely-visible(list-item[data-list-item="{n}"]) {
+      var: totalVisible++;
+    } @else {
+      var: totalNonVisible++;
+    }
+  }
+  #totalVisible {
+    @if {totalVisible} < 10 {
+      render: 0{totalVisible};
+    } @else {
+      render: {totalVisible};
+    }
+  }
+   #totalNonVisible {
+    @if {totalNonVisible} < 10 {
+      render: 0{totalNonVisible};
+    } @else {
+      render: {totalNonVisible};
+    }
+  }
+}

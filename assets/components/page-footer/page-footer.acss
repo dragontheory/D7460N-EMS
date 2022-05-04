@@ -1,0 +1,1 @@
+@component page-footer html("/assets/components/page-footer/page-footer.html" get) {}

@@ -1,0 +1,1 @@
+@component page-search html("/assets/components/page-search/page-search.html" get nocache) {}

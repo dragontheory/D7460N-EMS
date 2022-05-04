@@ -1,0 +1,1 @@
+@component panel-intro html("/assets/components/panel-intro/panel-intro.html" get nocache) {}

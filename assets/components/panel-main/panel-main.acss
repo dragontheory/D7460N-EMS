@@ -1,0 +1,18 @@
+@component panel-main html("/assets/components/panel-main/panel-main.html" get nocache) {}
+
+meta-label:innerhtmlchange {
+  list-app list-item {
+    @if inner-text("{meta-label}") {
+      take-class: .active scope(list-app);
+    }
+  }
+}
+list-main list-item:click {
+  list-aside {
+    render: "";
+    var: currentUserID "";
+  }
+  list-main list-item {
+    remove-class: .active scope(list-main);
+  }
+}

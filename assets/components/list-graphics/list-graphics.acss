@@ -1,0 +1,8 @@
+@component list-graphics html("assets/components/list-graphics/list-graphics.html" get nocache) {}
+
+list-graphics list-item:click {
+  take-class: .active scope(list-graphics);
+  body {
+    set-attribute: data-graphics "{@data-graphics-motion}";
+  }
+}

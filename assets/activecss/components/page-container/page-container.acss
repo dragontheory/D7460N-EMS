@@ -1,1 +1,0 @@
-@component page-container html("/assets/activecss/components/page-container/page-container.html" get nocache) {}

@@ -1,0 +1,8 @@
+@component list-layouts html("assets/components/list-layouts/list-layouts.html" get nocache) {}
+
+list-layouts list-item:click {
+  take-class: .active scope(list-layouts);
+  body {
+    set-attribute: data-layout "{@data-layout-density}";
+  }
+}

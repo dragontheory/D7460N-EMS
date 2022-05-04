@@ -1,0 +1,45 @@
+page-container {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  height: 100vh;
+  overflow: hidden;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 15rem 0 1fr .2rem 15rem 0; /* same as when splitter-panel is visible */
+}
+
+/* NAV */
+.nav page-container {grid-template-columns: 15rem 1fr 0 0 0 0;}
+.nav panel-intro {margin-right: -3rem;}
+
+/* NAV + ASIDE2 */
+.nav.aside2 page-container {grid-template-columns: 15rem 1fr 0 0 0 15rem;}
+.nav.aside2 panel-intro {margin-right: -3rem;}
+
+/* NAV + INTRO */
+.nav.intro page-container {grid-template-columns: 15rem 1fr 0 0 0 0;}
+.nav.intro panel-intro {margin-right: -3rem;}
+
+/* NAV + INTRO + ASIDE2 */
+.nav.intro.aside2 page-container {grid-template-columns: 15rem 1fr 0 0 0 15rem;}
+.nav.intro.aside2 panel-intro {margin-right: -3rem;}
+
+/* NAV + MAIN */
+.nav.main page-container {grid-template-columns: 15rem 0 1fr 0 0 0;}
+.nav.main panel-main {margin-left: -1rem; margin-right: -2rem;}
+.nav.main panel-intro {margin-right: 0;}
+
+/* NAV + MAIN + ASIDE2*/
+.nav.main.aside2 page-container {grid-template-columns: 15rem 0 1fr 0 0 15rem;}
+.nav.main.aside2 panel-main {margin-left: -1rem; margin-right: -2rem;}
+.nav.main.aside2 panel-intro {margin-right: 0;}
+
+/* NAV + MAIN + SPLITTER + ASIDE */
+.nav.main.aside page-container {grid-template-columns: 15rem 0 1fr .2rem 15rem 0;}
+.nav.main.aside panel-main {margin-left: -1rem; margin-right: -0.5rem;}
+.nav.main.aside panel-aside {margin-left: -0.5rem; margin-right: -1rem;}
+
+/* NAV + MAIN + SPLITTER + ASIDE + ASIDE2 */
+.nav.main.aside.aside2 page-container {grid-template-columns: 15rem 0 1fr .2rem 15rem 15rem;}
+.nav.main.aside.aside2 panel-main {margin-left: -1rem; margin-right: -0.5rem;}
+.nav.main.aside.aside2 panel-aside {margin-left: -0.5rem; margin-right: 0;}

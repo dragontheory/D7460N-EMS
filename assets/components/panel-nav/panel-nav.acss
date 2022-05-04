@@ -1,0 +1,7 @@
+@component panel-nav html("/assets/components/panel-nav/panel-nav.html" get nocache) {}
+
+reset-filter:click {
+  list-dataset list-item {remove-class: .active scope(list-dataset);}
+  list-dataset list-item {remove-class: .active scope(list-app);}
+  func: clearFilters;
+}
